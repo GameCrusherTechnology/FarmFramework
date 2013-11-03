@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<language>
+<resourceName key="harvest" value="harvest"/>
+<resourceName key="seed" value="seed"/>
+<resourceName key="speed" value="speed"/>
+<resourceName key="menu" value="menu"/>
+<resourceName key="edit" value="edit"/>
+<resourceName key="cancel" value="cancel"/>
+<resourceName key="plow" value="plow"/>
+<resourceName key="move" value="move"/>
+<resourceName key="sell" value="sell"/>
+
+</language>

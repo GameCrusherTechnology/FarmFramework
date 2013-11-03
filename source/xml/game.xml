@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database>
+	<Group id="Crop">
+		<Crop id="10001" name="rice"      growtime="0.15:0.15:0.15:0.15:0.15"/>
+		<Crop id="10002" name="sunflower" growtime="0.15:0.15:0.15:0.15"/>
+		<Crop id="10003" name="clover"    growtime="0.15:0.15:0.15:0.15:0.15"/>
+		<Crop id="10004" name="rice"      growtime="0.15:0.15:0.15:0.15:0.15"/>
+		<Crop id="10005" name="sunflower" growtime="0.15:0.15:0.15:0.15"/>
+		<Crop id="10006" name="clover"    growtime="0.15:0.15:0.15:0.15:0.15"/>
+		<Crop id="10007" name="rice"      growtime="0.15:0.15:0.15:0.15:0.15"/>
+		<Crop id="10008" name="sunflower" growtime="0.15:0.15:0.15:0.15"/>
+		<Crop id="10009" name="clover"    growtime="0.15:0.15:0.15:0.15:0.15"/>
+	</Group>
+	<Group id="Item">
+		<Crop id="20001" name="PP" />
+	</Group>
+</database>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<language>
+		<resourceName key="Victory" value="勝利"/>
+		<resourceName key="Lose" value="失敗"/>
+		<resourceName key="Reward" value="獎勵"/>
+		<resourceName key="WinningReward" value="連續獲勝獎勵"/>
+		<resourceName key="Confirm" value="確認"/>
+		<resourceName key="cancel" value="取消"/>
+		<resourceName key="DataError" value="資料錯誤"/>
+		<resourceName key="leave" value="確定要放棄比賽嗎?"/>
+		<resourceName key="Connect" value="正在連接... "/>
+		<resourceName key="NotPort" value="伺服器忙"/>
+		<resourceName key="Finding" value="正在查找對手"/>
+		<resourceName key="INQUEUE" value="正在佇列中"/>
+		<resourceName key="CONNECTERROR" value="伺服器連接失敗"/>
+		<resourceName key="STEP" value="關卡 "/>
+		<resourceName key="RATING_ASSESSMENT" value="每一關會有十場比賽，每場只有一個球機會，不可以犯規"/>
+		<resourceName key="RATING_TITLE" value="評級賽"/>
+		<resourceName key="REQUEST" value="需要"/>
+		<resourceName key="WIN_MORE" value="需要贏更多的場次"/>
+		<resourceName key="MONEY_NOTENOUGH" value="藍水晶不夠"/>
+		<resourceName key="ENERGY_NOTENOUGH" value="能量不充足"/>
+		<resourceName key="WARNNING_BEGINNER" value="只有新手才可以參加"/>
+		<resourceName key="WARNNING_PROFESSION" value="只有職業選手才可以參加"/>
+		<resourceName key="WARNNING_MASTER" value="只有大師級選手才可以參加"/>
+		<resourceName key="VIP_GOOD" value="更多的能量，更快的恢復和升級"/>
+		<resourceName key="WARNNING_NOWIFI" value="您的網路不穩定！請檢查一下"/>
+		<resourceName key="MultiplayBattle" value="網路對戰"/>
+		<resourceName key="ComputerBattle" value="電腦對戰"/>
+		<resourceName key="Training" value="訓練賽"/>
+		<resourceName key="Beginner" value="初學者"/>
+	  	 <resourceName key="Professional" value="職業選手"/>
+	  	 <resourceName key="Master" value="大師"/>
+	  	 <resourceName key="Doyen" value="專家"/>
+	  	 <resourceName key="HeavyCue" value="HeavyCue"/>
+	  	 <resourceName key="LimitCue" value="LimitCue"/>
+	  	 <resourceName key="NiceCue" value="NiceCue"/>
+	  	 <resourceName key="SuperCue" value="SuperCue"/>
+	  	 <resourceName key="littlegem" value="少量紅寶石"/>
+	  	 <resourceName key="largegem" value="大量紅寶石"/>
+	  	 <resourceName key="littlecoin" value="少量藍寶石"/>
+	  	 <resourceName key="largecoin" value="大量藍寶石"/>
+	  	 <resourceName key="onemonthvip" value="1月 vip"/>
+	  	 <resourceName key="sixmonthsvip" value="半年 vip"/>
+	  	 <resourceName key="oneyearvip" value="1年 vip"/>
+	  	 <resourceName key="forevervip" value="永久vip"/>
+	  	 <resourceName key="addoneenergy" value="1點 能量"/>
+	  	 <resourceName key="fullofenergy" value="加滿能量"/>
+	  	 <resourceName key="personalinformation" value="個人資訊"/>
+	  	 <resourceName key="forever" value="永久"/>
+	  	 <resourceName key="level" value="等級"/>
+	  	 <resourceName key="playerEntity" value="玩家能力值"/>
+		<resourceName key="leftPoints" value="剩餘點數"/>
+		<resourceName key="power" value="力度"/>
+		<resourceName key="spin" value="旋轉度"/>
+		<resourceName key="cueusing" value="當前使用球杆"/>
+		<resourceName key="GiveUp" value="放棄"/>
+		<resourceName key="outTime" value=" 時間到了"/>
+<resourceName key="potCue" value=" 將主球擊入袋中"/>
+<resourceName key="illegalbreak" value=" 開球犯規"/>
+<resourceName key="notstrike" value="主球未碰到任何球"/>
+<resourceName key="youhiteither" value="您需要打到一個實球或者花球"/>
+<resourceName key="nothiteither" value=" 沒有打到一個實球或者花球"/>
+<resourceName key="youhitsolid" value="您需要打到一個實球"/>
+<resourceName key="nothitsolid" value=" 沒有打到一個實球"/>
+<resourceName key="youhitstriped" value="您需要打到一個花球"/>
+<resourceName key="nothitstriped" value=" 沒有打到一個花球"/>
+<resourceName key="youhit8" value="你需要打8號球"/>
+<resourceName key="nothit8" value=" 沒有打到8號球"/>
+<resourceName key="Noballshit" value="第一次碰撞後沒有打到球"/>
+<resourceName key="failpot" value=" 沒有將球打入指定的袋口"/>
+<resourceName key="cueballinhand" value="主球在您手裡"/> 
+<resourceName key="ballinhand" value=" 手裡有球"/>
+<resourceName key="callpocket" value="指定 袋口"/>
+<resourceName key="clickpocket" value="點擊一下您下次要打入的袋口"/>
+<resourceName key="callingPocket" value=" 正在指定袋口"/>
+<resourceName key="youSOLIDS" value="您打實心球"/>
+<resourceName key="potsolid" value="打入所有實心球"/>
+<resourceName key="youSTRIPES" value="您打花球"/>
+<resourceName key="potstriped" value="打入所有花球"/>
+<resourceName key="8left" value="最後8號球"/>
+<resourceName key="8towin" value="打入8號球算贏"/>
+<resourceName key="you" value="您"/>
+<resourceName key="precious" value="珠寶"/>
+	  	<resourceName key="cue" value="球杆"/>
+	  	<resourceName key="energy" value="能量"/>
+	  	<resourceName key="vip" value="會員"/>
+	  	<resourceName key="Bought" value="已購買"/>
+	  	<resourceName key="waitingTime" value="平均等待時間"/>
+	  	<resourceName key="surebuy" value="確定要購買  "/>
+	  	 <resourceName key="buySuc" value="購買成功 !"/>
+	  	 <resourceName key="noNet" value="請檢查WIFI或3G!"/>
+</language>
+
