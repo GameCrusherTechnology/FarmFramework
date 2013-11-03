@@ -8,7 +8,14 @@
             this._gridX = _arg1;
             this._gridY = _arg2;
         }
-		
+		public function get x():int
+		{
+			return _gridX;
+		}
+		public function get y():int
+		{
+			return _gridY;
+		}
 		public var owner:GameEntity;
 		
 	}

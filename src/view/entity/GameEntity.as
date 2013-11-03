@@ -1,5 +1,7 @@
 package view.entity
 {
+	import flash.geom.Point;
+	
 	import controller.GameController;
 	
 	import model.avatar.Map;
@@ -7,6 +9,7 @@ package view.entity
 	import model.entity.EntityItem;
 	
 	import starling.core.RenderSupport;
+	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	
 	import view.FarmScene;
@@ -14,6 +17,7 @@ package view.entity
 
 	public class GameEntity extends Sprite
 	{
+		public var surface:MovieClip;
 		protected var item:EntityItem;
 		public function GameEntity(entityItem:EntityItem) 
 		{
@@ -36,6 +40,11 @@ package view.entity
 				}
 				i++;
 			}
+		}
+		
+		public function getTopTile():Tile
+		{
+			return Map.intance.getTileByIos(item.ios_x,item.ios_y);
 		}
 		protected function refresh():void
 		{

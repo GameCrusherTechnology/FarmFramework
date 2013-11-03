@@ -94,6 +94,7 @@ package model.avatar
 			var lengthy:int = Math.floor(-(sceneP.x -startX)/ Configrations.Tile_Width  + (sceneP.y-startY) / Configrations.Tile_Height);
 			return getTileByIos(lengthx,lengthy);
 		}
+		
 		public function iosToScene(iosx:int,iosy:int):Point
 		{
 			return new Point(startX +(iosx-iosy)*Configrations.Tile_Width/2,startY + (iosx+iosy)*Configrations.Tile_Height/2);

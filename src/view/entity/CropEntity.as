@@ -1,30 +1,20 @@
 package view.entity
 {
 	import flash.geom.Point;
-	import flash.text.engine.ElementFormat;
 	
 	import controller.GameController;
 	import controller.UiController;
 	
-	import gameconfig.Configrations;
-	
 	import model.avatar.Map;
 	import model.entity.CropItem;
 	
-	import starling.animation.Transitions;
-	import starling.animation.Tween;
-	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
-	import starling.utils.deg2rad;
-	
-	import view.ui.FarmToolUI;
 
 	public class CropEntity extends GameEntity
 	{
-		private var surface:MovieClip;
 		public function CropEntity(cropItem:CropItem)
 		{
 			super(cropItem);
@@ -39,6 +29,8 @@ package view.entity
 			x = topPoint.x;
 			y = topPoint.y;
 		}
+		
+		
 		private function creatSurface():void
 		{
 			surface = new MovieClip(Game.assets.getTextures(cropItem.name));
@@ -72,6 +64,9 @@ package view.entity
 				case TouchPhase.MOVED:
 					onToolMoved();
 					break;
+				case TouchPhase.HOVER:
+					onToolMoved();
+					break;
 				case TouchPhase.ENDED:
 					hasSpeed = false;
 					break;
@@ -82,6 +77,9 @@ package view.entity
 		private function checkCurrentTool():void
 		{
 			var tool:String = GameController.instance.selectTool;
+			if(tool == UiController.TOOL_SELL){
+				sellCrop();
+			}else{
 			if(cropItem.hasCrop){
 				if(cropItem.canHarvest){
 					if(tool !=UiController.TOOL_HARVEST){
@@ -103,6 +101,23 @@ package view.entity
 				UiController.instance.showUiTools(UiController.TOOL_SEED,this);
 			}else{
 				plant();
+			}
+			}
+		}
+		
+		private function sellCrop():void
+		{
+			scene.removeEntity(this);
+		}
+		private function onToolHoved():void
+		{
+			var tool:String = GameController.instance.selectTool;
+			switch(tool){
+				case UiController.TOOL_HARVEST:
+					if(cropItem.hasCrop && cropItem.canHarvest){
+						harvest();
+					}
+					break;
 			}
 		}
 		private function onToolMoved():void

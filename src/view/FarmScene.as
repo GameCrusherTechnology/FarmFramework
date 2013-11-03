@@ -15,6 +15,7 @@ package view
 	
 	import starling.display.Shape;
 	import starling.display.Sprite;
+	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
@@ -22,6 +23,7 @@ package view
 	
 	import view.entity.CropEntity;
 	import view.entity.GameEntity;
+	import view.entity.MovableEntity;
 
 	public class FarmScene extends Sprite
 	{
@@ -81,7 +83,13 @@ package view
 				cropDic.push(crop);
 			}
 		}
-		
+		public function removeEntity(entity:CropEntity):void{
+			var index:int = cropDic.indexOf(entity);
+			if(index >=0){
+				cropDic.splice(index,1);
+				entityLayer.removeChild(entity);
+			}
+		}
 		
 		private var _hasDragged:Boolean;
 		public function get hasDragged():Boolean{
@@ -108,12 +116,20 @@ package view
 					var delta:Point = touches[0].getMovement(this.parent);
 					this.dragScreenTo(delta);
 				}
-			}else if (touches.length == 2){
+			}else if (touches.length >= 2){
 				if(curBeginTouch){
 					curBeginTouch = null;
 				}
 				this.scaleScreen(touches[0],touches[1])
+			}else{
+				touches = evt.getTouches(this, TouchPhase.HOVER);
+				if (touches.length >= 2){
+					this.scaleScreen(touches[0],touches[1]);
+				}else if(touches.length == 1 && GameController.instance.selectTool){
+					findEntity(new Point(touches[0].globalX, touches[0].globalY), TouchPhase.HOVER);
+				}
 			}
+			
 			//touch begin
 			var beginTouch:Touch = evt.getTouch(this,TouchPhase.BEGAN);
 			if(beginTouch){
@@ -147,7 +163,39 @@ package view
 					_hasDragged=false;
 				}
 			}
+		}
+		
+		private var currentMoveEntity:MovableEntity;
+		public function addMoveEntity(entity:GameEntity=null):void
+		{
+			removeMoveEntity();
+			currentMoveEntity = new MovableEntity(entity);
+			effectLayer.addChild(currentMoveEntity);
+		}
+		public function removeMoveEntity():void
+		{
+			if(currentMoveEntity){
+				currentMoveEntity.cancel();
+				if(currentMoveEntity.parent)
+				{
+					currentMoveEntity.parent.removeChild(currentMoveEntity);
+				}
+				currentMoveEntity = null;
+			}
 			
+		}
+		public function getCurrentFocusPos(lengthx:int,lengthy:int):Tile
+		{
+			var targetTile:Tile;
+			var len:int = player.wholeSceneLength;
+			var centerPoint:Point = globalToLocal(new Point(Configrations.ViewPortWidth/2,Configrations.ViewPortHeight/2));
+			var centerIos:Tile = Map.intance.sceneToIso(centerPoint);
+			if(centerIos){
+				targetTile = Map.intance.getTileByIos(Math.min(centerIos.x,len - lengthx),Math.min(centerIos.y,len-lengthy));
+			}else{
+				targetTile = Map.intance.getTileByIos(Math.round(len/2),Math.round(len/2));
+			}
+			return targetTile;
 		}
 		private function findEntity(point:Point,type:String):GameEntity
 		{
