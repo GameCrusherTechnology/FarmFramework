@@ -37,6 +37,15 @@ package view.entity
 			addChild(surface);
 			surface.x = - surface.width/2;
 			surface.y = - surface.height;
+//			var image1:Image = new Image(Game.assets.getTexture("FieldLand"));
+//			image1.width=image1.height = 300;
+//			image1.x = -image1.width/2;
+			var sp:Sprite = new Sprite;
+			sp.width = sp.height = 300;
+			sp.x = -sp.width/2;
+			sp.y = -sp.height/2-surface.height/2;
+//			image1.alpha = 0;
+			addChild(sp);
 			moveToTile(currentTile);
 			addEventListener(TouchEvent.TOUCH,onTouch);
 		}
