@@ -33,6 +33,12 @@ package controller
 			
 		}
 		
+		public function resetTools():void
+		{
+			selectSeed = null;
+			selectTool = null;
+			UiController.instance.hideToolStateButton();
+		}
 		public function start(layer:Game):void
 		{
 			gameLayer = layer;
