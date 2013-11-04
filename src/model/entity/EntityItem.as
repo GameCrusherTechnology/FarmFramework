@@ -2,6 +2,8 @@ package model.entity
 {
 	import controller.SpecController;
 	
+	import gameconfig.Configrations;
+	
 	import model.avatar.Map;
 	import model.avatar.Tile;
 	import model.gameSpec.ItemSpec;
@@ -56,6 +58,11 @@ package model.entity
 		public function get bound_y():int
 		{
 			return itemspec.bound_y;
+		}
+		
+		public function get sceneIndex():Number
+		{
+			return (ios_x+ios_y)* 1000 + ios_x;
 		}
 	}
 }

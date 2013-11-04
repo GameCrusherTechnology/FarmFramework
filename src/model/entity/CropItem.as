@@ -16,7 +16,9 @@ package model.entity
 		protected function init():void
 		{
 			plantTime = SystemDate.systemTimeS;
-			checkStep();
+			if(hasCrop){
+				checkStep();
+			}
 		}
 		
 		override protected function get itemType():String

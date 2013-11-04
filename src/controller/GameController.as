@@ -19,6 +19,7 @@ package controller
 		public var selectTool:String;
 		public var selectSeed:String;
 		
+		
 		private static var _controller:GameController;
 		public static function get instance():GameController
 		{

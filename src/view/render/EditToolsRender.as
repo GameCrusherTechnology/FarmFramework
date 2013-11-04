@@ -64,10 +64,6 @@ package view.render
 					UiController.instance.hideToolStateButton();
 				}else{
 					GameController.instance.selectTool = type;
-					if(type == UiController.TOOL_ADDFEILD)
-					{
-						GameController.instance.currentFarm.addMoveEntity();
-					}
 					UiController.instance.showToolStateButton(type,Game.assets.getTexture(textureName));
 				}
 				UiController.instance.showEditUiTools(false);

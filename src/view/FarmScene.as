@@ -6,6 +6,8 @@ package view
 	import controller.GameController;
 	import controller.UiController;
 	
+	import game.view.scene.EntitySurface;
+	
 	import gameconfig.Configrations;
 	
 	import model.avatar.Map;
@@ -13,9 +15,10 @@ package view
 	import model.entity.CropItem;
 	import model.player.GamePlayer;
 	
+	import starling.core.RenderSupport;
+	import starling.display.DisplayObject;
 	import starling.display.Shape;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
@@ -23,24 +26,28 @@ package view
 	
 	import view.entity.CropEntity;
 	import view.entity.GameEntity;
-	import view.entity.MovableEntity;
 
 	public class FarmScene extends Sprite
 	{
 		[Embed(source="/init/bgCell.png")]
 		public static var bgClass:Class;
 		
-		private var entityLayer:Sprite;
+		public var fieldLayer:Sprite;
+		public var entityLayer:Sprite;
 		private var scenew:Number;
 		private var sceneh:Number;
 		public var cropDic:Vector.<CropEntity>;
 		public var effectLayer:Sprite;
 		public function FarmScene()
 		{
+			
 			var length:int = player.wholeSceneLength;
 			scenew = Configrations.ViewPortWidth + (length-1)* Configrations.Tile_Width;
 			sceneh = Configrations.ViewPortHeight +(length-1)* Configrations.Tile_Height;
 			initBackground(scenew,sceneh,length);
+			fieldLayer = new Sprite();
+			addChild(fieldLayer);
+			
 			entityLayer = new Sprite();
 			addChild(entityLayer);
 			
@@ -54,6 +61,7 @@ package view
 			x = -(length-1)* Configrations.Tile_Width/2;
 			y = -(length-1)* Configrations.Tile_Height/2;
 		}
+		
 		private function initBackground(scenew:Number,sceneh:Number,length:int):void
 		{
 			var bitmap:Bitmap = new bgClass();
@@ -80,14 +88,28 @@ package view
 			for each(var cropItem:CropItem in player.cropItems){
 				crop = new CropEntity(cropItem);
 				entityLayer.addChild(crop);
+				fieldLayer.addChild(crop.fieldSUR);
 				cropDic.push(crop);
 			}
+			sortEntityLayer();
 		}
-		public function removeEntity(entity:CropEntity):void{
-			var index:int = cropDic.indexOf(entity);
-			if(index >=0){
-				cropDic.splice(index,1);
-				entityLayer.removeChild(entity);
+		public function addFarmEntity(cropItem:CropItem):void
+		{
+			var crop:CropEntity = new CropEntity(cropItem);
+			entityLayer.addChild(crop);
+			fieldLayer.addChild(crop.fieldSUR);
+			cropDic.push(crop);
+			sortEntityLayer();
+		}
+			
+		public function removeEntity(entity:GameEntity):void{
+			if(entity is CropEntity){
+				var index:int = cropDic.indexOf(entity as CropEntity);
+				if(index >=0){
+					cropDic.splice(index,1);
+					fieldLayer.removeChild((entity as CropEntity).fieldSUR);
+					entityLayer.removeChild(entity);
+				}
 			}
 		}
 		
@@ -104,17 +126,29 @@ package view
 		private var _currentDrag:GameEntity;
 		private var lastEntity:GameEntity;
 		public function onTouch(evt:TouchEvent):void{
+			var scenePos:Point;
 			var touches:Vector.<Touch> = evt.getTouches(this, TouchPhase.MOVED);
 			if (touches.length == 1){
-				if(!_hasDragged){
-					if (mouseStagePosition && mouseDownPos && mouseStagePosition.subtract(mouseDownPos).length >= Configrations.CLICK_EPSILON){
-						_hasDragged = true;
-					}
-				}else if(GameController.instance.selectTool && mouseDownEntity){
-					findEntity(new Point(touches[0].globalX, touches[0].globalY), TouchPhase.MOVED);
+				if(currentMoveEntity){
+					scenePos = touches[0].getLocation(this);
+					currentMoveEntity.moveEntity(scenePos);
 				}else{
-					var delta:Point = touches[0].getMovement(this.parent);
-					this.dragScreenTo(delta);
+					if(GameController.instance.selectTool == UiController.TOOL_ADDFEILD){
+						scenePos = touches[0].getLocation(this);
+						addField(scenePos,2,2);
+					}else{
+						
+						if(!_hasDragged){
+							if (mouseStagePosition && mouseDownPos && mouseStagePosition.subtract(mouseDownPos).length >= Configrations.CLICK_EPSILON){
+								_hasDragged = true;
+							}
+						}else if(GameController.instance.selectTool && mouseDownEntity){
+							findEntity(new Point(touches[0].globalX, touches[0].globalY), TouchPhase.MOVED);
+						}else{
+							var delta:Point = touches[0].getMovement(this.parent);
+							this.dragScreenTo(delta);
+						}
+					}
 				}
 			}else if (touches.length >= 2){
 				if(curBeginTouch){
@@ -135,50 +169,134 @@ package view
 			if(beginTouch){
 				mouseDownPos = new Point(beginTouch.globalX, beginTouch.globalY);
 				curBeginTouch = beginTouch;
-				mouseDownEntity = findEntity(mouseDownPos,TouchPhase.BEGAN);
-				if(!mouseDownEntity){
-					UiController.instance.hideUiTools();
+				if(GameController.instance.selectTool == UiController.TOOL_ADDFEILD){
+					scenePos = beginTouch.getLocation(this);
+					addField(scenePos,2,2);
+				}else{
+					mouseDownEntity = findEntity(mouseDownPos,TouchPhase.BEGAN);
+					if(!mouseDownEntity){
+						UiController.instance.hideUiTools();
+					}
 				}
 			}
 			
 			var touch:Touch = evt.getTouch(this, TouchPhase.ENDED);
 			//click event
 			if(touch){
-				mouseDownEntity = null;
-				if(lastEntity){
-					lastEntity.doTouchEvent(TouchPhase.ENDED);
-					lastEntity = null;
-				}
-				if(curBeginTouch){
-					curBeginTouch = null;
-				}
-				if(!_hasDragged){
-					if(_currentDrag){
-					}else{
-					}
+				if(currentMoveEntity){
+					currentMoveEntity.releaseEntity();
 				}else{
-					if(_currentDrag){
-						_currentDrag=null;
+					mouseDownEntity = null;
+					if(lastEntity){
+						lastEntity.doTouchEvent(TouchPhase.ENDED);
+						lastEntity = null;
 					}
-					_hasDragged=false;
+					if(curBeginTouch){
+						curBeginTouch = null;
+					}
+					if(!_hasDragged){
+						if(_currentDrag){
+						}else{
+						}
+					}else{
+						if(_currentDrag){
+							_currentDrag=null;
+						}
+						_hasDragged=false;
+					}
 				}
 			}
 		}
 		
-		private var currentMoveEntity:MovableEntity;
-		public function addMoveEntity(entity:GameEntity=null):void
+		private var lastCheckTile:Tile;
+		private function addField(scenePos:Point,len_x:int,len_y:int):void
+		{
+			var tile:Tile = Map.intance.sceneToIso(scenePos);
+			if(tile &&  tile != lastCheckTile){
+				var tile1:Tile = Map.intance.getTileByIos(tile.x+len_x-1,tile.y+len_y-1);
+				if(tile1){
+					var valiable:Boolean = checkValiable(tile,len_x,len_y);
+					if(valiable){
+						var item:CropItem = new CropItem({ios_x:tile.x,ios_y:tile.y});
+						addFarmEntity(item);
+					}
+				}
+			}
+			lastCheckTile = tile;
+		}
+		private function checkValiable(toptile:Tile,len_x:int,len_y:int):Boolean
+		{
+			var index_x:int = toptile.x;
+			var index_y:int;
+			var tile:Tile;
+			while(index_x<(toptile.x + len_x)){
+				index_y = toptile.y;
+				while(index_y <(toptile.y+len_y)){
+					tile = Map.intance.getTileByIos(index_x,index_y);
+					if(tile && !tile.owner){
+						
+					}else{
+						return false;
+					}
+					index_y++;
+				}
+				index_x++;
+			}
+			return true;
+		}
+		private function sortEntityLayer():void
+		{
+			var depthArr:Array = [];
+			var objA:DisplayObject;
+			var entity:GameEntity;
+			var max:uint = entityLayer.numChildren;
+			var i:uint = 0;
+			
+			for (i=0; i < max; ++i)
+			{
+				objA = entityLayer.getChildAt(i);
+				if(objA is GameEntity){
+					depthArr.push({ index : (objA as GameEntity).sceneIndex, iso : objA });
+				}
+			}
+			max = depthArr.length;
+			depthArr.sortOn("index", Array.NUMERIC);
+			for (i = 0; i < max; i++) {
+				entity = depthArr[i]['iso'];
+				entityLayer.setChildIndex(entity, i);
+			}
+		}
+		
+		private var currentMoveEntity:GameEntity;
+		public function addMoveEntity(entity:GameEntity):void
 		{
 			removeMoveEntity();
-			currentMoveEntity = new MovableEntity(entity);
-			effectLayer.addChild(currentMoveEntity);
+			entity.intoMoveMode();
+			if(entity is CropEntity){
+				effectLayer.addChild((entity as CropEntity).fieldSUR);
+			}
+			effectLayer.addChild(entity);
+			currentMoveEntity = entity;
+		}
+		public function putDownEntity(entity:GameEntity):void
+		{
+			if(currentMoveEntity != entity){
+				removeMoveEntity();
+			}
+			entityLayer.addChild(currentMoveEntity);
+			if(entity is CropEntity){
+				fieldLayer.addChild((entity as CropEntity).fieldSUR);
+			}
+			currentMoveEntity = null;
+			sortEntityLayer();
 		}
 		public function removeMoveEntity():void
 		{
 			if(currentMoveEntity){
 				currentMoveEntity.cancel();
-				if(currentMoveEntity.parent)
-				{
-					currentMoveEntity.parent.removeChild(currentMoveEntity);
+				entityLayer.addChild(currentMoveEntity);
+				if(currentMoveEntity is CropEntity){
+					fieldLayer.addChild((currentMoveEntity as CropEntity).fieldSUR);
 				}
 				currentMoveEntity = null;
 			}
@@ -212,6 +330,7 @@ package view
 			lastEntity = entity;
 			return entity;
 		}
+		
 		private function scaleScreen(touchA:Touch,touchB:Touch):void{
 			var currentPosA:Point  = touchA.getLocation(this.parent);
 			var previousPosA:Point = touchA.getPreviousLocation(this.parent);

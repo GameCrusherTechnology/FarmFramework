@@ -6,6 +6,7 @@ package view.entity
 	import controller.UiController;
 	
 	import model.avatar.Map;
+	import model.avatar.Tile;
 	import model.entity.CropItem;
 	
 	import starling.display.Image;
@@ -15,21 +16,19 @@ package view.entity
 
 	public class CropEntity extends GameEntity
 	{
+		public var fieldSUR:Image;
 		public function CropEntity(cropItem:CropItem)
 		{
-			super(cropItem);
-			var fieldSUR:Image = new Image(Game.assets.getTexture("FieldLand"));
-			addChild(fieldSUR);
+			fieldSUR = new Image(Game.assets.getTexture("FieldLand"));
 			fieldSUR.x = - fieldSUR.width/2;
 			fieldSUR.y = - fieldSUR.height;
 			
-			creatSurface();
+			super(cropItem);
 			
-			var topPoint:Point = Map.intance.iosToScene(cropItem.ios_x +cropItem.bound_x,cropItem.ios_y+cropItem.bound_y);
-			x = topPoint.x;
-			y = topPoint.y;
+			if(cropItem.hasCrop){
+				creatSurface();
+			}
 		}
-		
 		
 		private function creatSurface():void
 		{
@@ -38,6 +37,19 @@ package view.entity
 			surface.currentFrame = cropItem.growStep;
 			surface.x = - surface.width/2;
 			surface.y = - surface.height;
+		}
+		override protected function dragmoveToTile(tile:Tile):void
+		{
+			super.dragmoveToTile(tile);
+			fieldSUR.x = x - fieldSUR.width/2;
+			fieldSUR.y = y - fieldSUR.height;
+		}
+		override protected function configPosition():void
+		{
+			super.configPosition();
+			fieldSUR.x = x - fieldSUR.width/2;
+			fieldSUR.y = y - fieldSUR.height;
+
 		}
 		override protected function refresh():void
 		{
@@ -79,35 +91,37 @@ package view.entity
 			var tool:String = GameController.instance.selectTool;
 			if(tool == UiController.TOOL_SELL){
 				sellCrop();
+			}else if(tool == UiController.TOOL_MOVE){
+				scene.addMoveEntity(this);
 			}else{
-			if(cropItem.hasCrop){
-				if(cropItem.canHarvest){
-					if(tool !=UiController.TOOL_HARVEST){
-						//show harvest
-						UiController.instance.showUiTools(UiController.TOOL_HARVEST,this);
+				if(cropItem.hasCrop){
+					if(cropItem.canHarvest){
+						if(tool !=UiController.TOOL_HARVEST){
+							//show harvest
+							UiController.instance.showUiTools(UiController.TOOL_HARVEST,this);
+						}else{
+							harvest();
+						}
+					}else if(tool !=UiController.TOOL_SPEED){
+						//show time
+						
+						var remainTime:Number = cropItem.remainTime;
+						UiController.instance.showUiTools(UiController.TOOL_SPEED,this);
 					}else{
-						harvest();
+						speedCrop();
 					}
-				}else if(tool !=UiController.TOOL_SPEED){
-					//show time
-					
-					var remainTime:Number = cropItem.remainTime;
-					UiController.instance.showUiTools(UiController.TOOL_SPEED,this);
+				}else if(tool !=UiController.TOOL_SEED){
+					// show plant
+					UiController.instance.showUiTools(UiController.TOOL_SEED,this);
 				}else{
-					speedCrop();
+					plant();
 				}
-			}else if(tool !=UiController.TOOL_SEED){
-				// show plant
-				UiController.instance.showUiTools(UiController.TOOL_SEED,this);
-			}else{
-				plant();
-			}
 			}
 		}
 		
 		private function sellCrop():void
 		{
-			scene.removeEntity(this);
+			destroy();
 		}
 		private function onToolHoved():void
 		{
