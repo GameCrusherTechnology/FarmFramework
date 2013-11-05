@@ -27,8 +27,6 @@ package controller
 				destroy();
 			}
 			layer.addChild(panel);
-			panel.x = Configrations.ViewPortWidth/2-panel.width/2;
-			panel.y = Configrations.ViewPortHeight/2-panel.height/2;
 		}
 		private function destroy():void
 		{

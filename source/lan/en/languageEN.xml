@@ -9,5 +9,12 @@
 <resourceName key="plow" value="plow"/>
 <resourceName key="move" value="move"/>
 <resourceName key="sell" value="sell"/>
-
+<resourceName key="skill" value="skill"/>
+<resourceName key="profile" value="profile"/>
+<resourceName key="social" value="social"/>
+<resourceName key="achieve" value="achieve"/>
+<resourceName key="rating" value="rating"/>
+<resourceName key="setting" value="setting"/>
+<resourceName key="change" value="change"/>
+<resourceName key="farmname" value="farmer name"/>
 </language>

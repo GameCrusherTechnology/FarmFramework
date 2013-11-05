@@ -29,7 +29,6 @@ package
 			Starling.current.stage.stageHeight = Configrations.ViewPortHeight= Devices.getDeviceDetails().height;
 			Configrations.ViewScale = Math.min(Configrations.ViewPortWidth/1024,Configrations.ViewPortHeight/768);
 			assets = _asset;
-			
 //			mLoadingProgress = new ProgressBar();
 //			mLoadingProgress.width = 200;
 //			mLoadingProgress.height = 80;
