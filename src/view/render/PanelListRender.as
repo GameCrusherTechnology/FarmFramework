@@ -18,10 +18,10 @@ package view.render
 			super.data = value;
 			
 			var panel:DisplayObject ;
-			if(value.name == "profile"){
+			if(value && value.name == "profile"){
 				panel = new ProfilePanel();
+				addChild(panel);
 			}
-			addChild(panel);
 		}
 	}
 }

@@ -17,4 +17,9 @@
 <resourceName key="setting" value="setting"/>
 <resourceName key="change" value="change"/>
 <resourceName key="farmname" value="farmer name"/>
+<resourceName key="coin" value="coin"/>
+<resourceName key="gem" value="gem"/>
+<resourceName key="exp" value="exp"/>
+<resourceName key="love" value="love"/>
+<resourceName key="level" value="level"/>
 </language>

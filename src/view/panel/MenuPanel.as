@@ -24,6 +24,9 @@ package view.panel
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
 	import starling.textures.Texture;
 	
 	import view.render.MenuListRender;
@@ -37,16 +40,17 @@ package view.panel
 		private var renderHeight:Number = 80;
 		private var panelSkin:Shape;
 		private var panelList:List;
+		private var bgImage:Image;
 		public function MenuPanel()
 		{
 			var texture:Texture; 
 			texture = Game.assets.getTexture("simplePanelSkin");
-			var bgImage:Image = new Image(texture);
+			bgImage = new Image(texture);
 			bgImage.width = Configrations.ViewPortWidth;
 			bgImage.height= Configrations.ViewPortHeight;
 			addChild(bgImage);
 			bgImage.alpha = 0;
-			
+			bgImage.addEventListener( TouchEvent.TOUCH,onBackSkinTouch);
 			var skintextures:Scale9Textures = new Scale9Textures(texture, new Rectangle(20, 20,10, 10));
 			var backSkin:Scale9Image = new Scale9Image(skintextures);
 			backSkin.width = Configrations.ViewPortWidth *.9;
@@ -70,7 +74,7 @@ package view.panel
 			
 			panelList = new List();
 			panelList.layout = listLayout1;
-			panelList.dataProvider = getPanelCollection("profile");
+			panelList.dataProvider = getPanelCollection();
 			panelList.width = Configrations.ViewPortWidth;
 			panelList.height = Configrations.ViewPortHeight *.7;
 			panelList.snapToPages = true;
@@ -78,7 +82,7 @@ package view.panel
 			panelList.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
 			panelList.itemRendererFactory = panelListItemRendererFactory;
 			this.addChild(panelList);
-			panelList.y = Configrations.ViewPortHeight*0.1;
+			panelList.y = Configrations.ViewPortHeight*0.08;
 			panelList.addEventListener(Event.SCROLL, panellist_scrollHandler);
 			
 			panelSkin = new Shape;
@@ -154,6 +158,7 @@ package view.panel
 		private function list_changeHandler(e:Event):void
 		{
 			const eventType:String = this._list.selectedItem.event as String;
+			this.panelList.scrollToPageIndex(_list.selectedIndex, 0, this.panelList.pageThrowDuration);
 			trace(eventType);
 		}
 		protected function pageIndicator_changeHandler(event:Event):void
@@ -173,7 +178,7 @@ package view.panel
 			const renderer:DefaultListItemRenderer = new PanelListRender();
 			renderer.defaultSkin = new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));;
 			renderer.width = Configrations.ViewPortWidth*0.86;
-			renderer.height = Configrations.ViewPortHeight *.65;
+			renderer.height = Configrations.ViewPortHeight *.68;
 			renderer.isQuickHitAreaEnabled = true;
 			return renderer;
 		}
@@ -181,6 +186,7 @@ package view.panel
 		{
 			const renderer:DefaultListItemRenderer = new MenuListRender();
 			renderer.defaultSkin = new Image(Game.assets.getTexture("PanelRenderSkin"));
+			renderer.defaultSelectedSkin = new Image(Game.assets.getTexture("whitePanelSkin"));
 			renderer.labelField = "label";
 			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0x000000);
 			renderer.iconSourceField = "texture";
@@ -191,9 +197,14 @@ package view.panel
 			return renderer;
 		}
 		
-		private function getPanelCollection(name:String):ListCollection
+		private function getPanelCollection():ListCollection
 		{
-			return new ListCollection([{name:name}]);
+			return new ListCollection([{name:"profile"},
+				{name:"skill"},
+				{name:"social"},
+				{name:"achieve"},
+				{name:"rating"},
+				{name:"setting"}]);
 		}
 		private function get menuArr():ListCollection
 		{
@@ -221,9 +232,15 @@ package view.panel
 			}
 		}
 		
+		private function onBackSkinTouch(e:TouchEvent):void
+		{
+			var touch:Touch = e.getTouch(bgImage,TouchPhase.BEGAN);
+			if(touch){
+				close();
+			}
+		}
 		private function close():void
 		{
-			
 			_list.removeEventListener(Event.ADDED_TO_STAGE,addedToStageHandler);
 			this._list.removeEventListener(Event.CHANGE, list_changeHandler);
 			this._list.removeEventListener(Event.SCROLL, list_scrollHandler);

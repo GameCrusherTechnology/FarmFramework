@@ -57,15 +57,13 @@
 //            _local6.height = (_local6.height + 5);
             return (_local6);
         }
-//        public static function createMultiLineStaticField(_arg1:int, _arg2:String, _arg3:uint, _arg4:Number, _arg5:String="left", _arg6:Object=null):TextField{
-//            var _local7:TextField = createBaseField(creatTextformat(FONT_FAMILY, _arg4, _arg3, true, null, null, null, null, _arg5, null, null, null, _arg6));
-//            _local7.multiline = true;
-//            _local7.wordWrap = true;
-//            _local7.autoSize = _arg5;
-//            _local7.width = _arg1;
-//            _local7.text = _arg2;
-//            return (_local7);
-//        }
+        public static function createMultiLineStaticField(_arg1:int, _arg2:String, _arg3:uint, _arg4:Number, _arg5:String="left", _arg6:Object=null):TextField{
+            var _local7:TextField = createBaseField(creatTextformat(FONT_FAMILY, _arg4, _arg3, true, null, null, null, null, _arg5, null, null, null, _arg6));
+            _local7.autoSize = _arg5;
+            _local7.width = _arg1;
+            _local7.text = _arg2;
+            return (_local7);
+        }
 //        public static function createGoldenTextField(_arg1:TextField, _arg2:Number=3):GradientTextField{
 //            var _local3:GradientTextField = new GradientTextField(_arg1, [0xFFFF00, 15501315], [(110 + 20), ((0xFF - 110) + 20)]);
 //            _local3.filters = [new GlowFilter(16773227, 1, _arg2, _arg2, 2, 1, true), new DropShadowFilter(2, 90, 0, 0.75, 4, 4, 1)];
