@@ -28,6 +28,7 @@ package view.panel
 	public class ProfilePanel extends PanelScreen
 	{
 		private var nameChangeButton:Button;
+		private var nameText:TextField;
 		private var panelwidth:Number;
 		private var panelheight:Number;
 		public function ProfilePanel()
@@ -56,10 +57,10 @@ package view.panel
 			text1.y = panelheight*0.1 - text1.height;
 			text1.x = panelwidth*0.05;
 			
-			var text2:TextField = TextFieldFactory.createSingleLineDynamicField(panelwidth,40,player.farmName,0x000000,35);
-			addChild(text2);
-			text2.hAlign = HAlign.CENTER;
-			text2.y = panelheight*0.1 - text2.height;
+			nameText = TextFieldFactory.createSingleLineDynamicField(panelwidth,40,player.farmName,0x000000,35);
+			addChild(nameText);
+			nameText.hAlign = HAlign.CENTER;
+			nameText.y = panelheight*0.1 - nameText.height;
 			
 			nameChangeButton = new Button();
 			nameChangeButton.label = LanguageController.getInstance().getString("change");
@@ -175,11 +176,22 @@ package view.panel
 			mesText.y = nameText.y + mesText.height+2;
 			return barContainer;
 		}
-		private var inputTextScreen:PanelScreen;
+		private var inputTextScreen:TextInputPanel;
 		private function showNameInputText():void
 		{
 			inputTextScreen = new TextInputPanel();
 			addChild(inputTextScreen);
+			inputTextScreen.addEventListener(Event.COMPLETE,onChangeName);
+		}
+		private function onChangeName(e:Event):void
+		{
+			if(inputTextScreen){
+				nameText.text = inputTextScreen.currentText ;
+				if(inputTextScreen.parent){
+					inputTextScreen.parent.removeChild(inputTextScreen);
+				}
+				inputTextScreen = null;
+			}
 		}
 		public function onNameTrigger(e:Event):void
 		{

@@ -8,12 +8,11 @@ package view.panel
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
 	import feathers.controls.TextInput;
-	import feathers.controls.text.BitmapFontTextRenderer;
-	import feathers.core.ITextRenderer;
+	import feathers.controls.text.StageTextTextEditor;
+	import feathers.core.ITextEditor;
 	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
 	import feathers.layout.AnchorLayout;
-	import feathers.layout.AnchorLayoutData;
 	import feathers.text.BitmapFontTextFormat;
 	import feathers.textures.Scale9Textures;
 	
@@ -22,16 +21,12 @@ package view.panel
 	
 	import model.player.GamePlayer;
 	
-	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.events.Event;
 
 	[Event(name="complete",type="starling.events.Event")]
-	[Event(name="showSettings",type="starling.events.Event")]
-
 	public class TextInputPanel extends PanelScreen
 	{
-		public static const SHOW_SETTINGS:String = "showSettings";
 
 		public function TextInputPanel()
 		{
@@ -53,26 +48,21 @@ package view.panel
 			skin.width = panelwidth;skin.height = panelheight;
 			skin.alpha = 0.3;
 			
+			var skin1:Scale9Image = new Scale9Image(backgroundSkinTextures);
+			addChild(skin1);
+			skin1.width = 400*scale;
+			skin1.height = 400*scale;
+			skin1.x = panelwidth/2 - skin1.width/2;
+			skin1.y = panelheight/2 - skin1.height/2;
+			
 			this.layout = new AnchorLayout();
 			this._input = new TextInput();
 			var _inputSkinTextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20));
 			this._input.backgroundSkin = new Scale9Image(_inputSkinTextures);
-			this._input.prompt = player.farmName;
-			this._input.maxChars = 15;
 			_input.paddingLeft = 10;
-			const inputLayoutData:AnchorLayoutData = new AnchorLayoutData();
-			inputLayoutData.horizontalCenter = 0;
-			inputLayoutData.verticalCenter = 0;
-			this._input.layoutData = inputLayoutData;
 			_input.width = 300 *scale;
-			_input.height = 45 *scale;
-			_input.promptFactory = function():ITextRenderer
-			{
-				var textRenderer:BitmapFontTextRenderer = new BitmapFontTextRenderer();
-				textRenderer.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 40, 0x000000);
-				return textRenderer;
-			}
-			_input.addEventListener(Event.CHANGE,onTextChange);
+			_input.height = 50 *scale;
+			Factory(_input,{color:0x000000,fontSize:30,maxChars:15,text:player.farmName,displayAsPassword:false});
 			this.addChild(this._input);
 			_input.x = panelwidth/2 - _input.width/2;
 			_input.y = panelheight/2 - _input.height-20;
@@ -95,7 +85,7 @@ package view.panel
 			_okButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			_okButton.label = LanguageController.getInstance().getString("confirm");
 			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0xffffff);
-			_okButton.addEventListener(Event.TRIGGERED, backButton_triggeredHandler);
+			_okButton.addEventListener(Event.TRIGGERED, okButton_triggeredHandler);
 			addChild(_okButton);
 			_okButton.width = 100*scale;
 			_okButton.height = 40*scale;
@@ -103,11 +93,19 @@ package view.panel
 			_okButton.y =_input.y+_input.height + 50;
 		}
 
-		private function onTextChange(e:Event):void
+		private function Factory(target:TextInput , inputParameters:Object ):void
 		{
-			_input.validate();
-			trace(e);
+			var editor:StageTextTextEditor = new StageTextTextEditor;
+			editor.color = (inputParameters.color == undefined) ? editor.color:inputParameters.color;
+			editor.fontSize = (inputParameters.fontSize == undefined) ? editor.fontSize:inputParameters.fontSize;
+//			editor.editable =  (inputParameters.editable == undefined) ? editor.editable:inputParameters.editable;
+			target.maxChars = (inputParameters.maxChars == undefined) ? editor.maxChars:inputParameters.maxChars;
+			editor.displayAsPassword = (inputParameters.displayAsPassword == undefined)?editor.displayAsPassword:inputParameters.displayAsPassword;
+			target.textEditorFactory = function textEditor():ITextEditor{return editor};
+			target.text  = inputParameters.text;
 		}
+		
+		public var currentText:String;
 		private function onBackButton():void
 		{
 			this.dispatchEventWith(Event.COMPLETE);
@@ -115,9 +113,15 @@ package view.panel
 
 		private function backButton_triggeredHandler(event:Event):void
 		{
+			currentText = _input.text;
 			this.onBackButton();
 		}
 
+		private function okButton_triggeredHandler(e:Event):void
+		{
+			currentText = _input.text;
+			this.onBackButton();
+		}
 		private function get player():GamePlayer
 		{
 			return GameController.instance.currentPlayer;

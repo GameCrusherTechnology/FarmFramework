@@ -29,6 +29,7 @@ package view.panel
 			skin.alpha = 0.3;
 			
 			
+			
 		}
 	}
 }
