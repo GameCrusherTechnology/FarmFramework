@@ -5,8 +5,10 @@ package view.panel
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
+	import feathers.controls.TextInput;
 	import feathers.events.FeathersEventType;
 	import feathers.layout.AnchorLayout;
+	import feathers.layout.AnchorLayoutData;
 	import feathers.text.BitmapFontTextFormat;
 	
 	import gameconfig.Configrations;
@@ -69,6 +71,7 @@ package view.panel
 			nameChangeButton.validate();
 			nameChangeButton.x = panelwidth*0.95 - nameChangeButton.width;
 			nameChangeButton.y = panelheight*0.1 - nameChangeButton.height;
+			nameChangeButton.addEventListener(Event.TRIGGERED,onNameTrigger);
 			
 			var picSkin:Image = new Image(Game.assets.getTexture("picBackSkin"));
 			addChild(picSkin);
@@ -171,6 +174,16 @@ package view.panel
 			mesText.x = icon.x + icon.width + 10;
 			mesText.y = nameText.y + mesText.height+2;
 			return barContainer;
+		}
+		private var inputTextScreen:PanelScreen;
+		private function showNameInputText():void
+		{
+			inputTextScreen = new TextInputPanel();
+			addChild(inputTextScreen);
+		}
+		public function onNameTrigger(e:Event):void
+		{
+			showNameInputText();
 		}
 		private function get player():GamePlayer
 		{

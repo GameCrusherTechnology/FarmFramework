@@ -22,4 +22,9 @@
 <resourceName key="exp" value="exp"/>
 <resourceName key="love" value="love"/>
 <resourceName key="level" value="level"/>
+<resourceName key="music" value="music"/>
+<resourceName key="sound" value="sound effect"/>
+<resourceName key="friend" value="friend"/>
+<resourceName key="stranger" value="stranger"/>
+<resourceName key="confirm" value="confirm"/>
 </language>

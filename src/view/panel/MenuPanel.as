@@ -41,6 +41,7 @@ package view.panel
 		private var panelSkin:Shape;
 		private var panelList:List;
 		private var bgImage:Image;
+		private var _listRenderNum:int;
 		public function MenuPanel()
 		{
 			var texture:Texture; 
@@ -103,14 +104,13 @@ package view.panel
 			
 			
 			this._list = new List();
+			this._list.layout = listLayout;
 			skintextures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20));
 			_list.backgroundSkin = new Scale9Image(skintextures);
 			this._list.dataProvider = menuArr;
-			this._list.layout = listLayout;
 			this._list.width = Configrations.ViewPortWidth*0.86;
 			this._list.height = Configrations.ViewPortHeight *.12;
 			this._list.snapToPages = true;
-//			this._list.clipContent = false;
 			this._list.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
 			this._list.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
 			this._list.itemRendererFactory = tileListItemRendererFactory;
@@ -157,9 +157,10 @@ package view.panel
 		}
 		private function list_changeHandler(e:Event):void
 		{
-			const eventType:String = this._list.selectedItem.event as String;
-			this.panelList.scrollToPageIndex(_list.selectedIndex, 0, this.panelList.pageThrowDuration);
-			trace(eventType);
+			if(_list && _list.selectedItem){
+				var eventType:String = this._list.selectedItem.event as String;
+				this.panelList.scrollToPageIndex(_list.selectedIndex, 0, this.panelList.pageThrowDuration);
+			}
 		}
 		protected function pageIndicator_changeHandler(event:Event):void
 		{
@@ -167,7 +168,9 @@ package view.panel
 		}
 		private function panellist_scrollHandler(e:Event):void
 		{
-			
+			this._list.selectedIndex = this.panelList.horizontalPageIndex;
+			this._list.scrollToPageIndex(Math.floor((_list.selectedIndex)/_listRenderNum), 0, this._list.pageThrowDuration);
+//			this._pageIndicator.selectedIndex = this._list.horizontalPageIndex;
 		}
 		protected function list_scrollHandler(event:Event):void
 		{
@@ -176,10 +179,10 @@ package view.panel
 		protected function panelListItemRendererFactory():IListItemRenderer
 		{
 			const renderer:DefaultListItemRenderer = new PanelListRender();
-			renderer.defaultSkin = new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));;
+			renderer.defaultSkin = new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
 			renderer.width = Configrations.ViewPortWidth*0.86;
 			renderer.height = Configrations.ViewPortHeight *.68;
-			renderer.isQuickHitAreaEnabled = true;
+//			renderer.isQuickHitAreaEnabled = true;
 			return renderer;
 		}
 		protected function tileListItemRendererFactory():IListItemRenderer
@@ -193,7 +196,6 @@ package view.panel
 			renderer.iconPosition = Button.ICON_POSITION_TOP;
 			renderer.width = renderWidth;
 			renderer.height= renderHeight;
-			renderer.isQuickHitAreaEnabled = true;
 			return renderer;
 		}
 		
@@ -213,15 +215,14 @@ package view.panel
 				{ label: LanguageController.getInstance().getString("skill"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_SEED,event:"skill"},
 				{ label: LanguageController.getInstance().getString("social"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_HARVEST,event:"social"},
 				{ label: LanguageController.getInstance().getString("achieve"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_SEED,event:"achieve"},
-				{ label: LanguageController.getInstance().getString("rating"), texture: "reapIcon",type:UiController.TOOL_HARVEST,event:"rating"},
-				{ label: LanguageController.getInstance().getString("setting"), texture: "FarmPlow",type:UiController.TOOL_SEED,event:"setting"}
-
+				{ label: LanguageController.getInstance().getString("rating"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_HARVEST,event:"rating"},
+				{ label: LanguageController.getInstance().getString("setting"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_SEED,event:"setting"}
 			]);
 		}
 		protected function layout():void
 		{
-			
 			this._list.validate();
+			_listRenderNum = _list.pageWidth / (renderWidth+Configrations.ViewPortWidth*0.01);
 			this._pageIndicator.y = _list.y + _list.height;
 			this._pageIndicator.pageCount = this._list.horizontalPageCount;
 			this._pageIndicator.validate();
