@@ -21,6 +21,8 @@ package model.player
 		public var farmName:String = "happyFarmc";
 		
 		public var gems:int = 500;
+		// 0 - male 1--female
+		public var sex:int=0;
 		public function get wholeSceneLength():int
 		{
 			return Configrations.INIT_Tile + extend;

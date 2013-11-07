@@ -31,6 +31,8 @@ package view.panel
 		private var nameText:TextField;
 		private var panelwidth:Number;
 		private var panelheight:Number;
+		private var currentSex:int;
+		private var photo:Image ;
 		public function ProfilePanel()
 		{
 			this.addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
@@ -80,8 +82,8 @@ package view.panel
 			picSkin.height = 260*scale;
 			picSkin.x = panelwidth*0.25 - picSkin.width/2;
 			picSkin.y = panelheight*0.5 - picSkin.height/2;
-			
-			var photo:Image = new Image(Game.assets.getTexture("boyIcon"));
+			currentSex = player.sex;
+			photo= new Image(Game.assets.getTexture((currentSex==Configrations.CHARACTER_BOY)?"boyIcon":"girlIcon"));
 			addChild(photo);
 			photo.width = 150*scale;
 			photo.height = 200*scale;
@@ -95,6 +97,7 @@ package view.panel
 			picChangeButton.paddingLeft =picChangeButton.paddingRight =  20;
 			picChangeButton.paddingTop =picChangeButton.paddingBottom =  5;
 			addChild(picChangeButton);
+			picChangeButton.addEventListener(Event.TRIGGERED,onChooseChaTrigger);
 			picChangeButton.validate();
 			picChangeButton.x = picSkin.x+picSkin.width - picChangeButton.width;
 			picChangeButton.y = picSkin.y+picSkin.height ;
@@ -176,6 +179,35 @@ package view.panel
 			mesText.y = nameText.y + mesText.height+2;
 			return barContainer;
 		}
+		
+		private var chooseChaPanel:CharacterChoosePanel;
+		private function showCharacterPanel():void
+		{
+			chooseChaPanel = new CharacterChoosePanel();
+			addChild(chooseChaPanel);
+			chooseChaPanel.addEventListener(Event.COMPLETE,onChangeCharacter);
+		}
+		private function onChangeCharacter(e:Event):void
+		{
+			if(chooseChaPanel){
+				if(currentSex != chooseChaPanel.selectType){
+					currentSex = chooseChaPanel.selectType;
+					photo.texture = Game.assets.getTexture((currentSex==Configrations.CHARACTER_BOY)?"boyIcon":"girlIcon");
+					addChild(photo);
+				}
+				if(chooseChaPanel.parent){
+					chooseChaPanel.parent.removeChild(chooseChaPanel);
+				}
+				chooseChaPanel = null;
+			}
+		}
+		
+		public function onChooseChaTrigger(e:Event):void
+		{
+			showCharacterPanel();
+		}
+		
+		
 		private var inputTextScreen:TextInputPanel;
 		private function showNameInputText():void
 		{

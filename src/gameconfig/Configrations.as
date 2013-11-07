@@ -20,9 +20,12 @@ package gameconfig
 		
 		//map
 		public static const INIT_Tile:int = 20;
-		
 		public static const Tile_Width:int = 60;
 		public static const Tile_Height:int= 30;
+		
+		//profile
+		public static const CHARACTER_BOY:int = 0;
+		public static const CHARACTER_GIRL:int = 1;
 		
 	}
 }
