@@ -5,10 +5,8 @@ package view.panel
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
-	import feathers.controls.TextInput;
 	import feathers.events.FeathersEventType;
 	import feathers.layout.AnchorLayout;
-	import feathers.layout.AnchorLayoutData;
 	import feathers.text.BitmapFontTextFormat;
 	
 	import gameconfig.Configrations;

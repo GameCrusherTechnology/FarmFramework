@@ -81,7 +81,8 @@ package view.panel
 			addChild(photo1);
 			photo1.width = 150*scale;
 			photo1.height = 200*scale;
-			photo1.x = panelwidth*0.5 +20;
+			photo1.scaleX = -photo1.scaleX;
+			photo1.x = panelwidth*0.5 +20 + photo1.width;
 			photo1.y = panelheight*0.5 - photo1.height/2;
 			photo1.addEventListener(TouchEvent.TOUCH,onTouchGirl);
 			
@@ -120,10 +121,10 @@ package view.panel
 		private function configOkIcon():void
 		{
 			if(selectType == Configrations.CHARACTER_GIRL){
-				okImage.x = photo1.x + photo1.width/2 - okImage.width/2;
+				okImage.x = photo1.x  - okImage.width/2;
 				okImage.y = photo1.y + photo1.height -okImage.height;
 			}else{
-				okImage.x = photo.x + photo.width/2 - okImage.width/2;
+				okImage.x = photo.x + 150*Configrations.ViewScale/2 - okImage.width/2;
 				okImage.y = photo.y + photo.height -okImage.height;
 			}
 		}

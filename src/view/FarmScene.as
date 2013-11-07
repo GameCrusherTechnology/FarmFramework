@@ -6,8 +6,6 @@ package view
 	import controller.GameController;
 	import controller.UiController;
 	
-	import game.view.scene.EntitySurface;
-	
 	import gameconfig.Configrations;
 	
 	import model.avatar.Map;
@@ -15,7 +13,6 @@ package view
 	import model.entity.CropItem;
 	import model.player.GamePlayer;
 	
-	import starling.core.RenderSupport;
 	import starling.display.DisplayObject;
 	import starling.display.Shape;
 	import starling.display.Sprite;
