@@ -7,7 +7,8 @@ package gameconfig
 		}
 		//配置
 		public static const DATABASE_URL:String = "";
-		
+		public static const GATEWAY:String = "http://192.168.1.103/MyPoolServer/www/amf/gateway.php";
+//		public static const GATEWAY:String = "http://192.241.208.85/MyPoolServer/www/amf/gateway.php";
 		//拖拽 判断
 		public static const CLICK_EPSILON:int = 50;
 		public static const GRID_WIDTH:Number = 40;

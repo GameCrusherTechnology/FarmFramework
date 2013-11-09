@@ -16,9 +16,10 @@ package controller
 		private var uiLayer:GameUI;
 		public var effectLayer:TweenEffectLayer;
 		public var currentPlayer:GamePlayer;
+		public var localPlayer:GamePlayer;
 		public var selectTool:String;
 		public var selectSeed:String;
-		
+		public var userID:String;
 		
 		private static var _controller:GameController;
 		public static function get instance():GameController

@@ -16,7 +16,7 @@ package model.player
 				}
 			}
 		}
-		
+		public var gameuid:String;
 		public var extend:int;
 		public var farmName:String = "happyFarmc";
 		
