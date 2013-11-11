@@ -4,7 +4,7 @@ package view.ui
 	import flash.geom.Rectangle;
 	
 	import controller.SpecController;
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	import controller.UiController;
 	
 	import feathers.controls.Button;
@@ -131,7 +131,7 @@ package view.ui
 			const renderer:DefaultListItemRenderer = new ToolItemRender();
 			renderer.defaultSkin = new Image(Game.assets.getTexture("PanelRenderSkin"));
 			renderer.labelField = "label";
-			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0x000000);
+			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
 			renderer.iconSourceField = "texture";
 			renderer.iconPosition = Button.ICON_POSITION_TOP;
 			renderer.width = renderWidth;

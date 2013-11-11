@@ -7,6 +7,7 @@ package controller
 	import starling.display.Sprite;
 	import starling.textures.Texture;
 	
+	import view.component.UIButton.TaskButton;
 	import view.component.UIButton.ToolStateButton;
 	import view.entity.GameEntity;
 	import view.ui.EditToolsUI;
@@ -23,6 +24,8 @@ package controller
 		public static const TOOL_CANCEL:String = "cancel";
 		private static var _controller:UiController;
 		private var _layer:Sprite;
+		private var taskButton:TaskButton;
+		
 		public static function get instance():UiController
 		{
 			if(!_controller){
@@ -34,6 +37,15 @@ package controller
 		{
 		}
 		
+		public function showTaskButton():void
+		{
+			taskButton = new TaskButton();
+			if(!taskButton.parent){
+				_layer.addChild(taskButton);
+			}
+			taskButton.x = 10;
+			taskButton.y = 300;
+		}
 		private var _editToolsUI:EditToolsUI;
 		public function showEditUiTools(open:Boolean=false):void
 		{

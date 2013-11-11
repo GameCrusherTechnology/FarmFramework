@@ -27,4 +27,6 @@
 <resourceName key="friend" value="friend"/>
 <resourceName key="stranger" value="stranger"/>
 <resourceName key="confirm" value="confirm"/>
+<resourceName key="task" value="task"/>
+<resourceName key="request" value="request"/>
 </language>

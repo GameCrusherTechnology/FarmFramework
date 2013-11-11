@@ -3,7 +3,7 @@ package view.panel
 	import flash.geom.Rectangle;
 	
 	import controller.GameController;
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -71,7 +71,7 @@ package view.panel
 			_backButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 			this._backButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			this._backButton.label = LanguageController.getInstance().getString("cancel");
-			_backButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0xffffff);
+			_backButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
 			this._backButton.addEventListener(Event.TRIGGERED, backButton_triggeredHandler);
 			_backButton.width = 100*scale;
 			_backButton.height = 40*scale;
@@ -84,7 +84,7 @@ package view.panel
 			_okButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 			_okButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			_okButton.label = LanguageController.getInstance().getString("confirm");
-			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0xffffff);
+			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
 			_okButton.addEventListener(Event.TRIGGERED, okButton_triggeredHandler);
 			addChild(_okButton);
 			_okButton.width = 100*scale;

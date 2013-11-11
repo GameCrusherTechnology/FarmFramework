@@ -1,10 +1,8 @@
 package service.command
 {
-	import logic.GameController;
-	import logic.rules.player.LocalPlayer;
+	import controller.GameController;
 	
-	import util.Config;
-	import util.GameShareObject;
+	import gameconfig.GameShareObject;
 
 	public class LoginCommand extends AbstractCommand
 	{
@@ -14,7 +12,7 @@ package service.command
 		{
 			onLoginSuccess =callBack;
 			errorLogin = errorCall;
-			super(Command.LOGIN,onLogin,{name:Config.userName})
+			super(Command.LOGIN,onLogin,{name:GameController.instance.userID})
 		}
 		private function onLogin(result:Object):void
 		{
@@ -22,21 +20,21 @@ package service.command
 				var data:Object = result['response']['data'];
 				var localdata:Object = GameShareObject.getLocalPlayer();
 				var bool :Boolean = false;
-				if(localdata && localdata['gameuid'] != 0 && localdata['gameuid'] ==data['gameuid'] && !GameController.getInstance().checkedLocal){
-					for(var o:String in localdata){
-						if(localdata[o] != data[o] && o != "powertime"){
-							bool = true;
-							break;
-						}
-					}
-				}
-				GameController.getInstance().checkedLocal = true;
-				if(bool){
-					new UpdateUserCommand(localdata,onLoginSuccess);
-				}else{
-					GameController.getInstance().localPlayer = new LocalPlayer(data);
-					onLoginSuccess();
-				}
+//				if(localdata && localdata['gameuid'] != 0 && localdata['gameuid'] ==data['gameuid'] && !GameController.instance().checkedLocal){
+//					for(var o:String in localdata){
+//						if(localdata[o] != data[o] && o != "powertime"){
+//							bool = true;
+//							break;
+//						}
+//					}
+//				}
+//				GameController.getInstance().checkedLocal = true;
+//				if(bool){
+//					new UpdateUserCommand(localdata,onLoginSuccess);
+//				}else{
+//					GameController.getInstance().localPlayer = new LocalPlayer(data);
+//					onLoginSuccess();
+//				}
 			}else{
 				errorLogin();
 			}

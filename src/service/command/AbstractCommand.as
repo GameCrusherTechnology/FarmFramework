@@ -1,7 +1,8 @@
 package service.command
 {
-	import logic.GameController;
-	import logic.rules.player.LocalPlayer;
+	import controller.GameController;
+	
+	import model.player.GamePlayer;
 
 	public class AbstractCommand
 	{
@@ -10,9 +11,9 @@ package service.command
 			Command.execute(key,callback,params);
 		}
 		
-		protected function get localplayer():LocalPlayer
+		protected function get localplayer():GamePlayer
 		{
-			return GameController.getInstance().localPlayer;
+			return GameController.instance.localPlayer;
 		}
 	}
 }

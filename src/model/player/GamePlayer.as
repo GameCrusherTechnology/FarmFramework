@@ -2,7 +2,9 @@ package model.player
 {
 	import gameconfig.Configrations;
 	
+	import model.OwnedItem;
 	import model.entity.CropItem;
+	import model.task.TaskData;
 
 	public class GamePlayer
 	{
@@ -40,6 +42,22 @@ package model.player
 				item = new CropItem(obj);
 				cropItems.push(item);
 			}
+		}
+		
+		public var currentTask:TaskData;
+		
+		public var ownedItemVec:Vector.<OwnedItem>;
+		
+		public function getOwnedItem(itemid:String):OwnedItem
+		{
+			var ownedItem:OwnedItem;
+			for each(ownedItem in ownedItemVec)
+			{
+				if(ownedItem.itemid == itemid){
+					return ownedItem;
+				}
+			}
+			return new OwnedItem(itemid,0);
 		}
 	}
 }

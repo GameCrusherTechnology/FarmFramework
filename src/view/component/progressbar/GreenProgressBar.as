@@ -2,7 +2,7 @@
     import flash.display.BitmapData;
     import flash.display.Shape;
     
-    import controller.TextFieldFactory;
+    import controller.FieldController;
     
     import gameconfig.Configrations;
     
@@ -113,7 +113,7 @@
         }
 		public function set comment(_arg1:String):void{
 			if(!m_cComment){
-				m_cComment = TextFieldFactory.createSingleLineDynamicField(bar_width,bar_height,_arg1, 0x000000, 25);
+				m_cComment = FieldController.createSingleLineDynamicField(bar_width,bar_height,_arg1, 0x000000, 25);
 				m_cComment.bold = true;
 				m_cComment.x = bar_width/2 - m_cComment.width/2;
 				m_cComment.y = - m_cComment.height/2 + m_cComment.height/2 ;

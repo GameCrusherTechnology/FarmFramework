@@ -1,6 +1,6 @@
 package view.panel
 {
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.List;
@@ -116,7 +116,7 @@ package view.panel
 			const renderer:DefaultListItemRenderer = new ToolItemRender();
 			renderer.defaultSkin = new Image(_iconAtlas.getTexture("PanelRenderSkin"));
 			renderer.labelField = "label";
-			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0x000000);
+			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
 			renderer.iconSourceField = "texture";
 			renderer.iconPosition = Button.ICON_POSITION_TOP;
 			renderer.width = renderWidth;

@@ -1,6 +1,6 @@
 package view.panel
 {
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	
 	import feathers.controls.PanelScreen;
 	import feathers.controls.ToggleSwitch;
@@ -48,7 +48,7 @@ package view.panel
 			bgSkin.graphics.endFill();
 			addChild(bgSkin);
 			
-			var musicText:TextField = TextFieldFactory.createSingleLineDynamicField(panelwidth/2,50,LanguageController.getInstance().getString("music")+":",0x000000,35,true);
+			var musicText:TextField = FieldController.createSingleLineDynamicField(panelwidth/2,50,LanguageController.getInstance().getString("music")+":",0x000000,35,true);
 			musicText.hAlign = HAlign.RIGHT;
 			musicText.vAlign = VAlign.CENTER;
 			addChild(musicText);
@@ -61,7 +61,7 @@ package view.panel
 			
 			bottomH += (renderHeight+10);
 			
-			var musicText1:TextField = TextFieldFactory.createSingleLineDynamicField(panelwidth/2,50,LanguageController.getInstance().getString("sound")+":",0x000000,35,true);
+			var musicText1:TextField = FieldController.createSingleLineDynamicField(panelwidth/2,50,LanguageController.getInstance().getString("sound")+":",0x000000,35,true);
 			musicText1.hAlign = HAlign.RIGHT;
 			musicText1.vAlign = VAlign.CENTER;
 			addChild(musicText1);
@@ -83,7 +83,7 @@ package view.panel
 			var toggle:ToggleSwitch = new ToggleSwitch();
 			toggle.trackLayoutMode = ToggleSwitch.TRACK_LAYOUT_MODE_ON_OFF;
 			toggle.isSelected = true;
-			toggle.defaultLabelProperties.textFormat =  new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0x000000);
+			toggle.defaultLabelProperties.textFormat =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
 			toggle.width = renderButtonWidth;
 			toggle.height =  renderHeight;
 			var onImage1:Image = new Image(Game.assets.getTexture("okButtonSkin"));

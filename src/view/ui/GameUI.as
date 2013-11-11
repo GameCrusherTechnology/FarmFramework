@@ -1,7 +1,7 @@
 package view.ui
 {
+	import controller.FieldController;
 	import controller.GameController;
-	import controller.TextFieldFactory;
 	import controller.UiController;
 	
 	import gameconfig.Configrations;
@@ -32,7 +32,7 @@ package view.ui
 		}
 		public function homeUI():void
 		{
-			farmNameText = TextFieldFactory.createNoFontField(Configrations.ViewPortWidth *0.2,30,currentplayer.farmName,0x000000,18);
+			farmNameText = FieldController.createNoFontField(Configrations.ViewPortWidth *0.2,30,currentplayer.farmName,0x000000,18);
 			addChild(farmNameText);
 			farmNameText.x = 0;
 			farmNameText.y = 0;
@@ -43,6 +43,7 @@ package view.ui
 			configLoveBar();
 			configIcons();
 			UiController.instance.showEditUiTools(false);
+			UiController.instance.showTaskButton();
 		}
 		private function configIcons():void
 		{

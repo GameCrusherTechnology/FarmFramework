@@ -2,7 +2,7 @@ package view
 {
 	import flash.geom.Point;
 	
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	
 	import gameconfig.Configrations;
 	
@@ -34,7 +34,7 @@ package view
 			effectSp.addChild( starIcon);
 			starIcon.width = starIcon.height = 30 *Configrations.ViewScale ;
 			var scale:Number = starIcon.scaleX *2;
-			var text:TextField = TextFieldFactory.createSingleLineDynamicField(100,16,"+"+addExp,0xffffff,15,true);
+			var text:TextField = FieldController.createSingleLineDynamicField(100,16,"+"+addExp,0xffffff,15,true);
 			text.hAlign = HAlign.LEFT;
 			effectSp.addChild( text);
 			text.x = starIcon.x + starIcon.width;

@@ -1,6 +1,6 @@
 package view.component.UIButton
 {
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
@@ -17,7 +17,7 @@ package view.component.UIButton
 			addChild(icon);
 			icon.width = icon.height = 60 * Configrations.ViewScale;
 			
-			var editText:TextField = TextFieldFactory.createSingleLineDynamicField(icon.width,21,LanguageController.getInstance().getString("edit"),0x000000,20);
+			var editText:TextField = FieldController.createSingleLineDynamicField(icon.width,21,LanguageController.getInstance().getString("edit"),0x000000,20);
 			addChild(editText);
 			editText.y = icon.y+icon.height -10;
 		}

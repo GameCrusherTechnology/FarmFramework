@@ -1,7 +1,7 @@
 package view.render
 {
 	import controller.GameController;
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	import controller.UiController;
 	
 	import gameconfig.Configrations;
@@ -39,7 +39,7 @@ package view.render
 			icon.x = icon.y = renderWidth *.15;
 			//text
 			lableStr = data.label;
-			var lable:TextField = TextFieldFactory.createSingleLineDynamicField(renderWidth,30,lableStr,0xffffff,25,true);
+			var lable:TextField = FieldController.createSingleLineDynamicField(renderWidth,30,lableStr,0xffffff,25,true);
 			addChild(lable);
 			lable.x = 0;
 			lable.y = renderHeight - lable.height-5;

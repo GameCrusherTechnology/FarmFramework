@@ -7,7 +7,7 @@
     import starling.text.TextField;
     import starling.utils.HAlign;
 
-    public class TextFieldFactory {
+    public class FieldController {
 
 		public static const FONT_FAMILY:String = "myFonts_0";
 		

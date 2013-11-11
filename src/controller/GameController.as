@@ -2,6 +2,8 @@ package controller
 {
 	import model.player.GamePlayer;
 	
+	import service.command.LoginCommand;
+	
 	import starling.display.Sprite;
 	
 	import view.FarmScene;
@@ -19,7 +21,7 @@ package controller
 		public var localPlayer:GamePlayer;
 		public var selectTool:String;
 		public var selectSeed:String;
-		public var userID:String;
+		public var userID:String = "test01";
 		
 		private static var _controller:GameController;
 		public static function get instance():GameController
@@ -53,6 +55,7 @@ package controller
 			effectLayer= new TweenEffectLayer();
 			gameLayer.addChild(effectLayer);
 			
+			new LoginCommand(onLogin,onLogin);
 			onLogin();
 		}
 		private function configScene():void
@@ -70,10 +73,14 @@ package controller
 		{
 			var data:Object ={};
 			data["extend"] = 0;
-			currentPlayer = new GamePlayer(data);
+			localPlayer = currentPlayer = new GamePlayer(data);
 			LoginFarm();
 		}
 		
+		public function get layer():Sprite
+		{
+			return gameLayer;
+		}
 		public var currentFarm:FarmScene;
 		private function LoginFarm():void
 		{

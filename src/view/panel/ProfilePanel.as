@@ -1,7 +1,7 @@
 package view.panel
 {
 	import controller.GameController;
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -51,13 +51,13 @@ package view.panel
 			addChild(bgSkin);
 			this.layout = new AnchorLayout();
 			
-			var text1:TextField = TextFieldFactory.createSingleLineDynamicField(panelwidth,30,LanguageController.getInstance().getString("farmname")+":",0x000000,25);
+			var text1:TextField = FieldController.createSingleLineDynamicField(panelwidth,30,LanguageController.getInstance().getString("farmname")+":",0x000000,25);
 			addChild(text1);
 			text1.hAlign = HAlign.LEFT;
 			text1.y = panelheight*0.1 - text1.height;
 			text1.x = panelwidth*0.05;
 			
-			nameText = TextFieldFactory.createSingleLineDynamicField(panelwidth,40,player.farmName,0x000000,35);
+			nameText = FieldController.createSingleLineDynamicField(panelwidth,40,player.farmName,0x000000,35);
 			addChild(nameText);
 			nameText.hAlign = HAlign.CENTER;
 			nameText.y = panelheight*0.1 - nameText.height;
@@ -65,7 +65,7 @@ package view.panel
 			nameChangeButton = new Button();
 			nameChangeButton.label = LanguageController.getInstance().getString("change");
 			nameChangeButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			nameChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 30, 0xffffff);
+			nameChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
 			nameChangeButton.paddingLeft =nameChangeButton.paddingRight =  20;
 			nameChangeButton.paddingTop =nameChangeButton.paddingBottom =  5;
 			addChild(nameChangeButton);
@@ -91,7 +91,7 @@ package view.panel
 			var picChangeButton:Button = new Button();
 			picChangeButton.label = LanguageController.getInstance().getString("change");
 			picChangeButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			picChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 30, 0xffffff);
+			picChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
 			picChangeButton.paddingLeft =picChangeButton.paddingRight =  20;
 			picChangeButton.paddingTop =picChangeButton.paddingBottom =  5;
 			addChild(picChangeButton);
@@ -163,13 +163,13 @@ package view.panel
 			icon.width = icon.height = h*0.8;
 			barContainer.addChild(icon);
 			
-			var nameText:TextField = TextFieldFactory.createSingleLineDynamicField(w,35,LanguageController.getInstance().getString(name),0x00000,30,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(w,35,LanguageController.getInstance().getString(name),0x00000,30,true);
 			nameText.hAlign = HAlign.LEFT;
 			nameText.vAlign = VAlign.TOP;
 			barContainer.addChild(nameText);
 			nameText.x = icon.x + icon.width + 10;
 			
-			var mesText:TextField = TextFieldFactory.createSingleLineDynamicField(w,35,LanguageController.getInstance().getString(name),0x00000,30,true);
+			var mesText:TextField = FieldController.createSingleLineDynamicField(w,35,LanguageController.getInstance().getString(name),0x00000,30,true);
 			mesText.hAlign = HAlign.LEFT;
 			mesText.vAlign = VAlign.TOP;
 			barContainer.addChild(mesText);

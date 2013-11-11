@@ -2,7 +2,7 @@ package view.component.UIButton
 {
 	import controller.DialogController;
 	import controller.GameController;
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	import controller.UiController;
 	
 	import feathers.controls.Button;
@@ -28,7 +28,7 @@ package view.component.UIButton
 			var icon:Image = new Image(Game.assets.getTexture("GiftIcon"));
 			icon.width = icon.height = 60 * Configrations.ViewScale;
 			addChild(icon);
-			var menuText:TextField = TextFieldFactory.createSingleLineDynamicField(icon.width,21,LanguageController.getInstance().getString("menu"),0x000000,20);
+			var menuText:TextField = FieldController.createSingleLineDynamicField(icon.width,21,LanguageController.getInstance().getString("menu"),0x000000,20);
 			addChild(menuText);
 			menuText.y = icon.y+icon.height - 10;
 			

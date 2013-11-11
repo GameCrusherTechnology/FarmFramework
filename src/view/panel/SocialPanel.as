@@ -2,7 +2,7 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
-	import controller.TextFieldFactory;
+	import controller.FieldController;
 	import controller.UiController;
 	
 	import feathers.controls.Button;
@@ -59,7 +59,7 @@ package view.panel
 				tab.defaultSkin = new Scale9Image(buttxtures) ;
 				buttxtures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(20, 20, 20, 20));
 				tab.defaultSelectedSkin = new Scale9Image(buttxtures) ;
-				tab.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0x000000);;
+				tab.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);;
 				return tab;
 			}
 			addChild(this.tabBar);
@@ -89,7 +89,7 @@ package view.panel
 				renderer.defaultSkin = new Image(Game.assets.getTexture("PanelRenderSkin"));
 				renderer.defaultSelectedSkin = new Image(Game.assets.getTexture("whitePanelSkin"));
 				renderer.labelField = "label";
-				renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(TextFieldFactory.FONT_FAMILY, 20, 0x000000);
+				renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
 				renderer.iconSourceField = "texture";
 				renderer.iconPosition = Button.ICON_POSITION_TOP;
 				renderer.width = panelwidth *0.7;
