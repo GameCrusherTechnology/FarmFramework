@@ -29,4 +29,8 @@
 <resourceName key="confirm" value="confirm"/>
 <resourceName key="task" value="task"/>
 <resourceName key="request" value="request"/>
+<resourceName key="leave" value="leave"/>
+<resourceName key="technician" value="Technician"/>
+<resourceName key="shopkeeper" value="Shopkeeper"/>
+<resourceName key="buy" value="buy"/>
 </language>

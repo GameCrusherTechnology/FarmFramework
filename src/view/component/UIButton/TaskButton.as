@@ -1,8 +1,6 @@
 package view.component.UIButton
 {
 	import controller.DialogController;
-	import controller.GameController;
-	import controller.UiController;
 	
 	import gameconfig.Configrations;
 	
@@ -11,8 +9,8 @@ package view.component.UIButton
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-	import starling.textures.Texture;
 	
+	import view.panel.FindTaskPanel;
 	import view.panel.TaskPanel;
 	
 	public class TaskButton extends Sprite
@@ -45,7 +43,7 @@ package view.component.UIButton
 			var touch:Touch = event.getTouch(this, TouchPhase.BEGAN);
 			if(touch)
 			{
-				DialogController.instance.showPanel(new TaskPanel());
+				DialogController.instance.showPanel(new FindTaskPanel());
 			}
 		}
 		

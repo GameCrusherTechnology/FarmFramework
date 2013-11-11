@@ -172,7 +172,7 @@ package view.panel
 			if(bool){
 				var okIcon:Image = new Image(Game.assets.getTexture("okIcon"));
 				container.addChild(okIcon);
-				okIcon.width = okIcon.height = panelheight*0.1;
+				okIcon.width = okIcon.height = panelheight*0.08;
 				okIcon.x  =  panelwidth*0.8 - okIcon.width;
 			}
 			
