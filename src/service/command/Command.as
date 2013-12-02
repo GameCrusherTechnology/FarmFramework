@@ -11,6 +11,21 @@
 	public class Command extends EventDispatcher
 	{	
 		public static const LOGIN:String  = "user/UserLoginCommand";
+		public static const UPDATEFAME:String  = "scene/SceneDataUpdate";
+		public static const BUYITEM:String  = "shop/BuyItem";
+		public static const CHANGENAME:String  = "user/ChangeName";
+		public static const CHANGESEX:String  = "user/ChangeSex";
+		public static const VISITFRIEND:String = "user/UserVisitCommand";
+		
+		//friend
+		public static const REFRESH_FRIENDS:String = "friend/RefreshFriends";
+		public static const GETSTRANGERS:String = "friend/GetStrangers";
+		
+		//task
+		public static const CREAT_TASK:String = "task/CreatTask";
+		public static const FINISH_TASK:String = "task/FinishTask";
+		public static const BUY_TASK:String = "task/BuyNpcTask";
+		
 		public static function get gateway():String
 		{
 			var url:String = Configrations.GATEWAY;
@@ -76,7 +91,7 @@
 		static private function checkSuccess(obj:Object,bSetAcivity:Boolean=false):Boolean
 		{
 			try{
-				if(obj.status == 1){
+				if(obj.__code == 0){
 					return true;
 				}
 			}catch(e:Error){

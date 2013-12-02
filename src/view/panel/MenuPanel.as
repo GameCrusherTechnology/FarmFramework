@@ -27,6 +27,8 @@ package view.panel
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
+	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	import starling.textures.Texture;
 	
 	import view.render.MenuListRender;
@@ -42,6 +44,7 @@ package view.panel
 		private var panelList:List;
 		private var bgImage:Image;
 		private var _listRenderNum:int;
+		private var titleText:TextField;
 		public function MenuPanel()
 		{
 			var texture:Texture; 
@@ -55,13 +58,33 @@ package view.panel
 			var skintextures:Scale9Textures = new Scale9Textures(texture, new Rectangle(20, 20,10, 10));
 			var backSkin:Scale9Image = new Scale9Image(skintextures);
 			backSkin.width = Configrations.ViewPortWidth *.9;
-			backSkin.height= Configrations.ViewPortHeight *.9;
+			backSkin.height= Configrations.ViewPortHeight *.98;
 			addChild(backSkin);
 			backSkin.x = Configrations.ViewPortWidth *.05;
-			backSkin.y = Configrations.ViewPortHeight *.05;
+			backSkin.y = Configrations.ViewPortHeight *.01;
 			
-			renderWidth = Math.max(Configrations.ViewPortWidth *.15,80);
-			renderHeight = Math.max(Configrations.ViewPortHeight *.1,80);
+			var titleSkin:Image = new Image(Game.assets.getTexture("titleSkin"));
+			addChild(titleSkin);
+			titleSkin.width = Configrations.ViewPortWidth *.4;
+			titleSkin.scaleY = titleSkin.scaleX;
+			titleSkin.x = Configrations.ViewPortWidth/2 - titleSkin.width/2;
+			
+			titleText = FieldController.createSingleLineDynamicField(titleSkin.width,titleSkin.height,LanguageController.getInstance().getString("profile"),0x000000,35,true);
+			addChild(titleText);
+			titleText.autoSize = TextFieldAutoSize.VERTICAL;
+			titleText.x = titleSkin.x;
+			titleText.y = titleSkin.y +titleSkin.height/2 -  titleText.height;
+			
+			
+			var cancelButton:Button = new Button();
+			cancelButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
+			cancelButton.addEventListener(Event.TRIGGERED, closeButton_triggeredHandler);
+			addChild(cancelButton);
+			cancelButton.width = cancelButton.height = Configrations.ViewPortHeight*0.05;
+			cancelButton.x = Configrations.ViewPortWidth *0.95 -cancelButton.width -5;
+			cancelButton.y = Configrations.ViewPortHeight *.01 +5;
+			
+			renderWidth = renderHeight = Math.min(Configrations.ViewPortHeight *.15,200);
 			
 			
 			const listLayout1:TiledRowsLayout = new TiledRowsLayout();
@@ -91,6 +114,8 @@ package view.panel
 			panelSkin.graphics.drawRect(0,0,panelList.width,panelList.height);
 			panelSkin.graphics.endFill();
 			
+			
+			
 			const listLayout:TiledRowsLayout = new TiledRowsLayout();
 			listLayout.paging = TiledRowsLayout.PAGING_HORIZONTAL;
 			listLayout.useSquareTiles = false;
@@ -109,14 +134,14 @@ package view.panel
 			_list.backgroundSkin = new Scale9Image(skintextures);
 			this._list.dataProvider = menuArr;
 			this._list.width = Configrations.ViewPortWidth*0.86;
-			this._list.height = Configrations.ViewPortHeight *.12;
+			this._list.height = Configrations.ViewPortHeight *0.2;
 			this._list.snapToPages = true;
 			this._list.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
 			this._list.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
 			this._list.itemRendererFactory = tileListItemRendererFactory;
 			this.addChild(this._list);
-			_list.x = Configrations.ViewPortWidth*0.07;
-			_list.y = Configrations.ViewPortHeight*0.9 - _list.height;
+			_list.x = Configrations.ViewPortWidth/2 - _list.width/2;
+			_list.y = Configrations.ViewPortHeight*0.98 - _list.height;
 			this._list.addEventListener(Event.SCROLL, list_scrollHandler);
 			
 			const normalSymbolTexture:Texture   = Game.assets.getTexture("PanelRenderSkin");
@@ -151,14 +176,11 @@ package view.panel
 			this.layout();
 		}
 		
-		private function selectTab(index:int):void
-		{
-			_list.selectedIndex 
-		}
 		private function list_changeHandler(e:Event):void
 		{
 			if(_list && _list.selectedItem){
 				var eventType:String = this._list.selectedItem.event as String;
+				titleText.text = LanguageController.getInstance().getString(eventType);
 				this.panelList.scrollToPageIndex(_list.selectedIndex, 0, this.panelList.pageThrowDuration);
 			}
 		}
@@ -188,8 +210,8 @@ package view.panel
 		protected function tileListItemRendererFactory():IListItemRenderer
 		{
 			const renderer:DefaultListItemRenderer = new MenuListRender();
-			renderer.defaultSkin = new Image(Game.assets.getTexture("PanelRenderSkin"));
-			renderer.defaultSelectedSkin = new Image(Game.assets.getTexture("whitePanelSkin"));
+			renderer.defaultSkin = new Image(Game.assets.getTexture("iconGlayBackSkin"));
+			renderer.defaultSelectedSkin = new Image(Game.assets.getTexture("iconGreenBackSkin"));
 			renderer.labelField = "label";
 			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
 			renderer.iconSourceField = "texture";
@@ -239,6 +261,10 @@ package view.panel
 			if(touch){
 				close();
 			}
+		}
+		private function closeButton_triggeredHandler(e:Event):void
+		{
+			close();
 		}
 		private function close():void
 		{

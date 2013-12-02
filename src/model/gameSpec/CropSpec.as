@@ -9,7 +9,7 @@ package model.gameSpec
 		
 		public var growTimeArr:Array;
 		public var totleGrowTime:Number = 0;
-		
+		public var exp:int =1 ;
 		public function set growtime(str:String):void
 		{
 			growTimeArr = str.split(":");

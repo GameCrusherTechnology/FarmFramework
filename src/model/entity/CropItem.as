@@ -2,8 +2,10 @@ package model.entity
 {
 	import controller.SpecController;
 	
+	import gameconfig.Configrations;
 	import gameconfig.SystemDate;
 	
+	import model.OwnedItem;
 	import model.gameSpec.CropSpec;
 
 	public class CropItem extends EntityItem
@@ -13,19 +15,26 @@ package model.entity
 			super(data);
 			init();
 		}
+		public var output:int;
 		protected function init():void
 		{
-			plantTime = SystemDate.systemTimeS;
 			if(hasCrop){
 				checkStep();
 			}
 		}
 		
-		override protected function get itemType():String
+		override public function get itemType():String
 		{
 			return "Crop";
 		}
-		
+		public function get exp():int
+		{
+			if(cropItemSpec){
+				return cropItemSpec.exp;
+			}else{
+				return 0;
+			}
+		}
 		override public function update():Boolean
 		{
 			if(hasCrop && (growStep== -1 || growStep <  (cropItemSpec.growTimeArr.length))){
@@ -37,7 +46,7 @@ package model.entity
 		}
 		private function checkStep():Boolean
 		{
-			var leftTime:Number = SystemDate.systemTimeS - plantTime;
+			var leftTime:Number = SystemDate.systemTimeS - plant_time;
 			var index:int = 0;
 			while (index < cropItemSpec.growTimeArr.length){
 				if(leftTime < cropItemSpec.growTimeArr[index]*60){
@@ -56,27 +65,32 @@ package model.entity
 		}
 		public function harvest():void
 		{
+			player.addItem(new OwnedItem(item_id,getOutput()));
 			item_id = null;
 			itemspec = null;
 		}
-		
+		private function getOutput():int
+		{
+			return 2;
+		}
 		public function speed():void
 		{
-			plantTime -= 30;
+			plant_time -= Configrations.SPEED_TIME;
 		}
-		public function plant():void
+		public function plant(id:String):void
 		{
-			item_id = "10001";
-			itemspec = SpecController.instance.getItemSpec(item_id,itemType);
+			player.deleteItem(new OwnedItem(id,1));
+			item_id = id;
+			itemspec = SpecController.instance.getItemSpec(item_id);
 			growStep = -1;
-			plantTime = SystemDate.systemTimeS;
+			plant_time = SystemDate.systemTimeS;
 		}
-		private var plantTime:Number = 1382454068;
+		public var plant_time:Number = 1382454068;
 		public var growStep:int = 0;
 		
 		public function get remainTime():Number
 		{
-			return cropItemSpec.totleGrowTime - (SystemDate.systemTimeS - plantTime);
+			return cropItemSpec.totleGrowTime - (SystemDate.systemTimeS - plant_time);
 		}
 		public function get canHarvest():Boolean
 		{
@@ -84,7 +98,7 @@ package model.entity
 		}
 		public function get hasCrop():Boolean
 		{
-			return (item_id !=null);
+			return (item_id !=null && int(item_id) !=0);
 		}
 		protected function get cropItemSpec():CropSpec
 		{

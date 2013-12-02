@@ -3,23 +3,19 @@ package view.entity
 	import flash.geom.Point;
 	
 	import controller.GameController;
-	import controller.UiController;
-	
-	import game.utils.Configrations;
+	import controller.UpdateController;
 	
 	import gameconfig.Configrations;
 	
+	import model.UpdateData;
 	import model.avatar.Map;
 	import model.avatar.Tile;
-	import model.entity.CropItem;
 	import model.entity.EntityItem;
+	import model.player.GamePlayer;
 	
 	import starling.core.RenderSupport;
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
 	
 	import view.FarmScene;
 	import view.TweenEffectLayer;
@@ -27,7 +23,7 @@ package view.entity
 	public class GameEntity extends Sprite
 	{
 		public var surface:MovieClip;
-		protected var item:EntityItem;
+		public var item:EntityItem;
 		public function GameEntity(entityItem:EntityItem) 
 		{
 			item = entityItem;
@@ -42,7 +38,7 @@ package view.entity
 			while(i < item.bound_x){
 				j=0;
 				while(j<item.bound_y){
-					tile = Map.intance.getTileByIos(item.ios_x+i,item.ios_y+j);
+					tile = Map.intance.getTileByIos(item.positionx+i,item.positiony+j);
 					if(tile){
 						tile.owner  = this;
 					}
@@ -104,6 +100,8 @@ package view.entity
 		}
 		private function putDown():void
 		{
+			UpdateController.instance.pushActionData(new UpdateData(item.gameuid,Configrations.MOVE,{data_id:item.data_id,positionx:currentMoveTile.x,positiony:currentMoveTile.y,type:item.itemType}));
+			
 			clearTile();
 			moveToIso(currentMoveTile);
 			scene.putDownEntity(this);
@@ -118,7 +116,7 @@ package view.entity
 			while(i < item.bound_x){
 				j=0;
 				while(j<item.bound_y){
-					tile = Map.intance.getTileByIos(item.ios_x+i,item.ios_y+j);
+					tile = Map.intance.getTileByIos(item.positionx+i,item.positiony+j);
 					if(tile){
 						tile.owner  = null;
 					}
@@ -161,13 +159,13 @@ package view.entity
 		}
 		protected function configPosition():void
 		{
-			var topPoint:Point = Map.intance.iosToScene(item.ios_x +item.bound_x,item.ios_y+item.bound_y);
+			var topPoint:Point = Map.intance.iosToScene(item.positionx +item.bound_x,item.positiony+item.bound_y);
 			x = topPoint.x;
 			y = topPoint.y;
 		}
 		public function getTopTile():Tile
 		{
-			return Map.intance.getTileByIos(item.ios_x,item.ios_y);
+			return Map.intance.getTileByIos(item.positionx,item.positiony);
 		}
 		public function get length_x():int
 		{
@@ -181,8 +179,8 @@ package view.entity
 		public function moveToIso(tile:Tile):void
 		{
 			clearTile();
-			item.ios_x = tile.x;
-			item.ios_y = tile.y;
+			item.positionx = tile.x;
+			item.positiony = tile.y;
 			configPosition();
 			setTile();
 		}
@@ -222,6 +220,11 @@ package view.entity
 			if(item.update()){
 				refresh();
 			}
+		}
+		
+		protected function get player():GamePlayer
+		{
+			return GameController.instance.currentPlayer;
 		}
 			
 	}

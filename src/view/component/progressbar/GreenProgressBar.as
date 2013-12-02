@@ -30,6 +30,7 @@
 		protected var barColor:uint = 0x7EE000;
 		protected var barbgColor:uint = 691968;
 		protected var barIcon:Image;
+		protected var iconText:TextField;
 		
         public function GreenProgressBar(_barWidth:int , _barHeight:int, _borderW:Number=5, _borderColor:uint=0x000000,_barColor:uint = 0x7EE000,_barbgColor:uint = 0xFFFA5D){
             bar_width = _barWidth;
@@ -65,8 +66,7 @@
 			m_cBarSp = new Shape();
 			m_cBarSp.cacheAsBitmap = true;
 			
-			
-            m_nProgress = 0.5;
+			m_nProgress = 0;
             fillDirection = LEFT_TO_RIGHT;
         }
 		
@@ -75,6 +75,11 @@
 			barIcon = new Image(texture);
 			addChild(barIcon);
 			barIcon.width = barIcon.height = bar_height+20;
+			
+			iconText = FieldController.createSingleLineDynamicField( barIcon.width, barIcon.height,"", 0x000000, 25);
+			iconText.bold = true;
+			addChild(iconText);
+			
 			if(m_cDirection == RIGHT_TO_LEFT){
 				barIcon.y = -10;
 				barIcon.x = bar_width-barIcon.width/2;
@@ -82,6 +87,7 @@
 				barIcon.y = -10;
 				barIcon.x = -barIcon.width/2;
 			}
+			iconText.x = barIcon.x;iconText.y =barIcon.y;
 		}
         public function set fillDirection(_arg1:String):void{
             m_cDirection = _arg1;
@@ -108,9 +114,11 @@
             m_nProgress = Math.max(m_nProgress, 0);
             updateGraphics();
         }
+		
         public function get progress():Number{
             return (m_nProgress);
         }
+		
 		public function set comment(_arg1:String):void{
 			if(!m_cComment){
 				m_cComment = FieldController.createSingleLineDynamicField(bar_width,bar_height,_arg1, 0x000000, 25);
@@ -121,6 +129,10 @@
 			}else{
 				m_cComment.text = _arg1;
 			}
+		}
+		
+		public function set iconStr(_arg1:String):void{
+			iconText.text = _arg1;
 		}
 		
     }

@@ -1,7 +1,7 @@
 package view.panel
 {
-	import controller.GameController;
 	import controller.FieldController;
+	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -57,7 +57,7 @@ package view.panel
 			text1.y = panelheight*0.1 - text1.height;
 			text1.x = panelwidth*0.05;
 			
-			nameText = FieldController.createSingleLineDynamicField(panelwidth,40,player.farmName,0x000000,35);
+			nameText = FieldController.createSingleLineDynamicField(panelwidth,40,player.name,0x000000,35);
 			addChild(nameText);
 			nameText.hAlign = HAlign.CENTER;
 			nameText.y = panelheight*0.1 - nameText.height;
@@ -73,6 +73,11 @@ package view.panel
 			nameChangeButton.x = panelwidth*0.95 - nameChangeButton.width;
 			nameChangeButton.y = panelheight*0.1 - nameChangeButton.height;
 			nameChangeButton.addEventListener(Event.TRIGGERED,onNameTrigger);
+			
+			var idtext:TextField = FieldController.createSingleLineDynamicField(panelwidth*.4,30,"ID"+": " + player.gameuid,0x000000,25);
+			addChild(idtext);
+			idtext.y = panelheight*0.1 +10*scale;
+			idtext.x = panelwidth*0.05;
 			
 			var picSkin:Image = new Image(Game.assets.getTexture("picBackSkin"));
 			addChild(picSkin);
@@ -109,20 +114,8 @@ package view.panel
 			whiteSp.x = panelwidth*0.4+10;
 			whiteSp.y = panelheight*0.15 ;
 			
-			var hightLength:Number = 10;
-			var bar:Sprite = creatBar("coin");
-			whiteSp.addChild(bar);
-			bar.y = hightLength;
-			bar.x = panelwidth/2*0.1;
-			
-			hightLength  += 10 +bar.height;
-			whiteSp.graphics.lineStyle(2,0xEDCC97,1);
-			whiteSp.graphics.moveTo(panelwidth/2*0.1,hightLength);
-			whiteSp.graphics.lineTo(panelwidth/2*0.9,hightLength);
-			whiteSp.graphics.endFill();
-			hightLength += 10;
-			
-			bar = creatBar("exp");
+			var hightLength:Number = 30*scale;
+			var bar:Sprite = creatBar("exp");
 			whiteSp.addChild(bar);
 			bar.y = hightLength;
 			bar.x = panelwidth/2*0.1;
@@ -135,6 +128,18 @@ package view.panel
 			hightLength += 10;
 			
 			bar = creatBar("love");
+			whiteSp.addChild(bar);
+			bar.y = hightLength;
+			bar.x = panelwidth/2*0.1;
+			
+			hightLength  += 10 +bar.height;
+			whiteSp.graphics.lineStyle(2,0xEDCC97,1);
+			whiteSp.graphics.moveTo(panelwidth/2*0.1,hightLength);
+			whiteSp.graphics.lineTo(panelwidth/2*0.9,hightLength);
+			whiteSp.graphics.endFill();
+			hightLength += 10;
+			
+			bar = creatBar("coin");
 			whiteSp.addChild(bar);
 			bar.y = hightLength;
 			bar.x = panelwidth/2*0.1;
@@ -162,19 +167,30 @@ package view.panel
 			var icon :Image = new Image(texture);
 			icon.width = icon.height = h*0.8;
 			barContainer.addChild(icon);
+			var nameStr:String = LanguageController.getInstance().getString(name);
+			var mesStr:String;
+			if(name == "coin"){
+				mesStr  = "" +player.coin;
+			}else if(name == "gem"){
+				mesStr  = "" +player.gem;
+			}else if(name == "love"){
+				mesStr  = String(Configrations.gradeToExp(player.level) - player.love) +"  "+LanguageController.getInstance().getString("tofull");
+			}else{
+				nameStr = LanguageController.getInstance().getString("level")+" "+ player.level;
+				mesStr  = String(Configrations.gradeToExp(player.level+1) - player.exp) +"  "+LanguageController.getInstance().getString("levelup");
+			}
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(w,35,LanguageController.getInstance().getString(name),0x00000,30,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(w,35,nameStr,0x00000,30,true);
 			nameText.hAlign = HAlign.LEFT;
 			nameText.vAlign = VAlign.TOP;
 			barContainer.addChild(nameText);
 			nameText.x = icon.x + icon.width + 10;
-			
-			var mesText:TextField = FieldController.createSingleLineDynamicField(w,35,LanguageController.getInstance().getString(name),0x00000,30,true);
+			nameText.y = 5*Configrations.ViewScale;
+			var mesText:TextField = FieldController.createSingleLineDynamicField(w,25,mesStr,0x00000,22,true);
 			mesText.hAlign = HAlign.LEFT;
-			mesText.vAlign = VAlign.TOP;
 			barContainer.addChild(mesText);
 			mesText.x = icon.x + icon.width + 10;
-			mesText.y = nameText.y + mesText.height+2;
+			mesText.y = nameText.y + mesText.height+10*Configrations.ViewScale;
 			return barContainer;
 		}
 		

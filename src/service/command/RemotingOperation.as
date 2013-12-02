@@ -136,7 +136,7 @@ package service.command
 		override protected function begin ():void
 		{
 			var responder:Responder = new Responder(this.onResult,this.onError);
-			this.connection.call("BaseService.request",responder,this.params);
+			this.connection.call("BaseCommand.callCommand",responder,this.params);
 			this.timeoutId = setTimeout(onTimeout, RemotingOperation.TIMEOUT);
 			RemotingOperation.COUNT++;
 			RemotingOperation.INDEX++;

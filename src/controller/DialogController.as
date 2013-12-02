@@ -23,12 +23,13 @@ package controller
 		
 		public function showPanel(panel:Sprite,exclusive:Boolean=false):void
 		{
+			trace("showPanel");
 			if(exclusive){
 				destroy();
 			}
 			layer.addChild(panel);
 		}
-		private function destroy():void
+		public function destroy():void
 		{
 			var displayObj:DisplayObject;
 			while(layer.numChildren>0){

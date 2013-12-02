@@ -41,7 +41,7 @@ package view.ui
 			];
 		private const closedList:Array = 
 			[
-				{ label: LanguageController.getInstance().getString("edit"), texture: "GiftIcon"},
+				{ label: LanguageController.getInstance().getString("edit"), texture: "editIcon"},
 			];
 		
 		private function destroy():void

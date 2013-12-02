@@ -3,6 +3,7 @@ package controller
 	import flash.net.URLLoader;
 	import flash.utils.Dictionary;
 	
+	import model.gameSpec.AchieveItemSpec;
 	import model.gameSpec.CropSpec;
 	import model.gameSpec.ItemSpec;
 	
@@ -37,9 +38,10 @@ package controller
 				{
 					item = applyPropertiesFromXML(item_xml,group_id);
 					item.group_id=group_id;
-					_itemMap[group_id][item_xml.@id]=item;
+					_itemMap[group_id][item_xml.@item_id]=item;
 				}
 			}
+			trace("initxml");
 		}
 		private function applyPropertiesFromXML(xml:XML,groupId:String):ItemSpec{
 			var index:int =0 ;
@@ -76,6 +78,10 @@ package controller
 			switch(name){
 				case "Crop":
 					return CropSpec;
+				case "Item":
+					return ItemSpec;
+				case "AchieveItem":
+					return AchieveItemSpec;
 			}
 			return ItemSpec;
 		}
@@ -89,14 +95,34 @@ package controller
 			}
 			return groupDic;
 		}
-		
-		public function getItemSpec(id:String,groupid:String):ItemSpec
+		private function getGroupById(id:String):String
+		{
+			var group:String;
+			var itemid:int = int(id);
+			var type:int = Math.floor(itemid/10000);
+			switch(type){
+				case 1:
+					group = "Crop"
+					break;
+				case 2:
+					group = "Item"
+					break;
+				case 3:
+					group = "AchieveItem"
+					break;
+				
+					
+			}
+			return group;
+		}
+		public function getItemSpec(id:String):ItemSpec
 		{
 			var item:ItemSpec;
+			var groupId:String = getGroupById(id);
 			try{
-				item = _itemMap[groupid][id];
+				item = _itemMap[groupId][id];
 			}catch(e:Error){
-				trace("error ---- no this item item id :"+id +"group_id : " +groupid);
+				trace("error ---- no this item item id :"+id +"group_id : " +groupId);
 			}
 			return item;
 		}

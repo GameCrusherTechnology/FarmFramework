@@ -2,8 +2,9 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
-	import controller.GameController;
+	import controller.DialogController;
 	import controller.FieldController;
+	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -21,8 +22,16 @@ package view.panel
 	
 	import model.player.GamePlayer;
 	
+	import service.command.user.ChangeNameCommand;
+	
 	import starling.display.Image;
 	import starling.events.Event;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
+	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
+	import starling.utils.HAlign;
 
 	[Event(name="complete",type="starling.events.Event")]
 	public class TextInputPanel extends PanelScreen
@@ -36,17 +45,18 @@ package view.panel
 		private var _backButton:Button;
 		private var _okButton:Button;
 		private var _input:TextInput;
-
+		private var skin:Scale9Image;
 		protected function initializeHandler(event:Event):void
 		{
 			var panelwidth:Number = Configrations.ViewPortWidth*0.86;
 			var panelheight:Number = Configrations.ViewPortHeight*0.7;
 			var scale:Number = Configrations.ViewScale;
-			var backgroundSkinTextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20));
-			var skin:Scale9Image = new Scale9Image(backgroundSkinTextures);
+			var backgroundSkinTextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(20, 20, 20, 20));
+			skin = new Scale9Image(backgroundSkinTextures);
 			addChild(skin);
 			skin.width = panelwidth;skin.height = panelheight;
-			skin.alpha = 0.3;
+			skin.alpha = 0.5;
+			skin.addEventListener(TouchEvent.TOUCH,onSkinTouched);
 			
 			var skin1:Scale9Image = new Scale9Image(backgroundSkinTextures);
 			addChild(skin1);
@@ -55,6 +65,25 @@ package view.panel
 			skin1.x = panelwidth/2 - skin1.width/2;
 			skin1.y = panelheight/2 - skin1.height/2;
 			
+			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth ,50*scale,LanguageController.getInstance().getString("shopTip02"),0x000000,25,true);
+			nameText.autoSize = TextFieldAutoSize.VERTICAL;
+			addChild(nameText);
+			nameText.y = skin1.y+30*scale;
+			
+			var icon:Image = new Image(Game.assets.getTexture("gemIcon"));
+			addChild(icon);
+			icon.width = icon.height =60*scale;
+			icon.x = panelwidth*0.5 - icon.width - 10*scale;
+			icon.y = nameText.y + nameText.height+30*scale;
+			
+			var countText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.5,40*scale,"×"+Configrations.CHANGE_NAME_COST,0x000000,35,true);
+			countText.hAlign = HAlign.LEFT;
+			countText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			addChild(countText);
+			countText.x = panelwidth*0.5 + 10*scale;
+			countText.y = icon.y + icon.height/2 - nameText.height/2;
+			
+			
 			this.layout = new AnchorLayout();
 			this._input = new TextInput();
 			var _inputSkinTextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20));
@@ -62,13 +91,13 @@ package view.panel
 			_input.paddingLeft = 10;
 			_input.width = 300 *scale;
 			_input.height = 50 *scale;
-			Factory(_input,{color:0x000000,fontSize:30,maxChars:15,text:player.farmName,displayAsPassword:false});
+			Factory(_input,{color:0x000000,fontSize:30,maxChars:15,text:player.name,displayAsPassword:false});
 			this.addChild(this._input);
 			_input.x = panelwidth/2 - _input.width/2;
-			_input.y = panelheight/2 - _input.height-20;
+			_input.y = icon.y + icon.height + 20*scale;
 			
 			this._backButton = new Button();
-			_backButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+			_backButton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
 			this._backButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			this._backButton.label = LanguageController.getInstance().getString("cancel");
 			_backButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
@@ -108,18 +137,45 @@ package view.panel
 		public var currentText:String;
 		private function onBackButton():void
 		{
+			skin.removeEventListener(TouchEvent.TOUCH,onSkinTouched);
+			_okButton.removeEventListener(Event.TRIGGERED, okButton_triggeredHandler);
+			_backButton.removeEventListener(Event.TRIGGERED, backButton_triggeredHandler);
 			this.dispatchEventWith(Event.COMPLETE);
 		}
-
+		private function onSkinTouched(e:TouchEvent):void
+		{
+			e.stopPropagation();
+			var touch:Touch = e.getTouch(skin,TouchPhase.BEGAN);
+			if(touch){
+				currentText = player.name;
+				onBackButton();
+			}
+		}
 		private function backButton_triggeredHandler(event:Event):void
 		{
-			currentText = _input.text;
+			currentText = player.name;
 			this.onBackButton();
 		}
 
 		private function okButton_triggeredHandler(e:Event):void
 		{
+			if(_input.text == player.name){
+				currentText = _input.text;
+				this.onBackButton();
+			}else{
+				if(player.gem>= Configrations.CHANGE_NAME_COST){
+					new ChangeNameCommand(_input.text,onChangeSuccess);
+				}else{
+					DialogController.instance.showPanel(new TreasurePanel());
+				}
+			}
+		}
+		
+		private function onChangeSuccess():void
+		{
 			currentText = _input.text;
+			player.name = currentText;
+			player.changeGem(-Configrations.CHANGE_NAME_COST);
 			this.onBackButton();
 		}
 		private function get player():GamePlayer

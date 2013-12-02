@@ -2,6 +2,10 @@ package gameconfig
 {
 	import flash.net.URLLoader;
 	
+	import controller.SpecController;
+	
+	import model.gameSpec.ItemSpec;
+	
 	
 	public class LanguageController
 	{
@@ -33,7 +37,16 @@ package gameconfig
 		{
 			return dictLanguage[key];
 		}
-			
+		
+		public function getTitle(itemid:String,level:int=0):String
+		{
+			var str:String;
+			var spec:ItemSpec = SpecController.instance.getItemSpec(itemid);
+			str = spec.name;
+			var title :String = Configrations.TITLE_NAME[level];
+			str = str+" "+getString(title);
+			return str;
+		}
 		
 	}
 }

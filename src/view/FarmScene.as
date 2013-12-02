@@ -5,9 +5,11 @@ package view
 	
 	import controller.GameController;
 	import controller.UiController;
+	import controller.UpdateController;
 	
 	import gameconfig.Configrations;
 	
+	import model.UpdateData;
 	import model.avatar.Map;
 	import model.avatar.Tile;
 	import model.entity.CropItem;
@@ -84,6 +86,7 @@ package view
 			var crop:CropEntity ;
 			for each(var cropItem:CropItem in player.cropItems){
 				crop = new CropEntity(cropItem);
+				maxFieldId = Math.max(maxFieldId,cropItem.data_id);
 				entityLayer.addChild(crop);
 				fieldLayer.addChild(crop.fieldSUR);
 				cropDic.push(crop);
@@ -214,7 +217,10 @@ package view
 				if(tile1){
 					var valiable:Boolean = checkValiable(tile,len_x,len_y);
 					if(valiable){
-						var item:CropItem = new CropItem({ios_x:tile.x,ios_y:tile.y});
+						maxFieldId++;
+						var fieldObje:Object = {positionx:tile.x,positiony:tile.y,gameuid:player.gameuid,data_id:maxFieldId};
+						UpdateController.instance.pushActionData(new UpdateData(player.gameuid,Configrations.ADD_FIELD,fieldObje));
+						var item:CropItem = new CropItem(fieldObje);
 						addFarmEntity(item);
 					}
 				}
@@ -372,5 +378,6 @@ package view
 		{
 			return GameController.instance.currentPlayer;
 		}
+		private var maxFieldId:int = 1000;
 	}
 }

@@ -1,12 +1,12 @@
 package model.entity
 {
+	import controller.GameController;
 	import controller.SpecController;
-	
-	import gameconfig.Configrations;
 	
 	import model.avatar.Map;
 	import model.avatar.Tile;
 	import model.gameSpec.ItemSpec;
+	import model.player.GamePlayer;
 	
 	import starling.events.EventDispatcher;
 
@@ -23,20 +23,22 @@ package model.entity
 				}
 			}
 			
-			if(itemType){
-				itemspec = SpecController.instance.getItemSpec(item_id,itemType);
+			if(itemType && item_id>0 && item_id!=""){
+				itemspec = SpecController.instance.getItemSpec(item_id);
 			}
 		}
+		
+		public var gameuid:String;
 		protected var itemspec:ItemSpec ;
 		public var data_id:Number;
 		public var item_id:String;
-		
-		public var ios_x:int;
-		public var ios_y:int;
+		public var status:int;
+		public var positionx:int;
+		public var positiony:int;
 		
 		public function get tile():Tile
 		{
-			return Map.intance.getTileByIos(ios_x,ios_y);
+			return Map.intance.getTileByIos(positionx,positiony);
 		}
 		public function update():Boolean
 		{
@@ -46,7 +48,7 @@ package model.entity
 		{
 			return itemspec.name;
 		}
-		protected function get itemType():String
+		public function get itemType():String
 		{
 			return null;
 		}
@@ -62,7 +64,11 @@ package model.entity
 		
 		public function get sceneIndex():Number
 		{
-			return (ios_x+ios_y)* 1000 + ios_x;
+			return (positionx+positiony)* 1000 + positionx;
+		}
+		public function get player():GamePlayer
+		{
+			return GameController.instance.currentPlayer;
 		}
 	}
 }

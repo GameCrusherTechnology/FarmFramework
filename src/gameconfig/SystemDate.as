@@ -39,26 +39,25 @@ package gameconfig
 		{
 			//大于一天
 			if(time > 24*3600*365){
-				return Math.floor(time/(24*3600*365)) + " y ";
+				return Math.floor(time/(24*3600*365)) + "y";
 			}
 			else if(time > 24*3600){
-				return Math.floor(time/(24*3600)) + " d ";
-			}else if(time > 3600){
-				return Math.floor(time/(3600)) + " h ";
+				return Math.floor(time/(24*3600)) + "d";
 			}else{
-				var m:int = Math.floor((time)/(60));
+				var h:int = Math.floor((time)/(3600));
+				var m:int = Math.floor((time%3600)/(60));
 				var s:int = time%60;
-				return  checkNum(m) + " : "+checkNum(s) ;
+				return  checkNum(h) +" : "+checkNum(m) + " : "+checkNum(s) ;
 			}
 		}
 		public static function getMsTimeLeftString(time:Number):String
 		{
 			if(time > 3600000){
-				return Math.floor(time/(36000)) + " h ";
+				return Math.floor(time/(36000)) + "h";
 			}else if(time > 60000){
-				return Math.floor(time/(60000)) + " m ";
+				return Math.floor(time/(60000)) + "m";
 			}else{
-				return time/(1000) + " s ";
+				return time/(1000) + "s";
 			}
 		}
 		private static function checkNum(num:int):String

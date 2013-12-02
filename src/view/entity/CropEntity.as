@@ -4,8 +4,13 @@ package view.entity
 	
 	import controller.GameController;
 	import controller.UiController;
+	import controller.UpdateController;
 	
-	import model.avatar.Map;
+	import gameconfig.Configrations;
+	import gameconfig.SystemDate;
+	
+	import model.OwnedItem;
+	import model.UpdateData;
 	import model.avatar.Tile;
 	import model.entity.CropItem;
 	
@@ -13,6 +18,8 @@ package view.entity
 	import starling.display.MovieClip;
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
+	
+	import view.effect.RainEffect;
 
 	public class CropEntity extends GameEntity
 	{
@@ -89,40 +96,40 @@ package view.entity
 		private function checkCurrentTool():void
 		{
 			var tool:String = GameController.instance.selectTool;
-			if(tool == UiController.TOOL_SELL){
-				sellCrop();
-			}else if(tool == UiController.TOOL_MOVE){
-				scene.addMoveEntity(this);
-			}else{
-				if(cropItem.hasCrop){
-					if(cropItem.canHarvest){
-						if(tool !=UiController.TOOL_HARVEST){
-							//show harvest
-							UiController.instance.showUiTools(UiController.TOOL_HARVEST,this);
-						}else{
-							harvest();
-						}
-					}else if(tool !=UiController.TOOL_SPEED){
-						//show time
-						
-						var remainTime:Number = cropItem.remainTime;
-						UiController.instance.showUiTools(UiController.TOOL_SPEED,this);
-					}else{
-						speedCrop();
-					}
-				}else if(tool !=UiController.TOOL_SEED){
-					// show plant
-					UiController.instance.showUiTools(UiController.TOOL_SEED,this);
+			if(GameController.instance.isHomeModel){
+				if(tool == UiController.TOOL_SELL){
+					sellCrop();
+				}else if(tool == UiController.TOOL_MOVE){
+					scene.addMoveEntity(this);
 				}else{
-					plant();
+					if(cropItem.hasCrop){
+						if(cropItem.canHarvest){
+							if(tool !=UiController.TOOL_HARVEST){
+								//show harvest
+								UiController.instance.showUiTools(UiController.TOOL_HARVEST,this);
+							}else{
+								harvest();
+							}
+						}else if(tool !=UiController.TOOL_SPEED){
+							//show time
+							
+							var remainTime:Number = cropItem.remainTime;
+							UiController.instance.showUiTools(UiController.TOOL_SPEED,this);
+						}else{
+							speedCrop();
+						}
+					}else if(tool !=UiController.TOOL_SEED){
+						// show plant
+						UiController.instance.showUiTools(UiController.TOOL_SEED,this);
+					}else{
+						plant();
+					}
 				}
+			}else{
+				
 			}
 		}
 		
-		private function sellCrop():void
-		{
-			destroy();
-		}
 		private function onToolHoved():void
 		{
 			var tool:String = GameController.instance.selectTool;
@@ -158,24 +165,44 @@ package view.entity
 		
 		private function plant():void
 		{
-			cropItem.plant();
+			if(GameController.instance.selectSeed){
+				if(player.hasItem(GameController.instance.selectSeed)){
+					UpdateController.instance.pushActionData(new UpdateData(cropItem.gameuid,Configrations.PLANT,{data_id:cropItem.data_id,gameuid:cropItem.gameuid,item_id:GameController.instance.selectSeed,plant_time:SystemDate.systemTimeS}));
+					cropItem.plant(GameController.instance.selectSeed);
+				}else{
+					GameController.instance.resetTools();
+				}
+			}
 		}
 		
 		private function speedCrop():void
 		{
 			if(!hasSpeed){
-				cropItem.speed();
+				if(player.hasItem(Configrations.SPEED_ITEMID))
+				{
+					UpdateController.instance.pushActionData(new UpdateData(cropItem.gameuid,Configrations.SPEED,{data_id:cropItem.data_id,gameuid:cropItem.gameuid}));
+					player.deleteItem(new OwnedItem(Configrations.SPEED_ITEMID,1));
+					cropItem.speed();
+					showSpeedAnimation();
+				}else{
+					GameController.instance.resetTools();
+				}
 				hasSpeed = true;
 			}
 		}
 		private function harvest():void
 		{
+			UpdateController.instance.pushActionData(new UpdateData(cropItem.gameuid,Configrations.HARVEST,{data_id:cropItem.data_id,gameuid:cropItem.gameuid}));
+			player.addExp(cropItem.exp);
 			showHarvestAnimation(Game.assets.getTexture(cropItem.name +"Icon"));
 			cropItem.harvest();
 			refresh();
-			
 		}
-		
+		private function sellCrop():void
+		{
+			UpdateController.instance.pushActionData(new UpdateData(cropItem.gameuid,Configrations.SELL,{data_id:cropItem.data_id,gameuid:cropItem.gameuid}));
+			destroy();
+		}
 		private function showHarvestAnimation(texture:Texture):void
 		{
 			var index:int = 0;
@@ -186,8 +213,16 @@ package view.entity
 				
 				index++;
 			}
-			stageEffectLayer.showExpAddEffect(20,stagePoint);
+			stageEffectLayer.showExpAddEffect(cropItem.exp,stagePoint);
 			UiController.instance.showToolStateEffect();
+		}
+		private function showSpeedAnimation():void
+		{
+			var rainEffect:RainEffect = new RainEffect();
+			sceneEffectLayer.addChild(rainEffect);
+			rainEffect.x = x;
+			rainEffect.y = y;
+			
 		}
 		
 		private function get cropItem():CropItem

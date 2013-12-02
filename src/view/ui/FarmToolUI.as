@@ -3,11 +3,10 @@ package view.ui
 	
 	import flash.geom.Rectangle;
 	
-	import controller.SpecController;
 	import controller.FieldController;
+	import controller.SpecController;
 	import controller.UiController;
 	
-	import feathers.controls.Button;
 	import feathers.controls.List;
 	import feathers.controls.PageIndicator;
 	import feathers.controls.renderers.DefaultListItemRenderer;
@@ -15,12 +14,13 @@ package view.ui
 	import feathers.data.ListCollection;
 	import feathers.display.Scale9Image;
 	import feathers.layout.TiledRowsLayout;
-	import feathers.text.BitmapFontTextFormat;
 	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	import gameconfig.SystemDate;
 	
+	import model.entity.CropItem;
 	import model.gameSpec.CropSpec;
 	
 	import starling.display.DisplayObject;
@@ -28,6 +28,7 @@ package view.ui
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.ResizeEvent;
+	import starling.text.TextField;
 	import starling.textures.Texture;
 	
 	import view.entity.GameEntity;
@@ -37,20 +38,22 @@ package view.ui
 	public class FarmToolUI extends Sprite
 	{
 		private var renderWidth:int = 80*Configrations.ViewScale;
-		private var renderHeight:int= 100*Configrations.ViewScale;
+		private var renderHeight:int= 120*Configrations.ViewScale;
 		private var renderGap:Number = 20;
+		private var container:Sprite;
 		private const collection:Array = 
 			[
 				{ label: LanguageController.getInstance().getString("harvest"), texture: "reapIcon",type:UiController.TOOL_HARVEST},
-				{ label: LanguageController.getInstance().getString("seed"), texture: "FarmPlow",type:UiController.TOOL_SEED},
-				{ label: LanguageController.getInstance().getString("speed"), texture: "FarmPlow",type:UiController.TOOL_SPEED}
+				{ label: LanguageController.getInstance().getString("seed"), texture: "fertilizeIcon",type:UiController.TOOL_SEED},
+				{ label: LanguageController.getInstance().getString("speed"), texture: "fertilizeIcon",type:UiController.TOOL_SPEED}
 			];
 		
 		public function FarmToolUI() 
 		{
-			
+			container = new Sprite();
+			addChild(container);
 		}
-		
+		private var leftTimeText:TextField;
 		public function show(type:String,entity:GameEntity=null):void
 		{
 			destroy();
@@ -63,10 +66,27 @@ package view.ui
 				var renderArr:Array = toolsObject[type];
 				for each(data in renderArr){
 					render = new FarmToolsRender(data);
-					addChild(render);
+					container.addChild(render);
 					render.x = leftPoint;
-					leftPoint +=(render.width + renderGap);
+					leftPoint +=(renderWidth + renderGap);
 				}
+				if(type == UiController.TOOL_SPEED && entity){
+					
+					var leftTime:String = SystemDate.getTimeLeftString((entity.item as CropItem).remainTime);
+					leftTimeText = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,40,leftTime,0xffffff,25,true);
+					container.addChild(leftTimeText);
+					leftTimeText.x = renderWidth/2 - Configrations.ViewPortWidth/2;
+					leftTimeText.y =  - leftTimeText.height-5;
+					
+					var nameText:TextField = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,40,LanguageController.getInstance().getString(entity.item.name),0xffffff,30,true);
+					container.addChild(nameText);
+					nameText.x = renderWidth/2 - Configrations.ViewPortWidth/2;
+					nameText.y =  leftTimeText.y- nameText.height - 5;
+					
+				}
+				
+				container.x = -( leftPoint-renderGap)/2;
+				container.y = -renderHeight;
 			}
 		}
 		
@@ -94,10 +114,10 @@ package view.ui
 				this._list.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
 				this._list.itemRendererFactory = tileListItemRendererFactory;
 				this._list.addEventListener(Event.SCROLL, list_scrollHandler);
-				this.addChild(this._list);
+				container.addChild(this._list);
 				
-				const normalSymbolTexture:Texture   = Game.assets.getTexture("PanelRenderSkin");
-				const selectedSymbolTexture:Texture = Game.assets.getTexture("PanelBackSkin");
+				const normalSymbolTexture:Texture   = Game.assets.getTexture("pageoff");
+				const selectedSymbolTexture:Texture = Game.assets.getTexture("pageon");
 				this._pageIndicator = new PageIndicator();
 				this._pageIndicator.normalSymbolFactory = function():Image
 				{
@@ -113,15 +133,13 @@ package view.ui
 				}
 				this._pageIndicator.direction = PageIndicator.DIRECTION_HORIZONTAL;
 				this._pageIndicator.pageCount = 1;
-				this._pageIndicator.gap = 3;
-				this._pageIndicator.paddingTop = this._pageIndicator.paddingRight = this._pageIndicator.paddingBottom =
-					this._pageIndicator.paddingLeft = 6;
+				this._pageIndicator.gap = 10;
 				this._pageIndicator.addEventListener(Event.CHANGE, pageIndicator_changeHandler);
-				this.addChild(this._pageIndicator);
+				container.addChild(this._pageIndicator);
 			}else{
 				this._list.dataProvider = collection;
-				this.addChild(this._list);
-				this.addChild(this._pageIndicator);
+				container.addChild(this._list);
+				container.addChild(this._pageIndicator);
 			}
 			layout();
 			addEventListener(Event.ADDED_TO_STAGE,addedToStageHandler);
@@ -130,12 +148,9 @@ package view.ui
 		{
 			const renderer:DefaultListItemRenderer = new ToolItemRender();
 			renderer.defaultSkin = new Image(Game.assets.getTexture("PanelRenderSkin"));
-			renderer.labelField = "label";
-			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
-			renderer.iconSourceField = "texture";
-			renderer.iconPosition = Button.ICON_POSITION_TOP;
+//			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 10, 0x000000);
 			renderer.width = renderWidth;
-			renderer.height= renderHeight;
+			renderer.height= renderHeight-20*Configrations.ViewScale;
 			return renderer;
 		}
 		private var toolsObject:Object = {
@@ -169,30 +184,34 @@ package view.ui
 			var spec:CropSpec ;
 			var specObj:Object;
 			for each(spec in cropSpecArr){
-				list.push({label :spec.name,texture:Game.assets.getTexture(spec.name+"Icon"),type:UiController.TOOL_SEED,id:spec.id});
+				list.push({label :spec.name,texture:Game.assets.getTexture(spec.name+"Icon"),type:UiController.TOOL_SEED,id:spec.item_id});
 			}
 			return list;
 		}
 		protected function layout():void
 		{
-			const layout:TiledRowsLayout = TiledRowsLayout(this._list.layout);
-			this._list.itemRendererProperties.gap = layout.gap = layout.paddingTop = layout.paddingBottom = 10*Configrations.ViewScale;
-			layout.paddingRight = layout.paddingLeft = 20*Configrations.ViewScale;
-			
-			
-			this._list.width = Math.min(Configrations.ViewPortWidth*0.8,_list.dataProvider.length * 80+100);
-			this._list.height = renderHeight  + 20*Configrations.ViewScale;
-			this._pageIndicator.width = _list.width;
-			this._list.validate();
-			
-			this._pageIndicator.y = _list.height + 10;
-			this._pageIndicator.pageCount = this._list.horizontalPageCount;
-			this._pageIndicator.validate();
-			if(_pageIndicator.pageCount ==1){
-				_pageIndicator.visible = false;
-			}else{
-				_pageIndicator.visible = true;
+			if(_list && _list.parent){
+				const layout:TiledRowsLayout = TiledRowsLayout(this._list.layout);
+				this._list.itemRendererProperties.gap = layout.gap = layout.paddingTop = layout.paddingBottom = 10*Configrations.ViewScale;
+				layout.paddingRight = layout.paddingLeft = 20*Configrations.ViewScale;
+				
+				
+				this._list.width = Math.min(Configrations.ViewPortWidth*0.8,_list.dataProvider.length * 80+100);
+				this._list.height = renderHeight ;
+				this._pageIndicator.width = _list.width;
+				this._list.validate();
+				
+				this._pageIndicator.y = _list.height + 5;
+				this._pageIndicator.pageCount = this._list.horizontalPageCount;
+				this._pageIndicator.validate();
+				if(_pageIndicator.pageCount ==1){
+					_pageIndicator.visible = false;
+				}else{
+					_pageIndicator.visible = true;
+				}
 			}
+			container.x = -container.width/2;
+			container.y = -container.height;
 		}
 		private function destroy():void
 		{
@@ -206,12 +225,12 @@ package view.ui
 			}
 			
 			var displayObj:DisplayObject;
-			while(numChildren>0){
-				displayObj = getChildAt(0);
+			while(container.numChildren>0){
+				displayObj = container.getChildAt(0);
 				if(displayObj is FarmToolsRender){
 					(displayObj as FarmToolsRender).destroy();
 				}
-				removeChild(displayObj);
+				container.removeChild(displayObj);
 			}
 		}
 	}

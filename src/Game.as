@@ -42,8 +42,9 @@ package
 //			mLoadingProgress.y = Configrations.ViewPortHeight * 0.7;
 //			addChild(mLoadingProgress);
 			
-			assets.loadQueue(onLoadQueue);
 			
+			GameController.instance.show(this);
+			assets.loadQueue(onLoadQueue);
 			addEventListener(starling.events.Event.ADDED_TO_STAGE, onAddedToStage);
 			addEventListener(starling.events.Event.REMOVED_FROM_STAGE, onRemovedFromStage);
 		}
@@ -57,8 +58,8 @@ package
 			if (ratio == 1){
 //				mLoadingProgress.removeFromParent(true);
 //				mLoadingProgress = null;
+				GameController.instance.start();
 				
-				GameController.instance.start(this);
 			}
 		}
         private function onAddedToStage(event:starling.events.Event):void

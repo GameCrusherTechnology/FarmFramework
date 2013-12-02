@@ -17,6 +17,8 @@ package view
 	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	import starling.utils.deg2rad;
+	
+	import view.effect.RainEffect;
 
 	public class TweenEffectLayer extends Sprite
 	{
@@ -112,6 +114,14 @@ package view
 			}
 		}
 		
+		
+		public function addRainEffect(point:Point):void
+		{
+			var rainEffect:RainEffect = new RainEffect();
+			addChild(rainEffect);
+			rainEffect.x = point.x;
+			rainEffect.y = point.y;
+		}
 		private var bagPoint:Point = new Point(50,Configrations.ViewPortHeight-50);
 	}
 }

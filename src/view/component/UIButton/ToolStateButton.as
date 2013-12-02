@@ -1,22 +1,37 @@
 package view.component.UIButton
 {
+	import flash.geom.Rectangle;
+	
+	import controller.FieldController;
 	import controller.GameController;
 	import controller.UiController;
 	
+	import feathers.controls.Button;
+	import feathers.display.Scale9Image;
+	import feathers.text.BitmapFontTextFormat;
+	import feathers.textures.Scale9Textures;
+	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
+	
+	import model.OwnedItem;
+	import model.player.GamePlayer;
+	import model.player.PlayerChangeEvents;
 	
 	import starling.animation.Transitions;
 	import starling.animation.Tween;
 	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.Sprite;
+	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
+	import starling.text.TextField;
 	import starling.textures.Texture;
+	import starling.utils.HAlign;
+	import starling.utils.VAlign;
 	import starling.utils.deg2rad;
-	
-	import view.ui.FarmToolUI;
 
 	public class ToolStateButton extends Sprite
 	{
@@ -30,14 +45,70 @@ package view.component.UIButton
 		}
 		private var icon:Image ;
 		private var type:String;
+		private var tipContainer:Image;
+		private var tipButton:Button;
+		private var countText:TextField;
 		public function show(_type:String,texture:Texture):void
 		{
-			destroy();
 			type = _type;
+			var skin:Image = new Image(Game.assets.getTexture("toolsStateSkin"));
+			addChild(skin);
+			skin.width = skin.height = length ;
+			
 			icon = new Image(texture);
 			addChild(icon);
-			icon.width = icon.height = length ;
-			icon.x = icon.y = icon.pivotX =icon.pivotY = length/2;
+			icon.width = icon.height = length*0.9 ;
+			if(type == UiController.TOOL_HARVEST){
+				icon.x = icon.y = length/2;
+				icon.pivotX =icon.pivotY = length*0.45;
+			}else{
+				icon.x = icon.y = length*0.05;
+			}
+			
+			tipButton = new Button();
+			tipButton.label =  LanguageController.getInstance().getString("click");
+			tipButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
+			tipButton.defaultSkin =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("whitePanelSkin"), new Rectangle(1, 1, 198, 98)));
+			tipButton.width = length;
+			tipButton.height = 30 * Configrations.ViewScale;
+			addChild(tipButton);
+			tipButton.y = length;
+			
+			if(type == UiController.TOOL_SPEED || type == UiController.TOOL_SEED||type == UiController.TOOL_ADDFEILD){
+				countText = FieldController.createSingleLineDynamicField(length,length," ",0x000000,15,true);
+				countText.hAlign = HAlign.RIGHT;
+				countText.vAlign = VAlign.BOTTOM;
+				addChild(countText);
+				player.addEventListener(PlayerChangeEvents.ITEM_CHANGE,onItemChange);
+				onItemChange();
+			}else{
+				
+			}
+		}
+		
+		private function onItemChange(e:Event = null):void
+		{
+			var id:String ;
+			if(type == UiController.TOOL_SPEED){
+				id = Configrations.SPEED_ITEMID;
+			}else if(type == UiController.TOOL_SEED){
+				id = GameController.instance.selectSeed;
+			}else if(type == UiController.TOOL_ADDFEILD){
+				
+			}
+			var o:OwnedItem = player.getOwnedItem(id);
+			countText.text = "×" + o.count;
+		}
+		public function hideTip():void
+		{
+			var tween:Tween = new Tween(tipButton, 0.5);
+			tween.animate("alpha",0);
+			tween.onComplete = function():void{
+				if(tipButton && tipButton.parent){
+					tipButton.parent.removeChild(tipButton);
+				}
+			};
+			Starling.juggler.add(tween);
 		}
 		
 		public function playEffect():void
@@ -46,10 +117,20 @@ package view.component.UIButton
 			tween.animate("rotation", -deg2rad(360));
 			Starling.juggler.add(tween);
 		}
-		private function destroy():void
+		public function destroy():void
 		{
 			if(icon && icon.parent){
 				icon.parent.removeChild(icon);
+			}
+			if(tipButton && tipButton.parent){
+				tipButton.parent.removeChild(tipButton);
+			}
+			if(countText){
+				player.removeEventListener(PlayerChangeEvents.ITEM_CHANGE,onItemChange);
+			}
+			
+			if(parent){
+				parent.removeChild(this);
 			}
 		}
 		private function onTouch(event:TouchEvent):void
@@ -66,5 +147,9 @@ package view.component.UIButton
 			}
 		}
 		
+		private function get player():GamePlayer
+		{
+			return GameController.instance.currentPlayer;
+		}
 	}
 }

@@ -4,9 +4,10 @@ package view.panel
 	
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.TaskController;
+	import controller.UiController;
 	
 	import feathers.controls.Button;
-	import feathers.controls.Label;
 	import feathers.controls.PanelScreen;
 	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
@@ -19,9 +20,11 @@ package view.panel
 	import model.player.GamePlayer;
 	import model.task.TaskData;
 	
+	import service.command.task.BuyTaskCommand;
+	
 	import starling.display.Image;
+	import starling.display.Sprite;
 	import starling.events.Event;
-	import starling.events.TouchEvent;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	import starling.utils.HAlign;
@@ -34,6 +37,8 @@ package view.panel
 		private var panelSkin:Scale9Image;
 		private var leavebutton:Button;
 		private var isTaskFinished:Boolean = true;
+		private var maleButton:Button;
+		private var femaleButton:Button;
 		public function FindTaskPanel()
 		{
 			this.addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
@@ -57,12 +62,15 @@ package view.panel
 		}
 		private function configMalMesContainer():void
 		{
-			var container:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
+			var container:Sprite = new Sprite;
 			addChild(container);
-			container.width = panelwidth*0.9;
-			container.height= panelheight*0.4;
-			container.x = Configrations.ViewPortWidth/2 - container.width/2;
-			container.y = panelSkin.y + panelheight*0.05;
+			container.x = Configrations.ViewPortWidth/2 - panelwidth*0.9/2;
+			container.y = panelSkin.y + panelheight*0.5;
+			
+			var containerSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
+			container.addChild(containerSkin);
+			containerSkin.width = panelwidth*0.9;
+			containerSkin.height= panelheight*0.4;
 			
 			var icon:Image = new Image(Game.assets.getTexture("maleIcon"));
 			container.addChild(icon);
@@ -96,28 +104,31 @@ package view.panel
 			npcTalkMes.x = left;
 			npcTalkMes.y = npcName.y+npcName.height + 5;
 			
-			var button:Button = new Button();
-			button.label = LanguageController.getInstance().getString("buy");
-			button.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
-			button.paddingLeft =button.paddingRight =  20;
-			button.paddingTop =button.paddingBottom =  5;
-			container.addChild(button);
-			button.validate();
-			button.x = panelwidth*0.9 - button.width;
-			button.y =  panelheight*0.4 - button.height;
-			button.addEventListener(TouchEvent.TOUCH,onTouchOut);
+			maleButton = new Button();
+			maleButton.label = LanguageController.getInstance().getString("buy");
+			maleButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+			maleButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			maleButton.paddingLeft =maleButton.paddingRight =  20;
+			maleButton.paddingTop =maleButton.paddingBottom =  5;
+			container.addChild(maleButton);
+			maleButton.validate();
+			maleButton.x = panelwidth*0.9 - maleButton.width;
+			maleButton.y =  panelheight*0.4 - maleButton.height;
+			maleButton.addEventListener(Event.TRIGGERED,onTriggeredMale);
 			
 		}
 		
 		private function configFemalMesContainer():void
 		{
-			var container:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
+			var container:Sprite = new Sprite;
 			addChild(container);
-			container.width = panelwidth*0.9;
-			container.height= panelheight*0.4;
-			container.x = Configrations.ViewPortWidth/2 - container.width/2;
-			container.y = panelSkin.y + panelheight*0.5;
+			container.x = Configrations.ViewPortWidth/2 - panelwidth*0.9/2;
+			container.y = panelSkin.y + panelheight*0.05;
+			
+			var containerSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
+			container.addChild(containerSkin);
+			containerSkin.width = panelwidth*0.9;
+			containerSkin.height= panelheight*0.4;
 			
 			var icon:Image = new Image(Game.assets.getTexture("femaleIcon"));
 			container.addChild(icon);
@@ -151,17 +162,17 @@ package view.panel
 			npcTalkMes.x = left;
 			npcTalkMes.y = npcName.y+npcName.height + 5;
 			
-			var button:Button = new Button();
-			button.label = LanguageController.getInstance().getString("buy");
-			button.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
-			button.paddingLeft =button.paddingRight =  20;
-			button.paddingTop =button.paddingBottom =  5;
-			container.addChild(button);
-			button.validate();
-			button.x = panelwidth*0.9 - button.width;
-			button.y =  panelheight*0.4 - button.height;
-			button.addEventListener(Event.TRIGGERED,onTouchOut);
+			femaleButton = new Button();
+			femaleButton.label = LanguageController.getInstance().getString("buy");
+			femaleButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+			femaleButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			femaleButton.paddingLeft =femaleButton.paddingRight =  20;
+			femaleButton.paddingTop =femaleButton.paddingBottom =  5;
+			container.addChild(femaleButton);
+			femaleButton.validate();
+			femaleButton.x = panelwidth*0.9 - femaleButton.width;
+			femaleButton.y =  panelheight*0.4 - femaleButton.height;
+			femaleButton.addEventListener(Event.TRIGGERED,onTriggeredFemale);
 			
 		}
 		
@@ -185,13 +196,24 @@ package view.panel
 		{
 			close();
 		}
-		private function onTouchOut(e:TouchEvent):void
+		private function onTriggeredMale(e:Event):void
 		{
+			new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_MALE),onBuyTask);
+		}
+		private function onTriggeredFemale(e:Event):void
+		{
+			new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_FEMALE),onBuyTask);
+		}
+		private function onBuyTask():void
+		{
+			if(GameController.instance.isHomeModel){
+				UiController.instance.showTaskButton();
+			}
 			close();
 		}
 		private function get task():TaskData
 		{
-			return GameController.instance.localPlayer.currentTask;
+			return GameController.instance.localPlayer.npc_order;
 		}
 		private function get player():GamePlayer
 		{
@@ -199,6 +221,9 @@ package view.panel
 		}
 		private function close():void
 		{
+			maleButton.removeEventListener(Event.TRIGGERED,onTriggeredFemale);
+			femaleButton.removeEventListener(Event.TRIGGERED,onTriggeredFemale);
+			leavebutton.removeEventListener(Event.TRIGGERED,onTriggered);
 			if(parent){
 				parent.removeChild(this);
 			}

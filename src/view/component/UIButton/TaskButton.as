@@ -1,8 +1,12 @@
 package view.component.UIButton
 {
 	import controller.DialogController;
+	import controller.GameController;
+	import controller.TaskController;
 	
 	import gameconfig.Configrations;
+	
+	import model.player.GamePlayer;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -22,14 +26,29 @@ package view.component.UIButton
 			super();
 			length = length * Configrations.ViewScale;
 			addEventListener(TouchEvent.TOUCH, onTouch);
+			
+			var skin:Image = new Image(Game.assets.getTexture("toolsStateSkin"));
+			addChild(skin);
+			skin.width = skin.height = length ;
+			skin.x = skin.y  = 0;
+			
 			icon = new Image(Game.assets.getTexture("maleHeadIcon"));
 			addChild(icon);
-			icon.width = icon.height = length ;
-			icon.x = icon.y = icon.pivotX =icon.pivotY = length/2;
+			icon.width = icon.height = length *0.8;
+			icon.x = icon.y  = length *0.1;
 		}
 		private var icon:Image ;
 		public function refresh():void
 		{
+			if(TaskController.instance.getTaskPanelShow()){
+				if(player.npc_order.npc == Configrations.NPC_MALE){
+					icon.texture = Game.assets.getTexture("maleHeadIcon");
+				}else{
+					icon.texture = Game.assets.getTexture("femaleHeadIcon");
+				}
+			}else{
+				icon.texture = Game.assets.getTexture("taskIcon");
+			}
 		}
 		
 		private function destroy():void
@@ -38,12 +57,21 @@ package view.component.UIButton
 				icon.parent.removeChild(icon);
 			}
 		}
+		
+		private function get player():GamePlayer
+		{
+			return GameController.instance.localPlayer;
+		}
 		private function onTouch(event:TouchEvent):void
 		{
 			var touch:Touch = event.getTouch(this, TouchPhase.BEGAN);
 			if(touch)
 			{
-				DialogController.instance.showPanel(new FindTaskPanel());
+				if(TaskController.instance.getTaskPanelShow()){
+					DialogController.instance.showPanel(new TaskPanel());
+				} else{
+					DialogController.instance.showPanel(new FindTaskPanel());
+				}	
 			}
 		}
 		

@@ -14,9 +14,13 @@ package model.gameSpec
 			
 		}
 		public var group_id:String;
-		public var id:int;
+		public var item_id:String;
 		public var name:String;
 		public var bound_x:int;
 		public var bound_y:int;
+		public var level:int = 0;
+		
+		public var coinPrice:int;
+		public var gemPrice:int;
 	}
 }

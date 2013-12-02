@@ -1,12 +1,8 @@
 package view.component.UIButton
 {
 	import controller.DialogController;
-	import controller.GameController;
 	import controller.FieldController;
-	import controller.UiController;
-	
-	import feathers.controls.Button;
-	import feathers.text.BitmapFontTextFormat;
+	import controller.GameController;
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
@@ -25,7 +21,7 @@ package view.component.UIButton
 		public function MenuButton()
 		{
 			super();
-			var icon:Image = new Image(Game.assets.getTexture("GiftIcon"));
+			var icon:Image = new Image(Game.assets.getTexture("menuIcon"));
 			icon.width = icon.height = 60 * Configrations.ViewScale;
 			addChild(icon);
 			var menuText:TextField = FieldController.createSingleLineDynamicField(icon.width,21,LanguageController.getInstance().getString("menu"),0x000000,20);

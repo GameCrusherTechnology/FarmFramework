@@ -13,7 +13,7 @@ package view.component.UIButton
 	{
 		public function EditButton()
 		{
-			var icon:Image = new Image(Game.assets.getTexture("GiftIcon"));
+			var icon:Image = new Image(Game.assets.getTexture("editIcon"));
 			addChild(icon);
 			icon.width = icon.height = 60 * Configrations.ViewScale;
 			

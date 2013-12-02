@@ -2,6 +2,7 @@ package view.component.progressbar
 {
 	import flash.geom.Rectangle;
 	
+	import controller.DialogController;
 	import controller.GameController;
 	
 	import feathers.display.Scale9Image;
@@ -9,7 +10,15 @@ package view.component.progressbar
 	
 	import gameconfig.Configrations;
 	
+	import model.player.GamePlayer;
+	import model.player.PlayerChangeEvents;
+	
+	import starling.events.Event;
+	import starling.events.Touch;
 	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
+	
+	import view.panel.TreasurePanel;
 
 	public class GemProgressBar extends GreenProgressBar
 	{
@@ -19,8 +28,6 @@ package view.component.progressbar
 			super(Configrations.ViewPortWidth*.12, 30*Configrations.ViewScale,2,0x000000,0x3FA8DF);
 			fillDirection = RIGHT_TO_LEFT;
 			showIcon(Game.assets.getTexture("gemIcon"));
-			comment = String(GameController.instance.currentPlayer.gems);
-			progress = 0;
 			
 			var scaleTexture:Scale9Textures = new Scale9Textures(Game.assets.getTexture("addIcon"),new Rectangle(2,2,21,21));
 			addButton  = new Scale9Image(scaleTexture);;
@@ -30,10 +37,28 @@ package view.component.progressbar
 			addButton.y = - 5*Configrations.ViewScale;
 			addButton.addEventListener(TouchEvent.TOUCH,onAddButtonTouched);
 			
+			refresh();
+			player.addEventListener(PlayerChangeEvents.GEM_CHANGE,onPlayerChange);
+		}
+		private function onPlayerChange(event:Event):void
+		{
+			refresh();
+		}
+		public function refresh():void
+		{
+			comment = String(player.gem);
+		}
+		private function get player():GamePlayer
+		{
+			return GameController.instance.localPlayer;
 		}
 		private function onAddButtonTouched(e:TouchEvent):void
 		{
-			
+			e.stopPropagation();
+			var touch:Touch = e.getTouch(addButton,TouchPhase.BEGAN);
+			if(touch){
+				DialogController.instance.showPanel(new TreasurePanel());
+			}
 		}
 	}
 }

@@ -39,6 +39,7 @@
         public static function createSingleLineDynamicField(width:Number,height:Number,txt:String, _color:uint, _size:Number,_bold:Boolean = false):TextField{
 			
             var _local4:TextField = new TextField(width,height,txt,FONT_FAMILY,_size,_color,_bold);
+			_local4.touchable = false;
             return (_local4);
         }
 		public static function createNoFontField(width:Number,height:Number,txt:String, _color:uint, _size:Number):TextField{

@@ -16,7 +16,7 @@
 <resourceName key="rating" value="rating"/>
 <resourceName key="setting" value="setting"/>
 <resourceName key="change" value="change"/>
-<resourceName key="farmname" value="farmer name"/>
+<resourceName key="farmname" value="Farmer Name"/>
 <resourceName key="coin" value="coin"/>
 <resourceName key="gem" value="gem"/>
 <resourceName key="exp" value="exp"/>
@@ -28,9 +28,50 @@
 <resourceName key="stranger" value="stranger"/>
 <resourceName key="confirm" value="confirm"/>
 <resourceName key="task" value="task"/>
-<resourceName key="request" value="request"/>
+<resourceName key="request" value="Request"/>
 <resourceName key="leave" value="leave"/>
 <resourceName key="technician" value="Technician"/>
 <resourceName key="shopkeeper" value="Shopkeeper"/>
 <resourceName key="buy" value="buy"/>
+<resourceName key="upgrade" value="upgrade"/>
+<resourceName key="cd" value="cooldown"/>
+<resourceName key="getReward" value="GetReward"/>
+<resourceName key="visit" value="visit"/>
+<resourceName key="message" value="Message"/>
+<resourceName key="info" value="Info"/>
+<resourceName key="order" value="Order"/>
+<resourceName key="accept" value="accept"/>
+<resourceName key="invited" value="Invited"/>
+<resourceName key="helped" value="Helped"/>
+<resourceName key="you" value="you"/>
+<resourceName key="ago" value="ago"/>
+<resourceName key="close" value="close"/>
+<resourceName key="reward" value="Reward"/>
+<resourceName key="add" value="Add"/>
+<resourceName key="noorder" value="At present there is no order!"/>
+<resourceName key="SelectItem" value="Select Item"/>
+<resourceName key="click" value="Click"/>
+<resourceName key="cost" value="Cost"/>
+<resourceName key="or" value="or"/>
+<resourceName key="qucickshop" value="Convenience Store"/>
+<resourceName key="levelup" value="To Next Level"/>
+<resourceName key="tofull" value="To Full"/>
+<resourceName key="home" value="Home"/>
+
+<!-- 提醒 -->
+<resourceName key="shopTip01" value="In the shop to buy crop is not wise !"/>
+<resourceName key="shopTip02" value="Change Name Will Cost you"/>
+<resourceName key="warnTip01" value="Level is not enough !"/>
+<!-- 称号 -->
+<resourceName key="noTitle" value="Farm Beginner"/>
+<resourceName key="master" value="master"/>
+<resourceName key="master1" value="master1"/>
+<resourceName key="master2" value="master2"/>
+<resourceName key="master3" value="master3"/>
+<resourceName key="master4" value="master4"/>
+<!-- 作物 -->
+<resourceName key="rice" value="rice"/>
+<resourceName key="sunflower" value="sunflower"/>
+<resourceName key="clover" value="clover"/>
+
 </language>

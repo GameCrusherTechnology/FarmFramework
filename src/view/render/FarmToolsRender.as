@@ -1,10 +1,14 @@
 package view.render
 {
-	import controller.GameController;
+	import controller.DialogController;
 	import controller.FieldController;
+	import controller.GameController;
 	import controller.UiController;
 	
 	import gameconfig.Configrations;
+	
+	import model.OwnedItem;
+	import model.player.GamePlayer;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -12,6 +16,9 @@ package view.render
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.text.TextField;
+	import starling.utils.HAlign;
+	
+	import view.panel.BuyItemPanel;
 
 	public class FarmToolsRender extends Sprite
 	{
@@ -20,12 +27,14 @@ package view.render
 		private var type:String;
 		private var id:String;
 		private var renderWidth:int = 80*Configrations.ViewScale;
-		private var renderHeight:int= 100*Configrations.ViewScale;
+		private var renderHeight:int= 120*Configrations.ViewScale;
+		
+		private var countText:TextField;
 		
 		public function FarmToolsRender(data:Object)
 		{
 			renderWidth = 80*Configrations.ViewScale;
-			renderHeight= 100*Configrations.ViewScale;
+			renderHeight= 120*Configrations.ViewScale;
 			type = data.type;
 			id = data.id;
 			var backImage:Image =  new Image(Game.assets.getTexture("toolBackSkin"));
@@ -45,6 +54,16 @@ package view.render
 			lable.y = renderHeight - lable.height-5;
 			
 			addEventListener(TouchEvent.TOUCH,button_touchHandler);
+			if(type== UiController.TOOL_SPEED){
+				
+				var ownedFer:OwnedItem = player.getOwnedItem(Configrations.SPEED_ITEMID);
+				countText = FieldController.createSingleLineDynamicField(icon.width,20,"×"+ownedFer.count,0x000000,15,true);
+				countText.hAlign = HAlign.RIGHT;
+				addChild(countText);
+				countText.x =icon.x;
+				countText.y = icon.y + icon.height - countText.height;
+			}
+			
 		}
 		private var lastTouchBegin:int = 0;
 		private function button_touchHandler(event:TouchEvent):void
@@ -55,14 +74,26 @@ package view.render
 				doSelected();
 			}
 		}
+		
+		private function get player():GamePlayer
+		{
+			return GameController.instance.currentPlayer;
+		}
 		private function doSelected():void
 		{
-			if(type  == UiController.TOOL_SEED){
-				GameController.instance.selectSeed = id;
+			if(type == UiController.TOOL_SPEED){
+				var o :OwnedItem = player.getOwnedItem(Configrations.SPEED_ITEMID);
+				if(o.count<=0){
+					DialogController.instance.showPanel(new BuyItemPanel(Configrations.SPEED_ITEMID));
+				}else{
+					GameController.instance.selectTool = type;
+					UiController.instance.showToolStateButton(type,Game.assets.getTexture(textureName));
+				}
+			}else{
+				GameController.instance.selectTool = type;
+				UiController.instance.showToolStateButton(type,Game.assets.getTexture(textureName));
 			}
-			GameController.instance.selectTool = type;
 			UiController.instance.hideUiTools();
-			UiController.instance.showToolStateButton(type,Game.assets.getTexture(textureName));
 		}
 		public function destroy():void
 		{
