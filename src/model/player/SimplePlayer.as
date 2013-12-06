@@ -2,9 +2,6 @@ package model.player
 {
 	public class SimplePlayer
 	{
-		public static const REQUEST_FRIEND:int=1;
-		public static const HELP_FRIEND:int=2;
-		public static const DO_NOTHING:int=0;
 		public function SimplePlayer(data:Object)
 		{
 			for(var str:String in data){
@@ -23,12 +20,6 @@ package model.player
 		public var name:String = "happyFarmc";
 		
 		public var title:String = "10001|1";
-		
-		public var type:int;
-		
-		public var mes:String = "...";
-		
-		public var creatTime:Number = 1382454068;
 		
 		public var helpCount:int = 0;
 		

@@ -8,5 +8,7 @@ package model.gameSpec
 		}
 		
 		public var levels:String;
+		
+		public var type:String = "Crop";
 	}
 }

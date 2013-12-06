@@ -194,6 +194,7 @@ package view.entity
 		{
 			UpdateController.instance.pushActionData(new UpdateData(cropItem.gameuid,Configrations.HARVEST,{data_id:cropItem.data_id,gameuid:cropItem.gameuid}));
 			player.addExp(cropItem.exp);
+			GameController.instance.localPlayer.addItem(new OwnedItem(Configrations.getAchieveId(cropItem.item_id,"harvestCrop"),1));
 			showHarvestAnimation(Game.assets.getTexture(cropItem.name +"Icon"));
 			cropItem.harvest();
 			refresh();

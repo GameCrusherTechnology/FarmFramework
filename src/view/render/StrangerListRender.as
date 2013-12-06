@@ -38,9 +38,13 @@ package view.render
 			super.data = value;
 			if(value){
 				playerData = value as SimplePlayer;
-				if(!container){
-					configLayout();
+				if(container){
+					if(container.parent){
+						container.parent.removeChild(container);
+					}
+					
 				}
+				configLayout();
 			}
 		}
 		private function configLayout():void

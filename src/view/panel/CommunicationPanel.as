@@ -3,6 +3,7 @@ package view.panel
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
+	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.List;
@@ -19,7 +20,9 @@ package view.panel
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
-	import model.player.SimplePlayer;
+	import model.MessageData;
+	import model.player.GamePlayer;
+	import model.player.PlayerChangeEvents;
 	
 	import starling.display.Image;
 	import starling.display.Shape;
@@ -108,18 +111,22 @@ package view.panel
 			list.x = panelSkin.x + panelwidth*0.05;
 			list.y = panelSkin.y + panelheight*0.1;
 			
-			var leavebutton:Button = new Button();
-			leavebutton.label = LanguageController.getInstance().getString("close");
-			leavebutton.defaultSkin = new Image(Game.assets.getTexture("offButtonSkin"));
-			leavebutton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
-			leavebutton.paddingLeft =leavebutton.paddingRight =  5;
-			leavebutton.paddingTop =leavebutton.paddingBottom =  5;
-			addChild(leavebutton);
-			leavebutton.validate();
-			leavebutton.x = Configrations.ViewPortWidth - leavebutton.width - 10*scale;
-			leavebutton.y = Configrations.ViewPortHeight - leavebutton.height - 10*scale ;
-			leavebutton.addEventListener(Event.TRIGGERED,onCloseTriggered);
 			
+			player.addEventListener(PlayerChangeEvents.MESSAGE_CHANGE,onmessagechange);
+			
+			var cancelButton:Button = new Button();
+			cancelButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
+			cancelButton.addEventListener(Event.TRIGGERED, onCloseTriggered);
+			addChild(cancelButton);
+			cancelButton.width = cancelButton.height = Configrations.ViewPortHeight*0.05;
+			cancelButton.x = Configrations.ViewPortWidth *0.95 -cancelButton.width -5;
+			cancelButton.y = panelSkin.y + panelheight*0.02;
+			
+		}
+		
+		private function onmessagechange(e:Event):void
+		{
+			configList();
 		}
 		private function onCloseTriggered(e:Event):void
 		{
@@ -127,18 +134,18 @@ package view.panel
 		}
 		private function get mesArr():ListCollection
 		{
-			return new ListCollection([
-				{ player:new SimplePlayer({gameuid:"12",sex:0,farmName:"dadw",mes:"sadawaeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"})},
-				{ player:new SimplePlayer({gameuid:"2135",sex:1,farmName:"sad",mes:"sadawaeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"})},
-				{ player:new SimplePlayer({gameuid:"456",sex:1,farmName:"sdaw",mes:"sadawaeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"})},
-				{ player:new SimplePlayer({gameuid:"458",sex:1,farmName:"aewr",mes:"sadawaeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"})},
-				{ player:new SimplePlayer({gameuid:"135",sex:0,farmName:"sdfw",mes:"sadawaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"})},
-				{ player:new SimplePlayer({gameuid:"687",sex:0,farmName:"fscas",mes:"sadawaeqweeeeeeeeeeeeeeeeeeeeeeeeeeee"})},
-				{ player:new SimplePlayer({gameuid:"978",sex:0,farmName:"xzdqww"})},
-				{ player:new SimplePlayer({gameuid:"8648",sex:1,farmName:"gfewrwe"})},
-				{ player:new SimplePlayer({gameuid:"5421",sex:0,farmName:"gfserq"})},
-				{ player:new SimplePlayer({gameuid:"687",sex:0,farmName:"rewer"})}
-			]);
+			var list:ListCollection;
+			var arr:Array = [];
+			var data:MessageData;
+			for each(data in player.user_mes_vec){
+				if(data.type == Configrations.MESSTYPE_MES){
+					arr.push(data);
+				}
+			}
+			arr.sortOn("updatetime",Array.DESCENDING);
+			arr = [new MessageData({})].concat(arr);
+			list = new ListCollection(arr);
+			return list;
 		}
 		private function get orderArr():ListCollection
 		{
@@ -149,10 +156,15 @@ package view.panel
 		
 		private function get infoArr():ListCollection
 		{
-			return new ListCollection([
-				{ player:new SimplePlayer({gameuid:"12",sex:0,farmName:"dasfedw",type:1})},
-				{ player:new SimplePlayer({gameuid:"687",sex:0,farmName:"rewfdgerer",type:2})}
-			]);
+			var list:ListCollection = new ListCollection;
+			var data:MessageData;
+			for each(data in player.user_mes_vec){
+				if(data.type != Configrations.MESSTYPE_MES){
+					list.push(data);
+				}
+			}
+			return list;
+			
 		}
 		private function tabBar_changeHandler(event:Event):void
 		{
@@ -168,8 +180,8 @@ package view.panel
 				list.itemRendererFactory =function tileListItemRendererFactory():MessageListRender
 				{
 					var renderer:MessageListRender = new MessageListRender();
-					renderer.width = panelwidth *0.7;
-					renderer.height =panelheight*0.2;
+					renderer.width = panelwidth *0.85;
+					renderer.height =panelheight*0.15;
 					return renderer;
 				}
 			}else if(currentTabIndex == 1){
@@ -177,7 +189,7 @@ package view.panel
 				list.itemRendererFactory =function tileListItemRendererFactory():OrderListRender
 				{
 					var renderer:OrderListRender = new OrderListRender();
-					renderer.width = panelwidth *0.7;
+					renderer.width = panelwidth *0.85;
 					renderer.height =panelheight*0.8;
 					return renderer;
 				}
@@ -186,11 +198,16 @@ package view.panel
 				list.itemRendererFactory =function tileListItemRendererFactory():InfoListRender
 				{
 					var renderer:InfoListRender = new InfoListRender();
-					renderer.width = panelwidth *0.7;
+					renderer.width = panelwidth *0.85;
 					renderer.height =panelheight*0.2;
 					return renderer;
 				}
 			}
+		}
+		
+		private function get player():GamePlayer
+		{
+			return GameController.instance.currentPlayer;
 		}
 		private function close():void
 		{

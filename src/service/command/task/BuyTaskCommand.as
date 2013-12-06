@@ -1,6 +1,7 @@
 package service.command.task
 {
 	import controller.GameController;
+	import controller.TaskController;
 	
 	import model.task.TaskData;
 	
@@ -19,6 +20,7 @@ package service.command.task
 		{
 			if(Command.isSuccess(result)){
 				if(result.new_task){
+					GameController.instance.localPlayer.changeGem(-TaskController.instance.getTaskPrice());
 					GameController.instance.localPlayer.user_task = result.new_task;
 				}
 				onSuccess();

@@ -3,6 +3,7 @@ package view.render
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
+	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.renderers.DefaultListItemRenderer;
@@ -14,6 +15,7 @@ package view.render
 	import gameconfig.LanguageController;
 	import gameconfig.SystemDate;
 	
+	import model.MessageData;
 	import model.player.SimplePlayer;
 	
 	import starling.display.Image;
@@ -32,15 +34,18 @@ package view.render
 		}
 		
 		private var container:Sprite;
-		private var playerData:SimplePlayer;
+		private var mesData:MessageData;
 		override public function set data(value:Object):void
 		{
 			super.data = value;
 			if(value){
-				playerData = value.player;
-				if(!container){
-					configLayout();
+				mesData = value as MessageData;
+				if(container){
+					if(container.parent){
+						container.parent.removeChild(container);
+					}
 				}
+				configLayout();
 			}
 		}
 		private function configLayout():void
@@ -50,6 +55,8 @@ package view.render
 			
 			container = new Sprite;
 			addChild(container);
+			
+			var playerData:SimplePlayer = mesData.player;
 			
 			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(1, 1, 62, 62));
 			var skin:Scale9Image = new Scale9Image(skintextures);
@@ -86,7 +93,7 @@ package view.render
 			
 			
 			var mes:String ;
-			if(playerData.type == SimplePlayer.REQUEST_FRIEND){
+			if(mesData.type == Configrations.MESSTYPE_INVITE){
 				mes = LanguageController.getInstance().getString("invited") + " "+ LanguageController.getInstance().getString("you");
 			}else{
 				mes = LanguageController.getInstance().getString("helped")  + " "+ LanguageController.getInstance().getString("you");
@@ -97,7 +104,7 @@ package view.render
 			titleText.x = iconRight;
 			titleText.y = nameText.y + nameText.height ;
 			
-			var leftTimeStr:String = "("+SystemDate.getTimeLeftString(SystemDate.systemTimeS - playerData.creatTime) +" "+ LanguageController.getInstance().getString("ago")+")";
+			var leftTimeStr:String = "("+SystemDate.getTimeLeftString(SystemDate.systemTimeS - mesData.updatetime) +" "+ LanguageController.getInstance().getString("ago")+")";
 			var timeText:TextField = FieldController.createSingleLineDynamicField(renderwidth - iconRight,30*scale,leftTimeStr,0x000000,25,true);
 			container.addChild(timeText);
 			timeText.x = iconRight;
@@ -105,7 +112,7 @@ package view.render
 			
 			
 			var visitButton:Button = new Button();
-			if(playerData.type == SimplePlayer.REQUEST_FRIEND){
+			if(mesData.type == Configrations.MESSTYPE_INVITE){
 				visitButton.label = LanguageController.getInstance().getString("accept");
 				visitButton.addEventListener(Event.TRIGGERED,onTriggeredAccept);
 			}else{
@@ -129,7 +136,7 @@ package view.render
 		}
 		private function onTriggeredVisit(e:Event):void
 		{
-			
+			GameController.instance.visitFriend(mesData.gameuid);
 		}
 	}
 }

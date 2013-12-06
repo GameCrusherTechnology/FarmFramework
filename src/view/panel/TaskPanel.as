@@ -1,12 +1,11 @@
 package view.panel
 {
-	import flash.display.SpreadMethod;
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
 	import controller.GameController;
 	import controller.SpecController;
-	import controller.UiController;
+	import controller.TaskController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -17,6 +16,7 @@ package view.panel
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	import gameconfig.SystemDate;
 	
 	import model.OwnedItem;
 	import model.gameSpec.CropSpec;
@@ -88,8 +88,19 @@ package view.panel
 			container.addChild(speechSkin);
 			speechSkin.width = container.width - icon.width - 10*scale*2;
 			speechSkin.height = container.height *.8;
-			speechSkin.x = icon.x + icon.width
+			speechSkin.x = icon.x + icon.width;
 			speechSkin.y = container.height *.1;
+			
+			var mesNam:String;
+			if(task.npc == Configrations.NPC_MALE){
+				mesNam = "taskTip02";
+			}else{
+				mesNam = "taskTip01";
+			}
+			var speechText:TextField = FieldController.createSingleLineDynamicField(speechSkin.width - 10*scale,container.height *.8,LanguageController.getInstance().getString(mesNam),0x000000,30,true);
+			container.addChild(speechText);
+			speechText.x =  icon.x + icon.width + 10*scale;
+			speechText.y = container.height *.1;
 			
 		}
 		private function configRequestContainer():void
@@ -136,7 +147,7 @@ package view.panel
 		{
 			button = new Button();
 			var taskName:String = "confirm";
-			if(isTaskFinished){
+			if(isTaskFinished && !task.getIsExpired()){
 				taskName = "getReward";
 			}
 			button.label = LanguageController.getInstance().getString(taskName);
@@ -205,7 +216,7 @@ package view.panel
 			reqwardContainer.y = panelSkin.y + panelheight*0.64;
 			
 			var str:String = LanguageController.getInstance().getString("reward")+" :";
-			var textRequest:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.8,35*scale,str,0x000000,30,true);
+			var textRequest:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.8,panelheight*0.06,str,0x000000,30,true);
 			textRequest.hAlign = HAlign.LEFT;
 			textRequest.vAlign = VAlign.BOTTOM;
 			reqwardContainer.addChild(textRequest);
@@ -227,9 +238,43 @@ package view.panel
 			}
 			reqwardContainer.addChild(sp);
 			sp.x = reqwardContainer.width/2 - sp.width/2;
-			sp.y = textRequest.y + textRequest.height + 10*scale;
+			sp.y = textRequest.y + textRequest.height ;
+			
+			
+			var leftTimeText:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.45,panelheight*0.08,LanguageController.getInstance().getString("lefttime")+" ",0x000000,35,true);
+			leftTimeText.hAlign = HAlign.RIGHT;
+			reqwardContainer.addChild(leftTimeText);
+			leftTimeText.x = 0;
+			leftTimeText.y = sp.y+sp.height;
+			
+			var time :int = getLeftTime();
+			var color :uint = (time >0)?0x00ff00:0xff0000;
+			timeText = FieldController.createSingleLineDynamicField(panelwidth*0.45,panelheight*0.08,SystemDate.getTimeLeftString(time),color,35,true);
+			timeText.hAlign = HAlign.LEFT;
+			reqwardContainer.addChild(timeText);
+			timeText.x = panelwidth*0.45;
+			timeText.y = sp.y+sp.height;
+			if(time >0){
+				timeText.addEventListener(Event.ENTER_FRAME,onTimeTick);
+			}else{
+				
+			}
 		}
 		
+		private var timeText:TextField;
+		private function onTimeTick(e:Event):void
+		{
+			var time:int = getLeftTime();
+			if(time >0){
+				timeText.text = SystemDate.getTimeLeftString(getLeftTime());
+			}else{
+				
+			}
+		}
+		private function getLeftTime():int
+		{
+			return Math.max(0,Configrations.ORDER_EXPIRED-( SystemDate.systemTimeS - task.creatTime));
+		}
 		private function creatRewardRender(type:int,count:int):Sprite
 		{
 			var renderContainer:Sprite = new Sprite;
@@ -255,6 +300,10 @@ package view.panel
 		}
 		private function onTriggered(e:Event):void
 		{
+			if(task.getIsExpired()){
+				TaskController.instance.initTask();
+				close();
+			}
 			if(isTaskFinished){
 				new FinishTaskCommand(onFinishedTask);
 			}else{
@@ -281,11 +330,7 @@ package view.panel
 				}
 			}
 			GameController.instance.localPlayer.npc_order = null;
-			UiController.instance.showTaskButton();
-			close();
-		}
-		private function onTouchOut():void
-		{
+			TaskController.instance.initTask();
 			close();
 		}
 		private function get task():TaskData

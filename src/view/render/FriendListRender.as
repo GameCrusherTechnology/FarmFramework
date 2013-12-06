@@ -1,6 +1,7 @@
 package view.render
 {
 	import controller.FieldController;
+	import controller.FriendInfoController;
 	
 	import feathers.controls.renderers.DefaultListItemRenderer;
 	
@@ -28,10 +29,13 @@ package view.render
 		{
 			super.data = value;
 			if(value){
-				playerData = value as SimplePlayer;
-				if(!container){
-					configLayout();
+				playerData =FriendInfoController.instance.getUser(value as String);
+				if(container){
+					if(container.parent){
+						container.parent.removeChild(container);
+					}
 				}
+				configLayout();
 			}
 		}
 		private function configLayout():void

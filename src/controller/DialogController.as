@@ -1,7 +1,5 @@
 package controller
 {
-	import gameconfig.Configrations;
-	
 	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 

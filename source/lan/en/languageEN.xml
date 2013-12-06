@@ -51,17 +51,25 @@
 <resourceName key="noorder" value="At present there is no order!"/>
 <resourceName key="SelectItem" value="Select Item"/>
 <resourceName key="click" value="Click"/>
+<resourceName key="send" value="Send"/>
 <resourceName key="cost" value="Cost"/>
 <resourceName key="or" value="or"/>
 <resourceName key="qucickshop" value="Convenience Store"/>
 <resourceName key="levelup" value="To Next Level"/>
 <resourceName key="tofull" value="To Full"/>
 <resourceName key="home" value="Home"/>
-
+<resourceName key="lefttime" value="LeftTime"/>
+<resourceName key="nextTaskTime" value="Next Order "/>
+<resourceName key="leaveMessage" value="Leave A Message"/>
 <!-- 提醒 -->
 <resourceName key="shopTip01" value="In the shop to buy crop is not wise !"/>
 <resourceName key="shopTip02" value="Change Name Will Cost you"/>
 <resourceName key="warnTip01" value="Level is not enough !"/>
+<resourceName key="taskTip01" value="Please finish the order in the time given !"/>
+<resourceName key="taskTip02" value="Do not complete the task I can't give you a reward !"/>
+<resourceName key="npctip01" value="I can exchange your crops with coin and experience!"/>
+<resourceName key="npctip02" value="Here,you can get skill and experience!"/>
+<resourceName key="buyTaskTip" value="Buy task cost you : "/>
 <!-- 称号 -->
 <resourceName key="noTitle" value="Farm Beginner"/>
 <resourceName key="master" value="master"/>

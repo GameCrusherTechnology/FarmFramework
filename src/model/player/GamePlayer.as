@@ -1,7 +1,10 @@
 package model.player
 {
+	import controller.FriendInfoController;
+	
 	import gameconfig.Configrations;
 	
+	import model.MessageData;
 	import model.OwnedItem;
 	import model.entity.CropItem;
 	import model.task.TaskData;
@@ -153,29 +156,31 @@ package model.player
 		public var order:TaskData;
 		//		public var order:TaskData = new TaskData({requstStr:"10001:20|10002:30",rewards:"",creatTime:1382454068});
 		
-		
-		public var friends:Vector.<SimplePlayer> = new Vector.<SimplePlayer>;
-		public function addFriends(arr:Array):void
+		public function set user_friend(friendstr:String):void
 		{
-			var object:Object;
-			var simPlayer:SimplePlayer;
-			for each(object in arr){
-				simPlayer = new SimplePlayer(object);
-				friends.push(simPlayer);
-			}
-		}
-		public function getFriend(id:String):SimplePlayer
-		{
-			var simPlayer:SimplePlayer;
-			for each(simPlayer in friends){
-				if(simPlayer.gameuid == id){
-					return simPlayer;
+			if(friendstr){
+				friends = friendstr.split(",");
+				var uid:String;
+				for each(uid in friends){
+					FriendInfoController.instance.checkUser(uid);
 				}
 			}
-			return null;
+		}
+		public var friends:Array = [];
+		public function addFriends(uid:String):void
+		{
+			friends.push(uid);
+		}
+		private function isFriend(id:String):Boolean
+		{
+			for each(var uid:String in friends){
+				if(uid == id){
+					return true;	
+				}
+			}
+			return false;
 			
 		}
-		
 		public var strangers:Vector.<SimplePlayer> =  new Vector.<SimplePlayer>;
 		public function addStrangers(arr:Array):void
 		{
@@ -184,10 +189,8 @@ package model.player
 			var simPlayer:SimplePlayer;
 			for each(object in arr){
 				simPlayer = new SimplePlayer(object);
-				var friend:SimplePlayer = getFriend(simPlayer.gameuid);
-				if(friend){
-					
-				}else{
+				var bool:Boolean = isFriend(simPlayer.gameuid);
+				if(!bool){
 					strangers.push(simPlayer);
 				}
 			}
@@ -217,6 +220,69 @@ package model.player
 				}
 				if(data.buy_count){
 					buy_task_count = data.buy_count;
+				}
+			}
+		}
+		
+		//成就
+		public var achieve:String;
+		public function addAchieveLevel(id:String):int
+		{
+			if(achieve){
+				var index:int = (int(id)-30000);
+				return int(achieve.charAt(index));
+			}else{
+				return 0;
+			}
+			return 0;
+		}
+		
+		public function getAchieveLevel(id:String):int
+		{
+			if(achieve){
+				var index:int = (int(id)-30000);
+				return int(achieve.charAt(index));
+			}else{
+				return 0;
+			}
+			return 0;
+		}
+		private function set user_actions(data:Object):void
+		{
+			var obj:Object;
+			for each(obj in data){
+				ownedItemVec.push(new OwnedItem(obj.action_id,obj.count));
+			}
+		}
+		
+		//message
+		public var user_mes_vec:Vector.<MessageData>=new Vector.<MessageData>;
+		private function set user_message(data:Object):void
+		{
+			var obj:Object;
+			var mesd:MessageData;
+			for each(obj in data){
+				mesd = new MessageData(obj);
+				user_mes_vec.push(mesd);
+				cur_mes_dataid = Math.max(mesd.data_id,cur_mes_dataid);
+			}
+		}
+		public var cur_mes_dataid:int;
+		public function addMessage(data:MessageData):void
+		{
+			user_mes_vec.push(data);
+			cur_mes_dataid = Math.max(data.data_id,cur_mes_dataid);
+			dispatchEvent(new Event(PlayerChangeEvents.MESSAGE_CHANGE));
+		}
+		
+		public function delMessage(data:MessageData):void
+		{
+			var index:int = 0
+			for(index;index<user_mes_vec.length;index++){
+				if(user_mes_vec[index].data_id == data.data_id && user_mes_vec[index].gameuid == data.gameuid){
+					user_mes_vec.splice(index,1);
+					dispatchEvent(new Event(PlayerChangeEvents.MESSAGE_CHANGE));
+					break;
 				}
 			}
 		}

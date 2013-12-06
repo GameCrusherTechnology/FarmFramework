@@ -16,11 +16,12 @@
 		public static const CHANGENAME:String  = "user/ChangeName";
 		public static const CHANGESEX:String  = "user/ChangeSex";
 		public static const VISITFRIEND:String = "user/UserVisitCommand";
-		
+		public static const GETACHIEVE:String = "user/GetAchieveReward";
+		public static const LEAVEMESSAGE:String = "user/LeaveMessage";
 		//friend
 		public static const REFRESH_FRIENDS:String = "friend/RefreshFriends";
 		public static const GETSTRANGERS:String = "friend/GetStrangers";
-		
+		public static const GETUSERINFO:String = "friend/GetFriendsInfo";
 		//task
 		public static const CREAT_TASK:String = "task/CreatTask";
 		public static const FINISH_TASK:String = "task/FinishTask";
@@ -95,7 +96,7 @@
 					return true;
 				}
 			}catch(e:Error){
-				
+				trace("command error");
 			}
 			return false;
 		}

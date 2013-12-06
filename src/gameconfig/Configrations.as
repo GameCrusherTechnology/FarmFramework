@@ -63,6 +63,11 @@ package gameconfig
 		public static const METHOD_COIN :int= 1;
 		public static const METHOD_MONEY :int= 2;
 		
+		//mess type
+		public static const MESSTYPE_MES:int = 0;
+		public static const MESSTYPE_INVITE:int = 1;
+		public static const MESSTYPE_HELP:int = 2;
+		public static const MESSTYPE_ORDER:int = 3;
 		//等级 经验值 换算
 		public static function expToGrade(exp:Number):int{
 			return int (Math.sqrt(exp/10));
@@ -74,6 +79,7 @@ package gameconfig
 		public static function gradeToLove(grade:int):Number{
 			return int(Math.pow(grade,2)*10);
 		}
+		//task 价格
 		
 		//treasure 价格
 		public static const LITTLECOIN:String = "littlecoin";
@@ -86,7 +92,18 @@ package gameconfig
 			"largecoin":[100000,1000],
 			"littlegem":[20,1],
 			"largegem":[2000,100]
-		}; 
+		};
+		
+		public static function getAchieveId(id:String,type:String):String
+		{
+			var achieveid :String;
+			if(type == "harvestCrop"){
+				achieveid = String(int(id)+20000);
+			}else{
+				achieveid = String(int(id)+20000);
+			}
+			return achieveid;
+		}
 		
 	}
 }

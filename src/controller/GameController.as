@@ -5,7 +5,6 @@ package controller
 	import model.player.GamePlayer;
 	
 	import service.command.LoginCommand;
-	import service.command.friend.RefreshFriends;
 	import service.command.user.UserVisitFriendCommand;
 	
 	import starling.animation.Tween;
@@ -80,7 +79,7 @@ package controller
 		private function onLogin():void
 		{
 			LoginFarm();
-			new RefreshFriends(onRefreshFriend);
+			TaskController.instance.initTask();
 		}
 		private function onRefreshFriend():void
 		{

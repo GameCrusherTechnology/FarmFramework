@@ -1,5 +1,7 @@
 package model.gameSpec
 {
+	import gameconfig.LanguageController;
+
 	public class ItemSpec
 	{
 		public function ItemSpec(data:Object)
@@ -22,5 +24,10 @@ package model.gameSpec
 		
 		public var coinPrice:int;
 		public var gemPrice:int;
+		
+		public function get cname():String
+		{
+			return LanguageController.getInstance().getString(name);
+		}
 	}
 }

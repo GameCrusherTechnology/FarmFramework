@@ -7,6 +7,7 @@ package model.player
 		public static const LOVE_CHANGE:String = "love_change";
 		public static const GEM_CHANGE:String = "gem_change";
 		public static const ITEM_CHANGE:String = "item_change";
+		public static const MESSAGE_CHANGE:String = "message_change";
 		public function PlayerChangeEvents()
 		{
 		}

@@ -1,12 +1,12 @@
 package controller
 {
-	import flash.text.ReturnKeyLabel;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	import gameconfig.Configrations;
 	import gameconfig.SystemDate;
 	
 	import model.OwnedItem;
-	import model.entity.CropItem;
 	import model.gameSpec.CropSpec;
 	import model.gameSpec.ItemSpec;
 	import model.player.GamePlayer;
@@ -24,6 +24,7 @@ package controller
 			}
 			return control;
 		}
+		
 		public function TaskController()
 		{
 			
@@ -31,29 +32,31 @@ package controller
 		
 		public function initTask():void
 		{
-			if(needToCreat()){
-				
+			if(!needToCreat()){
+				UiController.instance.showTaskButton();
 			}else{
 				new CreatTaskCommand(creatNpcTask(),onCreat);
 			}
+			
+//			var timer:Timer = new Timer(50);
+//			timer.addEventListener(TimerEvent.TIMER,onTick,false,0,true);
 		}
+		
 		
 		private function needToCreat():Boolean
 		{
-			if(localPlayer.npc_order){
-				if(localPlayer.npc_order.getIsExpired()){
+			
+			if((SystemDate.systemTimeS - localPlayer.npc_time )>= Configrations.ORDER_CD)
+			{
+				if(localPlayer.npc_order && localPlayer.npc_order.getIsExpired()){
 					return false;
-				}else {
-					if((SystemDate.systemTimeS - localPlayer.npc_time )>= Configrations.ORDER_CD)
-					{
-						return false;
-					}else{
-						return true;
-					}
+				}else{
+					return true;
 				}
 			}else{
 				return false;
 			}
+			
 		}
 		
 		public function getTaskPanelShow():Boolean
@@ -125,9 +128,15 @@ package controller
 			return questCount;
 		}
 		
+		public function getTaskPrice():int
+		{
+			return Math.pow(2,localPlayer.buy_task_count);
+		}
+		
 		private function get localPlayer():GamePlayer
 		{
 			return GameController.instance.localPlayer;
 		}
+		
 	}
 }
