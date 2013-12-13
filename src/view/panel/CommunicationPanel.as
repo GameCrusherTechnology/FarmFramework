@@ -66,12 +66,17 @@ package view.panel
 			panelSkin.y = Configrations.ViewPortHeight/2 - panelSkin.height/2;
 			
 			tabBar = new TabBar();
-			tabBar.dataProvider = new ListCollection(
+			var tabList:ListCollection = GameController.instance.isHomeModel?new ListCollection(
 				[
 					{ label: LanguageController.getInstance().getString("message")},
 					{ label: LanguageController.getInstance().getString("order")},
-					{ label: LanguageController.getInstance().getString("info") },
-				]);
+					{ label: LanguageController.getInstance().getString("info") }
+				]):new ListCollection(
+					[
+						{ label: LanguageController.getInstance().getString("message")},
+						{ label: LanguageController.getInstance().getString("order")},
+					]);
+			tabBar.dataProvider = tabList;
 			tabBar.addEventListener(Event.CHANGE, tabBar_changeHandler);
 			tabBar.layoutData = new AnchorLayoutData(NaN, 0, 0, 0);
 			tabBar.tabFactory = function():Button

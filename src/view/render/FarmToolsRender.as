@@ -57,7 +57,7 @@ package view.render
 			if(type== UiController.TOOL_SPEED){
 				
 				var ownedFer:OwnedItem = player.getOwnedItem(Configrations.SPEED_ITEMID);
-				countText = FieldController.createSingleLineDynamicField(icon.width,20,"×"+ownedFer.count,0x000000,15,true);
+				countText = FieldController.createSingleLineDynamicField(renderWidth,30,"×"+ownedFer.count,0x000000,15,true);
 				countText.hAlign = HAlign.RIGHT;
 				addChild(countText);
 				countText.x =icon.x;

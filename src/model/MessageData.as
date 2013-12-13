@@ -28,6 +28,8 @@ package model
 		public function get player():SimplePlayer{
 			return FriendInfoController.instance.getUser(gameuid as String);
 		}
-		
+		public function get senderplayer():SimplePlayer{
+			return FriendInfoController.instance.getUser(f_gameuid as String);
+		}
 	}
 }

@@ -66,7 +66,7 @@ package view.render
 			
 			container = new Sprite;
 			addChild(container);
-			var playerData:SimplePlayer = mesData.player; 
+			var playerData:SimplePlayer = mesData.senderplayer; 
 			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20,20,24,24));
 			var skin:Scale9Image = new Scale9Image(skintextures);
 			container.addChild(skin);
@@ -113,7 +113,7 @@ package view.render
 			container.addChild(visitButton);
 			visitButton.validate();
 			visitButton.x = renderwidth - visitButton.width-10*scale;
-			visitButton.y =  renderheight*0.1;
+			visitButton.y =  renderheight*0.95 - visitButton.height;
 			}
 			
 			if(GameController.instance.isHomeModel){
@@ -124,7 +124,7 @@ package view.render
 				container.addChild(removeButton);
 				removeButton.validate();
 				removeButton.x = renderwidth - removeButton.width-10*scale;
-				removeButton.y =  renderheight*0.95 - removeButton.height;
+				removeButton.y =  renderheight*0.05 ;
 			}
 		}
 		
@@ -201,7 +201,7 @@ package view.render
 		}
 		private function onTriggeredVisit(e:Event):void
 		{
-			GameController.instance.visitFriend(mesData.gameuid);
+			GameController.instance.visitFriend(mesData.f_gameuid);
 		}
 		private function onTriggeredRemove(e:Event):void
 		{

@@ -89,7 +89,7 @@ package view.render
 			
 			
 			var ownitem:OwnedItem = player.getOwnedItem(id);
-			var countText:TextField = FieldController.createSingleLineDynamicField(renderwidth-10*scale,25*scale,"×"+ownitem.count,0x000000,20,true);
+			var countText:TextField = FieldController.createSingleLineDynamicField(renderwidth,30*scale,"×"+ownitem.count,0x000000,15,true);
 			countText.hAlign = HAlign.RIGHT;
 			container.addChild(countText);
 			countText.y = renderheight - countText.height - 10*scale;

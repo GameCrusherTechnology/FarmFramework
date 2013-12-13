@@ -91,7 +91,6 @@ package model.player
 		
 		//skill
 		public var skillTime:Number;
-		public var creatOrderTime:Number = 1384332068;
 		public var ownedItemVec:Vector.<OwnedItem> = new Vector.<OwnedItem>;
 		
 		public function set items(data:Object):void
@@ -153,7 +152,7 @@ package model.player
 				return false;
 			}
 		}
-		public var order:TaskData;
+//		public var order:TaskData;
 		//		public var order:TaskData = new TaskData({requstStr:"10001:20|10002:30",rewards:"",creatTime:1382454068});
 		
 		public function set user_friend(friendstr:String):void

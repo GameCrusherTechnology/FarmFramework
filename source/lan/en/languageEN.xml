@@ -16,6 +16,8 @@
 <resourceName key="rating" value="rating"/>
 <resourceName key="setting" value="setting"/>
 <resourceName key="change" value="change"/>
+<resourceName key="creat" value="Creat"/>
+<resourceName key="left" value="Left"/>
 <resourceName key="farmname" value="Farmer Name"/>
 <resourceName key="coin" value="coin"/>
 <resourceName key="gem" value="gem"/>
@@ -42,6 +44,7 @@
 <resourceName key="order" value="Order"/>
 <resourceName key="accept" value="accept"/>
 <resourceName key="invited" value="Invited"/>
+<resourceName key="invite" value="Invite"/>
 <resourceName key="helped" value="Helped"/>
 <resourceName key="you" value="you"/>
 <resourceName key="ago" value="ago"/>
@@ -61,6 +64,8 @@
 <resourceName key="lefttime" value="LeftTime"/>
 <resourceName key="nextTaskTime" value="Next Order "/>
 <resourceName key="leaveMessage" value="Leave A Message"/>
+<resourceName key="helpOrder" value="Completed your order !"/>
+<resourceName key="my" value="My"/>
 <!-- 提醒 -->
 <resourceName key="shopTip01" value="In the shop to buy crop is not wise !"/>
 <resourceName key="shopTip02" value="Change Name Will Cost you"/>

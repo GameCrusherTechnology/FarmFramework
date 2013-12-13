@@ -22,10 +22,13 @@
 		public static const REFRESH_FRIENDS:String = "friend/RefreshFriends";
 		public static const GETSTRANGERS:String = "friend/GetStrangers";
 		public static const GETUSERINFO:String = "friend/GetFriendsInfo";
+		public static const ACCEPTFRIEND:String = "friend/AcceptFriend";
+		public static const INVITEFRIEND:String = "friend/InviteFriend";
 		//task
 		public static const CREAT_TASK:String = "task/CreatTask";
 		public static const FINISH_TASK:String = "task/FinishTask";
 		public static const BUY_TASK:String = "task/BuyNpcTask";
+		public static const FINISH_MYORDER:String = "task/FinishMyOrder";
 		
 		public static function get gateway():String
 		{

@@ -26,6 +26,7 @@ package view.panel
 	import service.command.task.FinishTaskCommand;
 	
 	import starling.display.Image;
+	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
@@ -54,6 +55,13 @@ package view.panel
 			panelwidth = Math.min(Configrations.ViewPortWidth*0.86,2000);
 			panelheight = Math.min(Configrations.ViewPortHeight*0.9,1500);
 			scale = Configrations.ViewScale;
+			
+			var darkSp:Shape = new Shape;
+			darkSp.graphics.beginFill(0x000000,0.8);
+			darkSp.graphics.drawRect(0,0,Configrations.ViewPortWidth,Configrations.ViewPortHeight);
+			darkSp.graphics.endFill();
+			addChild(darkSp);
+			
 			var skinTexture:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"),new Rectangle(1,1,62,62));
 			panelSkin = new Scale9Image(skinTexture);
 			panelSkin.width = panelwidth;

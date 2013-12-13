@@ -29,7 +29,11 @@ package view.panel
 	import gameconfig.LanguageController;
 	
 	import model.gameSpec.CropSpec;
+	import model.gameSpec.ItemSpec;
 	import model.player.GamePlayer;
+	import model.task.TaskData;
+	
+	import service.command.task.CreatTaskCommand;
 	
 	import starling.display.Image;
 	import starling.display.Shape;
@@ -60,7 +64,7 @@ package view.panel
 			var spec:CropSpec ;
 			var specObj:Object;
 			for each(spec in cropSpecArr){
-				listData.push({text :spec.name,itemid:spec.item_id});
+				listData.push({text :spec.name,item:spec});
 			}
 			
 			var darkSp:Shape = new Shape;
@@ -78,7 +82,7 @@ package view.panel
 			panelSkin.y = Configrations.ViewPortHeight/2 - panelSkin.height/2;
 		
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.8,40*scale,LanguageController.getInstance().getString("add") +" "+LanguageController.getInstance().getString("order"),0x000000,35,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.8,40*scale,LanguageController.getInstance().getString("creat") +" "+LanguageController.getInstance().getString("order"),0x000000,35,true);
 			nameText.hAlign = HAlign.CENTER;
 			addChild(nameText);
 			nameText.x = Configrations.ViewPortWidth/2  - nameText.width/2;
@@ -106,17 +110,14 @@ package view.panel
 			button.y =  panelSkin.y + panelheight*0.9;
 			button.addEventListener(Event.TRIGGERED,onTriggered);
 			
+			
 			var cancelButton:Button = new Button();
-			cancelButton.label = LanguageController.getInstance().getString("cancel");
-			cancelButton.defaultSkin = new Image(Game.assets.getTexture("offButtonSkin"));
-			cancelButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
-			cancelButton.paddingLeft =cancelButton.paddingRight =  20;
-			cancelButton.paddingTop =cancelButton.paddingBottom =  5;
+			cancelButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
+			cancelButton.addEventListener(Event.TRIGGERED, onCloseTriggered);
 			addChild(cancelButton);
-			cancelButton.validate();
-			cancelButton.x = Configrations.ViewPortWidth/2 +panelwidth/2 - cancelButton.width;
-			cancelButton.y =  panelSkin.y + panelheight*0.9;
-			cancelButton.addEventListener(Event.TRIGGERED,onTriggered);
+			cancelButton.width = cancelButton.height = Configrations.ViewPortHeight*0.05;
+			cancelButton.x = Configrations.ViewPortWidth/2 +panelwidth/2- cancelButton.width-5;
+			cancelButton.y = Configrations.ViewPortHeight/2 -panelheight/2 + panelheight*0.02;
 			
 		}
 		private var list1:PickerList;
@@ -189,6 +190,12 @@ package view.panel
 			step3.y = deep+5;
 			step3.x = panelwidth/2;
 			
+			step1.addEventListener(Event.CHANGE,onChange);
+			list1.addEventListener(Event.CHANGE,onChange);
+			step2.addEventListener(Event.CHANGE,onChange);
+			list2.addEventListener(Event.CHANGE,onChange);
+			step3.addEventListener(Event.CHANGE,onChange);
+			list3.addEventListener(Event.CHANGE,onChange);
 			return requestContainer;
 		}
 		private var coinText:TextField;
@@ -313,6 +320,7 @@ package view.panel
 			_stepper.textInputFactory = function():TextInput
 			{
 				var input:TextInput = new TextInput();
+				input.touchable=false;
 				//skin the text input here
 				input.backgroundSkin = new Image( Game.assets.getTexture("PanelRenderSkin") );
 				Factory(input,{color:0x000000,fontSize:20,maxChars:15,text:player.name,displayAsPassword:false});
@@ -324,13 +332,96 @@ package view.panel
 			_stepper.layoutData = stepperLayoutData;
 			return _stepper;
 		}
-		private function onTriggered(e:Event):void
+		
+		private function onChange(e:Event):void{
+			refreshReward();
+		}
+		private function refreshReward():void
+		{
+			var coin:int ;
+			var exp :int;
+			var spec:ItemSpec;
+			if(list1.selectedItem && list1.selectedItem.item){
+				spec =  list1.selectedItem.item ; 
+				if(step1.value >0){
+					coin += (step1.value*coin_s *spec.coinPrice);
+					exp+= (step1.value*exp_s *spec.exp);
+				}
+			}
+			
+			if(list2.selectedItem && list2.selectedItem.item){
+				spec =  list2.selectedItem.item ; 
+				if(step2.value >0){
+					coin += (step2.value*coin_s *spec.coinPrice);
+					exp+= (step2.value*exp_s *spec.exp);
+				}
+			}
+			if(list3.selectedItem && list3.selectedItem.item){
+				spec =  list3.selectedItem.item ; 
+				if(step3.value >0){
+					coin += (step3.value*coin_s *spec.coinPrice);
+					exp+= (step3.value*exp_s *spec.exp);
+				}
+			}
+			coinText.text = "×"+coin;
+			expText.text =  "×"+exp;
+		}
+		private function onCloseTriggered(e:Event):void
 		{
 			close();
 		}
 		
+		private function onTriggered(e:Event):void
+		{
+			var spec:ItemSpec;
+			var coin:int;
+			var exp:int;
+			var requestArr:Array = [];
+			if(list1.selectedItem && list1.selectedItem.item){
+				spec =  list1.selectedItem.item ; 
+				if(step1.value >0){
+					coin += (step1.value*coin_s *spec.coinPrice);
+					exp+= (step1.value*exp_s *spec.exp);
+					requestArr.push(spec.item_id+":"+step1.value);
+				}
+			}
+			
+			if(list2.selectedItem && list2.selectedItem.item){
+				spec =  list2.selectedItem.item ; 
+				if(step2.value >0){
+					coin += (step2.value*coin_s *spec.coinPrice);
+					exp+= (step2.value*exp_s *spec.exp);
+					requestArr.push(spec.item_id+":"+step2.value);
+				}
+			}
+			if(list3.selectedItem && list3.selectedItem.item){
+				spec =  list3.selectedItem.item ; 
+				if(step3.value >0){
+					coin += (step3.value*coin_s *spec.coinPrice);
+					exp+= (step3.value*exp_s *spec.exp);
+					requestArr.push(spec.item_id+":"+step3.value);
+				}
+			}
+			
+			if(requestArr.length >= 1){
+				var requestStr:String = requestArr.join("|");
+				var rewardStr:String = Configrations.REWARD_COIN+":"+coin+"|"+Configrations.REWARD_EXP+":"+exp;
+				var taskdata:TaskData = new TaskData();
+				taskdata.requstStr = requestStr;
+				taskdata.rewards = rewardStr;
+				taskdata.npc = Configrations.NPC_NONE;
+				new CreatTaskCommand(taskdata,onCreated);
+			}else{
+				close();
+			}
+		}
+		private function onCreated():void
+		{
+			close();
+		}
 		private function close():void
 		{
+			this.dispatchEvent(new Event(Event.CLOSE));
 			if(parent){
 				parent.removeChild(this);
 			}
@@ -352,5 +443,8 @@ package view.panel
 		{
 			return GameController.instance.localPlayer;
 		}
+		
+		private var coin_s:Number = 1;
+		private var exp_s:Number = 1;
 	}
 }

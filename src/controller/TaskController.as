@@ -1,8 +1,5 @@
 package controller
 {
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
-	
 	import gameconfig.Configrations;
 	import gameconfig.SystemDate;
 	
@@ -13,6 +10,7 @@ package controller
 	import model.task.TaskData;
 	
 	import service.command.task.CreatTaskCommand;
+	import service.command.task.FinishOrder;
 
 	public class TaskController
 	{
@@ -48,7 +46,7 @@ package controller
 			
 			if((SystemDate.systemTimeS - localPlayer.npc_time )>= Configrations.ORDER_CD)
 			{
-				if(localPlayer.npc_order && localPlayer.npc_order.getIsExpired()){
+				if(localPlayer.npc_order && !localPlayer.npc_order.getIsExpired()){
 					return false;
 				}else{
 					return true;
@@ -128,6 +126,27 @@ package controller
 			return questCount;
 		}
 		
+		public function checkCurrentOrder(player:GamePlayer):void
+		{
+			if(player.my_order && player.my_order.getIsExpired()){
+				new FinishOrder(player.gameuid,onFinishedOrder,1);
+			} 
+		}
+		private function onFinishedOrder():void
+		{
+			var player:GamePlayer = GameController.instance.currentPlayer;
+			var orderdata:TaskData = player.my_order;
+			if(GameController.instance.isHomeModel){
+				var reqestArr:Array = orderdata.requstStr.split("|");
+				var itemStr:String;
+				for each(itemStr in reqestArr){
+					var itemArr :Array = itemStr.split(":");
+					player.addItem(new OwnedItem(itemArr[0],itemArr[1]));
+				}
+			}
+			
+			player.my_order = null;
+		}
 		public function getTaskPrice():int
 		{
 			return Math.pow(2,localPlayer.buy_task_count);

@@ -1,6 +1,8 @@
 package view.component.UIButton
 {
 	import controller.DialogController;
+	import controller.GameController;
+	import controller.TaskController;
 	
 	import gameconfig.Configrations;
 	
@@ -44,6 +46,7 @@ package view.component.UIButton
 			var touch:Touch = event.getTouch(this, TouchPhase.BEGAN);
 			if(touch)
 			{
+				TaskController.instance.checkCurrentOrder(GameController.instance.currentPlayer);
 				DialogController.instance.showPanel(new CommunicationPanel());
 			}
 		}

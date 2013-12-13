@@ -20,14 +20,12 @@ package view.render
 	import model.OwnedItem;
 	import model.gameSpec.CropSpec;
 	import model.player.GamePlayer;
-	import model.player.SimplePlayer;
 	import model.task.TaskData;
 	
-	import starling.core.RenderSupport;
 	import starling.display.Image;
+	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.events.Event;
-	import starling.events.TouchEvent;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	import starling.utils.HAlign;
@@ -49,14 +47,19 @@ package view.render
 		{
 			super.data = value;
 			if(value){
-				if(container){
-					if(container.parent){
-						container.parent.removeChild(container);
-					}
-					container = null;
-				}
-				checkOrderData();
+				refreshData();
 			}
+		}
+		
+		private function refreshData():void
+		{
+			if(container){
+				if(container.parent){
+					container.parent.removeChild(container);
+				}
+				container = null;
+			}
+			checkOrderData();
 		}
 		private var renderwidth:Number;
 		private var renderheight:Number;
@@ -66,14 +69,13 @@ package view.render
 			renderwidth = width;
 			renderheight = height;
 			
-			if(player.order){
+			if(player.my_order){
 				configOrderLayout();
 			}else{
 				configNoOrderLayout();
 			}
 		}
 		
-		private var leftTimeText:TextField;
 		private var isTimeCord:Boolean;
 		private var creatButton:Button;
 		private function configNoOrderLayout():void
@@ -81,24 +83,30 @@ package view.render
 			container = new Sprite;
 			addChild(container);
 			
-			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(1, 1, 62, 62));
-			var skin:Scale9Image = new Scale9Image(skintextures);
-			container.addChild(skin);
-			skin.width = renderwidth;
-			skin.height = renderheight;
+			var mesContainer:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
+			mesContainer.width = renderwidth;
+			mesContainer.height = renderheight;
+			container.addChild(mesContainer);
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth,40*scale,player.name +" "+LanguageController.getInstance().getString("order"),0x000000,35,true);
+			
+			var nameTextStr:String;
+			if(isHome){
+				nameTextStr = LanguageController.getInstance().getString("my") +" "+LanguageController.getInstance().getString("order");
+			}else{
+				nameTextStr = player.name +" "+LanguageController.getInstance().getString("order");
+			}
+			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth,40*scale,nameTextStr,0x000000,35,true);
 			nameText.hAlign = HAlign.CENTER;
-			container.addChild(nameText);
+			mesContainer.addChild(nameText);
 			nameText.x = 0 ;
 			nameText.y = 0 ;
 			
-			var mesContainer:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
-			mesContainer.width = renderwidth*0.9;
-			mesContainer.height = renderheight -70*scale ;
-			container.addChild(mesContainer);
-			mesContainer.x =  renderwidth*0.05;
-			mesContainer.y = nameText.y + nameText.height +15*scale;
+			var whiteSp:Shape = new Shape();
+			mesContainer.addChild(whiteSp);
+			whiteSp.graphics.lineStyle(3,0xEDCC97,1);
+			whiteSp.graphics.moveTo(renderwidth*0.1,nameText.y+nameText.height +5*scale);
+			whiteSp.graphics.lineTo(renderwidth*0.9,nameText.y+nameText.height +5*scale);
+			whiteSp.graphics.endFill();
 			
 			var str:String = LanguageController.getInstance().getString("noorder");
 			var textRequest:TextField = FieldController.createSingleLineDynamicField(mesContainer.width*0.8,mesContainer.height*0.5,str,0x000000,30,true);
@@ -106,69 +114,57 @@ package view.render
 			textRequest.x = mesContainer.width*0.1;
 			
 			if(isHome){
-				var leftTime:Number =SystemDate.systemTimeS - player.creatOrderTime;
 				creatButton = new Button();
-				creatButton.label = LanguageController.getInstance().getString("add")+LanguageController.getInstance().getString("order");
-				if(leftTime >0){
-					var leftTimeStr:String = "("+SystemDate.getTimeLeftString(leftTime) +" "+ LanguageController.getInstance().getString("ago")+")";
-					leftTimeText = FieldController.createSingleLineDynamicField(mesContainer.width ,35*scale,leftTimeStr,0x000000,30,true);
-					mesContainer.addChild(leftTimeText);
-					leftTimeText.y = mesContainer.height *0.5;
-					creatButton.defaultSkin = new Image(Game.assets.getTexture("greyButtonSkin"));
-					creatButton.y = mesContainer.y + mesContainer.height *0.5 + leftTimeText.height;
-					creatButton.isEnabled = false;
-					isTimeCord = true;
-				}else{
-					creatButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-					creatButton.y = mesContainer.height *0.5 ;
-				}
+				creatButton.label = LanguageController.getInstance().getString("creat") +" "+LanguageController.getInstance().getString("order");
+				creatButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+				creatButton.y = mesContainer.y + mesContainer.height *0.5 ;
+				creatButton.paddingLeft =creatButton.paddingRight =  20;
+				creatButton.paddingTop =creatButton.paddingBottom =  5;
 				creatButton.addEventListener(Event.TRIGGERED,onAddTriggered);
 				creatButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
-				creatButton.paddingLeft =creatButton.paddingRight = creatButton.paddingTop =creatButton.paddingBottom =  5;
 				container.addChild(creatButton);
 				creatButton.validate();
 				creatButton.x = container.width/2 - creatButton.width/2 ;
 			}
 		}
 		
-		private function configTimeText():void
-		{
-			var leftTime:Number =SystemDate.systemTimeS - player.creatOrderTime;
-			var leftTimeStr:String = "("+SystemDate.getTimeLeftString(leftTime) +" "+ LanguageController.getInstance().getString("ago")+")";
-			leftTimeText.text = leftTimeStr;
-			trace(leftTime);
-			if(leftTime >5850){
-				isTimeCord = false;
-				creatButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-				creatButton.isEnabled = true;
-			}
-		}
-		override public function render(support:RenderSupport, parentAlpha:Number):void
-		{
-			super.render(support,parentAlpha);
-			if(isTimeCord){
-				configTimeText();
-			}
-		}
+//		private function configTimeText():void
+//		{
+//			var leftTime:Number =SystemDate.systemTimeS - player.my_order_time;
+//			var leftTimeStr:String = "("+SystemDate.getTimeLeftString(leftTime) +" "+ LanguageController.getInstance().getString("ago")+")";
+//			leftTimeText.text = leftTimeStr;
+//			if(leftTime >5850){
+//				isTimeCord = false;
+//				creatButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+//				creatButton.isEnabled = true;
+//			}
+//		}
 		private function configOrderLayout():void
 		{
 			container = new Sprite;
 			addChild(container);
 			
-			var task:TaskData = player.order;
+			var task:TaskData = player.my_order;
 			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(1, 1, 62, 62));
 			var skin:Scale9Image = new Scale9Image(skintextures);
 			container.addChild(skin);
 			skin.width = renderwidth;
 			skin.height = renderheight;
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth,40*scale,player.name +" "+LanguageController.getInstance().getString("order"),0x000000,35,true);
+			var name:String ;
+			if(isHome){
+				name = LanguageController.getInstance().getString("my") +" "+LanguageController.getInstance().getString("order");
+			}else{
+				name = player.name +" "+LanguageController.getInstance().getString("order");
+			}
+			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth,40*scale,name,0x000000,35,true);
 			nameText.hAlign = HAlign.CENTER;
 			container.addChild(nameText);
 			nameText.x = 0 ;
 			nameText.y = 0 ;
 			
-			var leftTimeStr:String = "("+SystemDate.getTimeLeftString(SystemDate.systemTimeS - task.creatTime) +" "+ LanguageController.getInstance().getString("ago")+")";
+			var leftTime:int = Math.max(0,Configrations.ORDER_EXPIRED - (SystemDate.systemTimeS - task.creatTime));
+			var leftTimeStr:String = "("+SystemDate.getTimeLeftString(leftTime) +" "+ LanguageController.getInstance().getString("left")+")";
 			var timeText:TextField = FieldController.createSingleLineDynamicField(renderwidth ,25*scale,leftTimeStr,0x000000,20,true);
 			container.addChild(timeText);
 			timeText.x = 0;
@@ -192,24 +188,31 @@ package view.render
 					tradebutton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 				}else{
 					tradebutton.isEnabled = false;
-					tradebutton.defaultSkin = new Image(Game.assets.getTexture("greyButtonSkin"));
+					tradebutton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
 				}
 				tradebutton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
-				tradebutton.paddingLeft =tradebutton.paddingRight =  5;
+				tradebutton.paddingLeft =tradebutton.paddingRight =  20;
 				tradebutton.paddingTop =tradebutton.paddingBottom =  5;
 				container.addChild(tradebutton);
 				tradebutton.validate();
 				tradebutton.x = renderwidth/2 - tradebutton.width/2 ;
-				tradebutton.y = renderheight - tradebutton.height  ;
+				tradebutton.y = awardsContainer.y +awardsContainer.height+10*scale ;
 			}
 			
 		}
-		
+		private var addOrderPanel:AddOrderPanel;
 		private function onAddTriggered(e:Event):void
 		{
-			DialogController.instance.showPanel( new AddOrderPanel());
+			addOrderPanel = new AddOrderPanel();
+			DialogController.instance.showPanel(addOrderPanel);
+			addOrderPanel.addEventListener(Event.CLOSE,onCloseOrderPanel);
 		}
-		
+		private function onCloseOrderPanel(e:Event):void
+		{
+			addOrderPanel.removeEventListener(Event.CLOSE,onCloseOrderPanel);
+			addOrderPanel = null;
+			refreshData();
+		}
 		private function onTradeTriggered(e:Event):void
 		{
 			
@@ -234,7 +237,7 @@ package view.render
 			container1.x = renderwidth *0.05;
 			container1.y = renderheight*0.08;
 			
-			var requstArr:Array = ["10001:20","10002:20","10003:0"];
+			var requstArr:Array = player.my_order.requstStr.split("|");
 			var requeststr:String;
 			var deep:Number = renderheight*0.01;
 			for each(requeststr in requstArr)
@@ -315,7 +318,7 @@ package view.render
 			container1.x = renderwidth *0.05;
 			container1.y = renderheight*0.08;
 			
-			var requstArr:Array = ["10001:20","10002:20","1:500"];
+			var requstArr:Array = player.my_order.rewards.split("|");
 			var requeststr:String;
 			var deep:Number = renderheight*0.01;
 			for each(requeststr in requstArr)
@@ -345,24 +348,26 @@ package view.render
 				var spec:CropSpec = SpecController.instance.getItemSpec(itemid) as CropSpec;
 				name = spec.name;
 			}
+			
+			
 			var icon:Image = new Image(Game.assets.getTexture(name+"Icon"));
 			requestContainer.addChild(icon);
 			icon.width = icon.height = renderheight*0.06;
-			icon.x = renderwidth*0.1;
+			icon.x = renderwidth*0.4 - icon.width - 10*scale;
 			
 			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth,renderheight*0.06,LanguageController.getInstance().getString(name),0x000000,25,true);
+			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			nameText.hAlign = HAlign.LEFT;
 			nameText.vAlign = VAlign.CENTER;
 			requestContainer.addChild(nameText);
-			nameText.x = icon.x + icon.width;
-			
+			nameText.x = icon.x - nameText.width;
 			
 			var ownText:TextField = FieldController.createSingleLineDynamicField(renderwidth,renderheight*0.06,"×" + String(count),0x000000,25,true);
 			ownText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			ownText.hAlign = HAlign.LEFT;
 			ownText.vAlign = VAlign.CENTER;
 			requestContainer.addChild(ownText);
-			ownText.x = renderwidth*0.5;
+			ownText.x = renderwidth*0.4;
 			
 			
 			
@@ -371,7 +376,7 @@ package view.render
 		
 		private function get isHome():Boolean
 		{
-			return GameController.instance.currentPlayer == GameController.instance.localPlayer;
+			return GameController.instance.isHomeModel;
 		}
 		private function get player():GamePlayer
 		{

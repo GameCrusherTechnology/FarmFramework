@@ -27,10 +27,8 @@ package view.panel
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.events.Event;
-	import starling.events.TouchEvent;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
-	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	
 	public class FindTaskPanel extends PanelScreen
@@ -125,7 +123,7 @@ package view.panel
 		}
 		private function getLeftTime():int
 		{
-			return Math.max(0,Configrations.ORDER_EXPIRED -( SystemDate.systemTimeS - player.npc_time));
+			return Math.max(0,Configrations.ORDER_CD -( SystemDate.systemTimeS - player.npc_time));
 		}
 		private function configMalMesContainer():void
 		{

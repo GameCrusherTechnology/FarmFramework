@@ -56,6 +56,7 @@ package gameconfig
 		
 		
 		//npc
+		public static const NPC_NONE:int=0;
 		public static const NPC_MALE:int=1;
 		public static const NPC_FEMALE:int=2;
 		

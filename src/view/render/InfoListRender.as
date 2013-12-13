@@ -18,6 +18,9 @@ package view.render
 	import model.MessageData;
 	import model.player.SimplePlayer;
 	
+	import service.command.friend.AcceptFriend;
+	import service.command.user.UpdateMessagesCommand;
+	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -56,7 +59,7 @@ package view.render
 			container = new Sprite;
 			addChild(container);
 			
-			var playerData:SimplePlayer = mesData.player;
+			var playerData:SimplePlayer = mesData.senderplayer;
 			
 			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(1, 1, 62, 62));
 			var skin:Scale9Image = new Scale9Image(skintextures);
@@ -95,6 +98,8 @@ package view.render
 			var mes:String ;
 			if(mesData.type == Configrations.MESSTYPE_INVITE){
 				mes = LanguageController.getInstance().getString("invited") + " "+ LanguageController.getInstance().getString("you");
+			}else if(mesData.type == Configrations.MESSTYPE_ORDER){
+				mes = LanguageController.getInstance().getString("helpOrder");
 			}else{
 				mes = LanguageController.getInstance().getString("helped")  + " "+ LanguageController.getInstance().getString("you");
 			}
@@ -126,13 +131,53 @@ package view.render
 			container.addChild(visitButton);
 			visitButton.validate();
 			visitButton.x = renderwidth - visitButton.width-10*scale;
-			visitButton.y =  renderheight/2;
+			visitButton.y =  renderheight*0.98 - visitButton.height;
 			
+			if(mesData.type == Configrations.MESSTYPE_ORDER){
+				var inviteBut:Button = new Button();
+				
+				inviteBut.label = LanguageController.getInstance().getString("invite");
+				inviteBut.addEventListener(Event.TRIGGERED,onTriggeredInvite);
+				inviteBut.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
+				inviteBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				inviteBut.paddingLeft =inviteBut.paddingRight =  20;
+				inviteBut.paddingTop =inviteBut.paddingBottom =  5;
+				container.addChild(inviteBut);
+				inviteBut.validate();
+				inviteBut.x = renderwidth - inviteBut.width-10*scale;
+				inviteBut.y = visitButton.y - 5*scale - inviteBut.height;
+			}
+			if(GameController.instance.isHomeModel){
+				var removeButton:Button = new Button();
+				removeButton.addEventListener(Event.TRIGGERED,onTriggeredRemove);
+				removeButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
+				removeButton.width = removeButton.height = 30*scale;
+				container.addChild(removeButton);
+				removeButton.validate();
+				removeButton.x = renderwidth - removeButton.width-10*scale;
+				removeButton.y =  renderheight*0.05 ;
+			}
 		}
 		
-		private function onTriggeredAccept(e:Event):void
+		private function onTriggeredRemove(e:Event):void
+		{
+			new UpdateMessagesCommand([],[{f_gameuid:mesData.f_gameuid,data_id:mesData.data_id}],onDeleted);
+		}
+		private function onDeleted():void
+		{
+			GameController.instance.currentPlayer.delMessage(mesData);
+		}
+		private function onTriggeredInvite(e:Event):void
 		{
 			
+		}
+		private function onTriggeredAccept(e:Event):void
+		{
+			new AcceptFriend(mesData.gameuid,onAccepted);
+		}
+		private function onAccepted():void
+		{
+			GameController.instance.localPlayer.addFriends(mesData.gameuid);
 		}
 		private function onTriggeredVisit(e:Event):void
 		{
