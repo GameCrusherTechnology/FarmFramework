@@ -38,7 +38,6 @@ package view.panel
 		private var scale:Number;
 		private var panelSkin:Scale9Image;
 		private var leavebutton:Button;
-		private var isTaskFinished:Boolean = true;
 		private var maleButton:Button;
 		private var femaleButton:Button;
 		public function FindTaskPanel()
@@ -57,7 +56,7 @@ package view.panel
 			darkSp.graphics.endFill();
 			addChild(darkSp);
 			
-			var skinTexture:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"),new Rectangle(1,1,62,62));
+			var skinTexture:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20));
 			panelSkin = new Scale9Image(skinTexture);
 			panelSkin.width = panelwidth;
 			panelSkin.height = panelheight;
@@ -275,16 +274,24 @@ package view.panel
 		{
 			close();
 		}
+		private var isCommanding:Boolean;
 		private function onTriggeredMale(e:Event):void
 		{
-			new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_MALE),onBuyTask);
+			if(!isCommanding){
+				isCommanding = true;
+				new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_MALE),onBuyTask);
+			}
 		}
 		private function onTriggeredFemale(e:Event):void
 		{
-			new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_FEMALE),onBuyTask);
+			if(!isCommanding){
+				isCommanding = true;
+				new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_FEMALE),onBuyTask);
+			}
 		}
 		private function onBuyTask():void
 		{
+			isCommanding = false;
 			if(GameController.instance.isHomeModel){
 				UiController.instance.showTaskButton();
 			}

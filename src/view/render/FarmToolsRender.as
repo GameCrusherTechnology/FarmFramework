@@ -6,6 +6,7 @@ package view.render
 	import controller.UiController;
 	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
 	
 	import model.OwnedItem;
 	import model.player.GamePlayer;
@@ -16,8 +17,10 @@ package view.render
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	import starling.utils.HAlign;
 	
+	import view.entity.GameEntity;
 	import view.panel.BuyItemPanel;
 
 	public class FarmToolsRender extends Sprite
@@ -30,9 +33,10 @@ package view.render
 		private var renderHeight:int= 120*Configrations.ViewScale;
 		
 		private var countText:TextField;
-		
-		public function FarmToolsRender(data:Object)
+		private var entity:GameEntity;
+		public function FarmToolsRender(data:Object,_entity:GameEntity)
 		{
+			entity = _entity;
 			renderWidth = 80*Configrations.ViewScale;
 			renderHeight= 120*Configrations.ViewScale;
 			type = data.type;
@@ -48,20 +52,52 @@ package view.render
 			icon.x = icon.y = renderWidth *.15;
 			//text
 			lableStr = data.label;
-			var lable:TextField = FieldController.createSingleLineDynamicField(renderWidth,30,lableStr,0xffffff,25,true);
+			if(type== UiController.TOOL_SPEED){
+				lableStr += (":"+ Configrations.SPEED_TIME + LanguageController.getInstance().getString("m"));
+			}
+			var lable:TextField = FieldController.createSingleLineDynamicField(400,30,lableStr,0x000000,25,true);
+			lable.autoSize = TextFieldAutoSize.HORIZONTAL;
 			addChild(lable);
-			lable.x = 0;
-			lable.y = renderHeight - lable.height-5;
+			lable.x = renderWidth/2 - lable.width/2;
+			lable.y = backImage.y+backImage.height;
 			
 			addEventListener(TouchEvent.TOUCH,button_touchHandler);
 			if(type== UiController.TOOL_SPEED){
-				
 				var ownedFer:OwnedItem = player.getOwnedItem(Configrations.SPEED_ITEMID);
-				countText = FieldController.createSingleLineDynamicField(renderWidth,30,"×"+ownedFer.count,0x000000,15,true);
+				countText = FieldController.createSingleLineDynamicField(1000,30,"×"+ownedFer.count,0x000000,25,true);
 				countText.hAlign = HAlign.RIGHT;
+				countText.autoSize = TextFieldAutoSize.HORIZONTAL;
 				addChild(countText);
-				countText.x =icon.x;
+				countText.x =icon.x+icon.width/2;
 				countText.y = icon.y + icon.height - countText.height;
+			}else if(type== UiController.TOOL_EXCAVATE){
+				if(entity){
+					var sp:Sprite = new Sprite;
+					var cost:Object = entity.item.serchingCost;
+					var i:Image ;
+					if(cost.type == "gem"){
+						i = new Image(Game.assets.getTexture("gemIcon"));
+					}else{
+						i = new Image(Game.assets.getTexture("coinIcon"));
+					}
+					i.width = i.height = 30*Configrations.ViewScale;
+					sp.addChild(i);
+					
+					var costLabel:TextField = FieldController.createSingleLineDynamicField(100,30*Configrations.ViewScale,"×"+cost.price,0x000000,25,true);
+					costLabel.hAlign = HAlign.LEFT;
+					costLabel.autoSize = TextFieldAutoSize.HORIZONTAL;
+					sp.addChild(costLabel);
+					costLabel.x = i.width;
+					addChild(sp);
+					sp.x = renderWidth/2 - sp.width/2;
+					sp.y = backImage.y - sp.height;
+					
+					var nameLabel:TextField = FieldController.createSingleLineDynamicField(400,30,entity.item.cname,0x000000,25,true);
+					nameLabel.autoSize = TextFieldAutoSize.HORIZONTAL;
+					addChild(nameLabel);
+					nameLabel.x = renderWidth/2 - nameLabel.width/2;
+					nameLabel.y = sp.y - nameLabel.height;
+				}
 			}
 			
 		}
@@ -88,6 +124,10 @@ package view.render
 				}else{
 					GameController.instance.selectTool = type;
 					UiController.instance.showToolStateButton(type,Game.assets.getTexture(textureName));
+				}
+			}else if(type == UiController.TOOL_EXCAVATE){
+				if(entity){
+					entity.searching();
 				}
 			}else{
 				GameController.instance.selectTool = type;

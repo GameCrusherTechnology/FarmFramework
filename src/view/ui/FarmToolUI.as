@@ -4,6 +4,7 @@ package view.ui
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
+	import controller.GameController;
 	import controller.SpecController;
 	import controller.UiController;
 	
@@ -22,6 +23,7 @@ package view.ui
 	
 	import model.entity.CropItem;
 	import model.gameSpec.CropSpec;
+	import model.player.GamePlayer;
 	
 	import starling.display.DisplayObject;
 	import starling.display.Image;
@@ -29,6 +31,7 @@ package view.ui
 	import starling.events.Event;
 	import starling.events.ResizeEvent;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	import starling.textures.Texture;
 	
 	import view.entity.GameEntity;
@@ -37,15 +40,16 @@ package view.ui
 
 	public class FarmToolUI extends Sprite
 	{
-		private var renderWidth:int = 80*Configrations.ViewScale;
-		private var renderHeight:int= 120*Configrations.ViewScale;
+		private var renderWidth:int = 120*Configrations.ViewScale;
+		private var renderHeight:int= 140*Configrations.ViewScale;
 		private var renderGap:Number = 20;
 		private var container:Sprite;
 		private const collection:Array = 
 			[
 				{ label: LanguageController.getInstance().getString("harvest"), texture: "reapIcon",type:UiController.TOOL_HARVEST},
 				{ label: LanguageController.getInstance().getString("seed"), texture: "fertilizeIcon",type:UiController.TOOL_SEED},
-				{ label: LanguageController.getInstance().getString("speed"), texture: "fertilizeIcon",type:UiController.TOOL_SPEED}
+				{ label: LanguageController.getInstance().getString("speed"), texture: "fertilizeIcon",type:UiController.TOOL_SPEED},
+				{ label: LanguageController.getInstance().getString("searching"), texture: "excavateIcon",type:UiController.TOOL_EXCAVATE}
 			];
 		
 		public function FarmToolUI() 
@@ -65,7 +69,7 @@ package view.ui
 				var leftPoint:Number = 0;
 				var renderArr:Array = toolsObject[type];
 				for each(data in renderArr){
-					render = new FarmToolsRender(data);
+					render = new FarmToolsRender(data,entity);
 					container.addChild(render);
 					render.x = leftPoint;
 					leftPoint +=(renderWidth + renderGap);
@@ -73,12 +77,14 @@ package view.ui
 				if(type == UiController.TOOL_SPEED && entity){
 					
 					var leftTime:String = SystemDate.getTimeLeftString((entity.item as CropItem).remainTime);
-					leftTimeText = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,40,leftTime,0xffffff,25,true);
+					leftTimeText = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,35*Configrations.ViewScale,leftTime,0x000000,25,true);
+					leftTimeText.autoSize = TextFieldAutoSize.VERTICAL;
 					container.addChild(leftTimeText);
 					leftTimeText.x = renderWidth/2 - Configrations.ViewPortWidth/2;
 					leftTimeText.y =  - leftTimeText.height-5;
 					
-					var nameText:TextField = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,40,LanguageController.getInstance().getString(entity.item.name),0xffffff,30,true);
+					var nameText:TextField = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,35*Configrations.ViewScale,entity.item.cname,0x000000,30,true);
+					nameText.autoSize = TextFieldAutoSize.VERTICAL;
 					container.addChild(nameText);
 					nameText.x = renderWidth/2 - Configrations.ViewPortWidth/2;
 					nameText.y =  leftTimeText.y- nameText.height - 5;
@@ -103,7 +109,7 @@ package view.ui
 				listLayout.manageVisibility = true;
 				
 				this._list = new List();
-				this._list.maxWidth = Configrations.ViewPortWidth/4;
+				this._list.maxWidth = Configrations.ViewPortWidth/4*3;
 				var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20));
 				this._list.backgroundSkin = new Scale9Image(skintextures);
 				
@@ -156,7 +162,8 @@ package view.ui
 		private var toolsObject:Object = {
 			"harvest" :[collection[0]],
 			"seed":[collection[1]],
-			"speed":[collection[2]]
+			"speed":[collection[2]],
+			"excavate":[collection[3]]
 		};
 		protected function list_scrollHandler(event:Event):void
 		{
@@ -183,8 +190,30 @@ package view.ui
 			var list:ListCollection = new ListCollection;
 			var spec:CropSpec ;
 			var specObj:Object;
+			var lastSpec:CropSpec;
+			var player:GamePlayer = GameController.instance.localPlayer;
+			var playerLv:int = player.level;
 			for each(spec in cropSpecArr){
-				list.push({label :spec.name,texture:Game.assets.getTexture(spec.name+"Icon"),type:UiController.TOOL_SEED,id:spec.item_id});
+				if(spec.isTree){
+					if(player.hasItem(spec.item_id)){
+						list.addItemAt({label :spec.cname,texture:Game.assets.getTexture(spec.name+"Icon"),type:UiController.TOOL_SEED,id:spec.item_id},0);
+					}
+				}else{
+					if(spec.level > playerLv){
+						if(lastSpec){
+							if(lastSpec.level>spec.level){
+								lastSpec = spec;
+							}
+						}else{
+							lastSpec = spec;
+						}
+					}else{
+						list.push({label :spec.cname,texture:Game.assets.getTexture(spec.name+"Icon"),type:UiController.TOOL_SEED,id:spec.item_id});
+					}
+				}
+			}
+			if(lastSpec){
+				list.push({label :lastSpec.cname,texture:Game.assets.getTexture(lastSpec.name+"Icon"),type:UiController.TOOL_SEED,id:lastSpec.item_id});
 			}
 			return list;
 		}
@@ -196,7 +225,7 @@ package view.ui
 				layout.paddingRight = layout.paddingLeft = 20*Configrations.ViewScale;
 				
 				
-				this._list.width = Math.min(Configrations.ViewPortWidth*0.8,_list.dataProvider.length * 80+100);
+				this._list.width = Math.min(Configrations.ViewPortWidth*0.8,_list.dataProvider.length * renderWidth+100);
 				this._list.height = renderHeight ;
 				this._pageIndicator.width = _list.width;
 				this._list.validate();

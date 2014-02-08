@@ -4,7 +4,6 @@ package view.panel
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
-	import controller.UiController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.List;
@@ -14,7 +13,6 @@ package view.panel
 	import feathers.data.ListCollection;
 	import feathers.display.Scale9Image;
 	import feathers.layout.TiledRowsLayout;
-	import feathers.text.BitmapFontTextFormat;
 	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
@@ -38,7 +36,7 @@ package view.panel
 	{
 		private var _list:List;
 		private var _pageIndicator:PageIndicator;
-		private var renderWidth:Number =  80 ;
+		private var renderWidth:Number =  80;
 		private var renderHeight:Number = 80;
 		private var panelSkin:Shape;
 		private var panelList:List;
@@ -58,16 +56,17 @@ package view.panel
 			var skintextures:Scale9Textures = new Scale9Textures(texture, new Rectangle(20, 20,10, 10));
 			var backSkin:Scale9Image = new Scale9Image(skintextures);
 			backSkin.width = Configrations.ViewPortWidth *.9;
-			backSkin.height= Configrations.ViewPortHeight *.98;
+			backSkin.height= Configrations.ViewPortHeight *.94;
 			addChild(backSkin);
 			backSkin.x = Configrations.ViewPortWidth *.05;
-			backSkin.y = Configrations.ViewPortHeight *.01;
+			backSkin.y = Configrations.ViewPortHeight *.06;
 			
 			var titleSkin:Image = new Image(Game.assets.getTexture("titleSkin"));
 			addChild(titleSkin);
 			titleSkin.width = Configrations.ViewPortWidth *.4;
 			titleSkin.scaleY = titleSkin.scaleX;
 			titleSkin.x = Configrations.ViewPortWidth/2 - titleSkin.width/2;
+			titleSkin.y = Configrations.ViewPortHeight *.05;
 			
 			titleText = FieldController.createSingleLineDynamicField(titleSkin.width,titleSkin.height,LanguageController.getInstance().getString("profile"),0x000000,35,true);
 			addChild(titleText);
@@ -82,9 +81,11 @@ package view.panel
 			addChild(cancelButton);
 			cancelButton.width = cancelButton.height = Configrations.ViewPortHeight*0.05;
 			cancelButton.x = Configrations.ViewPortWidth *0.95 -cancelButton.width -5;
-			cancelButton.y = Configrations.ViewPortHeight *.01 +5;
+			cancelButton.y = Configrations.ViewPortHeight *.06 +5;
 			
-			renderWidth = renderHeight = Math.min(Configrations.ViewPortHeight *.15,200);
+			renderWidth = Configrations.ViewPortWidth*0.1;
+			renderHeight = Configrations.ViewPortHeight *.1;
+//			renderWidth = renderHeight = Math.min(Configrations.ViewPortHeight *.15,200);
 			
 			
 			const listLayout1:TiledRowsLayout = new TiledRowsLayout();
@@ -106,7 +107,7 @@ package view.panel
 			panelList.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
 			panelList.itemRendererFactory = panelListItemRendererFactory;
 			this.addChild(panelList);
-			panelList.y = Configrations.ViewPortHeight*0.08;
+			panelList.y = Configrations.ViewPortHeight*0.12;
 			panelList.addEventListener(Event.SCROLL, panellist_scrollHandler);
 			
 			panelSkin = new Shape;
@@ -119,12 +120,12 @@ package view.panel
 			const listLayout:TiledRowsLayout = new TiledRowsLayout();
 			listLayout.paging = TiledRowsLayout.PAGING_HORIZONTAL;
 			listLayout.useSquareTiles = false;
-			listLayout.tileHorizontalAlign = TiledRowsLayout.TILE_HORIZONTAL_ALIGN_CENTER;
-			listLayout.tileVerticalAlign = TiledRowsLayout.TILE_VERTICAL_ALIGN_MIDDLE;
+//			listLayout.tileHorizontalAlign = TiledRowsLayout.TILE_HORIZONTAL_ALIGN_CENTER;
+//			listLayout.tileVerticalAlign = TiledRowsLayout.TILE_VERTICAL_ALIGN_MIDDLE;
 			listLayout.horizontalAlign = TiledRowsLayout.HORIZONTAL_ALIGN_CENTER;
 			listLayout.verticalAlign = TiledRowsLayout.VERTICAL_ALIGN_MIDDLE;
 			listLayout.manageVisibility = true;
-			listLayout.horizontalGap = Configrations.ViewPortWidth*0.01;
+			listLayout.horizontalGap = 4;
 			listLayout.verticalGap = Configrations.ViewPortHeight*0.01;
 			
 			
@@ -134,10 +135,10 @@ package view.panel
 			_list.backgroundSkin = new Scale9Image(skintextures);
 			this._list.dataProvider = menuArr;
 			this._list.width = Configrations.ViewPortWidth*0.86;
-			this._list.height = Configrations.ViewPortHeight *0.2;
+			this._list.height = Configrations.ViewPortHeight *0.15;
 			this._list.snapToPages = true;
-			this._list.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
-			this._list.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
+//			this._list.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
+//			this._list.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
 			this._list.itemRendererFactory = tileListItemRendererFactory;
 			this.addChild(this._list);
 			_list.x = Configrations.ViewPortWidth/2 - _list.width/2;
@@ -210,12 +211,10 @@ package view.panel
 		protected function tileListItemRendererFactory():IListItemRenderer
 		{
 			const renderer:DefaultListItemRenderer = new MenuListRender();
-			renderer.defaultSkin = new Image(Game.assets.getTexture("iconGlayBackSkin"));
-			renderer.defaultSelectedSkin = new Image(Game.assets.getTexture("iconGreenBackSkin"));
-			renderer.labelField = "label";
-			renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
-			renderer.iconSourceField = "texture";
-			renderer.iconPosition = Button.ICON_POSITION_TOP;
+			var buttxtures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelRenderSkin"), new Rectangle(20, 20, 20, 20));
+			renderer.defaultSelectedSkin = new Scale9Image(buttxtures) ;
+			buttxtures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(20, 20, 20, 20));
+			renderer.defaultSkin = new Scale9Image(buttxtures) ;
 			renderer.width = renderWidth;
 			renderer.height= renderHeight;
 			return renderer;
@@ -225,20 +224,20 @@ package view.panel
 		{
 			return new ListCollection([{name:"profile"},
 				{name:"skill"},
+				{name:"package"},
 				{name:"social"},
 				{name:"achieve"},
-				{name:"rating"},
 				{name:"setting"}]);
 		}
 		private function get menuArr():ListCollection
 		{
 			return new ListCollection([
-				{ label: LanguageController.getInstance().getString("profile"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_HARVEST,event:"profile"},
-				{ label: LanguageController.getInstance().getString("skill"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_SEED,event:"skill"},
-				{ label: LanguageController.getInstance().getString("social"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_HARVEST,event:"social"},
-				{ label: LanguageController.getInstance().getString("achieve"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_SEED,event:"achieve"},
-				{ label: LanguageController.getInstance().getString("rating"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_HARVEST,event:"rating"},
-				{ label: LanguageController.getInstance().getString("setting"), texture: Game.assets.getTexture("reapIcon"),type:UiController.TOOL_SEED,event:"setting"}
+				{event:"profile"},
+				{event:"skill"},
+				{event:"package"},
+				{event:"social"},
+				{event:"achieve"},
+				{event:"setting"}
 			]);
 		}
 		protected function layout():void
@@ -271,6 +270,8 @@ package view.panel
 			_list.removeEventListener(Event.ADDED_TO_STAGE,addedToStageHandler);
 			this._list.removeEventListener(Event.CHANGE, list_changeHandler);
 			this._list.removeEventListener(Event.SCROLL, list_scrollHandler);
+			_list.dispose();
+			panelList.dispose();
 			this._pageIndicator.removeEventListener(Event.CHANGE, pageIndicator_changeHandler);
 			if(parent){
 				parent.removeChild(this);

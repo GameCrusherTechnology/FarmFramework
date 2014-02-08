@@ -5,6 +5,7 @@ package view.render
 	import starling.display.DisplayObject;
 	
 	import view.panel.AchievePanel;
+	import view.panel.PackagePanel;
 	import view.panel.ProfilePanel;
 	import view.panel.RatingPanel;
 	import view.panel.SettingPanel;
@@ -42,6 +43,8 @@ package view.render
 						currentPanel = new SkillPanel();
 					}else if(value.name == "rating"){
 						currentPanel = new RatingPanel();
+					}else if(value.name == "package"){
+						currentPanel = new PackagePanel();
 					}else{
 						currentPanel = new ProfilePanel();
 					}

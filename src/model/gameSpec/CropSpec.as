@@ -19,5 +19,9 @@ package model.gameSpec
 			}
 		}
 		
+		public function get isTree():Boolean
+		{
+			return type == "Tree";
+		}
 	}
 }

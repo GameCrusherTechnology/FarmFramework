@@ -45,9 +45,9 @@ package view.effect
 			var rain:RainData = new RainData(rainTexture);
 			addChild(rain);
 			rain.x = Math.random()*(Configrations.Tile_Width-20)*2 -Configrations.Tile_Width+20;
-			rain.y = -150;
+			rain.y = -100;
 			var r:Number = Math.random();
-			rain.targetPointY = -r*Configrations.Tile_Height*2 +20;
+			rain.targetPointY = -Configrations.Tile_Height  - r*Configrations.Tile_Height;
 			rain.alpha = 0.3 +r/2;
 			rains.push(rain);
 		}

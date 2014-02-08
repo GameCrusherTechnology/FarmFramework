@@ -3,6 +3,9 @@ package controller
 	import flash.net.SharedObject;
 	import flash.utils.setTimeout;
 	
+	import gameconfig.SystemDate;
+	
+	import model.player.GamePlayer;
 	import model.player.SimplePlayer;
 	
 	import service.command.user.GetFriendsInfo;
@@ -28,13 +31,21 @@ package controller
 		{
 			users_vec = new Vector.<SimplePlayer>;
 			var shareo:SharedObject = SharedObject.getLocal(DATA_NAME,"/");
-			if(shareo.data.obj){
+			if(shareo && shareo.data && shareo.data.obj){
 				var obj:Object;
 				for each(obj in shareo.data.obj)
 				{
 					users_vec.push(new SimplePlayer(obj));
 				}
 			}
+			checkVec();
+		}
+		private function checkVec():void
+		{
+			if(users_vec.length > 100){
+				users_vec.splice(0,users_vec.length-100);
+			}
+			saveFriendInfo();
 		}
 		public function getUser(id:String):SimplePlayer
 		{
@@ -60,6 +71,19 @@ package controller
 			return targePlayer;
 		}
 		
+		
+		public function updateFriend(_player:GamePlayer):void
+		{
+			var player:SimplePlayer;
+			for each(player in users_vec){
+				if(player.gameuid == _player.gameuid){
+					users_vec.splice(users_vec.indexOf(player),1);
+					users_vec.push(_player.getSimplePlayer());
+					saveFriendInfo();
+					break;
+				}
+			}
+		}
 		private function pushNewer(id:String):void
 		{
 			
@@ -97,6 +121,19 @@ package controller
 			var shareo:SharedObject = SharedObject.getLocal(DATA_NAME,"/");
 			shareo.data.obj = users_vec;
 			shareo.flush();
+		}
+		
+		//stranger
+		
+		private var lastGetS:int;
+		public function canGetStranger():Boolean
+		{
+			if((SystemDate.systemTimeS - lastGetS) >300){
+				lastGetS = SystemDate.systemTimeS;
+				return true;
+			}else{
+				return false;
+			}
 		}
 	}
 }

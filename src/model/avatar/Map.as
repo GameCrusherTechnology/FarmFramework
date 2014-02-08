@@ -67,7 +67,10 @@ package model.avatar
 			}
 			this._tileGrid = _local2;
 		}
-		
+		public function get tiles():Vector.<Tile>
+		{
+			return _tiles;
+		}
 		public function getEntity(sceneX:Number,sceneY:Number):GameEntity
 		{
 			
@@ -80,7 +83,10 @@ package model.avatar
 			}
 			return _tiles[index];
 		}
-		
+		public function getRandom():Tile
+		{
+			return _tiles[Math.floor(Math.random()*_tiles.length)];
+		}
 		public function getTileByIos(x:int,y:int):Tile
 		{
 			if(x < 0 || x>=_gridWidth ||y < 0 || y>=_gridLength ){
@@ -92,6 +98,14 @@ package model.avatar
 		{
 			var lengthx:int = Math.floor((sceneP.x -startX)/ Configrations.Tile_Width + (sceneP.y -startY) / Configrations.Tile_Height);
 			var lengthy:int = Math.floor(-(sceneP.x -startX)/ Configrations.Tile_Width  + (sceneP.y-startY) / Configrations.Tile_Height);
+			return getTileByIos(lengthx,lengthy);
+		}
+		public function sceneToNearIso(sceneP:Point,boundx:int = 1,boundy:int=1):Tile
+		{
+			var lengthx:int = Math.floor((sceneP.x -startX)/ Configrations.Tile_Width + (sceneP.y -startY) / Configrations.Tile_Height);
+			lengthx = Math.max(0,Math.min(lengthx,_gridWidth-boundx));
+			var lengthy:int = Math.floor(-(sceneP.x -startX)/ Configrations.Tile_Width  + (sceneP.y-startY) / Configrations.Tile_Height);
+			lengthy = Math.max(0,Math.min(lengthy,_gridLength-boundy));
 			return getTileByIos(lengthx,lengthy);
 		}
 		

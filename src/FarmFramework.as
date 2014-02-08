@@ -4,10 +4,15 @@ package
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	import flash.filesystem.File;
 	import flash.geom.Rectangle;
 	import flash.system.Capabilities;
 	
+	import controller.GameController;
+	import controller.VoiceController;
+	
+	import gameconfig.Configrations;
 	import gameconfig.Devices;
 	
 	import starling.core.Starling;
@@ -25,9 +30,6 @@ package
 		[Embed(source="/startup.jpg")]
 		private static var Background:Class;
 		
-		// Startup image for HD screens
-		[Embed(source="/startupHD.jpg")]
-		private static var BackgroundHD:Class;
 		
 		private var mStarling:Starling;
 		
@@ -39,7 +41,7 @@ package
 			// to make sure the icon and startup images are added to the compiled mobile app.
 			
 			// set general properties
-			
+			setPlatform();
 			var stageWidth:int  = Devices.getDeviceDetails().width;
 			var stageHeight:int = Devices.getDeviceDetails().height;
 			var iOS:Boolean = Capabilities.manufacturer.indexOf("iOS") != -1;
@@ -98,9 +100,9 @@ package
 			// Note that we cannot embed "Default.png" (or its siblings), because any embedded
 			// files will vanish from the application package, and those are picked up by the OS!
 			
-			var backgroundClass:Class = scaleFactor == 1 ? Background : BackgroundHD;
+			var backgroundClass:Class =  Background ;
 			var background:Bitmap = new backgroundClass();
-			Background = BackgroundHD = null; // no longer needed!
+			Background = null; // no longer needed!
 			
 			background.x = viewPort.x;
 			background.y = viewPort.y;
@@ -116,7 +118,8 @@ package
 			mStarling.stage.stageHeight = stageHeight; // <- same size on all devices!
 			mStarling.simulateMultitouch  = false;
 			mStarling.enableErrorChecking = false;
-			mStarling.showStats = true;
+//			mStarling.showStats = true;
+			mStarling.simulateMultitouch = true;
 			mStarling.addEventListener(starling.events.Event.ROOT_CREATED, function():void
 			{
 				removeChild(background);
@@ -133,11 +136,27 @@ package
 			// would report a very long 'passedTime' when the app is reactivated. 
 			
 			NativeApplication.nativeApplication.addEventListener(
-				flash.events.Event.ACTIVATE, function (e:*):void { mStarling.start(); });
+				flash.events.Event.ACTIVATE, function (e:*):void { mStarling.start(); 
+					VoiceController.instance.setMusicVoice(0.2);});
 			
 			NativeApplication.nativeApplication.addEventListener(
-				flash.events.Event.DEACTIVATE, function (e:*):void { mStarling.stop(true); });
+				flash.events.Event.DEACTIVATE, function (e:*):void { mStarling.stop(true); 
+					VoiceController.instance.setMusicVoice(0);});
+			
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
 		}
 		
+		protected function setPlatform():void
+		{
+			Configrations.PLATFORM = "PC";
+		}
+		private function onKey(event:KeyboardEvent):void
+		{
+			if(event.keyCode == 16777238){
+				event.preventDefault();
+				event.stopImmediatePropagation();
+				GameController.instance.onKeyCancel();
+			}
+		}
 	}
 }

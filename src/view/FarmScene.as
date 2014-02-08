@@ -2,18 +2,29 @@ package view
 {
 	import flash.display.Bitmap;
 	import flash.geom.Point;
+	import flash.net.SharedObject;
 	
+	import controller.DialogController;
 	import controller.GameController;
 	import controller.UiController;
 	import controller.UpdateController;
 	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
+	import gameconfig.SystemDate;
 	
+	import model.MessageData;
+	import model.SkillData;
 	import model.UpdateData;
 	import model.avatar.Map;
 	import model.avatar.Tile;
 	import model.entity.CropItem;
+	import model.entity.EntityItem;
 	import model.player.GamePlayer;
+	
+	import service.command.friend.HelpFriendCommand;
+	import service.command.scene.CreatWeed;
+	import service.command.user.UserSkillCommand;
 	
 	import starling.display.DisplayObject;
 	import starling.display.Shape;
@@ -23,8 +34,12 @@ package view
 	import starling.events.TouchPhase;
 	import starling.textures.Texture;
 	
+	import view.entity.AnimalEntity;
 	import view.entity.CropEntity;
 	import view.entity.GameEntity;
+	import view.entity.HouseEntity;
+	import view.panel.ExtendFarmLandPanel;
+	import view.panel.WarnnigTipPanel;
 
 	public class FarmScene extends Sprite
 	{
@@ -35,7 +50,8 @@ package view
 		public var entityLayer:Sprite;
 		private var scenew:Number;
 		private var sceneh:Number;
-		public var cropDic:Vector.<CropEntity>;
+		public var entityDic:Vector.<GameEntity>;
+		
 		public var effectLayer:Sprite;
 		public function FarmScene()
 		{
@@ -57,8 +73,11 @@ package view
 			initEntity();
 			addEventListener(TouchEvent.TOUCH,onTouch);
 			
-			x = -(length-1)* Configrations.Tile_Width/2;
-			y = -(length-1)* Configrations.Tile_Height/2;
+			dragScreenTo(new Point(-(length-1)* Configrations.Tile_Width/2,-(length-1)* Configrations.Tile_Height/2));
+			
+			if(GameController.instance.isHomeModel){
+				checkWeeds();
+			}
 		}
 		
 		private function initBackground(scenew:Number,sceneh:Number,length:int):void
@@ -68,13 +87,13 @@ package view
 			shape.graphics.beginTextureFill(Texture.fromBitmap(bitmap));
 			shape.graphics.drawRect(0,0,scenew,sceneh);
 			shape.graphics.endFill();
+			shape.graphics.lineStyle(2,0xffff00,0.8);
 			
-			shape.graphics.lineStyle(2,0xffff00,1);
-			shape.graphics.moveTo(scenew/2,sceneh/2-length*Configrations.Tile_Height/2);
-			shape.graphics.lineTo(scenew/2+length* Configrations.Tile_Width/2,sceneh/2);
-			shape.graphics.lineTo(scenew/2,sceneh/2+length*Configrations.Tile_Height/2);
-			shape.graphics.lineTo(scenew/2-length* Configrations.Tile_Width/2,sceneh/2);
-			shape.graphics.lineTo(scenew/2,sceneh/2-length*Configrations.Tile_Height/2);
+			shape.graphics.moveTo(scenew/2,sceneh/2-length*Configrations.Tile_Height/2-5);
+			shape.graphics.lineTo(scenew/2+length* Configrations.Tile_Width/2+5,sceneh/2);
+			shape.graphics.lineTo(scenew/2,sceneh/2+length*Configrations.Tile_Height/2+5);
+			shape.graphics.lineTo(scenew/2-length* Configrations.Tile_Width/2-5,sceneh/2);
+			shape.graphics.lineTo(scenew/2,sceneh/2-length*Configrations.Tile_Height/2-5);
 			shape.graphics.endFill();
 			
 			addChild(shape);
@@ -82,35 +101,64 @@ package view
 		
 		private function initEntity():void
 		{
-			cropDic = new Vector.<CropEntity>;
-			var crop:CropEntity ;
-			for each(var cropItem:CropItem in player.cropItems){
-				crop = new CropEntity(cropItem);
-				maxFieldId = Math.max(maxFieldId,cropItem.data_id);
-				entityLayer.addChild(crop);
-				fieldLayer.addChild(crop.fieldSUR);
-				cropDic.push(crop);
+			entityDic = new Vector.<GameEntity>;
+			
+			var entity:GameEntity;
+			var entityItem:EntityItem;
+			for each(entityItem in player.decorationItems){
+				if(entityItem.ishouse){
+					entity = new HouseEntity(entityItem);
+				}else{
+					entity = new GameEntity(entityItem);
+				}
+				addEntityLayer(entity);
+				entityDic.push(entity);
+				maxDecId = Math.max(maxDecId,entityItem.data_id);
 			}
+			
+			for each(entityItem in player.cropItems){
+				entity = new CropEntity(entityItem as CropItem);
+				maxFieldId = Math.max(maxFieldId,entityItem.data_id);
+				addEntityLayer(entity);
+				entityDic.push(entity);
+			}
+			
 			sortEntityLayer();
 		}
-		public function addFarmEntity(cropItem:CropItem):void
+		private function addCropEntity(cropItem:CropItem):void
 		{
 			var crop:CropEntity = new CropEntity(cropItem);
-			entityLayer.addChild(crop);
-			fieldLayer.addChild(crop.fieldSUR);
-			cropDic.push(crop);
+			addEntityLayer(crop);
+			entityDic.push(crop);
+			player.addCropItem(cropItem);
+			sortEntityLayer();
+		}
+		public function addEntity(item:EntityItem):void
+		{
+			var entity:GameEntity = new GameEntity(item);
+			addEntityLayer(entity);
+			entityDic.push(entity);
+			maxDecId = Math.max(maxDecId,item.data_id);
+			sortEntityLayer();
+		}
+		public function addAnimalEntity(entity:AnimalEntity):void
+		{
+			addEntityLayer(entity);
+			entityDic.push(entity);
 			sortEntityLayer();
 		}
 			
 		public function removeEntity(entity:GameEntity):void{
-			if(entity is CropEntity){
-				var index:int = cropDic.indexOf(entity as CropEntity);
+				var index:int = entityDic.indexOf(entity);
 				if(index >=0){
-					cropDic.splice(index,1);
-					fieldLayer.removeChild((entity as CropEntity).fieldSUR);
-					entityLayer.removeChild(entity);
+					entityDic.splice(index,1);
+					if(entity is CropEntity && (entity as CropEntity).fieldSUR.parent){
+						fieldLayer.removeChild((entity as CropEntity).fieldSUR);
+					}
+					if(entity.parent){
+						entity.parent.removeChild(entity);
+					}
 				}
-			}
 		}
 		
 		private var _hasDragged:Boolean;
@@ -175,7 +223,10 @@ package view
 				}else{
 					mouseDownEntity = findEntity(mouseDownPos,TouchPhase.BEGAN);
 					if(!mouseDownEntity){
-						UiController.instance.hideUiTools();
+						mouseDownEntity = findEntityByTouch(mouseDownPos,TouchPhase.BEGAN);
+						if(!mouseDownEntity){
+							UiController.instance.hideUiTools();
+						}
 					}
 				}
 			}
@@ -211,21 +262,26 @@ package view
 		private var lastCheckTile:Tile;
 		private function addField(scenePos:Point,len_x:int,len_y:int):void
 		{
-			var tile:Tile = Map.intance.sceneToIso(scenePos);
-			if(tile &&  tile != lastCheckTile){
-				var tile1:Tile = Map.intance.getTileByIos(tile.x+len_x-1,tile.y+len_y-1);
-				if(tile1){
-					var valiable:Boolean = checkValiable(tile,len_x,len_y);
-					if(valiable){
-						maxFieldId++;
-						var fieldObje:Object = {positionx:tile.x,positiony:tile.y,gameuid:player.gameuid,data_id:maxFieldId};
-						UpdateController.instance.pushActionData(new UpdateData(player.gameuid,Configrations.ADD_FIELD,fieldObje));
-						var item:CropItem = new CropItem(fieldObje);
-						addFarmEntity(item);
+			if(player.leftFarmLand >0){
+				var tile:Tile = Map.intance.sceneToIso(scenePos);
+				if(tile &&  tile != lastCheckTile){
+					var tile1:Tile = Map.intance.getTileByIos(tile.x+len_x-1,tile.y+len_y-1);
+					if(tile1){
+						var valiable:Boolean = checkValiable(tile,len_x,len_y);
+						if(valiable){
+							maxFieldId++;
+							var fieldObje:Object = {positionx:tile.x,positiony:tile.y,gameuid:player.gameuid,data_id:maxFieldId};
+							UpdateController.instance.pushActionData(new UpdateData(player.gameuid,Configrations.ADD_FIELD,fieldObje));
+							var item:CropItem = new CropItem(fieldObje);
+							addCropEntity(item);
+						}
 					}
 				}
+				lastCheckTile = tile;
+			}else{
+				GameController.instance.resetTools();
+				DialogController.instance.showPanel(new ExtendFarmLandPanel);
 			}
-			lastCheckTile = tile;
 		}
 		private function checkValiable(toptile:Tile,len_x:int,len_y:int):Boolean
 		{
@@ -286,10 +342,7 @@ package view
 			if(currentMoveEntity != entity){
 				removeMoveEntity();
 			}
-			entityLayer.addChild(currentMoveEntity);
-			if(entity is CropEntity){
-				fieldLayer.addChild((entity as CropEntity).fieldSUR);
-			}
+			addEntityLayer(currentMoveEntity);
 			currentMoveEntity = null;
 			sortEntityLayer();
 		}
@@ -297,13 +350,21 @@ package view
 		{
 			if(currentMoveEntity){
 				currentMoveEntity.cancel();
-				entityLayer.addChild(currentMoveEntity);
-				if(currentMoveEntity is CropEntity){
-					fieldLayer.addChild((currentMoveEntity as CropEntity).fieldSUR);
-				}
+				addEntityLayer(currentMoveEntity);
 				currentMoveEntity = null;
 			}
 			
+		}
+		
+		private function addEntityLayer(entity:GameEntity):void{
+			if(entity.isFloor){
+				fieldLayer.addChild(entity);
+			}else{
+				entityLayer.addChild(entity);
+			}
+			if(entity is CropEntity){
+				fieldLayer.addChild((entity as CropEntity).fieldSUR);
+			}
 		}
 		public function getCurrentFocusPos(lengthx:int,lengthy:int):Tile
 		{
@@ -333,28 +394,53 @@ package view
 			lastEntity = entity;
 			return entity;
 		}
+		private function findEntityByTouch(point:Point,type:String):GameEntity
+		{
+			var entity:GameEntity ;
+			var localPos:Point;
+			var index:int = entityDic.length-1;
+			while(index>=0){
+				entity = entityDic[index];
+				localPos = entity.globalToLocal(point);
+				if(entity.hitTest(localPos)){
+					entity.doTouchEvent(type);
+					if(lastEntity && lastEntity!=entity){
+						lastEntity.doTouchEvent(TouchPhase.ENDED);
+					}
+					return entity;
+				}
+				index --;
+			}
+			return null;
+		}
 		
 		private function scaleScreen(touchA:Touch,touchB:Touch):void{
-			var currentPosA:Point  = touchA.getLocation(this.parent);
-			var previousPosA:Point = touchA.getPreviousLocation(this.parent);
-			var currentPosB:Point  = touchB.getLocation(this.parent);
-			var previousPosB:Point = touchB.getPreviousLocation(this.parent);
+			var currentPosA:Point  = touchA.getLocation(this);
+			var previousPosA:Point = touchA.getPreviousLocation(this);
+			var currentPosB:Point  = touchB.getLocation(this);
+			var previousPosB:Point = touchB.getPreviousLocation(this);
 			
 			var currentVector:Point  = currentPosA.subtract(currentPosB);
 			var previousVector:Point = previousPosA.subtract(previousPosB);
 			
-			var currentAngle:Number  = Math.atan2(currentVector.y, currentVector.x);
-			var previousAngle:Number = Math.atan2(previousVector.y, previousVector.x);
-			var deltaAngle:Number = currentAngle - previousAngle;
+//			var currentAngle:Number  = Math.atan2(currentVector.y, currentVector.x);
+//			var previousAngle:Number = Math.atan2(previousVector.y, previousVector.x);
+//			var deltaAngle:Number = currentAngle - previousAngle;
 			
 			var sizeDiff:Number = currentVector.length / previousVector.length;
-			this.setScale(sizeDiff);
+			var scale:Number = Math.max(0.5,Math.min(2,scaleX*sizeDiff));
+			if(scale != scaleX){
+				var delx:Number = -(scenew*scale - scenew *scaleX)/2; 
+				var dely:Number = -(sceneh*scale - sceneh *scaleX)/2; 
+				this.setScale(scale);
+				dragScreenTo(new Point(delx,dely));
+			}
 		}
 		public function setScale(panScale:Number):void
 		{
 			if(scenew*scaleX*panScale > Configrations.ViewPortWidth && sceneh*scaleY*panScale > Configrations.ViewPortHeight){
-				scaleX =scaleY= scaleX*panScale;
-				dragScreenTo(new Point(0,0));
+				var scale:Number = Math.max(0.5,Math.min(2,scaleX*panScale));
+				scaleX =scaleY= panScale;
 			}
 		}
 		protected function dragScreenTo(delta:Point):void
@@ -374,10 +460,118 @@ package view
 				y+=delta.y;
 			}
 		}
+		
+		//技能
+		public function playSkill():void
+		{
+			var entity:GameEntity;
+			var skill :SkillData = player.skillData;
+			var speedArr:Array = [];
+			var harArr:Array = [];
+			for each(entity in entityDic){
+				if(entity is CropEntity){
+					if(((entity as CropEntity).cropItem).hasCrop){
+						if(((entity as CropEntity).cropItem).canSpeed){
+							speedArr.push(entity);
+						}
+					}
+				}
+			}
+			
+			var speedC:int ;
+			if(GameController.instance.isHomeModel)
+			{
+				speedC = skill.speedCount;
+			}else{
+				speedC = 5;
+			}
+			var speedR:Array = [];
+			var crop:CropEntity;
+			for (var i:int = 0; i<speedC; i++) {
+				if (speedArr.length>0) {
+					var arrIndex:Number = Math.floor(Math.random()*speedArr.length);
+					crop = speedArr[arrIndex];
+					speedR.push(crop.item.data_id);
+					speedArr.splice(arrIndex, 1);
+					
+					if(GameController.instance.isHomeModel)
+					{
+						crop.showSkillSpeed();
+					}else{
+						crop.showHelpSpeed();
+					}
+				} else {
+					break;
+				}
+			}
+			
+			if(speedR.length <=0 ){
+				//提醒
+				DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("skillTip03")));
+			}else{
+				if(GameController.instance.isHomeModel){
+					new UserSkillCommand(speedR,onSkillCommandSuc);
+					player.skill_time = SystemDate.systemTimeS;
+				}else{
+					new HelpFriendCommand(player.gameuid,speedR,player.cur_mes_dataid+1,onHelped);
+					player.lastHelpedTime = SystemDate.systemTimeS;
+				}
+			}
+		}
+		//刷 野草
+		public function checkWeeds():void
+		{
+			var shareo:SharedObject  = SharedObject.getLocal("WeedInfoTime","/");
+			var lastTime:int;
+			if(shareo && shareo.data && shareo.data.obj){
+				lastTime = shareo.data.obj;
+				if((lastTime - SystemDate.systemTimeS) < 3600){
+					return;
+				}
+			}
+			
+			var tiles:Vector.<Tile> = Map.intance.tiles.concat();
+			var newTiles:Array = [];
+			while(tiles.length>0){
+				newTiles.push(tiles.splice(Math.floor(Math.random()*tiles.length),1)[0]);
+			}
+			var i:int = 0;
+			var bool:Boolean;
+			var tile:Tile;
+			for (i;i<newTiles.length;i++){
+				tile = newTiles[i];
+				bool = checkValiable(tile,2,2);
+				if(bool){
+					maxDecId++;
+					new CreatWeed(tile,maxDecId,function():void{
+						shareo.data.obj = SystemDate.systemTimeS;
+						shareo.flush();
+					});
+					break;
+				}
+			}
+			
+		}
+		
+		private function onHelped():void
+		{
+			player.lastHelpedTime = SystemDate.systemTimeS;
+			player.cur_mes_dataid++;
+			player.addMessage(new MessageData({gameuid:player.gameuid,f_gameuid:GameController.instance.localPlayer.gameuid,
+				message:"",type:Configrations.MESSTYPE_HELP,data_id:GameController.instance.currentPlayer.cur_mes_dataid,updatetime :SystemDate.systemTimeS}));
+			var texture:Texture = Game.assets.getTexture("loveIcon");
+			var stagePoint:Point  = new Point(Configrations.ViewPortWidth - 100*Configrations.ViewScale, Configrations.ViewPortHeight/2);
+			GameController.instance.effectLayer.addTweenCrop(texture,stagePoint,0);
+		}
+		private function onSkillCommandSuc():void
+		{
+			player.skill_time = SystemDate.systemTimeS;
+		}
 		private function get player():GamePlayer
 		{
 			return GameController.instance.currentPlayer;
 		}
 		private var maxFieldId:int = 1000;
+		public var maxDecId:int = 1000;
 	}
 }

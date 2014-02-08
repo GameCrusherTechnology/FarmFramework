@@ -37,7 +37,8 @@ package view.ui
 				{ label: LanguageController.getInstance().getString("cancel"), texture: "rightArrowIcon",type:UiController.TOOL_CANCEL},
 				{ label: LanguageController.getInstance().getString("plow"), texture: "plowIcon",type:UiController.TOOL_ADDFEILD},
 				{ label: LanguageController.getInstance().getString("move"), texture: "moveIcon",type:UiController.TOOL_MOVE},
-				{ label: LanguageController.getInstance().getString("sell"), texture: "sellIcon",type:UiController.TOOL_SELL}
+				{ label: LanguageController.getInstance().getString("scoop"), texture: "scoopIcon",type:UiController.TOOL_SCOOP},
+				{ label: LanguageController.getInstance().getString("extend"), texture: "extendIcon",type:UiController.TOOL_EXTEND}
 			];
 		private const closedList:Array = 
 			[

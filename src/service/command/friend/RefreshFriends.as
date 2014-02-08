@@ -1,7 +1,5 @@
 package service.command.friend
 {
-	import controller.GameController;
-	
 	import service.command.AbstractCommand;
 	import service.command.Command;
 	

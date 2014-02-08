@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <language>
-<resourceName key="harvest" value="harvest"/>
-<resourceName key="seed" value="seed"/>
-<resourceName key="speed" value="speed"/>
-<resourceName key="menu" value="menu"/>
-<resourceName key="edit" value="edit"/>
-<resourceName key="cancel" value="cancel"/>
-<resourceName key="plow" value="plow"/>
-<resourceName key="move" value="move"/>
-<resourceName key="sell" value="sell"/>
-<resourceName key="skill" value="skill"/>
-<resourceName key="profile" value="profile"/>
-<resourceName key="social" value="social"/>
-<resourceName key="achieve" value="achieve"/>
+<resourceName key="harvest" value="Harvest"/>
+<resourceName key="seed" value="Seed"/>
+<resourceName key="speed" value="Speed"/>
+<resourceName key="menu" value="Menu"/>
+<resourceName key="edit" value="Edit"/>
+<resourceName key="cancel" value="Cancel"/>
+<resourceName key="plow" value="Plow"/>
+<resourceName key="move" value="Move"/>
+<resourceName key="sell" value="Sell"/>
+<resourceName key="skill" value="Skill"/>
+<resourceName key="profile" value="Profile"/>
+<resourceName key="social" value="Social"/>
+<resourceName key="achieve" value="Achieve"/>
 <resourceName key="rating" value="rating"/>
-<resourceName key="setting" value="setting"/>
+<resourceName key="setting" value="Setting"/>
 <resourceName key="change" value="change"/>
+<resourceName key="scoop" value="Remove"/>
 <resourceName key="creat" value="Creat"/>
+<resourceName key="trade" value="Trade"/>
+<resourceName key="package" value="Package"/>
+<resourceName key="smallshop" value="Small Shop"/>
+<resourceName key="searching" value="Searching"/>
 <resourceName key="left" value="Left"/>
 <resourceName key="farmname" value="Farmer Name"/>
-<resourceName key="coin" value="coin"/>
-<resourceName key="gem" value="gem"/>
-<resourceName key="exp" value="exp"/>
-<resourceName key="love" value="love"/>
-<resourceName key="level" value="level"/>
-<resourceName key="music" value="music"/>
-<resourceName key="sound" value="sound effect"/>
-<resourceName key="friend" value="friend"/>
-<resourceName key="stranger" value="stranger"/>
-<resourceName key="confirm" value="confirm"/>
-<resourceName key="task" value="task"/>
+<resourceName key="coin" value="Coin"/>
+<resourceName key="gem" value="Gem"/>
+<resourceName key="exp" value="Exp"/>
+<resourceName key="love" value="Love"/>
+<resourceName key="level" value="Level"/>
+<resourceName key="music" value="Music"/>
+<resourceName key="sound" value="Sound Effect"/>
+<resourceName key="friend" value="Friend"/>
+<resourceName key="stranger" value="Stranger"/>
+<resourceName key="confirm" value="Confirm"/>
+<resourceName key="task" value="Task"/>
 <resourceName key="request" value="Request"/>
-<resourceName key="leave" value="leave"/>
+<resourceName key="leave" value="Leave"/>
 <resourceName key="technician" value="Technician"/>
 <resourceName key="shopkeeper" value="Shopkeeper"/>
-<resourceName key="buy" value="buy"/>
-<resourceName key="upgrade" value="upgrade"/>
-<resourceName key="cd" value="cooldown"/>
+<resourceName key="buy" value="Buy"/>
+<resourceName key="upgrade" value="Upgrade"/>
+<resourceName key="cd" value="Cooldown"/>
 <resourceName key="getReward" value="GetReward"/>
-<resourceName key="visit" value="visit"/>
+<resourceName key="visit" value="Visit"/>
 <resourceName key="message" value="Message"/>
 <resourceName key="info" value="Info"/>
+<resourceName key="board" value="Board"/>
 <resourceName key="order" value="Order"/>
-<resourceName key="accept" value="accept"/>
+<resourceName key="accept" value="Accept"/>
 <resourceName key="invited" value="Invited"/>
 <resourceName key="invite" value="Invite"/>
 <resourceName key="helped" value="Helped"/>
 <resourceName key="you" value="you"/>
 <resourceName key="ago" value="ago"/>
-<resourceName key="close" value="close"/>
+<resourceName key="close" value="Close"/>
 <resourceName key="reward" value="Reward"/>
+<resourceName key="extend" value="Extend"/>
 <resourceName key="add" value="Add"/>
+<resourceName key="get" value="Get"/>
 <resourceName key="noorder" value="At present there is no order!"/>
 <resourceName key="SelectItem" value="Select Item"/>
 <resourceName key="click" value="Click"/>
@@ -58,6 +66,7 @@
 <resourceName key="cost" value="Cost"/>
 <resourceName key="or" value="or"/>
 <resourceName key="qucickshop" value="Convenience Store"/>
+<resourceName key="treasureshop" value="Treasure Store"/>
 <resourceName key="levelup" value="To Next Level"/>
 <resourceName key="tofull" value="To Full"/>
 <resourceName key="home" value="Home"/>
@@ -65,16 +74,42 @@
 <resourceName key="nextTaskTime" value="Next Order "/>
 <resourceName key="leaveMessage" value="Leave A Message"/>
 <resourceName key="helpOrder" value="Completed your order !"/>
+<resourceName key="cleanSkillCD" value="Clean Skill CD"/>
 <resourceName key="my" value="My"/>
+<resourceName key="m" value="minute"/>
+<resourceName key="buyland" value="Buy crop fields"/>
+<resourceName key="buyscene" value="Extend whole farm"/>
+<resourceName key="field" value="Field"/>
 <!-- 提醒 -->
-<resourceName key="shopTip01" value="In the shop to buy crop is not wise !"/>
+<resourceName key="shopTip01" value="In the shop to buy crop too much is not wise !"/>
 <resourceName key="shopTip02" value="Change Name Will Cost you"/>
-<resourceName key="warnTip01" value="Level is not enough !"/>
+<resourceName key="shopTip03" value="Need Level "/>
+<resourceName key="shopTip04" value="Change Sex Will Cost you"/>
+<resourceName key="warnTip01" value="Level is not enough ! Need : "/>
 <resourceName key="taskTip01" value="Please finish the order in the time given !"/>
 <resourceName key="taskTip02" value="Do not complete the task I can't give you a reward !"/>
-<resourceName key="npctip01" value="I can exchange your crops with coin and experience!"/>
-<resourceName key="npctip02" value="Here,you can get skill and experience!"/>
+<resourceName key="npctip01" value="I can exchange your crops with coins and experience!"/>
+<resourceName key="npctip02" value="Here,you can get skill and coins"/>
 <resourceName key="buyTaskTip" value="Buy task cost you : "/>
+<resourceName key="skillTip01" value="At the same time to fertilization lands :"/>
+<resourceName key="skillTip02" value="Each skill fertilizer can speed :"/>
+<resourceName key="skillTip03" value="No need to fertilize land !"/>
+<resourceName key="warnintTip01" value="Not open, comming soon !"/>
+<resourceName key="warnintTip02" value="Wild crop can not move !"/>
+<resourceName key="warnintTip03" value="Farm name cannot be empty !"/>
+<resourceName key="warnintTip04" value="Are you sure you want to delete this friend ?"/>
+<resourceName key="warnintLeave" value="Sure to quit the game ?"/>
+<resourceName key="warningPay" value="Your device does not support in-app purchases."/>
+<resourceName key="warningPay01" value="The deal was not successful!"/>
+<resourceName key="warningPay02" value="The last order is still pending!"/>
+<resourceName key="sellTip01" value="Are you sure you want to remove "/>
+<resourceName key="seachTip01" value="You have just found :"/>
+<resourceName key="buyTip01" value="Buy success !"/>
+<resourceName key="tutorialTip01" value="Select your SEX !"/>
+<resourceName key="tutorialTip02" value="Now please register your farm information !"/>
+<resourceName key="gameTip01" value="Back to nature , experience the calm and simple farm life !"/>
+<resourceName key="systemTip01" value="The game is being upgraded ! Please wait..."/>
+<resourceName key="systemTip02" value="The game data dose not match with the server. Reload game..."/>
 <!-- 称号 -->
 <resourceName key="noTitle" value="Farm Beginner"/>
 <resourceName key="master" value="master"/>
@@ -82,9 +117,82 @@
 <resourceName key="master2" value="master2"/>
 <resourceName key="master3" value="master3"/>
 <resourceName key="master4" value="master4"/>
-<!-- 作物 -->
-<resourceName key="rice" value="rice"/>
-<resourceName key="sunflower" value="sunflower"/>
-<resourceName key="clover" value="clover"/>
+<!-- item-->
+<!-- crop -->
+<resourceName key="Potato" value="Potato"/>
+<resourceName key="Radish" value="Radish"/>
+<resourceName key="Beans" value="Beans"/>
+<resourceName key="RedPepper" value="RedPepper"/>
+<resourceName key="Tomato" value="Tomato"/>
+<resourceName key="Asparagus" value="Asparagus"/>
+<resourceName key="Eggplant" value="Eggplant"/>
+<resourceName key="Carrot" value="Carrot"/>
+<resourceName key="Lettuce" value="Lettuce"/>
+<resourceName key="Sunflower" value="Sunflower"/>
+<resourceName key="Leek" value="Leek"/>
+<resourceName key="Corn" value="Corn"/>
+<resourceName key="Pea" value="Pea"/>
+<resourceName key="Grape" value="Grape"/>
+<resourceName key="Lily" value="Lily"/>
+<resourceName key="Blueberry" value="Blueberry"/>
+<resourceName key="Kiwi" value="Kiwi"/>
+<resourceName key="Rice" value="Rice"/>
+<resourceName key="Lentil" value="Lentil"/>
+<resourceName key="Spinach" value="Spinach"/>
+<resourceName key="Mint" value="Mint"/>
+<resourceName key="Mustard" value="Mustard"/>
+<resourceName key="Oat" value="Oat"/>
+<resourceName key="Bamboo" value="Bamboo"/>
+<resourceName key="Pineapple" value="Pineapple"/>
+<resourceName key="Strawberry" value="Strawberry"/>
+<resourceName key="Cranberry" value="Cranberry"/>
+<resourceName key="RedRose" value="RedRose"/>
+<!-- tree -->
+<resourceName key="AppleTree" value="AppleTree"/>
+<resourceName key="OrangeTree" value="OrangeTree"/>
+<resourceName key="PearTree" value="PearTree"/>
+<resourceName key="PersimmonTree" value="PersimmonTree"/>
+<resourceName key="AlmondTree" value="AlmondTree"/>
+<resourceName key="ChestnutTree" value="ChestnutTree"/>
+<resourceName key="CherryTree" value="CherryTree"/>
+<resourceName key="OakTree" value="OakTree"/>
+<resourceName key="LeecheeTree" value="LeecheeTree"/>
+<resourceName key="LemonTree" value="LemonTree"/>
+<resourceName key="LimeTree" value="LimeTree"/>
+<resourceName key="MangoTree" value="MangoTree"/>
+<!-- item-->
+<resourceName key="fertilize" value="Fertilize"/>
+<resourceName key="Apple" value="Apple"/>
+<resourceName key="Orange" value="Orange"/>
+<resourceName key="Pear" value="Pear"/>
+<resourceName key="Cherry" value="Cherry"/>
+<resourceName key="Leechee" value="Leechee"/>
+<resourceName key="Lemon" value="Lemon"/>
+<resourceName key="Mango" value="Mango"/>
+
+<!-- decoration -->
+<resourceName key="House" value="House"/>
+<resourceName key="Haystack01" value="Haystack"/>
+<resourceName key="Haystack02" value="Haystack"/>
+<resourceName key="Haystack03" value="Haystack"/>
+<resourceName key="Haystack04" value="Haystack"/>
+<resourceName key="Haystack05" value="Haystack"/>
+<resourceName key="Haystack06" value="Haystack"/>
+<resourceName key="Haystack07" value="Haystack"/>
+<resourceName key="Floor01" value="StoneRoad"/>
+<resourceName key="Floor02" value="StoneRoad"/>
+<resourceName key="Floor03" value="Floor"/>
+<resourceName key="Floor04" value="Floor"/>
+<resourceName key="Forage01" value="Weed"/>
+<resourceName key="Forage02" value="Weed"/>
+<resourceName key="Forage03" value="Weed"/>
+<resourceName key="Forage04" value="Grass"/>
+<resourceName key="Forage05" value="Grass"/>
+<resourceName key="Forage06" value="Grass"/>
+<!-- treasure -->
+<resourceName key="littleFarmCoin" value="Small Coins"/>
+<resourceName key="largeFarmCoin" value="Large Coins"/>
+<resourceName key="littleFarmGem" value="Small Gems"/>
+<resourceName key="largeFarmGem" value="Large Gems"/>
 
 </language>

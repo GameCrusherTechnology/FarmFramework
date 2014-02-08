@@ -3,6 +3,7 @@ package view.panel
 	import flash.geom.Rectangle;
 	import flash.text.TextFormatAlign;
 	
+	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
 	import controller.SpecController;
@@ -192,7 +193,7 @@ package view.panel
 		private function refreshValue():void
 		{
 			if(coinButton){
-				coinButton.label = String(currentCount*spec.coinPrice);
+				coinButton.label = String(currentCount*spec.coinPrice*10);
 				coinButton.validate();
 			}
 			if(gemButton){
@@ -206,29 +207,46 @@ package view.panel
 			refreshValue();
 		}
 		
-		
+		private var isCommanding:Boolean;
 		private function coinButton_triggeredHandler(e:Event):void
 		{
-			if(player.coin>= currentCount*spec.coinPrice){
-				new BuyItemCommand(item_id,currentCount,Configrations.METHOD_COIN,onBuy);
-			}else{
-//				DialogController.instance.showPanel();
+			if(!isCommanding){
+				if(player.coin>= currentCount*spec.coinPrice*10){
+					isCommanding = true;
+					new BuyItemCommand(item_id,currentCount,Configrations.METHOD_COIN,onBuyCoin);
+				}else{
+					DialogController.instance.showPanel(new TreasurePanel);
+				}
 			}
 		}
 		private function gemButton_triggeredHandler(e:Event):void
 		{
-			if(player.gem>= currentCount*spec.gemPrice){
-				new BuyItemCommand(item_id,currentCount,Configrations.METHOD_MONEY,onBuy);
-			}else{
-//				DialogController.instance.showPanel();
+			if(!isCommanding){
+				if(player.gem>= currentCount*spec.gemPrice){
+					isCommanding = true;
+					new BuyItemCommand(item_id,currentCount,Configrations.METHOD_MONEY,onBuy);
+				}else{
+					DialogController.instance.showPanel(new TreasurePanel);
+				}
 			}
 		}
 		
 		private function onBuy():void
 		{
+			isCommanding = false;
 			player.addItem(new OwnedItem(item_id,currentCount));
+			player.changeGem(- int(currentCount*spec.gemPrice));
 			destroy();
 		}
+		
+		private function onBuyCoin():void
+		{
+			isCommanding = false;
+			player.addItem(new OwnedItem(item_id,currentCount));
+			player.addCoin(- int(currentCount*spec.coinPrice*10));
+			destroy();
+		}
+		
 		private function closeButton_triggeredHandler(e:Event):void
 		{
 			destroy();

@@ -73,7 +73,7 @@ package view.render
 			skin.width = renderwidth;
 			skin.height = renderheight;
 			
-			var icon:Image= new Image(Game.assets.getTexture((playerData.sex==Configrations.CHARACTER_BOY)?"boyIcon":"girlIcon"));
+			var icon:Image= new Image(Game.assets.getTexture(playerData.headIconName));
 			icon.height = 40*scale;
 			icon.scaleX = icon.scaleY;
 			icon.x = 10*scale;
@@ -83,14 +83,14 @@ package view.render
 			var iconRight:Number = icon.x + icon.width + 10*scale;
 			
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth - iconRight,40*scale,playerData.name,0x000000,35,true);
+			var nameText:TextField = FieldController.createNoFontField(renderwidth - iconRight,40*scale,playerData.name,0x000000,25);
 			nameText.hAlign = HAlign.LEFT;
 			container.addChild(nameText);
 			nameText.x = iconRight;
 			nameText.y = icon.y ;
 			
 			
-			var titleText:TextField = FieldController.createSingleLineDynamicField(renderwidth *0.8,renderheight - 40*scale,mesData.message,0x000000,25,true);
+			var titleText:TextField = FieldController.createNoFontField(renderwidth *0.8,renderheight - 40*scale,mesData.message,0x000000,20);
 			container.addChild(titleText);
 			titleText.vAlign = VAlign.TOP;
 			titleText.x = renderwidth *0.1;
@@ -102,7 +102,7 @@ package view.render
 			timeText.x = iconRight;
 			timeText.y =  renderheight - timeText.height ;
 			
-			if(mesData.gameuid != GameController.instance.localPlayer.gameuid){
+			if(mesData.f_gameuid != GameController.instance.localPlayer.gameuid){
 			var visitButton:Button = new Button();
 			visitButton.label = LanguageController.getInstance().getString("visit");
 			visitButton.addEventListener(Event.TRIGGERED,onTriggeredVisit);
@@ -189,7 +189,7 @@ package view.render
 		private function onTriggeredSend(e:Event):void
 		{
 			if(_input && _input.text){
-				newmessageData = new MessageData({gameuid:GameController.instance.localPlayer.gameuid,f_gameuid:GameController.instance.currentPlayer.gameuid,
+				newmessageData = new MessageData({f_gameuid:GameController.instance.localPlayer.gameuid,gameuid:GameController.instance.currentPlayer.gameuid,
 					message:_input.text,type:Configrations.MESSTYPE_MES,data_id:GameController.instance.currentPlayer.cur_mes_dataid+1});
 				new UpdateMessagesCommand([newmessageData],[],onUpdated);
 			}
@@ -197,6 +197,7 @@ package view.render
 		private function onUpdated():void
 		{
 			newmessageData.updatetime = SystemDate.systemTimeS;
+			GameController.instance.currentPlayer.cur_mes_dataid ++;
 			GameController.instance.currentPlayer.addMessage(newmessageData);
 		}
 		private function onTriggeredVisit(e:Event):void
@@ -205,7 +206,7 @@ package view.render
 		}
 		private function onTriggeredRemove(e:Event):void
 		{
-			new UpdateMessagesCommand([],[{f_gameuid:mesData.f_gameuid,data_id:mesData.data_id}],onDeleted);
+			new UpdateMessagesCommand([],[{gameuid:mesData.gameuid,data_id:mesData.data_id}],onDeleted);
 		}
 		private function onDeleted():void
 		{

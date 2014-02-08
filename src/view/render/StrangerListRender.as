@@ -20,6 +20,7 @@ package view.render
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	import starling.utils.HAlign;
 	
 	public class StrangerListRender extends DefaultListItemRenderer
@@ -61,7 +62,7 @@ package view.render
 			skin.width = renderwidth;
 			skin.height = renderheight;
 			
-			var icon:Image= new Image(Game.assets.getTexture((playerData.sex==Configrations.CHARACTER_BOY)?"boyIcon":"girlIcon"));
+			var icon:Image= new Image(Game.assets.getTexture(playerData.headIconName));
 			icon.height = renderheight*0.8;
 			icon.scaleX = icon.scaleY;
 			icon.x = 10*scale;
@@ -82,26 +83,38 @@ package view.render
 			levelText.y = icon.y ;
 			
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth - iconRight,40*scale,playerData.name,0x000000,35,true);
+			var nameText:TextField = FieldController.createNoFontField(renderwidth - iconRight,40*scale,playerData.name,0x000000,25);
 			nameText.hAlign = HAlign.LEFT;
 			container.addChild(nameText);
 			nameText.x = iconRight+expIcon.width+10*scale;
 			nameText.y = icon.y ;
 			
+			var achIcon:Image = new Image(Game.assets.getTexture("achieveIcon"));
+			achIcon.width = achIcon.height = 40*scale;
+			container.addChild(achIcon);
+			achIcon.x =  iconRight+expIcon.width+10*scale;
+			achIcon.y = nameText.y + nameText.height;
 			
-			var mes:String;
-			if(playerData.title){
-				var titlesArr:Array = playerData.title.split("|");
-				mes = LanguageController.getInstance().getTitle(titlesArr[0],titlesArr[1]);
-			}else{
-				mes = LanguageController.getInstance().getString("noTitle");
-			}
+			var totalP:int = Configrations.getTotalAchievePoint(playerData.achieve);
+			var countText:TextField = FieldController.createSingleLineDynamicField(300,300,"×"+totalP,0x000000,25,true);
+			countText.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
+			container.addChild(countText);
+			countText.x = achIcon.x + achIcon.width + 10*scale;
+			countText.y = achIcon.y + achIcon.height/2 - countText.height/2;
 			
-			var titleText:TextField = FieldController.createSingleLineDynamicField(renderwidth - iconRight,40*scale,mes,0x000000,35,true);
-			titleText.hAlign = HAlign.LEFT;
-			container.addChild(titleText);
-			titleText.x = iconRight;
-			titleText.y = nameText.y + nameText.height ;
+//			var mes:String;
+//			if(playerData.title){
+//				var titlesArr:Array = playerData.title.split("|");
+//				mes = LanguageController.getInstance().getTitle(titlesArr[0],titlesArr[1]);
+//			}else{
+//				mes = LanguageController.getInstance().getString("noTitle");
+//			}
+//			
+//			var titleText:TextField = FieldController.createSingleLineDynamicField(renderwidth - iconRight,40*scale,mes,0x000000,35,true);
+//			titleText.hAlign = HAlign.LEFT;
+//			container.addChild(titleText);
+//			titleText.x = iconRight;
+//			titleText.y = nameText.y + nameText.height ;
 			
 			var visitButton:Button = new Button();
 			visitButton.label = LanguageController.getInstance().getString("visit");

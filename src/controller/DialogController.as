@@ -39,5 +39,9 @@ package controller
 		{
 			layer = _la;
 		}
+		public function get hasPanel():Boolean
+		{
+			return layer && (layer.numChildren >=1) ;
+		}
 	}
 }

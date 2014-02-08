@@ -19,6 +19,7 @@ package view.panel
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
@@ -53,14 +54,16 @@ package view.panel
 			
 			var text1:TextField = FieldController.createSingleLineDynamicField(panelwidth,30,LanguageController.getInstance().getString("farmname")+":",0x000000,25);
 			addChild(text1);
+			text1.autoSize = TextFieldAutoSize.HORIZONTAL;
 			text1.hAlign = HAlign.LEFT;
 			text1.y = panelheight*0.1 - text1.height;
 			text1.x = panelwidth*0.05;
 			
-			nameText = FieldController.createSingleLineDynamicField(panelwidth,40,player.name,0x000000,35);
+			nameText = FieldController.createNoFontField(panelwidth,30,player.name,0x000000,25);
 			addChild(nameText);
-			nameText.hAlign = HAlign.CENTER;
+			nameText.hAlign = HAlign.LEFT;
 			nameText.y = panelheight*0.1 - nameText.height;
+			nameText.x = text1.x + text1.width + 10*scale;
 			
 			nameChangeButton = new Button();
 			nameChangeButton.label = LanguageController.getInstance().getString("change");
@@ -174,7 +177,7 @@ package view.panel
 			}else if(name == "gem"){
 				mesStr  = "" +player.gem;
 			}else if(name == "love"){
-				mesStr  = String(Configrations.gradeToExp(player.level) - player.love) +"  "+LanguageController.getInstance().getString("tofull");
+				mesStr  = String(Math.max(0,Configrations.gradeToLove(player.skillLevel) - player.love)) +"  "+LanguageController.getInstance().getString("tofull");
 			}else{
 				nameStr = LanguageController.getInstance().getString("level")+" "+ player.level;
 				mesStr  = String(Configrations.gradeToExp(player.level+1) - player.exp) +"  "+LanguageController.getInstance().getString("levelup");
@@ -245,7 +248,7 @@ package view.panel
 		}
 		private function get player():GamePlayer
 		{
-			return GameController.instance.currentPlayer;
+			return GameController.instance.localPlayer;
 		}
 	}
 }

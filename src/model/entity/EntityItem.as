@@ -1,5 +1,7 @@
 package model.entity
 {
+	import flash.geom.Point;
+	
 	import controller.GameController;
 	import controller.SpecController;
 	
@@ -23,13 +25,13 @@ package model.entity
 				}
 			}
 			
-			if(itemType && item_id>0 && item_id!=""){
+			if(itemType&&item_id && item_id !="0"  && item_id!=""){
 				itemspec = SpecController.instance.getItemSpec(item_id);
 			}
 		}
-		
+		public var type:int;
 		public var gameuid:String;
-		protected var itemspec:ItemSpec ;
+		public var itemspec:ItemSpec ;
 		public var data_id:Number;
 		public var item_id:String;
 		public var status:int;
@@ -48,9 +50,13 @@ package model.entity
 		{
 			return itemspec.name;
 		}
+		public function get cname():String
+		{
+			return itemspec.cname;
+		}
 		public function get itemType():String
 		{
-			return null;
+			return "Entity";
 		}
 		public function get bound_x():int
 		{
@@ -62,13 +68,31 @@ package model.entity
 			return itemspec.bound_y;
 		}
 		
+		public function get topPos():Point
+		{
+			return Map.intance.iosToScene(positionx +bound_x,positiony+bound_y);
+		}
 		public function get sceneIndex():Number
 		{
-			return (positionx+positiony)* 1000 + positionx;
+			return (positionx+bound_x/2+positiony+bound_y/2)* 1000 + positionx+bound_x/2;
 		}
 		public function get player():GamePlayer
 		{
 			return GameController.instance.currentPlayer;
+		}
+		
+		public function get ishouse():Boolean
+		{
+			return itemspec && itemspec.type == "house";
+		}
+		
+		public function get serchingCost():Object
+		{
+			if(itemspec.gemPrice>0){
+				return {type:"gem",price:itemspec.gemPrice};
+			}else{
+				return {type:"coin",price:itemspec.coinPrice};
+			}
 		}
 	}
 }

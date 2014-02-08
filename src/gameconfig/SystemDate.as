@@ -47,7 +47,7 @@ package gameconfig
 				var h:int = Math.floor((time)/(3600));
 				var m:int = Math.floor((time%3600)/(60));
 				var s:int = time%60;
-				return  checkNum(h) +" : "+checkNum(m) + " : "+checkNum(s) ;
+				return  checkNum(h) +":"+checkNum(m) + ":"+checkNum(s) ;
 			}
 		}
 		public static function getMsTimeLeftString(time:Number):String

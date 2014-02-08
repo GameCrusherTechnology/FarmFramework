@@ -3,6 +3,7 @@ package view.component.UIButton
 	import controller.DialogController;
 	import controller.GameController;
 	import controller.TaskController;
+	import controller.VoiceController;
 	
 	import gameconfig.Configrations;
 	
@@ -72,6 +73,7 @@ package view.component.UIButton
 				} else{
 					DialogController.instance.showPanel(new FindTaskPanel());
 				}	
+				VoiceController.instance.playSound(VoiceController.SOUND_BUTTON);
 			}
 		}
 		

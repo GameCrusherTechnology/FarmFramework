@@ -5,6 +5,7 @@ package view.component.UIButton
 	import controller.FieldController;
 	import controller.GameController;
 	import controller.UiController;
+	import controller.VoiceController;
 	
 	import feathers.controls.Button;
 	import feathers.display.Scale9Image;
@@ -14,7 +15,6 @@ package view.component.UIButton
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
-	import model.OwnedItem;
 	import model.player.GamePlayer;
 	import model.player.PlayerChangeEvents;
 	
@@ -28,6 +28,7 @@ package view.component.UIButton
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
@@ -54,15 +55,18 @@ package view.component.UIButton
 			var skin:Image = new Image(Game.assets.getTexture("toolsStateSkin"));
 			addChild(skin);
 			skin.width = skin.height = length ;
+			skin.x = -skin.width;
 			
 			icon = new Image(texture);
 			addChild(icon);
-			icon.width = icon.height = length*0.9 ;
+			icon.width = icon.height =  length*0.9 ;
 			if(type == UiController.TOOL_HARVEST){
-				icon.x = icon.y = length/2;
+				icon.x  = -length/2;
+				icon.y = length/2;
 				icon.pivotX =icon.pivotY = length*0.45;
 			}else{
-				icon.x = icon.y = length*0.05;
+				icon.x  = -length*0.95;
+				icon.y  = length*0.05;
 			}
 			
 			tipButton = new Button();
@@ -73,31 +77,44 @@ package view.component.UIButton
 			tipButton.height = 30 * Configrations.ViewScale;
 			addChild(tipButton);
 			tipButton.y = length;
+			tipButton.x = -length;
 			
-			if(type == UiController.TOOL_SPEED || type == UiController.TOOL_SEED||type == UiController.TOOL_ADDFEILD){
-				countText = FieldController.createSingleLineDynamicField(length,length," ",0x000000,15,true);
+			if(type == UiController.TOOL_SPEED || type == UiController.TOOL_SEED){
+				countText = FieldController.createSingleLineDynamicField(1000,length," ",0x000000,25,true);
 				countText.hAlign = HAlign.RIGHT;
 				countText.vAlign = VAlign.BOTTOM;
+				countText.autoSize = TextFieldAutoSize.HORIZONTAL;
 				addChild(countText);
+				countText.x = - countText.width;
 				player.addEventListener(PlayerChangeEvents.ITEM_CHANGE,onItemChange);
 				onItemChange();
-			}else{
-				
+			}else if(type == UiController.TOOL_ADDFEILD){
+				countText = FieldController.createSingleLineDynamicField(1000,length," ",0x000000,25,true);
+				countText.hAlign = HAlign.RIGHT;
+				countText.vAlign = VAlign.BOTTOM;
+				countText.autoSize = TextFieldAutoSize.HORIZONTAL;
+				addChild(countText);
+				countText.x = - countText.width;
+				player.addEventListener(PlayerChangeEvents.CROP_CHANGE,onItemChange);
+				onItemChange();
 			}
 		}
-		
 		private function onItemChange(e:Event = null):void
 		{
 			var id:String ;
+			var count :int;
 			if(type == UiController.TOOL_SPEED){
 				id = Configrations.SPEED_ITEMID;
+				count = player.getOwnedItem(id).count;
 			}else if(type == UiController.TOOL_SEED){
 				id = GameController.instance.selectSeed;
+				count = player.getOwnedItem(id).count;
 			}else if(type == UiController.TOOL_ADDFEILD){
-				
+				count = player.leftFarmLand;
+			}else{
 			}
-			var o:OwnedItem = player.getOwnedItem(id);
-			countText.text = "×" + o.count;
+			countText.text = "×" + count;
+			countText.x = - countText.width;
 		}
 		public function hideTip():void
 		{
@@ -144,12 +161,20 @@ package view.component.UIButton
 				if(type == UiController.TOOL_SEED){
 					UiController.instance.showUiTools(UiController.TOOL_SEED);
 				}
+				VoiceController.instance.playSound(VoiceController.SOUND_BUTTON);
 			}
 		}
 		
 		private function get player():GamePlayer
 		{
 			return GameController.instance.currentPlayer;
+		}
+		
+		override public function dispose():void
+		{
+			player.removeEventListener(PlayerChangeEvents.CROP_CHANGE,onItemChange);
+			player.removeEventListener(PlayerChangeEvents.ITEM_CHANGE,onItemChange);
+			super.dispose();
 		}
 	}
 }

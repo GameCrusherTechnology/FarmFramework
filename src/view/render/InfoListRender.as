@@ -19,6 +19,7 @@ package view.render
 	import model.player.SimplePlayer;
 	
 	import service.command.friend.AcceptFriend;
+	import service.command.friend.InviteFriend;
 	import service.command.user.UpdateMessagesCommand;
 	
 	import starling.display.Image;
@@ -67,7 +68,7 @@ package view.render
 			skin.width = renderwidth;
 			skin.height = renderheight;
 			
-			var icon:Image= new Image(Game.assets.getTexture((playerData.sex==Configrations.CHARACTER_BOY)?"boyIcon":"girlIcon"));
+			var icon:Image= new Image(Game.assets.getTexture(playerData.headIconName));
 			icon.height = renderheight*0.8;
 			icon.scaleX = icon.scaleY;
 			icon.x = 10*scale;
@@ -88,7 +89,7 @@ package view.render
 			levelText.y = icon.y ;
 			
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth - iconRight,40*scale,playerData.name,0x000000,35,true);
+			var nameText:TextField = FieldController.createNoFontField(renderwidth - iconRight,40*scale,playerData.name,0x000000,25);
 			nameText.hAlign = HAlign.LEFT;
 			container.addChild(nameText);
 			nameText.x = iconRight+expIcon.width+10*scale;
@@ -96,7 +97,7 @@ package view.render
 			
 			
 			var mes:String ;
-			if(mesData.type == Configrations.MESSTYPE_INVITE){
+			if(mesData.type == Configrations.MESSTYPE_INVITE && !GameController.instance.localPlayer.isFriend(mesData.f_gameuid)){
 				mes = LanguageController.getInstance().getString("invited") + " "+ LanguageController.getInstance().getString("you");
 			}else if(mesData.type == Configrations.MESSTYPE_ORDER){
 				mes = LanguageController.getInstance().getString("helpOrder");
@@ -117,13 +118,8 @@ package view.render
 			
 			
 			var visitButton:Button = new Button();
-			if(mesData.type == Configrations.MESSTYPE_INVITE){
-				visitButton.label = LanguageController.getInstance().getString("accept");
-				visitButton.addEventListener(Event.TRIGGERED,onTriggeredAccept);
-			}else{
-				visitButton.label = LanguageController.getInstance().getString("visit");
-				visitButton.addEventListener(Event.TRIGGERED,onTriggeredVisit);
-			}
+			visitButton.label = LanguageController.getInstance().getString("visit");
+			visitButton.addEventListener(Event.TRIGGERED,onTriggeredVisit);
 			visitButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 			visitButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
 			visitButton.paddingLeft =visitButton.paddingRight =  20;
@@ -133,11 +129,15 @@ package view.render
 			visitButton.x = renderwidth - visitButton.width-10*scale;
 			visitButton.y =  renderheight*0.98 - visitButton.height;
 			
-			if(mesData.type == Configrations.MESSTYPE_ORDER){
+			if(!GameController.instance.localPlayer.isFriend(mesData.f_gameuid)){
 				var inviteBut:Button = new Button();
-				
-				inviteBut.label = LanguageController.getInstance().getString("invite");
-				inviteBut.addEventListener(Event.TRIGGERED,onTriggeredInvite);
+				if(mesData.type == Configrations.MESSTYPE_INVITE){
+					inviteBut.label = LanguageController.getInstance().getString("accept");
+					inviteBut.addEventListener(Event.TRIGGERED,onTriggeredAccept);
+				}else{
+					inviteBut.label = LanguageController.getInstance().getString("invite");
+					inviteBut.addEventListener(Event.TRIGGERED,onTriggeredInvite);
+				}
 				inviteBut.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
 				inviteBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
 				inviteBut.paddingLeft =inviteBut.paddingRight =  20;
@@ -158,30 +158,48 @@ package view.render
 				removeButton.y =  renderheight*0.05 ;
 			}
 		}
-		
+		private var iscommanding:Boolean;
 		private function onTriggeredRemove(e:Event):void
 		{
-			new UpdateMessagesCommand([],[{f_gameuid:mesData.f_gameuid,data_id:mesData.data_id}],onDeleted);
+			if(!iscommanding){
+				iscommanding = true;
+				new UpdateMessagesCommand([],[{gameuid:mesData.gameuid,data_id:mesData.data_id}],onDeleted);
+			}
 		}
 		private function onDeleted():void
 		{
+			iscommanding = false;
 			GameController.instance.currentPlayer.delMessage(mesData);
 		}
 		private function onTriggeredInvite(e:Event):void
 		{
-			
+			if(!isCommanding){
+				new InviteFriend(mesData.f_gameuid,mesData.data_id,onInvite);
+				isCommanding = true;
+			}
 		}
+		private function onInvite():void
+		{
+			isCommanding = false;
+			GameController.instance.currentPlayer.delMessage(mesData);
+		}
+		private var isCommanding:Boolean;
 		private function onTriggeredAccept(e:Event):void
 		{
-			new AcceptFriend(mesData.gameuid,onAccepted);
+			if(!isCommanding){
+				new AcceptFriend(mesData.f_gameuid,mesData.data_id,onAccepted);
+				isCommanding = true;
+			}
 		}
 		private function onAccepted():void
 		{
-			GameController.instance.localPlayer.addFriends(mesData.gameuid);
+			isCommanding = false;
+			GameController.instance.currentPlayer.delMessage(mesData);
+			GameController.instance.localPlayer.addFriends(mesData.f_gameuid);
 		}
 		private function onTriggeredVisit(e:Event):void
 		{
-			GameController.instance.visitFriend(mesData.gameuid);
+			GameController.instance.visitFriend(mesData.f_gameuid);
 		}
 	}
 }

@@ -38,11 +38,6 @@ package view.component.progressbar
 			addButton.addEventListener(TouchEvent.TOUCH,onAddButtonTouched);
 			
 			refresh();
-			player.addEventListener(PlayerChangeEvents.GEM_CHANGE,onPlayerChange);
-		}
-		private function onPlayerChange(event:Event):void
-		{
-			refresh();
 		}
 		public function refresh():void
 		{
@@ -59,6 +54,10 @@ package view.component.progressbar
 			if(touch){
 				DialogController.instance.showPanel(new TreasurePanel());
 			}
+		}
+		override public function dispose():void
+		{
+			super.dispose();
 		}
 	}
 }

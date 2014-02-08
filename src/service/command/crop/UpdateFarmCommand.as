@@ -1,7 +1,5 @@
 package service.command.crop
 {
-	import controller.GameController;
-	
 	import model.UpdateData;
 	
 	import service.command.AbstractCommand;

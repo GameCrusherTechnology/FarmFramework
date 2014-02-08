@@ -15,7 +15,6 @@ package view.panel
 	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.Quad;
-	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.text.TextField;
 	import starling.utils.HAlign;

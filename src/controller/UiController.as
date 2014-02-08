@@ -12,8 +12,10 @@ package controller
 	import starling.textures.Texture;
 	
 	import view.component.UIButton.CommunicationButton;
+	import view.component.UIButton.HelpButton;
 	import view.component.UIButton.HomeButton;
 	import view.component.UIButton.MenuButton;
+	import view.component.UIButton.SkillButton;
 	import view.component.UIButton.TaskButton;
 	import view.component.UIButton.ToolStateButton;
 	import view.component.progressbar.CoinProgressBar;
@@ -32,8 +34,11 @@ package controller
 		public static const TOOL_SPEED:String = "speed";
 		public static const TOOL_ADDFEILD:String = "addFeild";
 		public static const TOOL_MOVE:String = "move";
-		public static const TOOL_SELL:String = "sell";
+		public static const TOOL_EXTEND:String = "extend";
+//		public static const TOOL_SELL:String = "sell";
 		public static const TOOL_CANCEL:String = "cancel";
+		public static const TOOL_SCOOP:String = "scoop";
+		public static const TOOL_EXCAVATE:String = "excavate";
 		private static var _controller:UiController;
 		private var _layer:Sprite;
 		private var taskButton:TaskButton;
@@ -71,11 +76,15 @@ package controller
 				showTaskButton();
 				hideFriendList();
 				hideHomeButton();
+				showSkillButton();
+				hideHelpBut();
 			}else{
 				hideEditUiTools();
 				hideTaskButton();
-				showFriendList();
 				showHomeButton();
+				showFriendList();
+				hideSkillButton();
+				showHelpBut();
 			}
 			showCommunicationButton();
 			hideToolStateButton();
@@ -93,6 +102,24 @@ package controller
 			communicationButton.x = 10;
 			communicationButton.y = menuButton.y - communicationButton.height - 20*scale;
 		}
+		private var skillBut:SkillButton;
+		public function showSkillButton():void
+		{
+			if(!skillBut){
+				skillBut = new SkillButton();
+			}
+			if(!skillBut.parent){
+				_layer.addChild(skillBut);
+			}
+			skillBut.x = Configrations.ViewPortWidth - 70*scale;
+			skillBut.y = _editToolsUI.y - skillBut.height - 10*scale;
+		}
+		public function hideSkillButton():void
+		{
+			if(skillBut && skillBut.parent){
+				skillBut.parent.removeChild(skillBut);
+			}
+		}
 		
 		public function showTaskButton():void
 		{
@@ -106,6 +133,7 @@ package controller
 			taskButton.x = 10;
 			taskButton.y = loveBar.y + loveBar.height + 10*scale;
 		}
+		
 		public function hideTaskButton():void
 		{
 			if(taskButton && taskButton.parent){
@@ -142,7 +170,7 @@ package controller
 			_toolStateButton = new ToolStateButton();
 			_layer.addChild(_toolStateButton);
 			_toolStateButton.show(type,texture);
-			_toolStateButton.x = Configrations.ViewPortWidth - _toolStateButton.width - 10;
+			_toolStateButton.x = Configrations.ViewPortWidth  - 10;
 			_toolStateButton.y = Configrations.ViewPortHeight/2;
 			_toolStateButton.alpha = 0.5;
 			var tween:Tween = new Tween(_toolStateButton, 0.5);
@@ -193,6 +221,24 @@ package controller
 				_toolsUI.parent.removeChild(_toolsUI);
 			}
 		}
+		private var _helpBut:HelpButton;
+		public function showHelpBut():void
+		{
+			if(!_helpBut){
+				_helpBut = new HelpButton();
+			}
+			
+			_layer.addChild(_helpBut);
+			
+			_helpBut.x = Configrations.ViewPortWidth - 70*scale;
+			_helpBut.y = Configrations.ViewPortHeight/2;
+		}
+		public function hideHelpBut():void
+		{
+			if(_helpBut && _helpBut.parent){
+				_helpBut.parent.removeChild(_helpBut);
+			}
+		}
 		
 		private var _friendList:FriendsList;
 		public function showFriendList():void
@@ -200,16 +246,16 @@ package controller
 			if(!_friendList){
 				_friendList = new FriendsList();
 			}
-			if(!_friendList.parent){
-				_layer.addChild(_friendList);
-			}
-			_friendList.show();
-			_friendList.x = Configrations.ViewPortWidth/2;
-			_friendList.y = Configrations.ViewPortHeight +_friendList.height;
+			_friendList.show(Configrations.ViewPortWidth -  (homeButton.x + homeButton.width + 20*scale));
 			
-			var tween:Tween = new Tween(_friendList, 0.5);
-			tween.moveTo(Configrations.ViewPortWidth/2, Configrations.ViewPortHeight -10);                 
-			Starling.juggler.add(tween);
+			if(!_friendList.parent){
+				_friendList.x = homeButton.x + homeButton.width + 20*scale;
+				_friendList.y = Configrations.ViewPortHeight +_friendList.height;
+				_layer.addChild(_friendList);
+				var tween:Tween = new Tween(_friendList, 0.5);
+				tween.moveTo(homeButton.x + homeButton.width + 20*scale, Configrations.ViewPortHeight -10);                 
+				Starling.juggler.add(tween);
+			}
 		}
 		public function hideFriendList():void
 		{
@@ -238,7 +284,7 @@ package controller
 			}
 		}
 		
-		private function configNameText():void
+		public function configNameText():void
 		{
 			if(!farmNameText){
 				farmNameText = FieldController.createNoFontField(Configrations.ViewPortWidth *0.2,30*scale,currentplayer.name,0x000000,18);
@@ -266,7 +312,7 @@ package controller
 			}
 		}
 		
-		private function configExpBar():void
+		public function configExpBar():void
 		{
 			if(!expBar){
 				expBar = new ExpProgressBar();
@@ -284,7 +330,7 @@ package controller
 				_layer.addChild(expBar);
 			}
 		}
-		private function configCoinBar():void
+		public function configCoinBar():void
 		{
 			if(!coinBar){
 				coinBar = new CoinProgressBar(Configrations.ViewPortWidth*.2, 30*Configrations.ViewScale);
@@ -301,7 +347,7 @@ package controller
 				_layer.addChild(coinBar);
 			}
 		}
-		private function configGemBar():void
+		public function configGemBar():void
 		{
 			if(!gemBar){
 				gemBar = new GemProgressBar();
@@ -320,7 +366,7 @@ package controller
 				_layer.addChild(gemBar);
 			}
 		}
-		private function configLoveBar():void
+		public function configLoveBar():void
 		{
 			if(!loveBar){
 				loveBar = new LoveProgressBar(Configrations.ViewPortWidth*.12, 30*Configrations.ViewScale);

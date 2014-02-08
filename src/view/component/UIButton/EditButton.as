@@ -8,6 +8,7 @@ package view.component.UIButton
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 
 	public class EditButton extends Sprite
 	{
@@ -17,9 +18,12 @@ package view.component.UIButton
 			addChild(icon);
 			icon.width = icon.height = 60 * Configrations.ViewScale;
 			
-			var editText:TextField = FieldController.createSingleLineDynamicField(icon.width,21,LanguageController.getInstance().getString("edit"),0x000000,20);
-			addChild(editText);
-			editText.y = icon.y+icon.height -10;
+			
+			var nameText:TextField = FieldController.createSingleLineDynamicField(1000,35*Configrations.ViewScale,LanguageController.getInstance().getString("edit"),0xFFFFFF,30);
+			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			addChild(nameText);
+			nameText.y = icon.y+icon.height - 10*Configrations.ViewScale;
+			
 		}
 	}
 }

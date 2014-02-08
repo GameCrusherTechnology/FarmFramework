@@ -1,5 +1,6 @@
 package service.command.user
 {
+	import controller.FriendInfoController;
 	import controller.GameController;
 	
 	import model.player.GamePlayer;
@@ -18,7 +19,10 @@ package service.command.user
 		private function onLogin(result:Object):void
 		{
 			if(Command.isSuccess(result)){
-				GameController.instance.currentPlayer = new GamePlayer(result['friend_account']);
+				var player:GamePlayer = new GamePlayer(result['friend_account']);
+				player.lastHelpedTime = result["lastHelp"];
+				GameController.instance._curPlayer = player;
+				FriendInfoController.instance.updateFriend(player);
 				onLoginSuccess();
 			}else{
 			}

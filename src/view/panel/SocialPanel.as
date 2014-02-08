@@ -3,6 +3,7 @@ package view.panel
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
+	import controller.FriendInfoController;
 	import controller.GameController;
 	
 	import feathers.controls.Button;
@@ -45,7 +46,7 @@ package view.panel
 		protected function initializeHandler(event:Event):void
 		{
 			panelwidth = Configrations.ViewPortWidth*0.86;
-			panelheight = Configrations.ViewPortHeight*0.7;
+			panelheight = Configrations.ViewPortHeight*0.68;
 			var scale:Number = Configrations.ViewScale;
 			
 			tabBar = new TabBar();
@@ -92,11 +93,16 @@ package view.panel
 			this.addChild(list);
 			list.x = panelwidth*0.1;
 			list.y = tabBar.y + 50*scale;
+			list.addEventListener(Event.CHANGE,onRemovedRender);
 			
+		}
+		private function onRemovedRender(e:Event):void
+		{
+			configList();
 		}
 		private function get friendsArr():ListCollection
 		{
-			var listCollection:ListCollection = new ListCollection(player.friends);
+			var listCollection:ListCollection = new ListCollection([1,2].concat(player.friends));
 			return listCollection;
 		}
 		
@@ -113,7 +119,7 @@ package view.panel
 				}
 			}
 			
-			if(!hasNovi){
+			if(!hasNovi && FriendInfoController.instance.canGetStranger()){
 				if(!hasGetS){
 					new GetStrangersCommand(onGetStrangers);
 				}

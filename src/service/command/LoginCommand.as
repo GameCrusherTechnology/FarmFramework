@@ -15,7 +15,8 @@ package service.command
 		private function onLogin(result:Object):void
 		{
 			if(Command.isSuccess(result)){
-				GameController.instance.currentPlayer = GameController.instance.localPlayer = new GamePlayer(result['user_account']);
+				GameController.instance._curPlayer = GameController.instance.localPlayer = new GamePlayer(result['user_account']);
+				GameController.instance.isNewer = result['is_new'];
 				onLoginSuccess();
 			}
 		}

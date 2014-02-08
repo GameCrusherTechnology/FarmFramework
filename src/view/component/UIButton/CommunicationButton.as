@@ -1,16 +1,21 @@
 package view.component.UIButton
 {
 	import controller.DialogController;
+	import controller.FieldController;
 	import controller.GameController;
 	import controller.TaskController;
+	import controller.VoiceController;
 	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
+	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	
 	import view.panel.CommunicationPanel;
 	
@@ -24,14 +29,15 @@ package view.component.UIButton
 			length = length * Configrations.ViewScale;
 			addEventListener(TouchEvent.TOUCH, onTouch);
 			
-//			var skin:Image = new Image(Game.assets.getTexture("toolsStateSkin"));
-//			addChild(skin);
-//			skin.width = skin.height = length ;
-//			skin.x = skin.y = skin.pivotX =skin.pivotY = length/2;
-			
 			icon = new Image(Game.assets.getTexture("WallIcon"));
 			addChild(icon);
 			icon.width = icon.height = length;
+			
+			var nameText:TextField = FieldController.createSingleLineDynamicField(1000,30*Configrations.ViewScale,LanguageController.getInstance().getString("board"),0x000000,25);
+			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			addChild(nameText);
+			nameText.y = icon.y+icon.height - 10*Configrations.ViewScale;
+			
 		}
 		private var icon:Image ;
 		
@@ -46,8 +52,9 @@ package view.component.UIButton
 			var touch:Touch = event.getTouch(this, TouchPhase.BEGAN);
 			if(touch)
 			{
-				TaskController.instance.checkCurrentOrder(GameController.instance.currentPlayer);
+				TaskController.instance.finishCurrentOrderByNpc(GameController.instance.currentPlayer);
 				DialogController.instance.showPanel(new CommunicationPanel());
+				VoiceController.instance.playSound(VoiceController.SOUND_BUTTON);
 			}
 		}
 		

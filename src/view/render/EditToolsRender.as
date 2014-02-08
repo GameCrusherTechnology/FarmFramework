@@ -1,10 +1,12 @@
 package view.render
 {
-	import controller.GameController;
+	import controller.DialogController;
 	import controller.FieldController;
+	import controller.GameController;
 	import controller.UiController;
 	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -12,6 +14,10 @@ package view.render
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
+	
+	import view.panel.ExtendFarmLandPanel;
+	import view.panel.ExtendFarmPanel;
 	
 	public class EditToolsRender extends Sprite
 	{
@@ -39,10 +45,12 @@ package view.render
 			icon.x = icon.y = renderWidth *.15;
 			//text
 			lableStr = data.label;
-			var lable:TextField = FieldController.createSingleLineDynamicField(renderWidth,30,lableStr,0xffffff,25,true);
-			addChild(lable);
-			lable.x = 0;
-			lable.y = renderHeight - lable.height-5;
+			
+			var nameText:TextField = FieldController.createSingleLineDynamicField(1000,30*Configrations.ViewScale,lableStr,0x000000,25);
+			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			addChild(nameText);
+			nameText.y = backImage.y+backImage.height - 10*Configrations.ViewScale;
+			nameText.x = renderWidth/2 - nameText.width/2;
 			
 			addEventListener(TouchEvent.TOUCH,button_touchHandler);
 		}
@@ -62,6 +70,21 @@ package view.render
 					GameController.instance.selectTool = null;
 					GameController.instance.selectSeed = null;
 					UiController.instance.hideToolStateButton();
+				}else if(type == UiController.TOOL_EXTEND){
+					GameController.instance.selectTool = null;
+					GameController.instance.selectSeed = null;
+					UiController.instance.hideToolStateButton();
+					DialogController.instance.showPanel(new ExtendFarmPanel());
+				}else if(type == UiController.TOOL_ADDFEILD){
+					if(GameController.instance.localPlayer.leftFarmLand <= 0){
+						GameController.instance.selectTool = null;
+						GameController.instance.selectSeed = null;
+						UiController.instance.hideToolStateButton();
+						DialogController.instance.showPanel(new ExtendFarmLandPanel());
+					}else{
+						GameController.instance.selectTool = type;
+						UiController.instance.showToolStateButton(type,Game.assets.getTexture(textureName));
+					}
 				}else{
 					GameController.instance.selectTool = type;
 					UiController.instance.showToolStateButton(type,Game.assets.getTexture(textureName));

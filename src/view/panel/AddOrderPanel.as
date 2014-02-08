@@ -64,7 +64,9 @@ package view.panel
 			var spec:CropSpec ;
 			var specObj:Object;
 			for each(spec in cropSpecArr){
-				listData.push({text :spec.name,item:spec});
+				if(!spec.isTree){
+					listData.push({text :spec.cname,item:spec});
+				}
 			}
 			
 			var darkSp:Shape = new Shape;
@@ -199,7 +201,7 @@ package view.panel
 			return requestContainer;
 		}
 		private var coinText:TextField;
-		private var expText:TextField;
+//		private var expText:TextField;
 		private function configRewardContainer():Sprite
 		{
 			var reqwardContainer:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20)));
@@ -214,30 +216,30 @@ package view.panel
 			textRequest.x = 10*scale;
 			textRequest.y = 10*scale;
 			
-			var expicon:Image = new Image(Game.assets.getTexture("expIcon"));
-			reqwardContainer.addChild(expicon);
-			expicon.width = expicon.height = panelheight*0.1;
-			expicon.x = panelwidth*0.1;
-			expicon.y = textRequest.y+textRequest.height;
-			
-			expText = FieldController.createSingleLineDynamicField(panelwidth*0.4,panelheight*0.1,"×"+String(0),0x000000,25,true);
-			expText.hAlign = HAlign.LEFT;
-			expText.vAlign = VAlign.CENTER;
-			reqwardContainer.addChild(expText);
-			expText.x = expicon.x + expicon.width;
-			expText.y = textRequest.y+textRequest.height;
+//			var expicon:Image = new Image(Game.assets.getTexture("expIcon"));
+//			reqwardContainer.addChild(expicon);
+//			expicon.width = expicon.height = panelheight*0.1;
+//			expicon.x = panelwidth*0.1;
+//			expicon.y = textRequest.y+textRequest.height;
+//			
+//			expText = FieldController.createSingleLineDynamicField(panelwidth*0.4,panelheight*0.1,"×"+String(0),0x000000,25,true);
+//			expText.hAlign = HAlign.LEFT;
+//			expText.vAlign = VAlign.CENTER;
+//			reqwardContainer.addChild(expText);
+//			expText.x = expicon.x + expicon.width;
+//			expText.y = textRequest.y+textRequest.height;
 			
 			var coinicon:Image = new Image(Game.assets.getTexture("coinIcon"));
 			reqwardContainer.addChild(coinicon);
 			coinicon.width = coinicon.height = panelheight*0.1;
-			coinicon.x = panelwidth*0.5;
+			coinicon.x = panelwidth*0.4 - coinicon.width - 10*scale;
 			coinicon.y = textRequest.y+textRequest.height;
 			
 			coinText = FieldController.createSingleLineDynamicField(panelwidth*0.2,panelheight*0.1,"×"+String(0),0x000000,25,true);
 			coinText.hAlign = HAlign.LEFT;
 			coinText.vAlign = VAlign.CENTER;
 			reqwardContainer.addChild(coinText);
-			coinText.x = coinicon.x + expicon.width;
+			coinText.x = panelwidth*0.4 + 10*scale;
 			coinText.y = textRequest.y+textRequest.height;
 			
 			
@@ -262,8 +264,8 @@ package view.panel
 				var button:Button = new Button();
 				button.height = panelheight*0.12;
 				button.defaultSkin = new Image( Game.assets.getTexture("greenButtonSkin") );
-				button.paddingTop = button.paddingBottom = 10*scale;
-				button.paddingLeft = button.paddingRight = 10*scale;
+				button.paddingTop = button.paddingBottom = 20*scale;
+				button.paddingLeft = button.paddingRight = 40*scale;
 				button.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
 				return button;
 			};
@@ -277,10 +279,15 @@ package view.panel
 				{
 					var renderer:DefaultListItemRenderer = new DefaultListItemRenderer();
 					renderer.labelField = "text";
+					renderer.iconFunction = function (spec:Object):Image{
+						var img:Image = new Image(Game.assets.getTexture(spec.item.name + "Icon")) ;
+						img.width = img.height = 50*scale;
+						return img;
+					};
 					var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(1, 1, 62, 62));
 					renderer.defaultSkin = new Scale9Image(skintextures);
 					renderer.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
-					renderer.height=30*scale;
+					renderer.height=60*scale;
 					return renderer;
 				};
 				return list;
@@ -339,13 +346,13 @@ package view.panel
 		private function refreshReward():void
 		{
 			var coin:int ;
-			var exp :int;
+//			var exp :int;
 			var spec:ItemSpec;
 			if(list1.selectedItem && list1.selectedItem.item){
 				spec =  list1.selectedItem.item ; 
 				if(step1.value >0){
 					coin += (step1.value*coin_s *spec.coinPrice);
-					exp+= (step1.value*exp_s *spec.exp);
+//					exp+= (step1.value*exp_s *spec.exp);
 				}
 			}
 			
@@ -353,70 +360,89 @@ package view.panel
 				spec =  list2.selectedItem.item ; 
 				if(step2.value >0){
 					coin += (step2.value*coin_s *spec.coinPrice);
-					exp+= (step2.value*exp_s *spec.exp);
+//					exp+= (step2.value*exp_s *spec.exp);
 				}
 			}
 			if(list3.selectedItem && list3.selectedItem.item){
 				spec =  list3.selectedItem.item ; 
 				if(step3.value >0){
 					coin += (step3.value*coin_s *spec.coinPrice);
-					exp+= (step3.value*exp_s *spec.exp);
+//					exp+= (step3.value*exp_s *spec.exp);
 				}
 			}
 			coinText.text = "×"+coin;
-			expText.text =  "×"+exp;
+//			expText.text =  "×"+exp;
 		}
 		private function onCloseTriggered(e:Event):void
 		{
 			close();
 		}
 		
+		private var lastCoin:int;
 		private function onTriggered(e:Event):void
 		{
-			var spec:ItemSpec;
-			var coin:int;
-			var exp:int;
-			var requestArr:Array = [];
-			if(list1.selectedItem && list1.selectedItem.item){
-				spec =  list1.selectedItem.item ; 
-				if(step1.value >0){
-					coin += (step1.value*coin_s *spec.coinPrice);
-					exp+= (step1.value*exp_s *spec.exp);
-					requestArr.push(spec.item_id+":"+step1.value);
+			if(!isCommanding){
+				var spec:ItemSpec;
+				var coin:int;
+	//			var exp:int;
+				var requestArr:Array = [];
+				var object:Object = {};
+				if(list1.selectedItem && list1.selectedItem.item){
+					spec =  list1.selectedItem.item ; 
+					if(step1.value >0){
+						coin += (step1.value*coin_s *spec.coinPrice);
+	//					exp+= (step1.value*exp_s *spec.exp);
+						object[spec.item_id] = {id:spec.item_id,count:step1.value};
+					}
 				}
-			}
-			
-			if(list2.selectedItem && list2.selectedItem.item){
-				spec =  list2.selectedItem.item ; 
-				if(step2.value >0){
-					coin += (step2.value*coin_s *spec.coinPrice);
-					exp+= (step2.value*exp_s *spec.exp);
-					requestArr.push(spec.item_id+":"+step2.value);
+				
+				if(list2.selectedItem && list2.selectedItem.item){
+					spec =  list2.selectedItem.item ; 
+					if(step2.value >0){
+						coin += (step2.value*coin_s *spec.coinPrice);
+	//					exp+= (step2.value*exp_s *spec.exp);
+						if(object[spec.item_id]){
+							object[spec.item_id] = {id:spec.item_id,count:step2.value +object[spec.item_id].count};
+						}else{
+							object[spec.item_id] = {id:spec.item_id,count:step2.value};
+						}
+					}
 				}
-			}
-			if(list3.selectedItem && list3.selectedItem.item){
-				spec =  list3.selectedItem.item ; 
-				if(step3.value >0){
-					coin += (step3.value*coin_s *spec.coinPrice);
-					exp+= (step3.value*exp_s *spec.exp);
-					requestArr.push(spec.item_id+":"+step3.value);
+				if(list3.selectedItem && list3.selectedItem.item){
+					spec =  list3.selectedItem.item ; 
+					if(step3.value >0){
+						coin += (step3.value*coin_s *spec.coinPrice);
+	//					exp+= (step3.value*exp_s *spec.exp);
+						if(object[spec.item_id]){
+							object[spec.item_id] = {id:spec.item_id,count:step3.value +object[spec.item_id].count};
+						}else{
+							object[spec.item_id] = {id:spec.item_id,count:step3.value};
+						}
+					}
 				}
-			}
-			
-			if(requestArr.length >= 1){
-				var requestStr:String = requestArr.join("|");
-				var rewardStr:String = Configrations.REWARD_COIN+":"+coin+"|"+Configrations.REWARD_EXP+":"+exp;
-				var taskdata:TaskData = new TaskData();
-				taskdata.requstStr = requestStr;
-				taskdata.rewards = rewardStr;
-				taskdata.npc = Configrations.NPC_NONE;
-				new CreatTaskCommand(taskdata,onCreated);
-			}else{
-				close();
+				for each(var obj:Object in object){
+					requestArr.push(obj.id+":"+obj.count);
+				}
+				lastCoin= coin;
+				if(requestArr.length >= 1){
+					var requestStr:String = requestArr.join("|");
+					var rewardStr:String = Configrations.REWARD_COIN+":"+coin;
+					var taskdata:TaskData = new TaskData();
+					taskdata.requstStr = requestStr;
+					taskdata.rewards = rewardStr;
+					taskdata.npc = Configrations.NPC_NONE;
+					new CreatTaskCommand(taskdata,onCreated);
+					isCommanding = true;
+				}else{
+					close();
+				}
 			}
 		}
+		private var isCommanding:Boolean;
 		private function onCreated():void
 		{
+			isCommanding = false;
+			player.addCoin(-lastCoin);
 			close();
 		}
 		private function close():void

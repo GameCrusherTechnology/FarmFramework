@@ -18,11 +18,6 @@ package view.component.progressbar
 			fillDirection = LEFT_TO_RIGHT;
 			showIcon(Game.assets.getTexture("expIcon"));
 			refresh();
-			player.addEventListener(PlayerChangeEvents.EXP_CHANGE,onPlayerChange);
-		}
-		private function onPlayerChange(event:Event):void
-		{
-			refresh();
 		}
 		public function refresh():void
 		{
@@ -39,6 +34,10 @@ package view.component.progressbar
 		private function get player():GamePlayer
 		{
 			return GameController.instance.localPlayer;
+		}
+		override public function dispose():void
+		{
+			super.dispose();
 		}
 	}
 }

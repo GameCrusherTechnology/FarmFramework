@@ -1,12 +1,17 @@
 package model.player
 {
 	import controller.FriendInfoController;
+	import controller.SpecController;
+	import controller.UiController;
 	
 	import gameconfig.Configrations;
 	
 	import model.MessageData;
 	import model.OwnedItem;
+	import model.SkillData;
 	import model.entity.CropItem;
+	import model.entity.EntityItem;
+	import model.gameSpec.AchieveItemSpec;
 	import model.task.TaskData;
 	
 	import starling.events.Event;
@@ -27,6 +32,7 @@ package model.player
 		}
 		public var gameuid:String;
 		public var extend:int;
+		public var crop_extend:int;
 		public var name:String = "happyFarmc";
 		public var createtime:Number;
 		public var updatetime:Number;
@@ -35,21 +41,21 @@ package model.player
 		public function addCoin(e:int):void
 		{
 			coin += e;
-			dispatchEvent(new Event(PlayerChangeEvents.COIN_CHANGE));
+			UiController.instance.configCoinBar();
 		}
 		
 		public var gem:int = 500;
 		public function changeGem(change:int):void
 		{
 			gem+=change;
-			dispatchEvent(new Event(PlayerChangeEvents.GEM_CHANGE));
+			UiController.instance.configGemBar();
 		}
 		
 		public var exp:int = 500;
 		public function addExp(e:int):void
 		{
 			exp += e;
-			dispatchEvent(new Event(PlayerChangeEvents.EXP_CHANGE));
+			UiController.instance.configExpBar();
 		}
 		public function get level():int
 		{
@@ -60,37 +66,96 @@ package model.player
 		public function addLove(e:int):void
 		{
 			love += e;
-			dispatchEvent(new Event(PlayerChangeEvents.LOVE_CHANGE));
+			UiController.instance.configLoveBar();
 		}
 		
 		public var title:String;
 		// 0 - male 1--female
 		public var sex:int=0;
+		
+		public var lastHelpedTime:int;
 		public function get wholeSceneLength():int
 		{
-			return Configrations.INIT_Tile + extend;
+			return Configrations.INIT_Tile + extend*2;
 		}
 		
-		public var cropItems:Array  ;
-		
-		public function get user_fields():Object
+		public function get wholeFarmLand():int
 		{
-			return null;
+			return crop_extend *2 + 6;
 		}
+		
+		public function get leftFarmLand():int
+		{
+			return (wholeFarmLand - cropItems.length);
+		}
+		
+		public var cropItems:Array=[] ;
+		
+		public function addCropItem(cropItem:CropItem):void
+		{
+			cropItems.push(cropItem);
+			dispatchEvent(new Event(PlayerChangeEvents.CROP_CHANGE));
+		}
+		public function removeEntityItem(item:EntityItem):void
+		{
+			var index:int=0;
+			if(item is CropItem){
+				for(index;index<cropItems.length;index++){
+					if(cropItems[index].data_id == item.data_id){
+						cropItems.splice(index,1);
+						break;
+					}
+				}
+			}else{
+				for(index;index<decorationItems.length;index++){
+					if(decorationItems[index].data_id == item.data_id){
+						decorationItems.splice(index,1);
+						break;
+					}
+				}
+			}
+		}
+		
 		public function set user_fields(data:Object):void
 		{
 			var field_obj:Object;
 			var cropItem:CropItem;
-			cropItems = [];
 			for each(field_obj in data){
 				cropItem = new CropItem(field_obj);
 				cropItems.push(cropItem);
 			}
-			
+		}
+		
+		//deco
+		public var decorationItems:Array = [];
+		private function set user_deco(data:Object):void
+		{
+			var deco_obj:Object;
+			var decoItem:EntityItem;
+			for each(deco_obj in data){
+				decoItem = new EntityItem(deco_obj);
+				decorationItems.push(decoItem);
+			}
+		}
+		public function addDecoration(item:EntityItem):void
+		{
+			decorationItems.push(item);
 		}
 		
 		//skill
-		public var skillTime:Number;
+		public var skill_time:int;
+		public var skillData:SkillData = new SkillData();
+		public function get skillLevel():int
+		{
+			return skillData.skillLevel;
+		}
+		private function set skill(str:String):void
+		{
+			if(!str || str == "" ){
+				str = "2|5";
+			}
+			skillData = new SkillData(str);
+		}
 		public var ownedItemVec:Vector.<OwnedItem> = new Vector.<OwnedItem>;
 		
 		public function set items(data:Object):void
@@ -170,16 +235,26 @@ package model.player
 		{
 			friends.push(uid);
 		}
-		private function isFriend(id:String):Boolean
+		public function isFriend(id:String):Boolean
 		{
+			if(id == "1" ||id == "2"){
+				return true;
+			}
 			for each(var uid:String in friends){
 				if(uid == id){
 					return true;	
 				}
 			}
 			return false;
-			
 		}
+		public function removeFriend(id:String):void
+		{
+			if(id == "1" ||id == "2"){
+			}else if(friends.indexOf(id) >= 0){
+				friends = friends.splice(friends.indexOf(id),1);
+			}
+		}
+		
 		public var strangers:Vector.<SimplePlayer> =  new Vector.<SimplePlayer>;
 		public function addStrangers(arr:Array):void
 		{
@@ -225,22 +300,20 @@ package model.player
 		
 		//成就
 		public var achieve:String;
-		public function addAchieveLevel(id:String):int
-		{
-			if(achieve){
-				var index:int = (int(id)-30000);
-				return int(achieve.charAt(index));
-			}else{
-				return 0;
-			}
-			return 0;
-		}
 		
 		public function getAchieveLevel(id:String):int
 		{
 			if(achieve){
-				var index:int = (int(id)-30000);
-				return int(achieve.charAt(index));
+				var achieveSpec:AchieveItemSpec = SpecController.instance.getItemSpec(id) as AchieveItemSpec;
+				var index:int ;
+				var achieveArr:Array = achieve.split("|");
+				if(achieveSpec.type == "Crop"){
+					index = (int(id)-30000);
+					return int(achieveArr[0].charAt(index));
+				}else if(achieveSpec.type == "Tree"){
+					index = (int(id)-34000);
+					return int(achieveArr[1].charAt(index));
+				}
 			}else{
 				return 0;
 			}
@@ -284,6 +357,11 @@ package model.player
 					break;
 				}
 			}
+		}
+		
+		public function getSimplePlayer():SimplePlayer
+		{
+			return new SimplePlayer({"gameuid":gameuid,"sex":sex,"exp":exp,"achieve":achieve,"name":name,"title":title});
 		}
 		
 	}

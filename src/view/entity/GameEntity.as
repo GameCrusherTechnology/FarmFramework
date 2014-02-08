@@ -2,10 +2,14 @@ package view.entity
 {
 	import flash.geom.Point;
 	
+	import controller.DialogController;
 	import controller.GameController;
+	import controller.UiController;
 	import controller.UpdateController;
+	import controller.VoiceController;
 	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
 	
 	import model.UpdateData;
 	import model.avatar.Map;
@@ -13,22 +17,37 @@ package view.entity
 	import model.entity.EntityItem;
 	import model.player.GamePlayer;
 	
+	import service.command.scene.SearchingCommand;
+	
 	import starling.core.RenderSupport;
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
+	import starling.events.TouchPhase;
 	
 	import view.FarmScene;
 	import view.TweenEffectLayer;
+	import view.panel.ConfirmPanel;
+	import view.panel.TreasurePanel;
+	import view.panel.WarnnigTipPanel;
 
 	public class GameEntity extends Sprite
 	{
 		public var surface:MovieClip;
+		protected var effctSur:MovieClip;
 		public var item:EntityItem;
 		public function GameEntity(entityItem:EntityItem) 
 		{
 			item = entityItem;
+			creatSurface();
 			setTile();
 			configPosition();
+		}
+		protected function creatSurface():void
+		{
+			surface = new MovieClip(Game.assets.getTextures(item.name));
+			addChild(surface);
+			surface.x = - surface.width/2;
+			surface.y = - surface.height;
 		}
 		private function setTile():void
 		{
@@ -71,19 +90,16 @@ package view.entity
 		
 		public function moveEntity(scenePos:Point):void
 		{
-			var tile:Tile = Map.intance.sceneToIso(scenePos);
+			var tile:Tile = Map.intance.sceneToNearIso(scenePos,item.bound_x,item.bound_y);
 			if(tile &&  tile != currentMoveTile){
-				var tile1:Tile = Map.intance.getTileByIos(tile.x+length_x-1,tile.y+length_y-1);
-				if(tile1){
-					var valiable:Boolean = checkValiable(tile);
-					if(valiable){
-						movableMc.currentFrame = 0;
-					}else{
-						movableMc.currentFrame = 1;
-					}
-					dragmoveToTile(tile);
-					currentMoveTile = tile;
+				var valiable:Boolean = checkValiable(tile);
+				if(valiable){
+					movableMc.currentFrame = 0;
+				}else{
+					movableMc.currentFrame = 1;
 				}
+				dragmoveToTile(tile);
+				currentMoveTile = tile;
 			}
 
 		}
@@ -188,10 +204,76 @@ package view.entity
 		{
 			
 		}
+		
 		public function doTouchEvent(type:String):void
 		{
-			trace("click")
+			switch(type){
+				case TouchPhase.BEGAN:
+					checkCurrentTool();
+					break;
+			}
 			
+		}
+		private function checkCurrentTool():void
+		{
+			var tool:String = GameController.instance.selectTool;
+			if(GameController.instance.isHomeModel){
+				if(tool == UiController.TOOL_SCOOP){
+					sell();
+				}else if(tool == UiController.TOOL_MOVE){
+					if(item.itemspec.type == "wild" ){
+						DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warnintTip02")));
+					}else{
+						scene.addMoveEntity(this);
+					}
+				}else{
+					if(item.itemspec.type == "wild" ){
+						UiController.instance.showUiTools(UiController.TOOL_EXCAVATE,this);
+					}
+				}
+			}else{
+				
+			}
+		}
+		
+		private var isCommanding:Boolean;
+		public function searching():void
+		{
+			if(!isCommanding && item.serchingCost){
+				var type:String = item.serchingCost.type;
+				if(type == "gem"){
+					if(player.gem < item.serchingCost.price){
+						DialogController.instance.showPanel(new TreasurePanel);
+					}else{
+						new SearchingCommand(this,onSearching);
+						isCommanding = true;
+					}
+				}else{
+					if(player.coin < item.serchingCost.price){
+						DialogController.instance.showPanel(new TreasurePanel);
+					}else{
+						new SearchingCommand(this,onSearching);
+						isCommanding = true;
+					}
+				}
+			}
+		}
+		private function onSearching():void
+		{
+			isCommanding  = false;
+			player.removeEntityItem(item);
+			dispose();
+		}
+		protected function sell():void
+		{
+			var str:String = LanguageController.getInstance().getString("sellTip01") + item.cname +" ?";
+			var confirmPanel:ConfirmPanel = new ConfirmPanel(str,function():void{
+				UpdateController.instance.pushActionData(new UpdateData(item.gameuid,Configrations.SELL,{data_id:item.data_id,gameuid:item.gameuid,type:item.itemType}));
+				VoiceController.instance.playSound(VoiceController.SOUND_PLOW);
+				player.removeEntityItem(item);
+				dispose();
+			},function():void{});
+			DialogController.instance.showPanel(confirmPanel);
 		}
 		override public function render(support:RenderSupport, parentAlpha:Number):void{
 			super.render(support,parentAlpha);
@@ -210,16 +292,26 @@ package view.entity
 		{
 			return GameController.instance.currentFarm;
 		}
-		protected function destroy():void
+		override public function dispose():void
 		{
 			clearTile();
 			scene.removeEntity(this);
+			super.dispose();
 		}
 		protected function update():void
 		{
 			if(item.update()){
 				refresh();
 			}
+		}
+		
+		public function get isFloor():Boolean
+		{
+			return item.itemspec &&  item.itemspec.type =="floor";
+		}
+		public function get isWild():Boolean
+		{
+			return item.itemspec &&  item.itemspec.type =="wild";
 		}
 		
 		protected function get player():GamePlayer

@@ -25,9 +25,15 @@ package model.gameSpec
 		public var coinPrice:int;
 		public var gemPrice:int;
 		public var exp:int =1 ;
+		
+		public var type:String;
 		public function get cname():String
 		{
-			return LanguageController.getInstance().getString(name);
+			var str:String =  LanguageController.getInstance().getString(name);
+			if(!str || str==""){
+				str = name;
+			}
+			return str;
 		}
 	}
 }

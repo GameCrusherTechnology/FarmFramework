@@ -3,17 +3,12 @@ package view.loading
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
-	import controller.GameController;
-	
 	import gameconfig.Configrations;
 	
 	import starling.display.Image;
 	import starling.display.QuadBatch;
 	import starling.display.Sprite;
 	import starling.events.Event;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
 
 	/**
 	 * Starling实现的3D云彩效果

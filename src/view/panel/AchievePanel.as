@@ -2,6 +2,8 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
+	import controller.FieldController;
+	import controller.GameController;
 	import controller.SpecController;
 	
 	import feathers.controls.List;
@@ -16,7 +18,10 @@ package view.panel
 	
 	import model.gameSpec.ItemSpec;
 	
+	import starling.display.Image;
 	import starling.events.Event;
+	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	
 	import view.render.AchieveListRender;
 
@@ -32,24 +37,29 @@ package view.panel
 		protected function initializeHandler(event:Event):void
 		{
 			panelwidth = Configrations.ViewPortWidth*0.86;
-			panelheight = Configrations.ViewPortHeight*0.7;
+			panelheight = Configrations.ViewPortHeight*0.68;
 			var scale:Number = Configrations.ViewScale;
 
 			const listLayout: VerticalLayout= new VerticalLayout();
 			listLayout.horizontalAlign = VerticalLayout.HORIZONTAL_ALIGN_CENTER;
 			listLayout.verticalAlign = VerticalLayout.VERTICAL_ALIGN_TOP;
 			listLayout.scrollPositionVerticalAlign  = VerticalLayout.VERTICAL_ALIGN_MIDDLE;
-			listLayout.paddingTop = 30*scale;
+			listLayout.paddingTop =listLayout.paddingBottom =  30*scale;
 			listLayout.gap = 10*scale;
 			
+			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20));
+			var backG:Scale9Image = new Scale9Image(skintextures);
+			this.addChild(backG);
+			backG.width =  panelwidth*0.8;
+			backG.height = panelheight *0.95 ;
+			backG.x = panelwidth*0.1;
+			backG.y =  10*scale;
 			
 			list = new List();
 			list.layout = listLayout;
-			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20));
-			list.backgroundSkin = new Scale9Image(skintextures);
 			list.dataProvider = menuArr;
 			list.width =  panelwidth*0.8;
-			list.height = panelheight *0.95;
+			list.height = panelheight *0.95 -20*scale;
 			list.itemRendererFactory = 
 				function tileListItemRendererFactory():AchieveListRender
 			{
@@ -62,19 +72,31 @@ package view.panel
 			list.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_FLOAT;
 			this.addChild(list);
 			list.x = panelwidth*0.1;
-			list.y =  10*scale;
+			list.y = 20*scale;
+			
+			var achIcon:Image = new Image(Game.assets.getTexture("achieveIcon"));
+			achIcon.width = achIcon.height = 80*scale;
+			addChild(achIcon);
+			achIcon.x =  achIcon.y = 0;
+			
+			var totalP:int = Configrations.getTotalAchievePoint(GameController.instance.currentPlayer.achieve);
+			var countText:TextField = FieldController.createSingleLineDynamicField(300,300,"×"+totalP,0x000000,25,true);
+			countText.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
+			addChild(countText);
+			countText.x = achIcon.x + achIcon.width - countText.width/2;
+			countText.y = achIcon.y + achIcon.height - countText.height;
 		}
 		
 		private function get menuArr():ListCollection
 		{
 			var goupe:Object = SpecController.instance.getGroup("AchieveItem");
 			var spec:ItemSpec;
-			var list:ListCollection = new ListCollection;
+			var array:Array = [];
 			for each(spec in goupe){
-				list.push({item_id:spec.item_id});
+				array.push({item_id:spec.item_id});
 			}
-			
-			return list;
+			array.sortOn("item_id");
+			return new ListCollection(array);
 		}
 	}
 }

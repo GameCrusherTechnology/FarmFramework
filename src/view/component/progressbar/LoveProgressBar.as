@@ -2,10 +2,9 @@ package view.component.progressbar
 {
 	import controller.GameController;
 	
-	import model.player.GamePlayer;
-	import model.player.PlayerChangeEvents;
+	import gameconfig.Configrations;
 	
-	import starling.events.Event;
+	import model.player.GamePlayer;
 	
 	public class LoveProgressBar extends GreenProgressBar
 	{
@@ -15,19 +14,23 @@ package view.component.progressbar
 			fillDirection = LEFT_TO_RIGHT;
 			showIcon(Game.assets.getTexture("loveIcon"))
 			refresh();
-			player.addEventListener(PlayerChangeEvents.LOVE_CHANGE,onPlayerChange);
-		}
-		private function onPlayerChange(event:Event):void
-		{
-			refresh();
 		}
 		public function refresh():void
 		{
-			comment = String(player.love);
+			if(player.love >= Configrations.gradeToLove(player.skillLevel)){
+				comment = String( Configrations.gradeToLove(player.skillLevel));
+			}else{
+				comment = String(player.love);
+			}
+			progress = player.love/Configrations.gradeToLove(player.skillLevel);
 		}
-		private function get player():GamePlayer
+		protected function get player():GamePlayer
 		{
 			return GameController.instance.localPlayer;
+		}
+		override public function dispose():void
+		{
+			super.dispose();
 		}
 	}
 }

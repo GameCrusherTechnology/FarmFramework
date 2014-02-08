@@ -36,8 +36,6 @@ package controller
 				new CreatTaskCommand(creatNpcTask(),onCreat);
 			}
 			
-//			var timer:Timer = new Timer(50);
-//			timer.addEventListener(TimerEvent.TIMER,onTick,false,0,true);
 		}
 		
 		
@@ -87,7 +85,7 @@ package controller
 			var spec:CropSpec ;
 			var level:int = Configrations.expToGrade(localPlayer.exp);
 			for each(spec in cropSpecArr){
-				if(spec.level<=level){
+				if(!spec.isTree && spec.level<=level){
 					vec.push(localPlayer.getOwnedItem(spec.item_id));
 				}
 			}
@@ -126,11 +124,12 @@ package controller
 			return questCount;
 		}
 		
-		public function checkCurrentOrder(player:GamePlayer):void
+		public function finishCurrentOrderByNpc(player:GamePlayer):void
 		{
 			if(player.my_order && player.my_order.getIsExpired()){
-				new FinishOrder(player.gameuid,onFinishedOrder,1);
-			} 
+				player.cur_mes_dataid ++;
+				new FinishOrder(player.gameuid,player.cur_mes_dataid,onFinishedOrder,1);
+			}
 		}
 		private function onFinishedOrder():void
 		{

@@ -62,7 +62,7 @@ package view.panel
 			darkSp.graphics.endFill();
 			addChild(darkSp);
 			
-			var skinTexture:Scale9Textures = new Scale9Textures(Game.assets.getTexture("panelSkin"),new Rectangle(1,1,62,62));
+			var skinTexture:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20));
 			panelSkin = new Scale9Image(skinTexture);
 			panelSkin.width = panelwidth;
 			panelSkin.height = panelheight;
@@ -70,10 +70,20 @@ package view.panel
 			panelSkin.x = Configrations.ViewPortWidth/2  - panelSkin.width/2;
 			panelSkin.y = Configrations.ViewPortHeight/2 - panelSkin.height/2;
 			
+			var cancelButton:Button = new Button();
+			cancelButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
+			cancelButton.addEventListener(Event.TRIGGERED, closeButton_triggeredHandler);
+			addChild(cancelButton);
+			cancelButton.width = cancelButton.height = Configrations.ViewPortHeight*0.05;
+			cancelButton.x = panelSkin.x +panelSkin.width - cancelButton.width -5;
+			cancelButton.y = panelSkin.y +5;
+			
 			configMesContainer();
 			configRequestContainer();
 			configRewardContainer();
 			configButton();
+			
+			
 		}
 		private function configMesContainer():void
 		{
@@ -179,7 +189,7 @@ package view.panel
 			icon.width = icon.height = panelheight*0.1;
 			icon.x = panelwidth*0.1;
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth,panelheight*0.1,spec.name,0x000000,35,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth,panelheight*0.1,spec.cname,0x000000,35,true);
 			nameText.hAlign = HAlign.LEFT;
 			nameText.vAlign = VAlign.CENTER;
 			container.addChild(nameText);
@@ -306,20 +316,29 @@ package view.panel
 			expText.x = expicon.x + expicon.width;
 			return renderContainer;
 		}
+		private var isCommanding:Boolean;
 		private function onTriggered(e:Event):void
 		{
-			if(task.getIsExpired()){
-				TaskController.instance.initTask();
-				close();
+			if(!isCommanding){
+				if(task.getIsExpired()){
+					TaskController.instance.initTask();
+					close();
+				}
+				if(isTaskFinished){
+					new FinishTaskCommand(onFinishedTask);
+					isCommanding = true;
+				}else{
+					close();
+				}
 			}
-			if(isTaskFinished){
-				new FinishTaskCommand(onFinishedTask);
-			}else{
-				close();
-			}
+		}
+		private function closeButton_triggeredHandler(e:Event):void
+		{
+			close();
 		}
 		private function onFinishedTask():void
 		{
+			isCommanding = false;
 			var item:OwnedItem;
 			for each(item in requestVec){
 				player.deleteItem(item);

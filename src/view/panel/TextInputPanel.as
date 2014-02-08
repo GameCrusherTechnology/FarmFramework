@@ -5,6 +5,7 @@ package view.panel
 	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.UiController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -159,23 +160,28 @@ package view.panel
 
 		private function okButton_triggeredHandler(e:Event):void
 		{
-			if(_input.text == player.name){
-				currentText = _input.text;
-				this.onBackButton();
-			}else{
-				if(player.gem>= Configrations.CHANGE_NAME_COST){
-					new ChangeNameCommand(_input.text,onChangeSuccess);
+			if(!isCommanding){
+				if(_input.text == player.name){
+					currentText = _input.text;
+					this.onBackButton();
 				}else{
-					DialogController.instance.showPanel(new TreasurePanel());
+					if(player.gem>= Configrations.CHANGE_NAME_COST){
+						new ChangeNameCommand(_input.text,onChangeSuccess);
+						isCommanding = true;
+					}else{
+						DialogController.instance.showPanel(new TreasurePanel());
+					}
 				}
 			}
 		}
-		
+		private var isCommanding:Boolean;
 		private function onChangeSuccess():void
 		{
+			isCommanding = false;
 			currentText = _input.text;
 			player.name = currentText;
 			player.changeGem(-Configrations.CHANGE_NAME_COST);
+			UiController.instance.configNameText();
 			this.onBackButton();
 		}
 		private function get player():GamePlayer

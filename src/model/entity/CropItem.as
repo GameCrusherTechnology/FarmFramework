@@ -3,6 +3,7 @@ package model.entity
 	import controller.SpecController;
 	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
 	import gameconfig.SystemDate;
 	
 	import model.OwnedItem;
@@ -21,6 +22,11 @@ package model.entity
 			if(hasCrop){
 				checkStep();
 			}
+		}
+		
+		override public function get cname():String
+		{
+			return itemspec? itemspec.cname : LanguageController.getInstance().getString("field");
 		}
 		
 		override public function get itemType():String
@@ -65,18 +71,26 @@ package model.entity
 		}
 		public function harvest():void
 		{
-			player.addItem(new OwnedItem(item_id,getOutput()));
-			item_id = null;
-			itemspec = null;
+			if(isTree){
+				player.addItem(new OwnedItem(String(int(item_id)+10000),10));
+				plant_time = SystemDate.systemTimeS;
+				growStep = 0;
+			}else{
+				player.addItem(new OwnedItem(item_id,getOutput()));
+				item_id = null;
+				itemspec = null;
+				growStep = 0;
+			}
 		}
 		private function getOutput():int
 		{
 			return 2;
 		}
-		public function speed():void
+		public function speed(time:int = Configrations.SPEED_TIME):void
 		{
-			plant_time -= Configrations.SPEED_TIME;
+			plant_time -= (time*60);
 		}
+		
 		public function plant(id:String):void
 		{
 			player.deleteItem(new OwnedItem(id,1));
@@ -87,6 +101,10 @@ package model.entity
 		}
 		public var plant_time:Number = 1382454068;
 		public var growStep:int = 0;
+		public function get totalStep():int
+		{
+			return cropItemSpec.growTimeArr.length+1;
+		}
 		
 		public function get remainTime():Number
 		{
@@ -116,6 +134,11 @@ package model.entity
 		override public function get bound_y():int
 		{
 			return 2;
+		}
+		
+		public function get isTree():Boolean
+		{
+			return cropItemSpec && cropItemSpec.isTree;
 		}
 	}
 }

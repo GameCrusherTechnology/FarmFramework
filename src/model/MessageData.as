@@ -3,6 +3,7 @@ package model
 	import controller.FriendInfoController;
 	
 	import model.player.SimplePlayer;
+	import gameconfig.SystemDate;
 
 	public class MessageData
 	{
@@ -26,10 +27,15 @@ package model
 		public var updatetime:Number;
 		
 		public function get player():SimplePlayer{
-			return FriendInfoController.instance.getUser(gameuid as String);
+			return FriendInfoController.instance.getUser(gameuid);
 		}
 		public function get senderplayer():SimplePlayer{
-			return FriendInfoController.instance.getUser(f_gameuid as String);
+			return FriendInfoController.instance.getUser(f_gameuid);
+		}
+		
+		public function get overOneDay():Boolean
+		{
+			return SystemDate.systemTimeS - updatetime >= 24*3600;
 		}
 	}
 }

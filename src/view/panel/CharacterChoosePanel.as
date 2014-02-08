@@ -18,7 +18,6 @@ package view.panel
 	
 	import model.player.GamePlayer;
 	
-	import service.command.user.ChangeNameCommand;
 	import service.command.user.ChangeSexCommand;
 	
 	import starling.display.DisplayObject;
@@ -64,7 +63,7 @@ package view.panel
 			skin1.x = panelwidth/2 - skin1.width/2;
 			skin1.y = panelheight/2 - skin1.height/2;
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth ,50*scale,LanguageController.getInstance().getString("shopTip02"),0x000000,35,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth ,50*scale,LanguageController.getInstance().getString("shopTip04"),0x000000,35,true);
 			nameText.autoSize = TextFieldAutoSize.VERTICAL;
 			addChild(nameText);
 			nameText.y = skin1.y+20*scale;
@@ -192,20 +191,23 @@ package view.panel
 		}
 		private function okButton_triggeredHandler(e:Event):void
 		{
-			if(selectType == player.sex){
-				dispatchEventWith(Event.COMPLETE);
-			}else{
-				if(player.gem>= Configrations.CHANGE_SEX_COST){
-					new ChangeSexCommand(selectType,onChangeSuccess);
+			if(!isCommanding){
+				if(selectType == player.sex){
+					dispatchEventWith(Event.COMPLETE);
 				}else{
-					DialogController.instance.showPanel(new TreasurePanel());
+					if(player.gem>= Configrations.CHANGE_SEX_COST){
+						new ChangeSexCommand(selectType,onChangeSuccess);
+						isCommanding = true;
+					}else{
+						DialogController.instance.showPanel(new TreasurePanel());
+					}
 				}
 			}
-			
-			dispatchEventWith(Event.COMPLETE);
 		}
+		private var isCommanding:Boolean;
 		private function onChangeSuccess():void
 		{
+			isCommanding = false;
 			player.sex = selectType;
 			player.changeGem(-Configrations.CHANGE_NAME_COST);
 			dispatchEventWith(Event.COMPLETE);

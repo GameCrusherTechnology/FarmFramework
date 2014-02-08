@@ -1,9 +1,13 @@
 package view.panel
 {
+	import flash.geom.Rectangle;
+	
 	import controller.FieldController;
 	
 	import feathers.controls.PanelScreen;
+	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
+	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
 	
@@ -11,7 +15,7 @@ package view.panel
 	import starling.core.Starling;
 	import starling.events.Event;
 	import starling.text.TextField;
-	import starling.utils.VAlign;
+	import starling.text.TextFieldAutoSize;
 
 	public class WarnnigTipPanel extends PanelScreen
 	{
@@ -23,13 +27,24 @@ package view.panel
 		}
 		protected function initializeHandler(event:Event):void
 		{
-			var mesText:TextField = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,Configrations.ViewPortHeight,
+			var texture:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"),new Rectangle(10,10,30,30));
+			var skin:Scale9Image = new Scale9Image(texture);
+			addChild(skin);
+			skin.alpha = 0.8;
+			var mesText:TextField = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth*0.8,Configrations.ViewPortHeight*0.3,
 				mes,0xff0000,50,true);
+			mesText.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 			addChild(mesText);
-			mesText.vAlign = VAlign.TOP;
-			mesText.pivotY = -Configrations.ViewPortHeight*0.2;
-			var tween:Tween = new Tween(this,2);
+			mesText.touchable = false;
+			skin.width = mesText.width + 100*Configrations.ViewScale;
+			skin.height = mesText.height + 50*Configrations.ViewScale;
+			skin.x = Configrations.ViewPortWidth /2 - skin.width/2;
+			skin.y = 100*Configrations.ViewScale;
+			mesText.x = skin.x + 50*Configrations.ViewScale;
+			mesText.y = skin.y + 25*Configrations.ViewScale;
+			var tween:Tween = new Tween(this,3);
 			tween.animate("alpha",0);
+			tween.moveTo(x,y-skin.height);
 			tween.onComplete = destroy;
 			Starling.juggler.add(tween);
 		}

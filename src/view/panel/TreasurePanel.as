@@ -2,8 +2,9 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
+	import controller.DialogController;
 	import controller.FieldController;
-	import controller.SpecController;
+	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -14,6 +15,10 @@ package view.panel
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	
+	import model.player.GamePlayer;
+	
+	import service.command.payment.BuyCoinCommand;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -51,7 +56,7 @@ package view.panel
 			bsSkin = new Scale9Image(backgroundSkinTextures);
 			addChild(bsSkin);
 			bsSkin.width = panelwidth;bsSkin.height = panelheight;
-			bsSkin.alpha = 0.3;
+			bsSkin.alpha = 0.4;
 			bsSkin.addEventListener(TouchEvent.TOUCH,onSkinTouched);
 			
 			var skin1:Scale9Image = new Scale9Image(backgroundSkinTextures);
@@ -69,7 +74,7 @@ package view.panel
 			skin2.x = panelwidth *.15;
 			skin2.y = panelheight *.2;
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.6,panelheight * 0.1,LanguageController.getInstance().getString("qucickshop"),0x000000,35,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.6,panelheight * 0.1,LanguageController.getInstance().getString("treasureshop"),0x000000,35,true);
 			nameText.hAlign = HAlign.CENTER;
 			addChild(nameText);
 			nameText.x = panelwidth*0.2;
@@ -104,21 +109,39 @@ package view.panel
 			largeGem.x = panelwidth *.52;
 			largeGem.y = panelheight *.56;
 			
+			
+			var cancelButton:Button = new Button();
+			cancelButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
+			cancelButton.addEventListener(Event.TRIGGERED, closeButton_triggeredHandler);
+			addChild(cancelButton);
+			cancelButton.width = cancelButton.height = 50*scale;
+			cancelButton.x = panelwidth*0.9 -cancelButton.width -5;
+			cancelButton.y = panelheight*0.1 +5;
+			
+			
 		}
 		
 		private function creatTreasureRender(name:String):Sprite
 		{
 			var container:Sprite = new Sprite();
+			addChild(container);
 			var textureName:String;
 			var buyCount:int;
 			var paycount:int;
 			var buyarr:Array  = Configrations.treasures[name];
 			buyCount = buyarr[0];
 			paycount = buyarr[1];
+			var bool:Boolean = true;
+			var butTextureName:String;
 			if(name == Configrations.LITTLECOIN || name == Configrations.LARGECOIN){
 				textureName = "coinIcon";
+				butTextureName = "gemIcon";
+				if(paycount > player.gem){
+					bool = false;
+				}
 			}else{
 				textureName  = "gemIcon";
+				butTextureName = "dollarIcon";
 			}
 			
 			var backgroundSkinTextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20));
@@ -127,7 +150,7 @@ package view.panel
 			skin.width = panelwidth*0.3;
 			skin.height = panelheight*0.3;
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.3,40*scale,LanguageController.getInstance().getString("qucickshop"),0x000000,35,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.3,40*scale,LanguageController.getInstance().getString(name),0x000000,35,true);
 			nameText.hAlign = HAlign.CENTER;
 			nameText.autoSize = TextFieldAutoSize.VERTICAL;
 			container.addChild(nameText);
@@ -135,7 +158,7 @@ package view.panel
 			var icon:Image = new Image(Game.assets.getTexture(textureName));
 			container.addChild(icon);
 			icon.width = icon.height =60*scale;
-			icon.x = panelwidth*0.08 - icon.width/2;
+			icon.x = panelwidth*0.15 -icon.width - 10*scale;
 			icon.y = nameText.y + nameText.height+30*scale;
 			
 			var countText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.15,40*scale,"×"+buyCount,0x000000,35,true);
@@ -147,24 +170,54 @@ package view.panel
 			
 			
 			var buyButton:Button = new Button();
-			buyButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+			if(bool){
+				buyButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+				buyButton.addEventListener(Event.TRIGGERED,onBuyTriggered);
+			}else{
+				buyButton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
+			}
 			buyButton.label = String(paycount);
 			buyButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
-			buyButton.width = panelwidth*0.2;
-			buyButton.height = 50*scale;
 			container.addChild(buyButton);
+			buyButton.paddingLeft = buyButton.paddingRight = 25 *scale;
+			buyButton.paddingTop = buyButton.paddingBottom = 10 *scale;
+			buyButton.name = name;
 			buyButton.validate();
-			buyButton.x = panelwidth*0.05;
-			buyButton.y = panelheight*0.3 - buyButton.height-10*scale;
+			buyButton.x = panelwidth*0.15 - buyButton.width/2;
+			buyButton.y = panelheight*0.3 -buyButton.height - 10*scale;
 			
-			var gemIcon :Image = new Image(Game.assets.getTexture("gemIcon"));
-			buyButton.addChild(gemIcon);
-			gemIcon.width =gemIcon.height = buyButton.height*1.2;
-			gemIcon.x = - gemIcon.width/2;
-			gemIcon.y = -buyButton.height*0.1;
+			
+			var gemIcon :Image = new Image(Game.assets.getTexture(butTextureName));
+			container.addChild(gemIcon);
+			gemIcon.width =gemIcon.height = buyButton.height;
+			gemIcon.x = buyButton.x - gemIcon.width/3;
+			gemIcon.y = buyButton.y;
 			
 			
 			return container;
+		}
+		
+		private var isCommanding:Boolean;
+		private function onBuyTriggered(e:Event):void{
+			if(e.currentTarget is Button){
+				var name :String = (e.currentTarget as Button).name;
+				if(name == Configrations.LITTLECOIN || name == Configrations.LARGECOIN){
+					if(!isCommanding){
+						isCommanding = true;
+						new BuyCoinCommand(name,function():void{
+							DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("buyTip01")));
+							isCommanding = false;
+							destroy();
+						});
+					}
+				}else if(name == Configrations.LITTLEGEM || name == Configrations.LARGEGEM){
+					PlatForm.FormBuyGems(name);
+				}
+			}
+		}
+		private function closeButton_triggeredHandler(e:Event):void
+		{
+			destroy();
 		}
 		private function onSkinTouched(e:TouchEvent):void
 		{
@@ -174,12 +227,18 @@ package view.panel
 				destroy();
 			}
 		}
+		
+		private function get player():GamePlayer
+		{
+			return GameController.instance.localPlayer;
+		}
 		private function destroy():void
 		{
 			bsSkin.removeEventListener(TouchEvent.TOUCH,onSkinTouched);
 			if(parent){
 				parent.removeChild(this);
 			}
+			dispose();
 		}
 	}
 }

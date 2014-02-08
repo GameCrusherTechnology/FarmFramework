@@ -216,9 +216,11 @@ package view.panel
 		}
 		private function close():void
 		{
+			player.removeEventListener(PlayerChangeEvents.MESSAGE_CHANGE,onmessagechange);
 			if(parent){
 				parent.removeChild(this);
 			}
+			dispose();
 		}
 	}
 }

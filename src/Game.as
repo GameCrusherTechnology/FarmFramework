@@ -1,15 +1,19 @@
 package
 {
+    
+    import flash.desktop.NativeApplication;
+    import flash.events.Event;
     import flash.ui.Keyboard;
     
     import controller.GameController;
+    import controller.VoiceController;
     
     import gameconfig.Configrations;
     import gameconfig.Devices;
     
     import starling.core.Starling;
     import starling.display.Sprite;
-    import starling.events.Event;
+    import starling.events.EnterFrameEvent;
     import starling.events.KeyboardEvent;
     import starling.utils.AssetManager;
     
@@ -45,8 +49,6 @@ package
 			
 			GameController.instance.show(this);
 			assets.loadQueue(onLoadQueue);
-			addEventListener(starling.events.Event.ADDED_TO_STAGE, onAddedToStage);
-			addEventListener(starling.events.Event.REMOVED_FROM_STAGE, onRemovedFromStage);
 		}
 		private function onLoadQueue(ratio:Number):void
 		{
@@ -59,25 +61,13 @@ package
 //				mLoadingProgress.removeFromParent(true);
 //				mLoadingProgress = null;
 				GameController.instance.start();
-				
 			}
+			addEventListener(EnterFrameEvent.ENTER_FRAME,onEnterFrame);
 		}
-        private function onAddedToStage(event:starling.events.Event):void
-        {
-            stage.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
-        }
-        private function onRemovedFromStage(event:starling.events.Event):void
-        {
-            stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
-        }
-        
-        private function onKey(event:KeyboardEvent):void
-        {
-            if (event.keyCode == Keyboard.SPACE)
-                Starling.current.showStats = !Starling.current.showStats;
-            else if (event.keyCode == Keyboard.X)
-                Starling.context.dispose();
-        }
+		private function onEnterFrame(e:EnterFrameEvent):void
+		{
+			GameController.instance.tick();
+		}
         
         
     }

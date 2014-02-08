@@ -22,6 +22,8 @@ package view.render
 	import model.player.GamePlayer;
 	import model.task.TaskData;
 	
+	import service.command.task.FinishOrder;
+	
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.display.Sprite;
@@ -63,7 +65,7 @@ package view.render
 		}
 		private var renderwidth:Number;
 		private var renderheight:Number;
-		private var isTaskFinished:Boolean;
+		private var isTaskFinished:Boolean=true;
 		private function checkOrderData():void
 		{
 			renderwidth = width;
@@ -182,7 +184,7 @@ package view.render
 			
 			if(!isHome){
 				var tradebutton:Button = new Button();
-				tradebutton.label = LanguageController.getInstance().getString("close");
+				tradebutton.label = LanguageController.getInstance().getString("trade");
 				if(isTaskFinished){
 					tradebutton.addEventListener(Event.TRIGGERED,onTradeTriggered);
 					tradebutton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
@@ -213,11 +215,33 @@ package view.render
 			addOrderPanel = null;
 			refreshData();
 		}
+		private var isCommanding:Boolean;
 		private function onTradeTriggered(e:Event):void
 		{
-			
+			if(!isCommanding){
+				player.cur_mes_dataid++;
+				new FinishOrder(player.gameuid,player.cur_mes_dataid,onFinishedOrder,0);
+				isCommanding = true;
+			}
 		}
-
+		
+		private function onFinishedOrder():void
+		{
+			isCommanding = false;
+//			var player:GamePlayer = GameController.instance.currentPlayer;
+//			var orderdata:TaskData = player.my_order;
+//			if(GameController.instance.isHomeModel){
+//				var reqestArr:Array = orderdata.requstStr.split("|");
+//				var itemStr:String;
+//				for each(itemStr in reqestArr){
+//					var itemArr :Array = itemStr.split(":");
+//					player.addItem(new OwnedItem(itemArr[0],itemArr[1]));
+//				}
+//			}
+			player.my_order = null;
+			refreshData();
+		}
+		
 		private function configRequestContainer():Scale9Image
 		{
 			var requestContainer:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20)));
@@ -269,7 +293,7 @@ package view.render
 			nameText.x = icon.x + icon.width;
 			
 			
-			var ownitem:OwnedItem = player.getOwnedItem(itemid);
+			var ownitem:OwnedItem = localplayer.getOwnedItem(itemid);
 			var bool:Boolean = (ownitem.count>=count) ;
 			var color :uint = bool?0x00ff00:0xff0000;
 			
@@ -381,6 +405,10 @@ package view.render
 		private function get player():GamePlayer
 		{
 			return GameController.instance.currentPlayer;
+		}
+		private function get localplayer():GamePlayer
+		{
+			return GameController.instance.localPlayer;
 		}
 		private function onTriggeredRemove(e:Event):void
 		{

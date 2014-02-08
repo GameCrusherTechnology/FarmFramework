@@ -165,14 +165,14 @@ package service.command
 				
 		private function onResult(data:Object):void
 		{
-			if(("__index" in data)&& Number(data.__index)>RemotingOperation.INDEX){
+			if(data&& ("__index" in data)&& Number(data.__index)>RemotingOperation.INDEX){
 				RemotingOperation.INDEX=Number(data.__index);
 			}
 			RemotingOperation.COUNT--;
 			
 			clearTimeout(this.timeoutId);
-			if(data&&data.metadata&& data.metadata.server_time){
-				SystemDate.systemTime = data.metadata.server_time;
+			if(data&&data.__end_time){
+				SystemDate.systemTime = data.__end_time;
 			}
 			
 			if(this.successHandler != null)

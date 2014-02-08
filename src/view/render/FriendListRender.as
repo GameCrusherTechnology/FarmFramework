@@ -6,7 +6,6 @@ package view.render
 	import feathers.controls.renderers.DefaultListItemRenderer;
 	
 	import gameconfig.Configrations;
-	import gameconfig.LanguageController;
 	
 	import model.player.SimplePlayer;
 	
@@ -29,7 +28,7 @@ package view.render
 		{
 			super.data = value;
 			if(value){
-				playerData =FriendInfoController.instance.getUser(value as String);
+				playerData =FriendInfoController.instance.getUser(String(value));
 				if(container){
 					if(container.parent){
 						container.parent.removeChild(container);
@@ -42,12 +41,12 @@ package view.render
 		{
 			var renderwidth:Number = width;
 			var renderheight:Number = height;
-			
+			this.isSelected = true;
 			container = new Sprite;
 			addChild(container);
 			
-			var icon:Image= new Image(Game.assets.getTexture((playerData.sex==Configrations.CHARACTER_BOY)?"boyIcon":"girlIcon"));
-			icon.height = renderheight*0.8;
+			var icon:Image= new Image(Game.assets.getTexture(playerData.headIconName));
+			icon.height = renderheight*0.7;
 			icon.scaleX = icon.scaleY;
 			icon.x = renderwidth/2 - icon.width/2;
 			icon.y = renderheight*0.2;
@@ -58,18 +57,18 @@ package view.render
 			nameText.y = 0 ;
 			
 			
-			var mes:String;
-			if(playerData.title){
-				var titlesArr:Array = playerData.title.split("|");
-				mes = LanguageController.getInstance().getTitle(titlesArr[0],titlesArr[1]);
-			}else{
-				mes = LanguageController.getInstance().getString("noTitle");
-			}
+//			var mes:String;
+//			if(playerData.title){
+//				var titlesArr:Array = playerData.title.split("|");
+//				mes = LanguageController.getInstance().getTitle(titlesArr[0],titlesArr[1]);
+//			}else{
+//				mes = LanguageController.getInstance().getString("noTitle");
+//			}
 			
-			var titleText:TextField = FieldController.createSingleLineDynamicField(renderwidth ,30*scale,mes,0x000000,15,true);
-			container.addChild(titleText);
-			titleText.x = 0;
-			titleText.y = renderheight - titleText.height ;
+//			var titleText:TextField = FieldController.createSingleLineDynamicField(renderwidth ,30*scale,mes,0x000000,15,true);
+//			container.addChild(titleText);
+//			titleText.x = 0;
+//			titleText.y = renderheight - titleText.height ;
 			
 			var expIcon:Image = new Image(Game.assets.getTexture("expIcon"));
 			expIcon.width = expIcon.height = 30*scale;

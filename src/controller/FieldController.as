@@ -5,7 +5,6 @@
     import gameconfig.Configrations;
     
     import starling.text.TextField;
-    import starling.utils.HAlign;
 
     public class FieldController {
 
@@ -38,23 +37,27 @@
 		}
         public static function createSingleLineDynamicField(width:Number,height:Number,txt:String, _color:uint, _size:Number,_bold:Boolean = false):TextField{
 			
-            var _local4:TextField = new TextField(width,height,txt,FONT_FAMILY,_size,_color,_bold);
+			var size:int = Math.round(_size*Configrations.ViewScale);
+            var _local4:TextField = new TextField(width,height,txt,FONT_FAMILY,size,_color,_bold);
 			_local4.touchable = false;
             return (_local4);
         }
 		public static function createNoFontField(width:Number,height:Number,txt:String, _color:uint, _size:Number):TextField{
-			
+			var size:int = Math.round(_size*Configrations.ViewScale);
 			var _local4:TextField = new TextField(width,height,txt);
 			_local4.bold = true;
 			_local4.touchable = false;
 			_local4.color = _color;
-			_local4.fontSize = _size;
+			_local4.fontSize = size;
 			return (_local4);
 		}
         public static function createSingleLineStaticField(_width:int, _text:String, _color:uint, _size:Number, _align:String="left"):TextField{
-            var _local6:TextField = createBaseField(creatTextformat(FONT_FAMILY, _size, _color, true, null, null, null, null, _align));
+			var size:int = Math.round(_size*Configrations.ViewScale);
+            var _local6:TextField = createBaseField(creatTextformat(FONT_FAMILY, size, _color, true, null, null, null, null, _align));
             _local6.width = _width;
             _local6.text = _text;
+			_local6.touchable = false;
+//			_local6.filters = [new GlowFilter(16773227, 1, _arg2, _arg2, 2, 1, true), new DropShadowFilter(2, 90, 0, 0.75, 4, 4, 1)];
 //            _local6.height = (_local6.height + 5);
             return (_local6);
         }

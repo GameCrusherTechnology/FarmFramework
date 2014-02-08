@@ -37,7 +37,7 @@ package view.panel
 		protected function initializeHandler(event:Event):void
 		{
 			panelwidth = Configrations.ViewPortWidth*0.86;
-			panelheight = Configrations.ViewPortHeight*0.7;
+			panelheight = Configrations.ViewPortHeight*0.68;
 			var scale:Number = Configrations.ViewScale;
 			
 			const listLayout: VerticalLayout= new VerticalLayout();
@@ -88,5 +88,5 @@ package view.panel
 		}
 	}
 }
-import view.panel;
+
 

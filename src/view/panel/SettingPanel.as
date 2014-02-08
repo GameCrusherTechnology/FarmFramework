@@ -1,6 +1,7 @@
 package view.panel
 {
 	import controller.FieldController;
+	import controller.VoiceController;
 	
 	import feathers.controls.PanelScreen;
 	import feathers.controls.ToggleSwitch;
@@ -55,9 +56,13 @@ package view.panel
 			musicText.x =  0;
 			musicText.y = bottomH;
 			musictoggle = creatToggle();
+			if(!VoiceController.MUSIC_DISABLE){
+				musictoggle.isSelected = false;
+			}
 			addChild(musictoggle);
 			musictoggle.x = panelwidth/2 +20*scale;
 			musictoggle.y = bottomH;
+			musictoggle.addEventListener(Event.CHANGE,onMusicChange);
 			
 			bottomH += (renderHeight+10);
 			
@@ -68,14 +73,23 @@ package view.panel
 			musicText1.x =  0;
 			musicText1.y = bottomH;
 			soundToggle = creatToggle();
+			if(!VoiceController.SOUND_DISABLE){
+				soundToggle.isSelected = false;
+			}
 			addChild(soundToggle);
 			soundToggle.x = panelwidth/2 +20*scale;
 			soundToggle.y = bottomH;
 			bottomH += (renderHeight+50);
+			soundToggle.addEventListener(Event.CHANGE,onSoundChange);
 			
 			bgSkin.graphics.moveTo(panelwidth*0.1,bottomH);
 			bgSkin.graphics.lineTo(panelwidth*0.8,bottomH);
 			bgSkin.graphics.endFill();
+			
+			var tipText:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.8, panelheight - bottomH ,LanguageController.getInstance().getString("gameTip01"),0x000000,30,true);
+			addChild(tipText);
+			tipText.x = panelwidth*0.1;
+			tipText.y = bottomH + 10*scale;
 		}
 		
 		private function creatToggle():ToggleSwitch
@@ -92,10 +106,17 @@ package view.panel
 			toggle.offTrackProperties.defaultSkin = onImage2;
 			return toggle;
 		}
-		private function toggle_changeHandler( event:Event ):void
+		
+		private function onMusicChange( event:Event ):void
 		{
 			var toggle:ToggleSwitch = ToggleSwitch( event.currentTarget );
-			trace( "toggle.isSelected changed:", toggle.isSelected );
+			VoiceController.instance.setMusic(toggle.isSelected);
+		}
+		
+		private function onSoundChange( event:Event ):void
+		{
+			var toggle:ToggleSwitch = ToggleSwitch( event.currentTarget );
+			VoiceController.instance.setSound(toggle.isSelected);
 		}
 		
 	}

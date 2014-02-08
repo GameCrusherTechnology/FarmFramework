@@ -3,9 +3,6 @@ package view.component.progressbar
 	import controller.GameController;
 	
 	import model.player.GamePlayer;
-	import model.player.PlayerChangeEvents;
-	
-	import starling.events.Event;
 
 	public class CoinProgressBar extends GreenProgressBar
 	{
@@ -15,19 +12,19 @@ package view.component.progressbar
 			fillDirection = direction;
 			showIcon(Game.assets.getTexture("coinIcon"));
 			refresh();
-			player.addEventListener(PlayerChangeEvents.COIN_CHANGE,onPlayerChange);
-		}
-		private function onPlayerChange(event:Event):void
-		{
-			refresh();
 		}
 		public function refresh():void
 		{
 			comment = String(player.coin);
 		}
-		private function get player():GamePlayer
+		protected function get player():GamePlayer
 		{
 			return GameController.instance.currentPlayer;
+		}
+		
+		override public function dispose():void
+		{
+			super.dispose();
 		}
 	}
 }

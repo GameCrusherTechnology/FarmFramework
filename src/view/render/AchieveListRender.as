@@ -26,7 +26,6 @@ package view.render
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
-	import starling.utils.HAlign;
 	
 	import view.component.progressbar.GreenProgressBar;
 	
@@ -71,7 +70,7 @@ package view.render
 			var achieveSpec :AchieveItemSpec = SpecController.instance.getItemSpec(achieveid) as AchieveItemSpec;
 			
 			var iconId:String ;
-			if(achieveSpec.type == "Crop"){
+			if(achieveSpec.type == "Crop"|| achieveSpec.type == "Tree"){
 				iconId = String(int(achieveid)-20000);
 			}else{
 				
@@ -98,6 +97,7 @@ package view.render
 			
 			var ownedItem:OwnedItem = player.getOwnedItem(achieveid);
 			var acheveLevels :Array = achieveSpec.levels.split("|");
+			var achiveRewards:Array = achieveSpec.rewards.split("|");
 			var index :int = 0;
 			var starIcon:Image;
 			var rectRight:Number = nameText.x+nameText.width;
@@ -125,9 +125,13 @@ package view.render
 				var needcount:int  = int(acheveLevels[curLevel]);
 				progress.comment = ownedItem.count+"/"+needcount;
 				progress.progress= ownedItem.count/needcount;
+				var rewardCount:String = achiveRewards[curLevel];
 				var rewardButton:Button = new Button();
-				rewardButton.label = LanguageController.getInstance().getString("getReward");
-				rewardButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				var gemicon:Image = new Image(Game.assets.getTexture("gemIcon"));
+				gemicon.width = gemicon.height = 30*scale;
+				rewardButton.defaultIcon = gemicon;
+				rewardButton.label = "×"+rewardCount+" "+LanguageController.getInstance().getString("get");
+				rewardButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				rewardButton.paddingLeft =rewardButton.paddingRight =  20;
 				rewardButton.paddingTop =rewardButton.paddingBottom =  5;
 				container.addChild(rewardButton);
@@ -135,21 +139,24 @@ package view.render
 				rewardButton.x = renderwidth - rewardButton.width-10*scale;
 				rewardButton.y =  renderheight/2;
 				if(needcount <=ownedItem.count){
-					rewardButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
+					rewardButton.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
 					rewardButton.addEventListener(Event.TRIGGERED,onTriggeredMale);
 				}else{
 					rewardButton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
 				}
 			}
 		}
-		
+		private var isCommanding:Boolean;
 		private function onTriggeredMale(e:Event):void
 		{
-			new GetAchieveReward(achieveid,onGetSuccess);
-			
+			if(!isCommanding){
+				isCommanding = true;
+				new GetAchieveReward(achieveid,onGetSuccess);
+			}
 		}
 		private function onGetSuccess():void
 		{
+			isCommanding = false;
 			data = data;
 		}
 		

@@ -5,10 +5,10 @@ package service.command.friend
 	
 	public class AcceptFriend extends AbstractCommand
 	{
-		public function AcceptFriend(friend_gameuid:String,callBack:Function)
+		public function AcceptFriend(friend_gameuid:String,data_id:int,callBack:Function)
 		{
 			onSuccess =callBack;
-			super(Command.ACCEPTFRIEND,onResult,{target:friend_gameuid});
+			super(Command.ACCEPTFRIEND,onResult,{target:friend_gameuid,data_id:data_id});
 		}
 		private var onSuccess:Function;
 		private function onResult(result:Object):void

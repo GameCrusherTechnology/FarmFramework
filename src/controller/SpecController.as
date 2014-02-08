@@ -4,7 +4,10 @@ package controller
 	import flash.utils.Dictionary;
 	
 	import model.gameSpec.AchieveItemSpec;
+	import model.gameSpec.AnimalItemSpec;
 	import model.gameSpec.CropSpec;
+	import model.gameSpec.EntityItemSpec;
+	import model.gameSpec.ExtendSpec;
 	import model.gameSpec.ItemSpec;
 	
 	public class SpecController
@@ -82,6 +85,14 @@ package controller
 					return ItemSpec;
 				case "AchieveItem":
 					return AchieveItemSpec;
+				case "Extend":
+					return ExtendSpec;
+				case "Entity":
+					return EntityItemSpec;
+				case "Animal":
+					return AnimalItemSpec;
+					default:
+						return ItemSpec;
 			}
 			return ItemSpec;
 		}
@@ -102,16 +113,23 @@ package controller
 			var type:int = Math.floor(itemid/10000);
 			switch(type){
 				case 1:
-					group = "Crop"
+					group = "Crop";
 					break;
 				case 2:
-					group = "Item"
+					group = "Item";
 					break;
 				case 3:
-					group = "AchieveItem"
+					group = "AchieveItem";
 					break;
-				
-					
+				case 4:
+					group = "Extend";
+					break;
+				case 5:
+					group = "Entity";
+					break;
+				case 6:
+					group = "Animal";
+					break;
 			}
 			return group;
 		}
