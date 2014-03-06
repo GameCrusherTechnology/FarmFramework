@@ -22,9 +22,6 @@ package view.panel
 	import gameconfig.LanguageController;
 	
 	import model.player.GamePlayer;
-	import model.player.SimplePlayer;
-	
-	import service.command.friend.GetStrangersCommand;
 	
 	import starling.events.Event;
 	

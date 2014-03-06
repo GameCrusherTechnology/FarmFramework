@@ -1,6 +1,5 @@
 package view
 {
-	import flash.display.Bitmap;
 	import flash.geom.Point;
 	import flash.net.SharedObject;
 	

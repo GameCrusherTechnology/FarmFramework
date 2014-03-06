@@ -3,7 +3,6 @@ package view.panel
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
-	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.List;

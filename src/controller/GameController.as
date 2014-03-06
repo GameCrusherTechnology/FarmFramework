@@ -35,7 +35,7 @@ package controller
 		public var selectTool:String;
 		public var selectSeed:String;
 		public var isNewer:Boolean = false;
-		public var userID:String = "super_man_0";
+		public var userID:String = "super_man_1";
 		//super_man_01
 		private static var _controller:GameController;
 		public static function get instance():GameController
