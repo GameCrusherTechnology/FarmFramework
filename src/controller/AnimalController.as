@@ -39,7 +39,8 @@ package controller
 		
 		private function addBea():void
 		{
-			if(player.cropItems.length /2 >beaVec.length){
+			var max:int = Math.min(Math.round(player.cropItems.length /2),10);
+			if(max >beaVec.length){
 				var crop :CropEntity = getBeaCrop();
 				if(crop){
 					var bea:BeaEntity = new BeaEntity(crop);
@@ -51,7 +52,8 @@ package controller
 		
 		private function addBird():void
 		{
-			if(birdVec.length <= player.level){
+			var max:int = Math.min(player.level,10);
+			if(birdVec.length <= max){
 				var bird:BirdEntity = new BirdEntity();
 				scene.addAnimalEntity(bird);
 				birdVec.push(bird);

@@ -1,6 +1,8 @@
 package gameconfig
 {
+	import flash.desktop.NativeApplication;
 	import flash.geom.Rectangle;
+	import flash.html.script.Package;
 	import flash.system.Capabilities;
 
 	public class Devices
@@ -20,6 +22,8 @@ package gameconfig
 			if(_deviceDetails) return _deviceDetails;
 			var retObj:Object = {};
 			var devStr:String = Capabilities.os;
+			var applicationXml:XML =   NativeApplication.nativeApplication.applicationDescriptor;
+			setApplicationXML(applicationXml);
 			var devStrArr:Array = devStr.split(" ");
 			devStr = devStrArr.pop();
 			devStr = (devStr.indexOf(",") > -1)?devStr.split(",").shift():debuggerDevice;
@@ -30,6 +34,12 @@ package gameconfig
 			if(Configrations.PLATFORM == "PC"){
 				retObj.width = 1024;
 				retObj.height = 768;
+////				//低配
+//				retObj.width = 480;
+//				retObj.height = 320;
+////				//高配
+//				retObj.width = 1680;
+//				retObj.height = 1050;
 			}
 			retObj.x = Capabilities.screenResolutionX/2;
 			retObj.y = Capabilities.screenResolutionY/2;
@@ -37,6 +47,13 @@ package gameconfig
 			retObj.scale =1;
 			retObj.frameRate = "60";
 			return _deviceDetails = retObj;
+		}
+		
+		private static function  setApplicationXML(xml:XML):void
+		{
+			var xmlList:Namespace = xml.namespaceDeclarations()[0]; 
+			var version:String = xml.xmlList::versionNumber;
+			Configrations.VERSION = version;
 		}
 		
 	}

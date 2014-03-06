@@ -5,6 +5,7 @@ package view.panel
 	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.TutorialController;
 	import controller.UiController;
 	
 	import feathers.controls.Button;
@@ -94,11 +95,12 @@ package view.panel
 			_okButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 			_okButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			_okButton.label = LanguageController.getInstance().getString("confirm");
-			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
+			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
 			_okButton.addEventListener(Event.TRIGGERED, okButton_triggeredHandler);
+			_okButton.paddingLeft =_okButton.paddingRight =  20;
+			_okButton.paddingTop =_okButton.paddingBottom =  10;
 			addChild(_okButton);
-			_okButton.width = 100*scale;
-			_okButton.height = 40*scale;
+			_okButton.validate();
 			_okButton.x = panelwidth/2 - _okButton.width/2;
 			_okButton.y =panelheight*.95 - _okButton.height - 20*scale;
 			
@@ -120,7 +122,7 @@ package view.panel
 			icon.x = 10*scale;
 			icon.y = container.height *.1;
 			
-			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 20, 20)));
+			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 150, 80)));
 			container.addChild(speechSkin);
 			speechSkin.width = container.width - icon.width - 10*scale*2;
 			speechSkin.height = container.height *.8;
@@ -155,7 +157,7 @@ package view.panel
 			_input.paddingLeft = 10;
 			_input.width = 300 *scale;
 			_input.height = 50 *scale;
-			Factory(_input,{color:0x000000,fontSize:30,maxChars:15,text:"",displayAsPassword:false});
+			Factory(_input,{color:0x000000,fontSize:30*scale,maxChars:15,text:"",displayAsPassword:false});
 			container.addChild(this._input);
 			_input.x = nameText.x + nameText.width + 20*scale;
 			_input.y = panelheight*0.15/2- 25 *scale
@@ -279,6 +281,7 @@ package view.panel
 			if(parent){
 				parent.removeChild(this);
 			}
+			TutorialController.instance.beginTutorial();
 		}
 		
 		private function get player():GamePlayer

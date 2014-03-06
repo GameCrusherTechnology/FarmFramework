@@ -77,7 +77,7 @@ package view.render
 			icon.height = 40*scale;
 			icon.scaleX = icon.scaleY;
 			icon.x = 10*scale;
-			icon.y = renderheight*0.1;
+			icon.y = renderheight*0.01;
 			container.addChild(icon);
 			
 			var iconRight:Number = icon.x + icon.width + 10*scale;
@@ -107,7 +107,7 @@ package view.render
 			visitButton.label = LanguageController.getInstance().getString("visit");
 			visitButton.addEventListener(Event.TRIGGERED,onTriggeredVisit);
 			visitButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			visitButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			visitButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			visitButton.paddingLeft =visitButton.paddingRight =  20;
 			visitButton.paddingTop =visitButton.paddingBottom =  5;
 			container.addChild(visitButton);
@@ -151,7 +151,7 @@ package view.render
 			postBut.label = LanguageController.getInstance().getString("send");
 			postBut.addEventListener(Event.TRIGGERED,onTriggeredSend);
 			postBut.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			postBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			postBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			postBut.paddingLeft =postBut.paddingRight =  20*scale;
 			postBut.paddingTop =postBut.paddingBottom =  5*scale;
 			container.addChild(postBut);
@@ -165,7 +165,7 @@ package view.render
 			_input.paddingLeft = 10;
 			_input.width = postBut.x - nameText.x - 20*scale;
 			_input.height = postBut.height;
-			Factory(_input,{color:0x000000,fontSize:30,maxChars:100,text:"",displayAsPassword:false});
+			Factory(_input,{color:0x000000,fontSize:30*scale,maxChars:100,text:"",displayAsPassword:false});
 			container.addChild(_input);
 			_input.y = nameText.y + nameText.height + 10*scale;
 			_input.x = nameText.x;

@@ -130,7 +130,7 @@ package view.panel
 			
 			if(spec.coinPrice >0){
 				coinButton = new Button();
-				coinButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				coinButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				coinButton.width = panelwidth*0.2;
 				coinButton.height = 50*scale;
 				addChild(coinButton);
@@ -169,7 +169,7 @@ package view.panel
 			if(spec.gemPrice >0){
 				gemButton = new Button();
 				gemButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-				gemButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				gemButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				gemButton.addEventListener(Event.TRIGGERED, gemButton_triggeredHandler);
 				gemButton.width = panelwidth*0.2;
 				gemButton.height = 50*scale;

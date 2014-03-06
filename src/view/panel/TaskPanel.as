@@ -102,7 +102,7 @@ package view.panel
 			icon.x = 10*scale;
 			icon.y = container.height *.1;
 			
-			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 20, 20)));
+			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 150, 80)));
 			container.addChild(speechSkin);
 			speechSkin.width = container.width - icon.width - 10*scale*2;
 			speechSkin.height = container.height *.8;
@@ -170,7 +170,7 @@ package view.panel
 			}
 			button.label = LanguageController.getInstance().getString(taskName);
 			button.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			button.paddingLeft =button.paddingRight =  20;
 			button.paddingTop =button.paddingBottom =  10;
 			addChild(button);

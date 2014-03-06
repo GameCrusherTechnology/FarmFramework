@@ -119,7 +119,7 @@ package view.panel
 			
 			upgradeButton = new Button();
 			upgradeButton.label = LanguageController.getInstance().getString("upgrade");
-			upgradeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			upgradeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			upgradeButton.paddingLeft =upgradeButton.paddingRight =  20;
 			upgradeButton.paddingTop =upgradeButton.paddingBottom =  5;
 			mesContainer.addChild(upgradeButton);

@@ -139,7 +139,7 @@ package view.panel
 			var button:Button = new Button();
 			button.label = LanguageController.getInstance().getString("sell");
 			button.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			button.paddingLeft =button.paddingRight =  20;
 			button.paddingTop =button.paddingBottom =  10;
 			addChild(button);
@@ -225,7 +225,7 @@ package view.panel
 				input.touchable = false;
 				//skin the text input here
 				input.backgroundSkin = new Image( Game.assets.getTexture("PanelRenderSkin") );
-				Factory(input,{color:0x000000,fontSize:20,maxChars:15,text:"1",displayAsPassword:false});
+				Factory(input,{color:0x000000,fontSize:20*Configrations.ViewScale,maxChars:15,text:"1",displayAsPassword:false});
 				return input;
 			}
 			const stepperLayoutData:AnchorLayoutData = new AnchorLayoutData();

@@ -29,7 +29,7 @@ package view.component.UIButton
 			
 			var skin:Image = new Image(Game.assets.getTexture("toolsStateSkin"));
 			addChild(skin);
-			skin.width = skin.height = 70 * Configrations.ViewScale; ;
+			skin.width = skin.height = 70 * Configrations.ViewScale;
 			
 			var icon:Image = new Image(Game.assets.getTexture("skillRainIcon"));
 			icon.width = icon.height = 60 * Configrations.ViewScale;
@@ -61,7 +61,11 @@ package view.component.UIButton
 				canHelp = true;
 				buttonText.text = LanguageController.getInstance().getString("click");
 			}
-			buttonText.x = 70 * Configrations.ViewScale - buttonText.width;
+			if(buttonText.width >=  70 * Configrations.ViewScale){
+				buttonText.x =  70 * Configrations.ViewScale - buttonText.width ;
+			}else{
+				buttonText.x =  70 * Configrations.ViewScale/2- buttonText.width/2;
+			}
 		}
 		private function onTouch(e:TouchEvent):void
 		{

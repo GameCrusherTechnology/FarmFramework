@@ -112,7 +112,7 @@ package view.panel
 			
 			gemButton = new Button();
 			gemButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			gemButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			gemButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			gemButton.addEventListener(Event.TRIGGERED, gemButton_triggeredHandler);
 			gemButton.width = panelwidth*0.2;
 			gemButton.height = 50*scale;

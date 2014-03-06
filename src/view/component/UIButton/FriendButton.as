@@ -2,6 +2,7 @@ package view.component.UIButton
 {
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.UiController;
 	import controller.VoiceController;
 	
 	import gameconfig.Configrations;
@@ -13,20 +14,32 @@ package view.component.UIButton
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 
 	public class FriendButton extends Sprite
 	{
+		private var length:Number =  70;
+		
 		public function FriendButton()
 		{
 			super();
-			var icon:Image = new Image(Game.assets.getTexture("homeIcon"));
-			icon.width = icon.height = 60 * Configrations.ViewScale;
-			addChild(icon);
-			var menuText:TextField = FieldController.createSingleLineDynamicField(icon.width,21,LanguageController.getInstance().getString("home"),0x000000,20);
-			addChild(menuText);
-			menuText.y = icon.y+icon.height - 10;
+			length = length * Configrations.ViewScale;
+			addEventListener(TouchEvent.TOUCH, onTouch);
 			
-			addEventListener(TouchEvent.TOUCH,onTouch);
+			var icon:Image = new Image(Game.assets.getTexture("socialIcon"));
+			addChild(icon);
+			icon.width = icon.height = length;
+			
+			var nameText:TextField = FieldController.createSingleLineDynamicField(1000,30*Configrations.ViewScale,LanguageController.getInstance().getString("friend"),0x000000,25);
+			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			addChild(nameText);
+			nameText.y = icon.y + icon.height - 10*Configrations.ViewScale;
+			if(nameText.width >= icon.width){
+				nameText.x = 0;
+			}else{
+				nameText.x = icon.width/2- nameText.width/2;
+			}
+			
 		}
 		private function onTouch(e:TouchEvent):void
 		{
@@ -34,7 +47,7 @@ package view.component.UIButton
 			if(touch)
 			{
 				VoiceController.instance.playSound(VoiceController.SOUND_BUTTON);
-				GameController.instance.visitFriend();
+				UiController.instance.resetFriendsBut();
 			}
 		}
 	}

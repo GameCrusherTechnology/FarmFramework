@@ -123,7 +123,7 @@ package view.render
 				creatButton.paddingLeft =creatButton.paddingRight =  20;
 				creatButton.paddingTop =creatButton.paddingBottom =  5;
 				creatButton.addEventListener(Event.TRIGGERED,onAddTriggered);
-				creatButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				creatButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				container.addChild(creatButton);
 				creatButton.validate();
 				creatButton.x = container.width/2 - creatButton.width/2 ;
@@ -192,7 +192,7 @@ package view.render
 					tradebutton.isEnabled = false;
 					tradebutton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
 				}
-				tradebutton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				tradebutton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				tradebutton.paddingLeft =tradebutton.paddingRight =  20;
 				tradebutton.paddingTop =tradebutton.paddingBottom =  5;
 				container.addChild(tradebutton);

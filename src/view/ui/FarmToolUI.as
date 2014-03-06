@@ -42,7 +42,7 @@ package view.ui
 	{
 		private var renderWidth:int = 120*Configrations.ViewScale;
 		private var renderHeight:int= 140*Configrations.ViewScale;
-		private var renderGap:Number = 20;
+		private var renderGap:Number = 20*Configrations.ViewScale;
 		private var container:Sprite;
 		private const collection:Array = 
 			[
@@ -78,16 +78,16 @@ package view.ui
 					
 					var leftTime:String = SystemDate.getTimeLeftString((entity.item as CropItem).remainTime);
 					leftTimeText = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,35*Configrations.ViewScale,leftTime,0x000000,25,true);
-					leftTimeText.autoSize = TextFieldAutoSize.VERTICAL;
+					leftTimeText.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 					container.addChild(leftTimeText);
-					leftTimeText.x = renderWidth/2 - Configrations.ViewPortWidth/2;
-					leftTimeText.y =  - leftTimeText.height-5;
+					leftTimeText.x = renderWidth/2 - leftTimeText.width/2;
+					leftTimeText.y =  - leftTimeText.height-5*Configrations.ViewScale;
 					
 					var nameText:TextField = FieldController.createSingleLineDynamicField(Configrations.ViewPortWidth,35*Configrations.ViewScale,entity.item.cname,0x000000,30,true);
-					nameText.autoSize = TextFieldAutoSize.VERTICAL;
+					nameText.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 					container.addChild(nameText);
-					nameText.x = renderWidth/2 - Configrations.ViewPortWidth/2;
-					nameText.y =  leftTimeText.y- nameText.height - 5;
+					nameText.x = 	renderWidth/2 - nameText.width/2;
+					nameText.y =  leftTimeText.y- nameText.height - 5*Configrations.ViewScale;
 					
 				}
 				

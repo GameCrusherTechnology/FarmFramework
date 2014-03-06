@@ -143,7 +143,7 @@ package view.panel
 			icon.x = 10*scale;
 			icon.y = container.height -icon.height;
 			
-			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 20, 20)));
+			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 150, 80)));
 			container.addChild(speechSkin);
 			speechSkin.width = container.width - icon.width - 10*scale*2;
 			speechSkin.height = container.height *.8;
@@ -173,7 +173,7 @@ package view.panel
 			maleButton = new Button();
 			maleButton.label = String(TaskController.instance.getTaskPrice());
 			maleButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			maleButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			maleButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			maleButton.paddingLeft =maleButton.paddingRight =  20;
 			maleButton.paddingTop =maleButton.paddingBottom =  5;
 			container.addChild(maleButton);
@@ -210,7 +210,7 @@ package view.panel
 			icon.x = 10*scale;
 			icon.y = container.height -icon.height;
 			
-			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 20, 20)));
+			var speechSkin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("speechBackSkin"), new Rectangle(30, 10, 150, 80)));
 			container.addChild(speechSkin);
 			speechSkin.width = container.width - icon.width - 10*scale*2;
 			speechSkin.height = container.height *.8;
@@ -239,7 +239,7 @@ package view.panel
 			femaleButton = new Button();
 			femaleButton.label = String(TaskController.instance.getTaskPrice());
 			femaleButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			femaleButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			femaleButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			femaleButton.paddingLeft =femaleButton.paddingRight =  20;
 			femaleButton.paddingTop =femaleButton.paddingBottom =  5;
 			container.addChild(femaleButton);
@@ -259,7 +259,7 @@ package view.panel
 			leavebutton = new Button();
 			leavebutton.label = LanguageController.getInstance().getString("leave");
 			leavebutton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			leavebutton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			leavebutton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			leavebutton.paddingLeft =leavebutton.paddingRight =  20;
 			leavebutton.paddingTop =leavebutton.paddingBottom =  5;
 			addChild(leavebutton);

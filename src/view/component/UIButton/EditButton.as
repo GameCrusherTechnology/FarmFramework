@@ -24,6 +24,11 @@ package view.component.UIButton
 			addChild(nameText);
 			nameText.y = icon.y+icon.height - 10*Configrations.ViewScale;
 			
+			if(nameText.width >= icon.width){
+				nameText.x = 0;
+			}else{
+				nameText.x = icon.width/2- nameText.width/2;
+			}
 		}
 	}
 }

@@ -28,6 +28,7 @@ package view.panel
 	
 	import starling.events.Event;
 	
+	import view.render.FindFriendRender;
 	import view.render.FriendItemRender;
 	import view.render.StrangerListRender;
 
@@ -37,6 +38,7 @@ package view.panel
 		private var panelheight:Number;
 		private var tabBar:TabBar;
 		private var list:List;
+		private var scale:Number;
 		private var currentTabIndex:int;
 		
 		public function SocialPanel()
@@ -47,13 +49,14 @@ package view.panel
 		{
 			panelwidth = Configrations.ViewPortWidth*0.86;
 			panelheight = Configrations.ViewPortHeight*0.68;
-			var scale:Number = Configrations.ViewScale;
+			scale = Configrations.ViewScale;
 			
 			tabBar = new TabBar();
 			tabBar.dataProvider = new ListCollection(
 				[
-					{ label: LanguageController.getInstance().getString("friend"),event:"friend" },
-					{ label: LanguageController.getInstance().getString("stranger") },
+					{ label: LanguageController.getInstance().getString("friend")},
+					{ label: LanguageController.getInstance().getString("stranger")},
+					{ label: LanguageController.getInstance().getString("find")}
 				]);
 			tabBar.addEventListener(Event.CHANGE, tabBar_changeHandler);
 			tabBar.layoutData = new AnchorLayoutData(NaN, 0, 0, 0);
@@ -64,7 +67,7 @@ package view.panel
 				tab.defaultSelectedSkin = new Scale9Image(buttxtures) ;
 				buttxtures = new Scale9Textures(Game.assets.getTexture("PanelGlaySkin"), new Rectangle(20, 20, 20, 20));
 				tab.defaultSkin = new Scale9Image(buttxtures) ;
-				tab.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);;
+				tab.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);;
 				return tab;
 			}
 			addChild(this.tabBar);
@@ -78,8 +81,9 @@ package view.panel
 			listLayout.verticalAlign = VerticalLayout.VERTICAL_ALIGN_TOP;
 			listLayout.scrollPositionVerticalAlign  = VerticalLayout.VERTICAL_ALIGN_MIDDLE;
 			listLayout.paddingTop = 20*scale;
-			listLayout.gap = 10*scale;
+			listLayout.gap = 20*scale;
 			
+			findPanel = new FindFriendRender(panelwidth *0.8,panelheight*0.8);
 			
 			list = new List();
 			list.layout = listLayout;
@@ -96,6 +100,8 @@ package view.panel
 			list.addEventListener(Event.CHANGE,onRemovedRender);
 			
 		}
+		
+		private var findPanel:FindFriendRender;
 		private function onRemovedRender(e:Event):void
 		{
 			configList();
@@ -106,35 +112,11 @@ package view.panel
 			return listCollection;
 		}
 		
-		private function get strangerArr():ListCollection
-		{
-			var strangers:Vector.<SimplePlayer> = player.strangers;
-			var hasNovi:Boolean = false;
-			var simplayer:SimplePlayer;
-			for each(simplayer in strangers)
-			{
-				if(simplayer.helpCount<=5){
-					hasNovi = true;
-					break;
-				}
-			}
-			
-			if(!hasNovi && FriendInfoController.instance.canGetStranger()){
-				if(!hasGetS){
-					new GetStrangersCommand(onGetStrangers);
-				}
-				return new ListCollection();
-			}else{
-				return new ListCollection(strangers);
-			}
-		}
 		
 		private function onGetStrangers():void
 		{
-			hasGetS = true;
 			configList();
 		}
-		private var hasGetS:Boolean = false;
 		private function tabBar_changeHandler(event:Event):void
 		{
 			if(tabBar.selectedIndex != currentTabIndex){
@@ -144,23 +126,42 @@ package view.panel
 		}
 		private function configList():void
 		{
-			if(currentTabIndex == 0){
-				list.dataProvider = friendsArr;
-				list.itemRendererFactory =function tileListItemRendererFactory():FriendItemRender
-				{
-					var renderer:FriendItemRender = new FriendItemRender();
-					renderer.width = panelwidth *0.7;
-					renderer.height =panelheight*0.2;
-					return renderer;
+			if(currentTabIndex == 2){
+				if(!findPanel.parent){
+					this.addChild(findPanel);
+				}
+				findPanel.x = panelwidth*0.1;
+				findPanel.y = tabBar.y + 50*scale;
+				if(list.parent){
+					list.parent.removeChild(list);
 				}
 			}else{
-				list.dataProvider = strangerArr;
-				list.itemRendererFactory =function tileListItemRendererFactory():StrangerListRender
-				{
-					var renderer:StrangerListRender = new StrangerListRender();
-					renderer.width = panelwidth *0.7;
-					renderer.height =panelheight*0.2;
-					return renderer;
+				if(findPanel.parent){
+					findPanel.parent.removeChild(findPanel);
+				}
+				if(!list.parent){
+					this.addChild(list);
+				}
+				list.x = panelwidth*0.1;
+				list.y = tabBar.y + 50*scale;
+				if(currentTabIndex == 0){
+					list.dataProvider = friendsArr;
+					list.itemRendererFactory =function tileListItemRendererFactory():FriendItemRender
+					{
+						var renderer:FriendItemRender = new FriendItemRender();
+						renderer.width = panelwidth *0.7;
+						renderer.height =panelheight*0.2;
+						return renderer;
+					}
+				}else if(currentTabIndex == 1){
+					list.dataProvider = FriendInfoController.instance.strangerArr;
+					list.itemRendererFactory =function tileListItemRendererFactory():StrangerListRender
+					{
+						var renderer:StrangerListRender = new StrangerListRender();
+						renderer.width = panelwidth *0.7;
+						renderer.height =panelheight*0.2;
+						return renderer;
+					}
 				}
 			}
 		}

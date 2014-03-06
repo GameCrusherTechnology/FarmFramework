@@ -116,25 +116,27 @@ package view.panel
 			_okButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 			_okButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			_okButton.label = LanguageController.getInstance().getString("confirm");
-			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
+			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			_okButton.addEventListener(Event.TRIGGERED, okButton_triggeredHandler);
+			_okButton.paddingLeft =_okButton.paddingRight =  20;
+			_okButton.paddingTop =_okButton.paddingBottom =  5;
 			addChild(_okButton);
-			_okButton.width = 100*scale;
-			_okButton.height = 40*scale;
-			_okButton.x = panelwidth/2 +10;
-			_okButton.y =picSkin1.y+picSkin1.height + 30;
+			_okButton.validate();
+			_okButton.x = panelwidth/2 +10*scale;
+			_okButton.y =picSkin1.y+picSkin1.height + 30*scale;
 			
 			var _backButton:Button = new Button();
 			_backButton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
 			_backButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			_backButton.label = LanguageController.getInstance().getString("cancel");
-			_backButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
+			_backButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			_backButton.addEventListener(Event.TRIGGERED, backButton_triggeredHandler);
-			_backButton.width = 100*scale;
-			_backButton.height = 40*scale;
+			_backButton.paddingLeft =_backButton.paddingRight =  20;
+			_backButton.paddingTop =_backButton.paddingBottom =  5;
 			addChild(_backButton);
-			_backButton.x = panelwidth/2 -_backButton.width-10;
-			_backButton.y = picSkin1.y+picSkin1.height + 30;
+			_backButton.validate();
+			_backButton.x = panelwidth/2 -_backButton.width-10*scale;
+			_backButton.y = picSkin1.y+picSkin1.height + 30*scale;
 			
 			okImage = new Image(Game.assets.getTexture("okIcon"));
 			okImage.touchable = false;

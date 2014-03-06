@@ -24,12 +24,14 @@ package service.command.scene
 			if(Command.isSuccess(result)){
 				onSuccess();
 				var data:Object = result.weed;
-				var player:GamePlayer = GameController.instance.localPlayer;
-				data['gameuid'] = player.gameuid;
-				var item:EntityItem = new EntityItem(data);
-				player.addDecoration(item);
-				var scene:FarmScene = GameController.instance.currentFarm;
-				scene.addEntity(item);
+				if(data){
+					var player:GamePlayer = GameController.instance.localPlayer;
+					data['gameuid'] = player.gameuid;
+					var item:EntityItem = new EntityItem(data);
+					player.addDecoration(item);
+					var scene:FarmScene = GameController.instance.currentFarm;
+					scene.addEntity(item);
+				}
 			}else{
 				
 			}

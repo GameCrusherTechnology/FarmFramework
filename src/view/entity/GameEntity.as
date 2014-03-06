@@ -4,6 +4,7 @@ package view.entity
 	
 	import controller.DialogController;
 	import controller.GameController;
+	import controller.TutorialController;
 	import controller.UiController;
 	import controller.UpdateController;
 	import controller.VoiceController;
@@ -229,6 +230,9 @@ package view.entity
 				}else{
 					if(item.itemspec.type == "wild" ){
 						UiController.instance.showUiTools(UiController.TOOL_EXCAVATE,this);
+						if(TutorialController.instance.inTutorial){
+							TutorialController.instance.playStep(13);
+						}
 					}
 				}
 			}else{
@@ -311,7 +315,7 @@ package view.entity
 		}
 		public function get isWild():Boolean
 		{
-			return item.itemspec &&  item.itemspec.type =="wild";
+			return item.isWild;
 		}
 		
 		protected function get player():GamePlayer

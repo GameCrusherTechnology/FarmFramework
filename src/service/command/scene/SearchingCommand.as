@@ -2,6 +2,7 @@ package service.command.scene
 {
 	import controller.DialogController;
 	import controller.GameController;
+	import controller.TutorialController;
 	
 	import model.OwnedItem;
 	import model.entity.EntityItem;
@@ -51,6 +52,7 @@ package service.command.scene
 					}
 				}
 				DialogController.instance.showPanel(new RewardPanel(reward.id,reward.count));
+				
 				
 			}else{
 				

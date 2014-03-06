@@ -4,6 +4,7 @@ package view.entity
 	
 	import controller.GameController;
 	import controller.SpecController;
+	import controller.TutorialController;
 	import controller.UiController;
 	import controller.UpdateController;
 	import controller.VoiceController;
@@ -133,6 +134,9 @@ package view.entity
 							if(tool !=UiController.TOOL_HARVEST){
 								//show harvest
 								UiController.instance.showUiTools(UiController.TOOL_HARVEST,this);
+								if(TutorialController.instance.inTutorial){
+									TutorialController.instance.playStep(1);
+								}
 							}else{
 								harvest();
 							}
@@ -141,12 +145,18 @@ package view.entity
 							
 							var remainTime:Number = cropItem.remainTime;
 							UiController.instance.showUiTools(UiController.TOOL_SPEED,this);
+							if(TutorialController.instance.inTutorial){
+								TutorialController.instance.playStep(9);
+							}
 						}else{
 							speedCrop();
 						}
 					}else if(tool !=UiController.TOOL_SEED){
 						// show plant
 						UiController.instance.showUiTools(UiController.TOOL_SEED,this);
+						if(TutorialController.instance.inTutorial){
+							TutorialController.instance.playStep(5);
+						}
 					}else{
 						plant();
 					}
@@ -196,6 +206,9 @@ package view.entity
 					UpdateController.instance.pushActionData(new UpdateData(cropItem.gameuid,Configrations.PLANT,{data_id:cropItem.data_id,gameuid:cropItem.gameuid,item_id:GameController.instance.selectSeed,plant_time:SystemDate.systemTimeS}));
 					cropItem.plant(GameController.instance.selectSeed);
 					VoiceController.instance.playSound(VoiceController.SOUND_SEED);
+					if(TutorialController.instance.inTutorial){
+						TutorialController.instance.playStep(7);
+					}
 				}else{
 					GameController.instance.resetTools();
 				}
@@ -211,6 +224,9 @@ package view.entity
 					player.deleteItem(new OwnedItem(Configrations.SPEED_ITEMID,1));
 					cropItem.speed();
 					showSpeedAnimation();
+					if(TutorialController.instance.inTutorial){
+						TutorialController.instance.playStep(11);
+					}
 				}else{
 					GameController.instance.resetTools();
 				}
@@ -238,6 +254,9 @@ package view.entity
 			cropItem.harvest();
 			VoiceController.instance.playSound(VoiceController.SOUND_HARVEST);
 			refresh();
+			if(TutorialController.instance.inTutorial){
+				TutorialController.instance.playStep(3);
+			}
 		}
 		private function showHarvestAnimation():void
 		{

@@ -1,5 +1,7 @@
 package gameconfig
 {
+	import flash.system.Capabilities;
+
 	public class Configrations
 	{
 		public function Configrations()
@@ -7,6 +9,8 @@ package gameconfig
 		}
 		//配置
 		public static var PLATFORM:String = "PC";
+		public static var Language:String = "en";
+		public static var VERSION:String = "1.0.0";
 		public static const DATABASE_URL:String = "";
 //		public static const GATEWAY:String = "http://192.168.1.102/NewFarmServer/data/gateway.php";
 		public static const GATEWAY:String = "http://192.241.208.85/NewFarmServer/data/gateway.php";
@@ -112,8 +116,8 @@ package gameconfig
 		public static const treasures:Object ={
 			"littleFarmCoin":[10000,10],
 			"largeFarmCoin":[100000,100],
-			"littleFarmGem":[100,2],
-			"largeFarmGem":[600,10]
+			"littleFarmGem":[200,2],
+			"largeFarmGem":[1100,10]
 		};
 		
 		public static function getAchieveId(id:String,type:String):String
@@ -141,10 +145,21 @@ package gameconfig
 			}
 			return count;
 		}
+		//analytic id
+		public static const ANALYTIC_BUY:int = 10000;
+		public static const ANALYTIC_BUY_NOT_VALIABLE:int = 10001;
+		public static const ANALYTIC_BUY_ERROR:int = 10002;
+		public static const ANALYTIC_BUY_SUC:int = 10003;
 		
 		public static function get isLocalTest():Boolean
 		{
 			return GATEWAY =="http://192.168.1.102/NewFarmServer/data/gateway.php";
 		}
+		
+		public static function get isCN():Boolean
+		{
+			return Configrations.Language == "zh-CN"||Configrations.Language =="zh-TW";
+		}
+		public static const Languages:Array  = ["en","zh-CN","de","ru","tr","zh-TW"];
 	}
 }

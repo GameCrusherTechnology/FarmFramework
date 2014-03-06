@@ -83,7 +83,7 @@ package view.panel
 			cancelButton.x = Configrations.ViewPortWidth *0.95 -cancelButton.width -5;
 			cancelButton.y = Configrations.ViewPortHeight *.06 +5;
 			
-			renderWidth = Configrations.ViewPortWidth*0.1;
+			renderWidth = Configrations.ViewPortWidth*0.15;
 			renderHeight = Configrations.ViewPortHeight *.1;
 //			renderWidth = renderHeight = Math.min(Configrations.ViewPortHeight *.15,200);
 			

@@ -43,8 +43,6 @@ package view
 
 	public class FarmScene extends Sprite
 	{
-		[Embed(source="/init/bgCell.png")]
-		public static var bgClass:Class;
 		
 		public var fieldLayer:Sprite;
 		public var entityLayer:Sprite;
@@ -82,9 +80,8 @@ package view
 		
 		private function initBackground(scenew:Number,sceneh:Number,length:int):void
 		{
-			var bitmap:Bitmap = new bgClass();
 			var shape:Shape = new Shape();
-			shape.graphics.beginTextureFill(Texture.fromBitmap(bitmap));
+			shape.graphics.beginTextureFill(Game.assets.getTexture("bgCell"));
 			shape.graphics.drawRect(0,0,scenew,sceneh);
 			shape.graphics.endFill();
 			shape.graphics.lineStyle(2,0xffff00,0.8);
@@ -443,6 +440,14 @@ package view
 				scaleX =scaleY= panScale;
 			}
 		}
+		
+		public function foucesOn(scenePt:Point):void
+		{
+			var deltaP:Point = new Point();
+			deltaP.x = -scenePt.x*scaleX + Configrations.ViewPortWidth/2 -x;
+			deltaP.y = -scenePt.y*scaleY + Configrations.ViewPortHeight/2 -y;
+			dragScreenTo(deltaP);
+		}
 		protected function dragScreenTo(delta:Point):void
 		{
 			if(x+delta.x >0){
@@ -505,17 +510,17 @@ package view
 				}
 			}
 			
-			if(speedR.length <=0 ){
-				//提醒
-				DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("skillTip03")));
-			}else{
-				if(GameController.instance.isHomeModel){
+			if(GameController.instance.isHomeModel){
+				if(speedR.length <=0 ){
+					//提醒
+					DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("skillTip03")));
+				}else{
 					new UserSkillCommand(speedR,onSkillCommandSuc);
 					player.skill_time = SystemDate.systemTimeS;
-				}else{
-					new HelpFriendCommand(player.gameuid,speedR,player.cur_mes_dataid+1,onHelped);
-					player.lastHelpedTime = SystemDate.systemTimeS;
 				}
+			}else{
+				new HelpFriendCommand(player.gameuid,speedR,player.cur_mes_dataid+1,onHelped);
+				player.lastHelpedTime = SystemDate.systemTimeS;
 			}
 		}
 		//刷 野草
@@ -525,7 +530,8 @@ package view
 			var lastTime:int;
 			if(shareo && shareo.data && shareo.data.obj){
 				lastTime = shareo.data.obj;
-				if((lastTime - SystemDate.systemTimeS) < 3600){
+				var t:int =  SystemDate.systemTimeS - lastTime;
+				if(t < 3600){
 					return;
 				}
 			}

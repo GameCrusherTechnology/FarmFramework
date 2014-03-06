@@ -30,6 +30,11 @@ package view.component.UIButton
 			menuText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			addChild(menuText);
 			menuText.y = icon.y+icon.height - 10*Configrations.ViewScale;
+			if(menuText.width >= icon.width){
+				menuText.x = 0;
+			}else{
+				menuText.x = icon.width/2- menuText.width/2;
+			}
 			
 			addEventListener(TouchEvent.TOUCH,onTouch);
 		}

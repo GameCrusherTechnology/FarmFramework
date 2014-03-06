@@ -6,6 +6,7 @@ package view.render
 	import controller.FieldController;
 	import controller.GameController;
 	import controller.SpecController;
+	import controller.TutorialController;
 	import controller.UiController;
 	
 	import feathers.controls.Button;
@@ -108,9 +109,9 @@ package view.render
 				var buyBut:Button = new Button();
 				buyBut.label = LanguageController.getInstance().getString("buy");
 				buyBut.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-				buyBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
-				buyBut.paddingLeft =buyBut.paddingRight =  2;
-				buyBut.paddingTop =buyBut.paddingBottom =  2;
+				buyBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
+				buyBut.paddingLeft =buyBut.paddingRight =  5;
+				buyBut.paddingTop =buyBut.paddingBottom =  5;
 				buyBut.width =renderwidth *0.8;
 				container.addChild(buyBut);
 				buyBut.validate();
@@ -172,6 +173,9 @@ package view.render
 				GameController.instance.selectSeed = id;
 				GameController.instance.selectTool = type;
 				UiController.instance.showToolStateButton(type,texture);
+				if(TutorialController.instance.inTutorial){
+					TutorialController.instance.playStep(6);
+				}
 			}
 			UiController.instance.hideUiTools();
 		}

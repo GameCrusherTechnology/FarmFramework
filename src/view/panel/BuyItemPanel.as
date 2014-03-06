@@ -129,7 +129,7 @@ package view.panel
 				coinButton = new Button();
 				coinButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 				//			coinButton.label = LanguageController.getInstance().getString("coin")+4464613;
-				coinButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				coinButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				coinButton.addEventListener(Event.TRIGGERED, coinButton_triggeredHandler);
 				coinButton.width = panelwidth*0.2;
 				coinButton.height = 50*scale;
@@ -161,7 +161,7 @@ package view.panel
 				gemButton = new Button();
 				gemButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 	//			gemButton.label = LanguageController.getInstance().getString("gem");
-				gemButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				gemButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				gemButton.addEventListener(Event.TRIGGERED, gemButton_triggeredHandler);
 				gemButton.width = panelwidth*0.2;
 				gemButton.height = 50*scale;
@@ -286,7 +286,7 @@ package view.panel
 				input.touchable = false;
 				//skin the text input here
 				input.backgroundSkin = new Image( Game.assets.getTexture("PanelRenderSkin") );
-				Factory(input,{color:0x000000,fontSize:20,maxChars:15,text:player.name,displayAsPassword:false});
+				Factory(input,{color:0x000000,fontSize:20*Configrations.ViewScale,maxChars:15,text:player.name,displayAsPassword:false});
 				return input;
 			}
 			const stepperLayoutData:AnchorLayoutData = new AnchorLayoutData();

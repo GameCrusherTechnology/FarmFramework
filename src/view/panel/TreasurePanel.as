@@ -131,6 +131,7 @@ package view.panel
 			var buyarr:Array  = Configrations.treasures[name];
 			buyCount = buyarr[0];
 			paycount = buyarr[1];
+			var payStr:String ;
 			var bool:Boolean = true;
 			var butTextureName:String;
 			if(name == Configrations.LITTLECOIN || name == Configrations.LARGECOIN){
@@ -139,9 +140,11 @@ package view.panel
 				if(paycount > player.gem){
 					bool = false;
 				}
+				payStr = String(paycount);
 			}else{
 				textureName  = "gemIcon";
 				butTextureName = "dollarIcon";
+				payStr = String("US$ " + paycount);
 			}
 			
 			var backgroundSkinTextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20));
@@ -161,6 +164,7 @@ package view.panel
 			icon.x = panelwidth*0.15 -icon.width - 10*scale;
 			icon.y = nameText.y + nameText.height+30*scale;
 			
+			
 			var countText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.15,40*scale,"×"+buyCount,0x000000,35,true);
 			countText.hAlign = HAlign.LEFT;
 			countText.autoSize = TextFieldAutoSize.HORIZONTAL;
@@ -176,23 +180,23 @@ package view.panel
 			}else{
 				buyButton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
 			}
-			buyButton.label = String(paycount);
-			buyButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			buyButton.label = String(payStr);
+			buyButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			container.addChild(buyButton);
-			buyButton.paddingLeft = buyButton.paddingRight = 25 *scale;
-			buyButton.paddingTop = buyButton.paddingBottom = 10 *scale;
+			buyButton.paddingLeft = buyButton.paddingRight = 25 ;
+			buyButton.paddingTop = buyButton.paddingBottom = 10 ;
 			buyButton.name = name;
 			buyButton.validate();
 			buyButton.x = panelwidth*0.15 - buyButton.width/2;
 			buyButton.y = panelheight*0.3 -buyButton.height - 10*scale;
 			
-			
-			var gemIcon :Image = new Image(Game.assets.getTexture(butTextureName));
-			container.addChild(gemIcon);
-			gemIcon.width =gemIcon.height = buyButton.height;
-			gemIcon.x = buyButton.x - gemIcon.width/3;
-			gemIcon.y = buyButton.y;
-			
+			if(butTextureName == "gemIcon"){
+				var gemIcon :Image = new Image(Game.assets.getTexture(butTextureName));
+				container.addChild(gemIcon);
+				gemIcon.width =gemIcon.height = buyButton.height;
+				gemIcon.x = buyButton.x - gemIcon.width/3;
+				gemIcon.y = buyButton.y;
+			}
 			
 			return container;
 		}

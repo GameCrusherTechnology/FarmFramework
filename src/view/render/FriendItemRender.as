@@ -125,7 +125,7 @@ package view.render
 			var visitButton:Button = new Button();
 			visitButton.label = LanguageController.getInstance().getString("visit");
 			visitButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			visitButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			visitButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			visitButton.paddingLeft =visitButton.paddingRight =  20;
 			visitButton.paddingTop =visitButton.paddingBottom =  5;
 			container.addChild(visitButton);

@@ -130,7 +130,7 @@ package view.render
 				var gemicon:Image = new Image(Game.assets.getTexture("gemIcon"));
 				gemicon.width = gemicon.height = 30*scale;
 				rewardButton.defaultIcon = gemicon;
-				rewardButton.label = "×"+rewardCount+" "+LanguageController.getInstance().getString("get");
+				rewardButton.label = "×"+rewardCount;
 				rewardButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				rewardButton.paddingLeft =rewardButton.paddingRight =  20;
 				rewardButton.paddingTop =rewardButton.paddingBottom =  5;

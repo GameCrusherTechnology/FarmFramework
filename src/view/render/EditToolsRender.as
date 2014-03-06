@@ -25,8 +25,8 @@ package view.render
 		private var lableStr:String;
 		private var type:String;
 		private var id:String;
-		private var renderWidth:int = 80*Configrations.ViewScale;
-		private var renderHeight:int= 100*Configrations.ViewScale;
+		private var renderWidth:int ;
+		private var renderHeight:int;
 		
 		public function EditToolsRender(data:Object)
 		{

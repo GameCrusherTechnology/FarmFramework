@@ -2,6 +2,7 @@ package view.ui
 {
 	import controller.UiController;
 	
+	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
 	import starling.display.DisplayObject;
@@ -12,7 +13,7 @@ package view.ui
 	public class EditToolsUI extends Sprite
 	{
 		private var isOpened:Boolean = false;
-		private var renderGap:Number = 20;
+		private var renderGap:Number = 20*Configrations.ViewScale;
 		
 		public function EditToolsUI()
 		{
@@ -28,7 +29,7 @@ package view.ui
 				render = new EditToolsRender(data);
 				addChild(render);
 				render.x = leftPoint;
-				leftPoint +=(render.width + renderGap);
+				leftPoint +=(100*Configrations.ViewScale + renderGap);
 			}
 		}
 		

@@ -54,7 +54,11 @@ package view.component.UIButton
 			}else{
 				buttonText.text = LanguageController.getInstance().getString("click");
 			}
-			buttonText.x = 60 * Configrations.ViewScale - buttonText.width;
+			if(buttonText.width >=  60 * Configrations.ViewScale){
+				buttonText.x =  60 * Configrations.ViewScale - buttonText.width ;
+			}else{
+				buttonText.x =  60 * Configrations.ViewScale/2- buttonText.width/2;
+			}
 		}
 		private function onTouch(e:TouchEvent):void
 		{

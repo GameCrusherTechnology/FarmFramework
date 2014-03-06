@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<language>
+	<resourceName key="harvest" value="Verstärkung"/>
+	<resourceName key="seed" value="Aussaat"/>
+	<resourceName key="speed" value="beschleunigen"/>
+	<resourceName key="menu" value="Menü"/>
+	<resourceName key="edit" value="Editor"/>
+	<resourceName key="cancel" value="Stornieren"/>
+	<resourceName key="plow" value="Pflügen"/>
+	<resourceName key="move" value="Handy"/>
+	<resourceName key="sell" value="verkaufen"/>
+	<resourceName key="skill" value="Geschick"/>
+	<resourceName key="profile" value="persönlich"/>
+	<resourceName key="social" value="Sozial"/>
+	<resourceName key="achieve" value="Leistung"/>
+	<resourceName key="rating" value="Rang"/>
+	<resourceName key="setting" value="Umwelt"/>
+	<resourceName key="change" value="Änderung"/>
+	<resourceName key="scoop" value="Entfernen"/>
+	<resourceName key="creat" value="Schaffen"/>
+	<resourceName key="trade" value="Transaktion"/>
+	<resourceName key="package" value="Paket"/>
+	<resourceName key="smallshop" value="Geschäft"/>
+	<resourceName key="searching" value="Suche"/>
+	<resourceName key="left" value="Überschuss"/>
+	<resourceName key="farmname" value="Name"/>
+	<resourceName key="coin" value="Münze"/>
+	<resourceName key="gem" value="Juwel"/>
+	<resourceName key="exp" value="Erfahrung"/>
+	<resourceName key="love" value="Liebe"/>
+	<resourceName key="level" value="Ebene"/>
+	<resourceName key="music" value="Musik"/>
+	<resourceName key="sound" value="klingen"/>
+	<resourceName key="friend" value="Freund"/>
+	<resourceName key="stranger" value="Fremde"/>
+	<resourceName key="confirm" value="bestätigen"/>
+	<resourceName key="task" value="Aufgabe"/>
+	<resourceName key="request" value="Anspruch"/>
+	<resourceName key="leave" value="verlassen"/>
+	<resourceName key="technician" value="Techniker"/>
+	<resourceName key="shopkeeper" value="Ladenbesitzer"/>
+	<resourceName key="buy" value="kaufen"/>
+	<resourceName key="upgrade" value="Upgrade"/>
+	<resourceName key="cd" value="Kühlung"/>
+	<resourceName key="getReward" value="Belohnung"/>
+	<resourceName key="visit" value="Besuchen Sie"/>
+	<resourceName key="message" value="Schreiben"/>
+	<resourceName key="info" value="Information"/>
+	<resourceName key="board" value="Board"/>
+	<resourceName key="order" value="bestellen"/>
+	<resourceName key="accept" value="akzeptiert"/>
+	<resourceName key="invited" value="laden"/>
+	<resourceName key="invite" value="laden"/>
+	<resourceName key="helped" value="Hilfe"/>
+	<resourceName key="you" value="Sie"/>
+	<resourceName key="ago" value="vor"/>
+	<resourceName key="close" value="schließen"/>
+	<resourceName key="reward" value="Belohnung"/>
+	<resourceName key="extend" value="Expansion"/>
+	<resourceName key="add" value="plus"/>
+	<resourceName key="get" value="erhalten"/>
+	<resourceName key="noorder" value="Es gibt keine Ordnung !"/>
+	<resourceName key="SelectItem" value="Wählen Sie die Ernte"/>
+	<resourceName key="click" value="klicken"/>
+	<resourceName key="send" value="senden"/>
+	<resourceName key="cost" value="Ausgabe"/>
+	<resourceName key="or" value="oder"/>
+	<resourceName key="qucickshop" value="Convenience Store"/>
+	<resourceName key="treasureshop" value="Schatz Shop"/>
+	<resourceName key="levelup" value="Unter ein"/>
+	<resourceName key="tofull" value="Um die ganze"/>
+	<resourceName key="home" value="Zuhause"/>
+	<resourceName key="lefttime" value="Überschuss"/>
+	<resourceName key="nextTaskTime" value="nächste"/>
+	<resourceName key="leaveMessage" value="hinterlassen Sie eine Nachricht"/>
+	<resourceName key="helpOrder" value="Vervollständigen Sie Ihre Bestellung!"/>
+	<resourceName key="cleanSkillCD" value="Klar Abklingzeit"/>
+	<resourceName key="my" value="meine"/>
+	<resourceName key="m" value="Minute"/>
+	<resourceName key="buyland" value="Ackerland kaufen"/>
+	<resourceName key="buyscene" value="Verlängern Sie die gesamte Farm"/>
+	<resourceName key="field" value="Feld"/>
+	<resourceName key="find" value="Entdeckung"/>
+	<resourceName key="versionUp" value="Versionsupdate :"/>
+	<resourceName key="shopTip01" value="In dem Geschäft , um die Ernte zu kaufen ist unklug !"/>
+	<resourceName key="shopTip02" value="Ändern des Namens kostet"/>
+	<resourceName key="shopTip03" value="benötigt Stufe"/>
+	<resourceName key="shopTip04" value="Ändern Geschlecht kosten"/>
+	<resourceName key="warnTip01" value="Niveau ist nicht genug! Sie benötigen :"/>
+	<resourceName key="taskTip01" value="Bitte innerhalb der vorgegebenen Zeit abgeschlossen werden !"/>
+	<resourceName key="taskTip02" value="Haben die Aufgabe nicht abschließen , werde ich Ihnen nicht eine Belohnung !"/>
+	<resourceName key="npctip01" value="Ich kann Ihre Pflanzen mit Münzen und Erfahrungen austauschen !"/>
+	<resourceName key="npctip02" value="Hier können Sie die Fähigkeiten und die Münzen zu bekommen."/>
+	<resourceName key="buyTaskTip" value="Kaufen Aufgabe Kosten Sie:"/>
+	<resourceName key="skillTip01" value="Während Dünge Land :"/>
+	<resourceName key="skillTip02" value="Jeder Skill Dünger kann zu beschleunigen :"/>
+	<resourceName key="skillTip03" value="Kein Land kann düngen !"/>
+	<resourceName key="warnintTip01" value="Noch nicht geöffnet ist, wird bald kommen !"/>
+	<resourceName key="warnintTip02" value="Wilde Pflanzen können sich nicht bewegen !"/>
+	<resourceName key="warnintTip03" value="Farm -Name kann nicht leer sein!"/>
+	<resourceName key="warnintTip04" value="Sind Sie sicher, dass Sie diesen Freund löschen?"/>
+	<resourceName key="warnintTip05" value="Der Spieler kann nicht gefunden werden !"/>
+	<resourceName key="warnintLeave" value="Sicher, dass Sie wollen , um das Spiel zu beenden ?"/>
+	<resourceName key="warningPay" value="Ihr Gerät unterstützt nicht die Anwendung der Erwerbs ."/>
+	<resourceName key="warningPay01" value="Der Deal war nicht erfolgreich !"/>
+	<resourceName key="warningPay02" value="Die Transaktion wird noch verarbeitet !"/>
+	<resourceName key="sellTip01" value="Sind Sie sicher, dass Sie löschen möchten"/>
+	<resourceName key="seachTip01" value="Sie haben soeben gefunden:"/>
+	<resourceName key="buyTip01" value="Kaufen Erfolg!"/>
+	<resourceName key="tutorialTip01" value="Bitte wählen Sie Ihr Geschlecht!"/>
+	<resourceName key="tutorialTip02" value="Jetzt , registrieren Sie bitte Ihre Farm Informationen !"/>
+	<resourceName key="gameTip01" value="Zurück zur Natur, um eine ruhige und einfache Leben auf dem Bauernhof zu erleben!"/>
+	<resourceName key="gameTip02" value="Für alle, die wertvolle Tipps , werden wir so schnell wie möglich zu beheben. Jetzt ist das Spiel auch ein bisschen einfacher , Follow-up werden folgen. Es gibt viele Features , die entwickelt werden können . Nachfolgende Sprache wird ebenfalls zunehmen. Vielen Dank für Ihr Verständnis!"/>
+	<resourceName key="systemTip01" value="Das Spiel wird aufgerüstet ! Bitte warten Sie ..."/>
+	<resourceName key="systemTip02" value="Die Daten können nicht mit dem Server reload entsprechen. Game ..."/>
+	<resourceName key="noTitle" value="Farm Primär"/>
+	<resourceName key="master" value="primär"/>
+	<resourceName key="master1" value="MASTER1"/>
+	<resourceName key="master2" value="MASTER2"/>
+	<resourceName key="master3" value="Master3"/>
+	<resourceName key="master4" value="Master4"/>
+	<resourceName key="Potato" value="Kartoffel"/>
+	<resourceName key="Radish" value="Rettich"/>
+	<resourceName key="Beans" value="Bohnen"/>
+	<resourceName key="RedPepper" value="Chili"/>
+	<resourceName key="Tomato" value="Tomate"/>
+	<resourceName key="Asparagus" value="Spargel"/>
+	<resourceName key="Eggplant" value="Aubergine"/>
+	<resourceName key="Carrot" value="Karotte"/>
+	<resourceName key="Lettuce" value="Salat"/>
+	<resourceName key="Sunflower" value="Sonnenblume"/>
+	<resourceName key="Leek" value="Lauch"/>
+	<resourceName key="Corn" value="Mais"/>
+	<resourceName key="Pea" value="Erbsen"/>
+	<resourceName key="Grape" value="Trauben"/>
+	<resourceName key="Lily" value="Lilie"/>
+	<resourceName key="Blueberry" value="Blaubeeren"/>
+	<resourceName key="Kiwi" value="kiwi"/>
+	<resourceName key="Rice" value="Reis"/>
+	<resourceName key="Lentil" value="Hyacinth Bean"/>
+	<resourceName key="Spinach" value="Spinat"/>
+	<resourceName key="Mint" value="Minze"/>
+	<resourceName key="Mustard" value="Senf"/>
+	<resourceName key="Oat" value="Hafer"/>
+	<resourceName key="Bamboo" value="Bambus"/>
+	<resourceName key="Pineapple" value="Ananas"/>
+	<resourceName key="Strawberry" value="Erdbeeren"/>
+	<resourceName key="Cranberry" value="Preiselbeere"/>
+	<resourceName key="RedRose" value="Red Rose"/>
+	<resourceName key="AppleTree" value="Apfel"/>
+	<resourceName key="OrangeTree" value="orange"/>
+	<resourceName key="PearTree" value="Birne"/>
+	<resourceName key="PersimmonTree" value="persimmon"/>
+	<resourceName key="AlmondTree" value="Mandeln"/>
+	<resourceName key="ChestnutTree" value="Kastanie"/>
+	<resourceName key="CherryTree" value="Kirsche"/>
+	<resourceName key="OakTree" value="Eiche"/>
+	<resourceName key="LeecheeTree" value="Litchi"/>
+	<resourceName key="LemonTree" value="Zitrone"/>
+	<resourceName key="LimeTree" value="Kalk"/>
+	<resourceName key="MangoTree" value="Mango"/>
+	<resourceName key="fertilize" value="düngen"/>
+	<resourceName key="Apple" value="Apfel"/>
+	<resourceName key="Orange" value="orange"/>
+	<resourceName key="Pear" value="Birne"/>
+	<resourceName key="Cherry" value="Kirsche"/>
+	<resourceName key="Leechee" value="Litchi"/>
+	<resourceName key="Lemon" value="Zitrone"/>
+	<resourceName key="Mango" value="Mango"/>
+	<resourceName key="House" value="Haus"/>
+	<resourceName key="Haystack01" value="Heuhaufen"/>
+	<resourceName key="Haystack02" value="Heuhaufen"/>
+	<resourceName key="Haystack03" value="Heuhaufen"/>
+	<resourceName key="Haystack04" value="Heuhaufen"/>
+	<resourceName key="Haystack05" value="Heuhaufen"/>
+	<resourceName key="Haystack06" value="Heuhaufen"/>
+	<resourceName key="Haystack07" value="Heuhaufen"/>
+	<resourceName key="Floor01" value="Straße"/>
+	<resourceName key="Floor02" value="Straße"/>
+	<resourceName key="Floor03" value="Boden"/>
+	<resourceName key="Floor04" value="Boden"/>
+	<resourceName key="Forage01" value="Unkraut"/>
+	<resourceName key="Forage02" value="Unkraut"/>
+	<resourceName key="Forage03" value="Unkraut"/>
+	<resourceName key="Forage04" value="Gras"/>
+	<resourceName key="Forage05" value="Gras"/>
+	<resourceName key="Forage06" value="Gras"/>
+	<resourceName key="littleFarmCoin" value="kleine Münze"/>
+	<resourceName key="largeFarmCoin" value="große Münze"/>
+	<resourceName key="littleFarmGem" value="kleine Juwel"/>
+	<resourceName key="largeFarmGem" value="große Juwel"/>
+	<resourceName key="tutorTip01" value="Lassen Sie uns zunächst mit den grundlegenden Betrieb des Bauernhofes damit vertraut zu werden! Erste Ernte Ernten. "/>
+	<resourceName key="tutorTip02" value="Dann in den Leerlauf Felder gepflanzt neue Kulturpflanzen. "/>
+	<resourceName key="tutorTip03" value="Kann nicht warten, für sie! Dünger, um zu sehen. "/>
+	<resourceName key="tutorTip04" value="Suche Unkraut kann eine Menge Spaß Dinge zu bekommen und ist der einzige Weg, um dekoriert zu werden. "/>
+	<resourceName key="tutorTip05" value="Es gibt viele weitere Gameplay warten auf Sie zu entdecken. Gehen sie zu finden!"/>
+	<resourceName key="versionTip1" value="Freunde-Taste, um zu erhöhen, bequemer, einen Freund zu besuchen. "/>
+	<resourceName key="versionTip2" value="Feedback-Problem wurde behoben meisten Teilen. Vielen Dank für Ihre Hilfe!"/>
+	<resourceName key="versionTip3" value="In dem Spiel, wenn Sie Probleme oder irgendwelche Ideen , können Sie eine E-Mail an gamecrushservice@gmail.com senden."/>
+</language>

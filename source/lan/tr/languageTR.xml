@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<language>
+	<resourceName key="harvest" value="kazanç"/>
+	<resourceName key="seed" value="ekim"/>
+	<resourceName key="speed" value="hızlandırmak"/>
+	<resourceName key="menu" value="menü"/>
+	<resourceName key="edit" value="editör"/>
+	<resourceName key="cancel" value="iptal"/>
+	<resourceName key="plow" value="çiftçilik"/>
+	<resourceName key="move" value="hareketli"/>
+	<resourceName key="sell" value="satmak"/>
+	<resourceName key="skill" value="beceri"/>
+	<resourceName key="profile" value="kişisel"/>
+	<resourceName key="social" value="sosyal"/>
+	<resourceName key="achieve" value="başarı"/>
+	<resourceName key="rating" value="Sıralaması"/>
+	<resourceName key="setting" value="çevre"/>
+	<resourceName key="change" value="değişiklik"/>
+	<resourceName key="scoop" value="kaldırmak"/>
+	<resourceName key="creat" value="oluşturmak"/>
+	<resourceName key="trade" value="işlem"/>
+	<resourceName key="package" value="paket"/>
+	<resourceName key="smallshop" value="mağaza"/>
+	<resourceName key="searching" value="arama"/>
+	<resourceName key="left" value="fazla"/>
+	<resourceName key="farmname" value="isim"/>
+	<resourceName key="coin" value="altın"/>
+	<resourceName key="gem" value="mücevher"/>
+	<resourceName key="exp" value="deneyim"/>
+	<resourceName key="love" value="Aşk"/>
+	<resourceName key="level" value="seviye"/>
+	<resourceName key="music" value="müzik"/>
+	<resourceName key="sound" value="ses"/>
+	<resourceName key="friend" value="arkadaş"/>
+	<resourceName key="stranger" value="yabancı"/>
+	<resourceName key="confirm" value="onaylamak"/>
+	<resourceName key="task" value="görev"/>
+	<resourceName key="request" value="iddia"/>
+	<resourceName key="leave" value="ayrılmak"/>
+	<resourceName key="technician" value="teknisyen"/>
+	<resourceName key="shopkeeper" value="dükkâncı"/>
+	<resourceName key="buy" value="satın almak"/>
+	<resourceName key="upgrade" value="yükseltmek"/>
+	<resourceName key="cd" value="soğutma"/>
+	<resourceName key="getReward" value="Ödüllendirildi"/>
+	<resourceName key="visit" value="ziyaret"/>
+	<resourceName key="message" value="mektup"/>
+	<resourceName key="info" value="bilgi"/>
+	<resourceName key="board" value="tahta"/>
+	<resourceName key="order" value="sipariş"/>
+	<resourceName key="accept" value="kabul"/>
+	<resourceName key="invited" value="davet etmek"/>
+	<resourceName key="invite" value="davet etmek"/>
+	<resourceName key="helped" value="Yardım"/>
+	<resourceName key="you" value="sen"/>
+	<resourceName key="ago" value="önce"/>
+	<resourceName key="close" value="yakın"/>
+	<resourceName key="reward" value="ödül"/>
+	<resourceName key="extend" value="genişleme"/>
+	<resourceName key="add" value="artı"/>
+	<resourceName key="get" value="almak"/>
+	<resourceName key="noorder" value="Hiçbir sipariş yok !"/>
+	<resourceName key="SelectItem" value="kırpma seçin"/>
+	<resourceName key="click" value="tık"/>
+	<resourceName key="send" value="göndermek"/>
+	<resourceName key="cost" value="harcama"/>
+	<resourceName key="or" value="veya"/>
+	<resourceName key="qucickshop" value="Bakkal"/>
+	<resourceName key="treasureshop" value="hazine Mağazası"/>
+	<resourceName key="levelup" value="bir altında"/>
+	<resourceName key="tofull" value="bütüne"/>
+	<resourceName key="home" value="ev"/>
+	<resourceName key="lefttime" value="fazla"/>
+	<resourceName key="nextTaskTime" value="sonraki"/>
+	<resourceName key="leaveMessage" value="mesaj bırakmak"/>
+	<resourceName key="helpOrder" value="Siparişinizi tamamlayın !"/>
+	<resourceName key="cleanSkillCD" value="Temizle bekleme süresi"/>
+	<resourceName key="my" value="benim"/>
+	<resourceName key="m" value="dakika"/>
+	<resourceName key="buyland" value="tarım arazileri satın"/>
+	<resourceName key="buyscene" value="Tüm çiftlik uzatın"/>
+	<resourceName key="field" value="alan"/>
+	<resourceName key="find" value="keşif"/>
+	<resourceName key="versionUp" value="Sürüm güncelleme :"/>
+	<resourceName key="shopTip01" value="Çokmahsul almak içindükkanda akılsızca !"/>
+	<resourceName key="shopTip02" value="Adını değiştirme mal olacak"/>
+	<resourceName key="shopTip03" value="Seviye gerektirir"/>
+	<resourceName key="shopTip04" value="Cinsiyet değiştirme size maliyeti"/>
+	<resourceName key="warnTip01" value="Seviye yeterli değildir ! Need :"/>
+	<resourceName key="taskTip01" value="Verilen süre içinde tamamlanacaktır Lütfen !"/>
+	<resourceName key="taskTip02" value="Görevi tamamlamak değil mi , sana bir ödül vermek olmaz !"/>
+	<resourceName key="npctip01" value="Ben sikke ve deneyim ile bitkileri takas olabilir !"/>
+	<resourceName key="npctip02" value="Burada,beceri ve para alabilirsiniz."/>
+	<resourceName key="buyTaskTip" value="Görev pahalıya sizi Satın :"/>
+	<resourceName key="skillTip01" value="Arazi gübreleme yaparken :"/>
+	<resourceName key="skillTip02" value="Her beceri gübre hızlandırabilir :"/>
+	<resourceName key="skillTip03" value="Hiçbir arazi döller olabilir !"/>
+	<resourceName key="warnintTip01" value="Henüz açık değil , yakında gelecek !"/>
+	<resourceName key="warnintTip02" value="Yabani bitkiler hareket edemez !"/>
+	<resourceName key="warnintTip03" value="Çiftlik adı boş olamaz !"/>
+	<resourceName key="warnintTip04" value="Eğer bu arkadaş silmek istediğinizden emin misiniz ?"/>
+	<resourceName key="warnintTip05" value="Oyuncu bulunamıyor !"/>
+	<resourceName key="warnintLeave" value="Tabiioyundan çıkmak istiyor ?"/>
+	<resourceName key="warningPay" value="Cihazınızsatın almauygulamasını desteklemiyor ."/>
+	<resourceName key="warningPay01" value="Anlaşma başarılı olamadı !"/>
+	<resourceName key="warningPay02" value="Işlem hala işleniyor !"/>
+	<resourceName key="sellTip01" value="Eğer silmek istediğinizden emin misiniz"/>
+	<resourceName key="seachTip01" value="Sadece bulundu :"/>
+	<resourceName key="buyTip01" value="Başarıyı satın almak!"/>
+	<resourceName key="tutorialTip01" value="Lütfen cinsiyetinizi seçin !"/>
+	<resourceName key="tutorialTip02" value="Şimdi, çiftlik bilgilerinizi lütfen kayıt olun !"/>
+	<resourceName key="gameTip01" value="Sakin ve basit bir çiftlik hayatı yaşamaya , doğaya dönmek !"/>
+	<resourceName key="gameTip02" value="Değerli tavsiye hepimiz için, biz en kısa sürede çözecektir . Şimdioyunu takip takip edecek , aynı zamanda biraz basit . Geliştirilebilir pek çok özellikleri vardır . Müteakip dili de artacaktır . Anlayışınız için teşekkür ederiz !"/>
+	<resourceName key="systemTip01" value="Oyun yükseltilmiş ediliyor ! Lütfen bekleyin ..."/>
+	<resourceName key="systemTip02" value="Verisunucusu ile yeniden maç olamaz . Oyunu ..."/>
+	<resourceName key="noTitle" value="Çiftlik İlköğretim"/>
+	<resourceName key="master" value="birincil"/>
+	<resourceName key="master1" value="Master1"/>
+	<resourceName key="master2" value="Master2"/>
+	<resourceName key="master3" value="master3"/>
+	<resourceName key="master4" value="master4"/>
+	<resourceName key="Potato" value="patates"/>
+	<resourceName key="Radish" value="turp"/>
+	<resourceName key="Beans" value="fasulye"/>
+	<resourceName key="RedPepper" value="çili"/>
+	<resourceName key="Tomato" value="domates"/>
+	<resourceName key="Asparagus" value="kuşkonmaz"/>
+	<resourceName key="Eggplant" value="patlıcan"/>
+	<resourceName key="Carrot" value="havuç"/>
+	<resourceName key="Lettuce" value="marul"/>
+	<resourceName key="Sunflower" value="ayçiçeği"/>
+	<resourceName key="Leek" value="pırasa"/>
+	<resourceName key="Corn" value="mısır"/>
+	<resourceName key="Pea" value="bezelye"/>
+	<resourceName key="Grape" value="üzüm"/>
+	<resourceName key="Lily" value="zambak"/>
+	<resourceName key="Blueberry" value="yaban mersini"/>
+	<resourceName key="Kiwi" value="kivi"/>
+	<resourceName key="Rice" value="pirinç"/>
+	<resourceName key="Lentil" value="sümbül fasulye"/>
+	<resourceName key="Spinach" value="ıspanak"/>
+	<resourceName key="Mint" value="nane"/>
+	<resourceName key="Mustard" value="hardal"/>
+	<resourceName key="Oat" value="yulaf"/>
+	<resourceName key="Bamboo" value="bambu"/>
+	<resourceName key="Pineapple" value="ananas"/>
+	<resourceName key="Strawberry" value="çilek"/>
+	<resourceName key="Cranberry" value="Kızılcık"/>
+	<resourceName key="RedRose" value="Lancaster hanedanı"/>
+	<resourceName key="AppleTree" value="elma"/>
+	<resourceName key="OrangeTree" value="turuncu"/>
+	<resourceName key="PearTree" value="armut"/>
+	<resourceName key="PersimmonTree" value="trabzon hurması"/>
+	<resourceName key="AlmondTree" value="badem"/>
+	<resourceName key="ChestnutTree" value="kestane"/>
+	<resourceName key="CherryTree" value="kiraz"/>
+	<resourceName key="OakTree" value="meşe"/>
+	<resourceName key="LeecheeTree" value="Litchi"/>
+	<resourceName key="LemonTree" value="limon"/>
+	<resourceName key="LimeTree" value="kireç"/>
+	<resourceName key="MangoTree" value="mango"/>
+	<resourceName key="fertilize" value="döllemek"/>
+	<resourceName key="Apple" value="elma"/>
+	<resourceName key="Orange" value="turuncu"/>
+	<resourceName key="Pear" value="armut"/>
+	<resourceName key="Cherry" value="kiraz"/>
+	<resourceName key="Leechee" value="Litchi"/>
+	<resourceName key="Lemon" value="limon"/>
+	<resourceName key="Mango" value="mango"/>
+	<resourceName key="House" value="ev"/>
+	<resourceName key="Haystack01" value="kuru ot yığını"/>
+	<resourceName key="Haystack02" value="kuru ot yığını"/>
+	<resourceName key="Haystack03" value="kuru ot yığını"/>
+	<resourceName key="Haystack04" value="kuru ot yığını"/>
+	<resourceName key="Haystack05" value="kuru ot yığını"/>
+	<resourceName key="Haystack06" value="kuru ot yığını"/>
+	<resourceName key="Haystack07" value="kuru ot yığını"/>
+	<resourceName key="Floor01" value="yol"/>
+	<resourceName key="Floor02" value="yol"/>
+	<resourceName key="Floor03" value="kat"/>
+	<resourceName key="Floor04" value="kat"/>
+	<resourceName key="Forage01" value="ot"/>
+	<resourceName key="Forage02" value="ot"/>
+	<resourceName key="Forage03" value="ot"/>
+	<resourceName key="Forage04" value="çimen"/>
+	<resourceName key="Forage05" value="çimen"/>
+	<resourceName key="Forage06" value="çimen"/>
+	<resourceName key="littleFarmCoin" value="küçük altın"/>
+	<resourceName key="largeFarmCoin" value="büyük altın"/>
+	<resourceName key="littleFarmGem" value="küçük mücevher"/>
+	<resourceName key="largeFarmGem" value="büyük mücevher"/>
+	<resourceName key="tutorTip01" value="Bize ilk çiftliğin bunun temel operasyon aşina olmak olsun! İlk hasat bitkileri. "/>
+	<resourceName key="tutorTip02" value="Sonra boşta alanlarda yeni bitkiler dikildi. "/>
+	<resourceName key="tutorTip03" value="Bunun için sabırsızlanıyorum! Görmek için gübre. "/>
+	<resourceName key="tutorTip04" value="Arama otlar eğlenceli bir çok şey almak ve dekore almak için tek yol olabilir. "/>
+	<resourceName key="tutorTip05" value="Keşfetmek için bekleyen daha birçok Oyun vardır. Onları bulmak için gidin!"/>
+	<resourceName key="versionTip1" value="Arkadaşlar düğmesi, bir arkadaşını ziyaret etmek için daha uygun artırmak. "/>
+	<resourceName key="versionTip2" value="Görüşleri sorun çoğu parçaları tamir edilmiştir. Yardımlarınız için teşekkür ederiz!"/>
+	<resourceName key="versionTip3" value="Eğer sorunlarla karşılaşırsanız veya herhangi bir fikirleri varsaoyunda , sen gamecrushservice@gmail.com bir e-posta gönderebilirsiniz ."/>
+</language>

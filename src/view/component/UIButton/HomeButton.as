@@ -27,7 +27,11 @@ package view.component.UIButton
 			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			addChild(nameText);
 			nameText.y = icon.y+icon.height - 10*Configrations.ViewScale;
-			
+			if(nameText.width >= icon.width){
+				nameText.x = 0;
+			}else{
+				nameText.x = icon.width/2- nameText.width/2;
+			}
 			addEventListener(TouchEvent.TOUCH,onTouch);
 		}
 		private function onTouch(e:TouchEvent):void

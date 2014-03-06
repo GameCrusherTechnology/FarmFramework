@@ -92,7 +92,7 @@ package view.panel
 			_input.paddingLeft = 10;
 			_input.width = 300 *scale;
 			_input.height = 50 *scale;
-			Factory(_input,{color:0x000000,fontSize:30,maxChars:15,text:player.name,displayAsPassword:false});
+			Factory(_input,{color:0x000000,fontSize:30*scale,maxChars:15,text:player.name,displayAsPassword:false});
 			this.addChild(this._input);
 			_input.x = panelwidth/2 - _input.width/2;
 			_input.y = icon.y + icon.height + 20*scale;
@@ -101,26 +101,28 @@ package view.panel
 			_backButton.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
 			this._backButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			this._backButton.label = LanguageController.getInstance().getString("cancel");
-			_backButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
+			_backButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			this._backButton.addEventListener(Event.TRIGGERED, backButton_triggeredHandler);
-			_backButton.width = 100*scale;
-			_backButton.height = 40*scale;
+			_backButton.paddingLeft =_backButton.paddingRight =  20;
+			_backButton.paddingTop =_backButton.paddingBottom =  5;
 			addChild(_backButton);
-			_backButton.x = panelwidth/2 -_backButton.width-10;
-			_backButton.y = _input.y+_input.height + 50;
+			_backButton.validate();
+			_backButton.x = panelwidth/2 -_backButton.width-10*scale;
+			_backButton.y = _input.y+_input.height + 50*scale;
 			
 
 			_okButton = new Button();
 			_okButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
 			_okButton.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);
 			_okButton.label = LanguageController.getInstance().getString("confirm");
-			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0xffffff);
+			_okButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			_okButton.addEventListener(Event.TRIGGERED, okButton_triggeredHandler);
+			_okButton.paddingLeft =_okButton.paddingRight =  20;
+			_okButton.paddingTop =_okButton.paddingBottom =  5;
 			addChild(_okButton);
-			_okButton.width = 100*scale;
-			_okButton.height = 40*scale;
-			_okButton.x = panelwidth/2 +10;
-			_okButton.y =_input.y+_input.height + 50;
+			_okButton.validate();
+			_okButton.x = panelwidth/2 +10*scale;
+			_okButton.y =_input.y+_input.height + 50*scale;
 		}
 
 		private function Factory(target:TextInput , inputParameters:Object ):void

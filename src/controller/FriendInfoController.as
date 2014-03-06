@@ -3,11 +3,14 @@ package controller
 	import flash.net.SharedObject;
 	import flash.utils.setTimeout;
 	
+	import feathers.data.ListCollection;
+	
 	import gameconfig.SystemDate;
 	
 	import model.player.GamePlayer;
 	import model.player.SimplePlayer;
 	
+	import service.command.friend.GetStrangersCommand;
 	import service.command.user.GetFriendsInfo;
 
 	public class FriendInfoController
@@ -46,6 +49,10 @@ package controller
 				users_vec.splice(0,users_vec.length-100);
 			}
 			saveFriendInfo();
+		}
+		public function addNewUser(player:SimplePlayer):void
+		{
+			users_vec.push(player);
 		}
 		public function getUser(id:String):SimplePlayer
 		{
@@ -125,7 +132,13 @@ package controller
 		
 		//stranger
 		
+		private var hasGetS:Boolean = false;
 		private var lastGetS:int;
+		public function get strangerArr():ListCollection
+		{
+			var strangers:Vector.<SimplePlayer> = GameController.instance.currentPlayer.strangers;
+			return new ListCollection(strangers);
+		}
 		public function canGetStranger():Boolean
 		{
 			if((SystemDate.systemTimeS - lastGetS) >300){

@@ -83,7 +83,7 @@ package view.render
 			expIcon.x = iconRight;
 			expIcon.y = icon.y ;
 			
-			var levelText:TextField = FieldController.createSingleLineDynamicField(expIcon.width,40*scale,"200",0x000000,20,true);
+			var levelText:TextField = FieldController.createSingleLineDynamicField(expIcon.width,40*scale,String(Configrations.expToGrade(playerData.exp)),0x000000,20,true);
 			container.addChild(levelText);
 			levelText.x = iconRight;
 			levelText.y = icon.y ;
@@ -121,7 +121,7 @@ package view.render
 			visitButton.label = LanguageController.getInstance().getString("visit");
 			visitButton.addEventListener(Event.TRIGGERED,onTriggeredVisit);
 			visitButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			visitButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			visitButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			visitButton.paddingLeft =visitButton.paddingRight =  20;
 			visitButton.paddingTop =visitButton.paddingBottom =  5;
 			container.addChild(visitButton);
@@ -139,7 +139,7 @@ package view.render
 					inviteBut.addEventListener(Event.TRIGGERED,onTriggeredInvite);
 				}
 				inviteBut.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
-				inviteBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				inviteBut.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				inviteBut.paddingLeft =inviteBut.paddingRight =  20;
 				inviteBut.paddingTop =inviteBut.paddingBottom =  5;
 				container.addChild(inviteBut);

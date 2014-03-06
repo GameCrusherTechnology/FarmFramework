@@ -44,8 +44,6 @@ package view.panel
 			bgSkin.graphics.lineStyle(2,0xEDCC97,1);
 			bgSkin.graphics.beginFill(0xffffff,0.3);
 			bgSkin.graphics.drawRect(panelwidth*0.05,panelheight*0.05,panelwidth*0.9,panelheight*0.9);
-			bgSkin.graphics.moveTo(panelwidth*0.1,panelheight*0.1);
-			bgSkin.graphics.lineTo(panelwidth*0.8,panelheight*0.1);
 			bgSkin.graphics.endFill();
 			addChild(bgSkin);
 			
@@ -86,7 +84,7 @@ package view.panel
 			bgSkin.graphics.lineTo(panelwidth*0.8,bottomH);
 			bgSkin.graphics.endFill();
 			
-			var tipText:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.8, panelheight - bottomH ,LanguageController.getInstance().getString("gameTip01"),0x000000,30,true);
+			var tipText:TextField = FieldController.createSingleLineDynamicField(panelwidth*0.8, panelheight*0.9 - bottomH ,LanguageController.getInstance().getString("gameTip02"),0x000000,30,true);
 			addChild(tipText);
 			tipText.x = panelwidth*0.1;
 			tipText.y = bottomH + 10*scale;

@@ -3,6 +3,7 @@ package view.render
 	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.TutorialController;
 	import controller.UiController;
 	
 	import gameconfig.Configrations;
@@ -29,16 +30,14 @@ package view.render
 		private var lableStr:String;
 		private var type:String;
 		private var id:String;
-		private var renderWidth:int = 80*Configrations.ViewScale;
-		private var renderHeight:int= 120*Configrations.ViewScale;
+		private var renderWidth:int = 120*Configrations.ViewScale;
+		private var renderHeight:int= 140*Configrations.ViewScale;
 		
 		private var countText:TextField;
 		private var entity:GameEntity;
 		public function FarmToolsRender(data:Object,_entity:GameEntity)
 		{
 			entity = _entity;
-			renderWidth = 80*Configrations.ViewScale;
-			renderHeight= 120*Configrations.ViewScale;
 			type = data.type;
 			id = data.id;
 			var backImage:Image =  new Image(Game.assets.getTexture("toolBackSkin"));
@@ -55,7 +54,7 @@ package view.render
 			if(type== UiController.TOOL_SPEED){
 				lableStr += (":"+ Configrations.SPEED_TIME + LanguageController.getInstance().getString("m"));
 			}
-			var lable:TextField = FieldController.createSingleLineDynamicField(400,30,lableStr,0x000000,25,true);
+			var lable:TextField = FieldController.createSingleLineDynamicField(400,30*Configrations.ViewScale,lableStr,0x000000,25,true);
 			lable.autoSize = TextFieldAutoSize.HORIZONTAL;
 			addChild(lable);
 			lable.x = renderWidth/2 - lable.width/2;
@@ -93,7 +92,7 @@ package view.render
 					sp.y = backImage.y - sp.height;
 					
 					var nameLabel:TextField = FieldController.createSingleLineDynamicField(400,30,entity.item.cname,0x000000,25,true);
-					nameLabel.autoSize = TextFieldAutoSize.HORIZONTAL;
+					nameLabel.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 					addChild(nameLabel);
 					nameLabel.x = renderWidth/2 - nameLabel.width/2;
 					nameLabel.y = sp.y - nameLabel.height;
@@ -117,6 +116,13 @@ package view.render
 		}
 		private function doSelected():void
 		{
+			if(TutorialController.instance.inTutorial){
+				if(type == UiController.TOOL_HARVEST){
+					TutorialController.instance.playStep(2);
+				}else if(type == UiController.TOOL_SPEED){
+					TutorialController.instance.playStep(10);
+				}
+			}
 			if(type == UiController.TOOL_SPEED){
 				var o :OwnedItem = player.getOwnedItem(Configrations.SPEED_ITEMID);
 				if(o.count<=0){

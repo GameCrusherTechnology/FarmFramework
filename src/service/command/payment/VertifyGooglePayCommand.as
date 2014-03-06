@@ -5,6 +5,7 @@ package service.command.payment
 	
 	import gameconfig.LanguageController;
 	
+	import model.OwnedItem;
 	import model.player.GamePlayer;
 	
 	import service.command.AbstractCommand;
@@ -25,10 +26,16 @@ package service.command.payment
 		private function onResult(result:Object):void
 		{
 			if(Command.isSuccess(result)){
-				onBack();
-				var player:GamePlayer = GameController.instance.localPlayer;
-				var addGem:int = result.gem - player.gem;
-				player.changeGem(addGem);
+				if(result.gem){
+					onBack();
+					var player:GamePlayer = GameController.instance.localPlayer;
+					var addGem:int = result.gem - player.gem;
+					player.changeGem(addGem);
+					
+					if(result.item){
+						player.addItem(new OwnedItem(result.item.id,result.item.count));
+					}
+				}
 			}else{
 				DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warningPay01")));
 				onError();

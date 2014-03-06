@@ -24,6 +24,8 @@ package view.ui
 	import model.player.GamePlayer;
 	import model.player.SimplePlayer;
 	
+	import service.command.friend.GetStrangersCommand;
+	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -51,6 +53,8 @@ package view.ui
 			maxWidth = w;
 			if(player.isFriend(currentplayer.gameuid)){
 				currentTabIndex  = 0;
+			}else if(GameController.instance.isHomeModel){
+				currentTabIndex  = 0;
 			}else{
 				currentTabIndex  = 1;
 			}
@@ -72,12 +76,15 @@ package view.ui
 				tabBar.dataProvider = tabList;
 				tabBar.addEventListener(Event.CHANGE, tabBar_changeHandler);
 				tabBar.layoutData = new AnchorLayoutData(NaN, 0, 0, 0);
+				tabBar.gap = 10*Configrations.ViewScale;
 				tabBar.tabFactory = function():Button
 				{
 					var tab:Button = new Button();
 					tab.defaultSelectedSkin = new Image(Game.assets.getTexture("greenButtonSkin")) ;
 					tab.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin")) ;
 					tab.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
+					tab.paddingLeft = tab.paddingRight = 20;
+					tab.paddingTop = tab.paddingBottom = 5;
 					return tab;
 				}
 			}
@@ -167,7 +174,7 @@ package view.ui
 				this._list.itemRendererProperties.gap = layout.gap = layout.paddingTop = layout.paddingBottom = 10*Configrations.ViewScale;
 				layout.paddingRight = layout.paddingLeft = 20*Configrations.ViewScale;
 				
-				this._list.width = Math.max(maxWidth/2,Math.min(maxWidth,_list.dataProvider.length * (renderWidth+10)+100));
+				this._list.width = Math.max(maxWidth/2,Math.min(maxWidth,6 * (renderWidth+10)+100));
 				this._list.height = renderHeight ;
 				this._pageIndicator.width = _list.width;
 				this._pageIndicator.height = 10;
@@ -225,8 +232,13 @@ package view.ui
 		{
 			if(_list.selectedItem){
 				var selectUid:String = String(_list.selectedItem);
-				if(selectUid && selectUid != GameController.instance.currentPlayer.gameuid){
-					GameController.instance.visitFriend(selectUid);
+				
+				if(selectUid ){
+					if(selectUid == "refresh"){
+						new GetStrangersCommand(checkState);
+					}else if(selectUid != GameController.instance.currentPlayer.gameuid){
+						GameController.instance.visitFriend(selectUid);
+					}
 				}
 			}
 		}
@@ -242,6 +254,7 @@ package view.ui
 				for each(var simp:SimplePlayer in player.strangers){
 					list.push(simp.gameuid);
 				}
+				list.push('refresh');
 			}
 			return list;
 		}

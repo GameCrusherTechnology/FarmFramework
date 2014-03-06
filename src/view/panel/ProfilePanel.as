@@ -1,13 +1,17 @@
 package view.panel
 {
+	import flash.geom.Rectangle;
+	
 	import controller.FieldController;
 	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
+	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
 	import feathers.layout.AnchorLayout;
 	import feathers.text.BitmapFontTextFormat;
+	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
@@ -68,7 +72,7 @@ package view.panel
 			nameChangeButton = new Button();
 			nameChangeButton.label = LanguageController.getInstance().getString("change");
 			nameChangeButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			nameChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			nameChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			nameChangeButton.paddingLeft =nameChangeButton.paddingRight =  20;
 			nameChangeButton.paddingTop =nameChangeButton.paddingBottom =  5;
 			addChild(nameChangeButton);
@@ -98,8 +102,9 @@ package view.panel
 			
 			var picChangeButton:Button = new Button();
 			picChangeButton.label = LanguageController.getInstance().getString("change");
-			picChangeButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			picChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			picChangeButton.defaultSkin =  new Image(Game.assets.getTexture("greenButtonSkin"));
+//			picChangeButton.defaultSkin =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("greenButtonSkin"),new Rectangle(20,10,80,15)));
+			picChangeButton.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			picChangeButton.paddingLeft =picChangeButton.paddingRight =  20;
 			picChangeButton.paddingTop =picChangeButton.paddingBottom =  5;
 			addChild(picChangeButton);
@@ -114,7 +119,7 @@ package view.panel
 			whiteSp.graphics.drawRect(0,0,panelwidth/2,panelheight *0.7);
 			whiteSp.graphics.endFill();
 			addChild(whiteSp);
-			whiteSp.x = panelwidth*0.4+10;
+			whiteSp.x = panelwidth*0.4+10*scale;
 			whiteSp.y = panelheight*0.15 ;
 			
 			var hightLength:Number = 30*scale;
@@ -123,19 +128,19 @@ package view.panel
 			bar.y = hightLength;
 			bar.x = panelwidth/2*0.1;
 			
-			hightLength  += 10 +bar.height;
+			hightLength  += (10*scale +bar.height);
 			whiteSp.graphics.lineStyle(2,0xEDCC97,1);
 			whiteSp.graphics.moveTo(panelwidth/2*0.1,hightLength);
 			whiteSp.graphics.lineTo(panelwidth/2*0.9,hightLength);
 			whiteSp.graphics.endFill();
-			hightLength += 10;
+			hightLength += 10*scale;
 			
 			bar = creatBar("love");
 			whiteSp.addChild(bar);
 			bar.y = hightLength;
 			bar.x = panelwidth/2*0.1;
 			
-			hightLength  += 10 +bar.height;
+			hightLength  += (10*scale +bar.height);
 			whiteSp.graphics.lineStyle(2,0xEDCC97,1);
 			whiteSp.graphics.moveTo(panelwidth/2*0.1,hightLength);
 			whiteSp.graphics.lineTo(panelwidth/2*0.9,hightLength);
@@ -147,12 +152,12 @@ package view.panel
 			bar.y = hightLength;
 			bar.x = panelwidth/2*0.1;
 			
-			hightLength  += 10 +bar.height;
+			hightLength  += (10*scale +bar.height);
 			whiteSp.graphics.lineStyle(2,0xEDCC97,1);
 			whiteSp.graphics.moveTo(panelwidth/2*0.1,hightLength);
 			whiteSp.graphics.lineTo(panelwidth/2*0.9,hightLength);
 			whiteSp.graphics.endFill();
-			hightLength += 10;
+			hightLength += 10*scale;
 			
 			bar = creatBar("gem");
 			whiteSp.addChild(bar);
@@ -184,6 +189,7 @@ package view.panel
 			}
 			
 			var nameText:TextField = FieldController.createSingleLineDynamicField(w,35,nameStr,0x00000,30,true);
+			nameText.autoSize = TextFieldAutoSize.VERTICAL;
 			nameText.hAlign = HAlign.LEFT;
 			nameText.vAlign = VAlign.TOP;
 			barContainer.addChild(nameText);
@@ -192,6 +198,7 @@ package view.panel
 			var mesText:TextField = FieldController.createSingleLineDynamicField(w,25,mesStr,0x00000,22,true);
 			mesText.hAlign = HAlign.LEFT;
 			barContainer.addChild(mesText);
+			mesText.autoSize = TextFieldAutoSize.VERTICAL;
 			mesText.x = icon.x + icon.width + 10;
 			mesText.y = nameText.y + mesText.height+10*Configrations.ViewScale;
 			return barContainer;

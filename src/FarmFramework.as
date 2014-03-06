@@ -23,6 +23,7 @@ package
 	import starling.utils.ScaleMode;
 	import starling.utils.formatString;
 	
+//	[SWF(width="1680", height="1050", frameRate="30", backgroundColor="#000000")]
 	[SWF(width="1024", height="768", frameRate="30", backgroundColor="#000000")]
 	public class FarmFramework extends Sprite
 	{
@@ -35,13 +36,17 @@ package
 		
 		public function FarmFramework()
 		{
+			setPlatform();
+		}
+		
+		public function init():void
+		{
 			// This project requires the sources of the "demo" project. Add them either by 
 			// referencing the "demo/src" directory as a "source path", or by copying the files.
 			// The "media" folder of this project has to be added to its "source paths" as well, 
 			// to make sure the icon and startup images are added to the compiled mobile app.
 			
 			// set general properties
-			setPlatform();
 			var stageWidth:int  = Devices.getDeviceDetails().width;
 			var stageHeight:int = Devices.getDeviceDetails().height;
 			var iOS:Boolean = Capabilities.manufacturer.indexOf("iOS") != -1;
@@ -72,19 +77,37 @@ package
 			var assets:AssetManager = new AssetManager(scaleFactor);
 			
 			assets.verbose = Capabilities.isDebugger;
-			var language:String = Capabilities.language;
+			
+			var fontStr:String = "en";
+			var language:String  = Capabilities.language;
 			if(language == "zh-CN"){
-				language = "cn";
+				fontStr  = "zh-CN";
 			}else if(language == "zh-TW"){
-				language = "/tw";
-			}else{
+				fontStr  = "zh-TW";
+			}
+			else if(language == "de"){
+				language = "de";
+			}
+			else if(language == "ru"){
+				language = "ru";
+			}
+			else if(language == "tr"){
+				language = "tr";
+			}
+			else if(language == "de"){
+				language = "de";
+			}
+			else{
 				language = "en";
 			}
+			Configrations.Language  = language;
 			//test
-			language = "en";
+//			Configrations.Language= language = "ru";
+//			fontStr = "en";
+			
 			assets.enqueue(
 				appDir.resolvePath(formatString("lan/{0}", language)),
-				appDir.resolvePath("font"),
+				appDir.resolvePath(formatString("font/{0}",fontStr)),
 				appDir.resolvePath("xml"),
 				appDir.resolvePath("textures")
 			);
@@ -118,7 +141,7 @@ package
 			mStarling.stage.stageHeight = stageHeight; // <- same size on all devices!
 			mStarling.simulateMultitouch  = false;
 			mStarling.enableErrorChecking = false;
-//			mStarling.showStats = true;
+			mStarling.showStats = true;
 			mStarling.simulateMultitouch = true;
 			mStarling.addEventListener(starling.events.Event.ROOT_CREATED, function():void
 			{
@@ -149,6 +172,7 @@ package
 		protected function setPlatform():void
 		{
 			Configrations.PLATFORM = "PC";
+			init();
 		}
 		private function onKey(event:KeyboardEvent):void
 		{

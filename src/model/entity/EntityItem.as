@@ -86,6 +86,10 @@ package model.entity
 			return itemspec && itemspec.type == "house";
 		}
 		
+		public function get isWild():Boolean
+		{
+			return itemspec && itemspec.type =="wild";
+		}
 		public function get serchingCost():Object
 		{
 			if(itemspec.gemPrice>0){

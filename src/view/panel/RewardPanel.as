@@ -4,6 +4,7 @@ package view.panel
 	
 	import controller.FieldController;
 	import controller.SpecController;
+	import controller.TutorialController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -107,7 +108,7 @@ package view.panel
 			var button:Button = new Button();
 			button.label = LanguageController.getInstance().getString("confirm");
 			button.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+			button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			button.paddingLeft =button.paddingRight =  20;
 			button.paddingTop =button.paddingBottom =  5;
 			addChild(button);
@@ -119,6 +120,9 @@ package view.panel
 		
 		private function onTriggered(e:Event):void
 		{
+			if(TutorialController.instance.inTutorial){
+				TutorialController.instance.playNextStep();
+			}
 			if(parent){
 				parent.removeChild(this);
 			}

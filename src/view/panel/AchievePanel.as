@@ -47,7 +47,7 @@ package view.panel
 			listLayout.paddingTop =listLayout.paddingBottom =  30*scale;
 			listLayout.gap = 10*scale;
 			
-			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("simplePanelSkin"), new Rectangle(20, 20, 20, 20));
+			var skintextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelRenderSkin"), new Rectangle(20, 20, 20, 20));
 			var backG:Scale9Image = new Scale9Image(skintextures);
 			this.addChild(backG);
 			backG.width =  panelwidth*0.8;

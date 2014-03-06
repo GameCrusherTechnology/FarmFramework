@@ -4,6 +4,7 @@ package view.component.UIButton
 	
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.TutorialController;
 	import controller.UiController;
 	import controller.VoiceController;
 	
@@ -162,6 +163,9 @@ package view.component.UIButton
 					UiController.instance.showUiTools(UiController.TOOL_SEED);
 				}
 				VoiceController.instance.playSound(VoiceController.SOUND_BUTTON);
+				if(TutorialController.instance.inTutorial){
+					TutorialController.instance.playNextStep();
+				}
 			}
 		}
 		

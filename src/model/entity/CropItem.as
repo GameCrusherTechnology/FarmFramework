@@ -112,7 +112,7 @@ package model.entity
 		}
 		public function get canHarvest():Boolean
 		{
-			return (growStep == cropItemSpec.growTimeArr.length);
+			return cropItemSpec && (growStep == cropItemSpec.growTimeArr.length);
 		}
 		public function get hasCrop():Boolean
 		{

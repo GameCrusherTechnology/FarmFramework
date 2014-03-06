@@ -51,6 +51,7 @@
 		public static const GOOGLEPAY:String = "pay/GooglePayForGems";
 		public static const BUYCOINS:String = "pay/BuyCoin";
 		
+		public static const UPDATEACTIONS:String = "action/UpdateStaticsAction";
 		public static function get gateway():String
 		{
 			var url:String = Configrations.GATEWAY;

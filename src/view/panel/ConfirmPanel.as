@@ -58,7 +58,7 @@ package view.panel
 				var button:Button = new Button();
 				button.label = LanguageController.getInstance().getString("confirm");
 				button.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-				button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				button.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				button.paddingLeft =button.paddingRight =  20;
 				button.paddingTop =button.paddingBottom =  10;
 				addChild(button);
@@ -70,7 +70,7 @@ package view.panel
 				var button1:Button = new Button();
 				button1.label = LanguageController.getInstance().getString("cancel");
 				button1.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
-				button1.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0xffffff);
+				button1.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 				button1.paddingLeft =button1.paddingRight =  20;
 				button1.paddingTop =button1.paddingBottom =  10;
 				addChild(button1);

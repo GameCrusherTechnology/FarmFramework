@@ -30,6 +30,16 @@ package model.player
 				}
 			}
 		}
+		public function refresh(data:Object):void
+		{
+			for(var str:String in data){
+				try{
+					this[str] = data[str];
+				}catch(e:Error){
+					trace("FIELD DOSE NOT EXIST in GamePlayer: GamePlayer["+str+"]="+data[str]);
+				}
+			}
+		}
 		public var gameuid:String;
 		public var extend:int;
 		public var crop_extend:int;
@@ -267,6 +277,7 @@ package model.player
 				if(!bool){
 					strangers.push(simPlayer);
 				}
+				FriendInfoController.instance.addNewUser(simPlayer);
 			}
 			
 			if(strangers.length > 5){

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<language>
+	<resourceName key="harvest" value="усиление"/>
+	<resourceName key="seed" value="посев"/>
+	<resourceName key="speed" value="ускорять"/>
+	<resourceName key="menu" value="меню"/>
+	<resourceName key="edit" value="редактор"/>
+	<resourceName key="cancel" value="отменить"/>
+	<resourceName key="plow" value="вспашка"/>
+	<resourceName key="move" value="мобильный"/>
+	<resourceName key="sell" value="продавать"/>
+	<resourceName key="skill" value="умение"/>
+	<resourceName key="profile" value="персональный"/>
+	<resourceName key="social" value="социальный"/>
+	<resourceName key="achieve" value="достижение"/>
+	<resourceName key="rating" value="ранжирование"/>
+	<resourceName key="setting" value="среда"/>
+	<resourceName key="change" value="модификация"/>
+	<resourceName key="scoop" value="удалять"/>
+	<resourceName key="creat" value="создавать"/>
+	<resourceName key="trade" value="сделка"/>
+	<resourceName key="package" value="пакет"/>
+	<resourceName key="smallshop" value="магазин"/>
+	<resourceName key="searching" value="поиск"/>
+	<resourceName key="left" value="профицит"/>
+	<resourceName key="farmname" value="название"/>
+	<resourceName key="coin" value="золото"/>
+	<resourceName key="gem" value="жемчужина"/>
+	<resourceName key="exp" value="опыт"/>
+	<resourceName key="love" value="Любовь"/>
+	<resourceName key="level" value="уровень"/>
+	<resourceName key="music" value="музыка"/>
+	<resourceName key="sound" value="звук"/>
+	<resourceName key="friend" value="друг"/>
+	<resourceName key="stranger" value="незнакомец"/>
+	<resourceName key="confirm" value="подтверждать"/>
+	<resourceName key="task" value="задача"/>
+	<resourceName key="request" value="требование"/>
+	<resourceName key="leave" value="оставлять"/>
+	<resourceName key="technician" value="техник"/>
+	<resourceName key="shopkeeper" value="лавочник"/>
+	<resourceName key="buy" value="купить"/>
+	<resourceName key="upgrade" value="модернизация"/>
+	<resourceName key="cd" value="охлаждение"/>
+	<resourceName key="getReward" value="Награда"/>
+	<resourceName key="visit" value="визит"/>
+	<resourceName key="message" value="письмо"/>
+	<resourceName key="info" value="Информация"/>
+	<resourceName key="board" value="доска"/>
+	<resourceName key="order" value="порядок"/>
+	<resourceName key="accept" value="Принято"/>
+	<resourceName key="invited" value="приглашать"/>
+	<resourceName key="invite" value="приглашать"/>
+	<resourceName key="helped" value="Помогите"/>
+	<resourceName key="you" value="вы"/>
+	<resourceName key="ago" value="тому назад"/>
+	<resourceName key="close" value="близко"/>
+	<resourceName key="reward" value="награда"/>
+	<resourceName key="extend" value="расширение"/>
+	<resourceName key="add" value="плюс"/>
+	<resourceName key="get" value="получать"/>
+	<resourceName key="noorder" value="Там нет порядка !"/>
+	<resourceName key="SelectItem" value="Выберите урожай"/>
+	<resourceName key="click" value="щелчок"/>
+	<resourceName key="send" value="послать"/>
+	<resourceName key="cost" value="расходы"/>
+	<resourceName key="or" value="или"/>
+	<resourceName key="qucickshop" value="Круглосуточный магазин"/>
+	<resourceName key="treasureshop" value="Сокровища магазин"/>
+	<resourceName key="levelup" value="Под"/>
+	<resourceName key="tofull" value="Чтобы в целом"/>
+	<resourceName key="home" value="домой"/>
+	<resourceName key="lefttime" value="профицит"/>
+	<resourceName key="nextTaskTime" value="следующий"/>
+	<resourceName key="leaveMessage" value="Оставьте сообщение"/>
+	<resourceName key="helpOrder" value="Заполните ваш заказ!"/>
+	<resourceName key="cleanSkillCD" value="Ясно восстановления"/>
+	<resourceName key="my" value="мой"/>
+	<resourceName key="m" value="минут"/>
+	<resourceName key="buyland" value="Купить сельхозугодий"/>
+	<resourceName key="buyscene" value="Продлить всю ферму"/>
+	<resourceName key="field" value="поле"/>
+	<resourceName key="find" value="открытие"/>
+	<resourceName key="versionUp" value="Обновление версии:"/>
+	<resourceName key="shopTip01" value="В магазин, чтобы купить урожай слишком неразумно !"/>
+	<resourceName key="shopTip02" value="Изменение имени будет стоить вам"/>
+	<resourceName key="shopTip03" value="Требуется уровень"/>
+	<resourceName key="shopTip04" value="Изменение пол стоить вам"/>
+	<resourceName key="warnTip01" value="Уровень не достаточно! нужно:"/>
+	<resourceName key="taskTip01" value="Пожалуйста быть завершена в течение данного времени !"/>
+	<resourceName key="taskTip02" value="Не выполнить задачу , я не дам тебе награду !"/>
+	<resourceName key="npctip01" value="Я могу поменять ваши посевы с монетами и опыта !"/>
+	<resourceName key="npctip02" value="Здесь Вы можете получить навыки и монеты ."/>
+	<resourceName key="buyTaskTip" value="Купить стоимости задачи, которую :"/>
+	<resourceName key="skillTip01" value="В то время как удобрения земли :"/>
+	<resourceName key="skillTip02" value="Каждый навык удобрений может ускорить :"/>
+	<resourceName key="skillTip03" value="Нет может оплодотворить землю !"/>
+	<resourceName key="warnintTip01" value="Пока нет открытой, скоро придет !"/>
+	<resourceName key="warnintTip02" value="Дикие культуры не может двигаться !"/>
+	<resourceName key="warnintTip03" value="Название фермы не может быть пустым !"/>
+	<resourceName key="warnintTip04" value="Вы уверены, что хотите удалить этот друг?"/>
+	<resourceName key="warnintTip05" value="Игрок не может быть найден !"/>
+	<resourceName key="warnintLeave" value="Конечно, вы хотите выйти из игры ?"/>
+	<resourceName key="warningPay" value="Устройство не поддерживает применение покупку ."/>
+	<resourceName key="warningPay01" value="Сделка так и не удалось !"/>
+	<resourceName key="warningPay02" value="Сделка все еще обрабатывает !"/>
+	<resourceName key="sellTip01" value="Вы уверены, что хотите удалить"/>
+	<resourceName key="seachTip01" value="Вы только что нашел :"/>
+	<resourceName key="buyTip01" value="Купить успех !"/>
+	<resourceName key="tutorialTip01" value="Пожалуйста, выберите пол !"/>
+	<resourceName key="tutorialTip02" value="Теперь , пожалуйста, зарегистрируйте ваш фермы информацию !"/>
+	<resourceName key="gameTip01" value="Возвращение к природе , чувство спокойной и простой жизнью фермы !"/>
+	<resourceName key="gameTip02" value="Для всех ценные советы , мы исправим как можно скорее . Теперь игра также немного простой, последующий будет следовать. Есть много возможностей, которые могут быть разработаны . Последующее язык также будет увеличиваться. Спасибо за понимание !"/>
+	<resourceName key="systemTip01" value="Игра в настоящее время модернизируется ! Пожалуйста, подождите ..."/>
+	<resourceName key="systemTip02" value="Данные не могут сравниться с серверной перезагрузки. Игра ..."/>
+	<resourceName key="noTitle" value="Ферма Первичная"/>
+	<resourceName key="master" value="первичный"/>
+	<resourceName key="master1" value="MASTER1"/>
+	<resourceName key="master2" value="MASTER2"/>
+	<resourceName key="master3" value="master3"/>
+	<resourceName key="master4" value="master4"/>
+	<resourceName key="Potato" value="картофель"/>
+	<resourceName key="Radish" value="редис"/>
+	<resourceName key="Beans" value="фасоль"/>
+	<resourceName key="RedPepper" value="чили"/>
+	<resourceName key="Tomato" value="помидор"/>
+	<resourceName key="Asparagus" value="спаржа"/>
+	<resourceName key="Eggplant" value="баклажан"/>
+	<resourceName key="Carrot" value="морковь"/>
+	<resourceName key="Lettuce" value="салат-латук"/>
+	<resourceName key="Sunflower" value="подсолнечник"/>
+	<resourceName key="Leek" value="лук-порей"/>
+	<resourceName key="Corn" value="кукуруза"/>
+	<resourceName key="Pea" value="горох"/>
+	<resourceName key="Grape" value="виноград"/>
+	<resourceName key="Lily" value="Лили"/>
+	<resourceName key="Blueberry" value="черника"/>
+	<resourceName key="Kiwi" value="киви"/>
+	<resourceName key="Rice" value="рис"/>
+	<resourceName key="Lentil" value="Гиацинт бобов"/>
+	<resourceName key="Spinach" value="шпинат"/>
+	<resourceName key="Mint" value="мята"/>
+	<resourceName key="Mustard" value="горчица"/>
+	<resourceName key="Oat" value="овес"/>
+	<resourceName key="Bamboo" value="бамбук"/>
+	<resourceName key="Pineapple" value="ананас"/>
+	<resourceName key="Strawberry" value="клубника"/>
+	<resourceName key="Cranberry" value="Клюква"/>
+	<resourceName key="RedRose" value="Красная роза"/>
+	<resourceName key="AppleTree" value="яблоко"/>
+	<resourceName key="OrangeTree" value="оранжевый"/>
+	<resourceName key="PearTree" value="груша"/>
+	<resourceName key="PersimmonTree" value="хурма"/>
+	<resourceName key="AlmondTree" value="миндаль"/>
+	<resourceName key="ChestnutTree" value="каштан"/>
+	<resourceName key="CherryTree" value="вишня"/>
+	<resourceName key="OakTree" value="дуб"/>
+	<resourceName key="LeecheeTree" value="нефелиум"/>
+	<resourceName key="LemonTree" value="лимон"/>
+	<resourceName key="LimeTree" value="известь"/>
+	<resourceName key="MangoTree" value="манго"/>
+	<resourceName key="fertilize" value="удобрять"/>
+	<resourceName key="Apple" value="яблоко"/>
+	<resourceName key="Orange" value="оранжевый"/>
+	<resourceName key="Pear" value="груша"/>
+	<resourceName key="Cherry" value="вишня"/>
+	<resourceName key="Leechee" value="нефелиум"/>
+	<resourceName key="Lemon" value="лимон"/>
+	<resourceName key="Mango" value="манго"/>
+	<resourceName key="House" value="дом"/>
+	<resourceName key="Haystack01" value="стог сена"/>
+	<resourceName key="Haystack02" value="стог сена"/>
+	<resourceName key="Haystack03" value="стог сена"/>
+	<resourceName key="Haystack04" value="стог сена"/>
+	<resourceName key="Haystack05" value="стог сена"/>
+	<resourceName key="Haystack06" value="стог сена"/>
+	<resourceName key="Haystack07" value="стог сена"/>
+	<resourceName key="Floor01" value="дорога"/>
+	<resourceName key="Floor02" value="дорога"/>
+	<resourceName key="Floor03" value="этаж"/>
+	<resourceName key="Floor04" value="этаж"/>
+	<resourceName key="Forage01" value="сорняк"/>
+	<resourceName key="Forage02" value="сорняк"/>
+	<resourceName key="Forage03" value="сорняк"/>
+	<resourceName key="Forage04" value="трава"/>
+	<resourceName key="Forage05" value="трава"/>
+	<resourceName key="Forage06" value="трава"/>
+	<resourceName key="littleFarmCoin" value="немного золота"/>
+	<resourceName key="largeFarmCoin" value="большое золота"/>
+	<resourceName key="littleFarmGem" value="немного жемчужина"/>
+	<resourceName key="largeFarmGem" value="большое жемчужина"/>
+	<resourceName key="tutorTip01" value="Давайте сначала ознакомиться с основными функциями ферме это! Первые уборки основных сельскохозяйственных культур. "/>
+	<resourceName key="tutorTip02" value="Тогда в праздных полей посажены новые культуры. "/>
+	<resourceName key="tutorTip03" value="Не могу дождаться этого! Удобрение видеть. "/>
+	<resourceName key="tutorTip04" value="Поиск сорняки могут получить много забавных вещей, и это единственный способ, чтобы получить оформлены. "/>
+	<resourceName key="tutorTip05" value="Есть еще очень много Геймплей ждет вас открыть для себя. К их найти!"/>
+	<resourceName key="versionTip1" value="Кнопка Друзья расти, удобнее в гости к подруге. "/>
+	<resourceName key="versionTip2" value="Обратная связь проблема была отремонтирована большинство частей. Спасибо за вашу помощь!"/>
+	<resourceName key="versionTip3" value="В игре, если у вас возникли проблемы или есть идеи , вы можете отправить по электронной почте gamecrushservice@gmail.com ."/>
+</language>

@@ -8,6 +8,7 @@ package controller
 	import model.player.GamePlayer;
 	
 	import service.command.LoginCommand;
+	import service.command.friend.GetStrangersCommand;
 	import service.command.user.UserVisitFriendCommand;
 	
 	import starling.animation.Tween;
@@ -17,7 +18,9 @@ package controller
 	import view.FarmScene;
 	import view.TweenEffectLayer;
 	import view.loading.CloudLoadingScreen;
+	import view.panel.AdvertPanel;
 	import view.panel.ConfirmPanel;
+	import view.panel.CreatPersonPanel;
 
 	public class GameController
 	{
@@ -32,8 +35,8 @@ package controller
 		public var selectTool:String;
 		public var selectSeed:String;
 		public var isNewer:Boolean = false;
-		public var userID:String = "super_man_01";
-		
+		public var userID:String = "super_man_0";
+		//super_man_01
 		private static var _controller:GameController;
 		public static function get instance():GameController
 		{
@@ -89,10 +92,21 @@ package controller
 			gameLayer.addChild(sceneLayer);
 		}
 		
+		private var hasLogined:Boolean =false;
 		private function onLogin():void
 		{
+			isVisiting = false;
 			LoginFarm();
 			TaskController.instance.initTask();
+			
+			if(!hasLogined){
+				if(VersionMes.length>=1 && !isNewer){
+					DialogController.instance.showPanel(new AdvertPanel());
+				}
+				
+				new GetStrangersCommand(function():void{});
+				hasLogined = true;
+			}
 		}
 		private function onRefreshFriend():void
 		{
@@ -119,8 +133,7 @@ package controller
 			AnimalController.instance.reset();
 			UpdateController.instance.checkMes();
 			if(isNewer){
-				TutorialController.instance.beginTutorial();
-				isNewer =false;
+				DialogController.instance.showPanel(new CreatPersonPanel());
 			}
 			setTimeout(hideLoading,1000);
 		}
@@ -149,12 +162,17 @@ package controller
 			}
 		}
 		
+		private var isVisiting:Boolean;
 		public function visitFriend(tgameuid:String = null):void
 		{
-			if(!tgameuid || tgameuid == localPlayer.gameuid){
-				new LoginCommand(onLogin);
-			}else{
-				new UserVisitFriendCommand(tgameuid,onVisitFriend);
+			if(!isVisiting){
+				if(!tgameuid || tgameuid == localPlayer.gameuid){
+					new LoginCommand(onLogin);
+				}else{
+					new UserVisitFriendCommand(tgameuid,onVisitFriend);
+				}
+				isVisiting = true;
+				showLoading();
 			}
 		}
 		public function onKeyCancel():void
@@ -170,9 +188,15 @@ package controller
 		}
 		private function onVisitFriend():void
 		{
+			isVisiting = false;
 			LoginFarm();
+			
 		}
 		
+		public function get VersionMes():Array
+		{
+			return ["1","2","3"];
+		}
 		public function get isHomeModel():Boolean
 		{
 			return localPlayer == _curPlayer;
