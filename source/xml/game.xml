@@ -174,6 +174,10 @@
 		<Extend item_id="41023" name="extendcrop23" 		level="28"  coinPrice="160000" gemPrice="160"/>
 		<Extend item_id="41024" name="extendcrop24" 		level="29"  coinPrice="180000" gemPrice="180"/>
 	</Group>
+	<Group id="Formula">
+		<Formula item_id="70000" name="Formula1"				level="0"   coinPrice="100" />
+		<Formula item_id="70001" name="Formula2"				level="0"  	coinPrice="500" gemPrice="1"/>
+	</Group>
 	<Group id="Animal">
 		<Animal item_id="60001" name="BeaAnimal"	/>
 		<Animal item_id="60002" name="BirdAnimal"	/>

@@ -8,6 +8,7 @@ package controller
 	import model.gameSpec.CropSpec;
 	import model.gameSpec.EntityItemSpec;
 	import model.gameSpec.ExtendSpec;
+	import model.gameSpec.FormulaItemSpec;
 	import model.gameSpec.ItemSpec;
 	
 	public class SpecController
@@ -91,6 +92,8 @@ package controller
 					return EntityItemSpec;
 				case "Animal":
 					return AnimalItemSpec;
+				case "Formula":
+					return FormulaItemSpec;
 					default:
 						return ItemSpec;
 			}
@@ -129,6 +132,9 @@ package controller
 					break;
 				case 6:
 					group = "Animal";
+					break;
+				case 7:
+					group = "Formula";
 					break;
 			}
 			return group;

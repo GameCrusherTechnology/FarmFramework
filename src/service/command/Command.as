@@ -111,6 +111,7 @@
 			return bool;
 		}
 		
+		private static var _restartCount:int = 0;
 		/**
 		 * 只检查，不打印
 		 */
@@ -124,7 +125,10 @@
 					return true;
 				}else{
 					DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("systemTip02")));
-					GameController.instance.start();
+					if(_restartCount <=1){
+						GameController.instance.start();
+						_restartCount++;
+					}
 				}
 			}catch(e:Error){
 				trace("command error");

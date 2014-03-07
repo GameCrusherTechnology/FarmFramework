@@ -1,6 +1,5 @@
 package gameconfig
 {
-	import flash.system.Capabilities;
 
 	public class Configrations
 	{
@@ -12,7 +11,7 @@ package gameconfig
 		public static var Language:String = "en";
 		public static var VERSION:String = "1.0.0";
 		public static const DATABASE_URL:String = "";
-		public static const GATEWAY:String = "http://192.168.1.103/NewFarmServer/data/gateway.php";
+		public static const GATEWAY:String = "http://192.168.1.102/NewFarmServer/data/gateway.php";
 //		public static const GATEWAY:String = "http://192.241.208.85/NewFarmServer/data/gateway.php";
 		//拖拽 判断
 		public static const CLICK_EPSILON:int = 50;
