@@ -3,16 +3,20 @@ package view.panel
 	import flash.geom.Rectangle;
 	
 	import controller.FieldController;
+	import controller.GameController;
 	import controller.SpecController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.List;
 	import feathers.controls.PanelScreen;
+	import feathers.controls.TabBar;
 	import feathers.data.ListCollection;
 	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
+	import feathers.layout.AnchorLayoutData;
 	import feathers.layout.TiledRowsLayout;
 	import feathers.layout.VerticalLayout;
+	import feathers.text.BitmapFontTextFormat;
 	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
@@ -27,7 +31,6 @@ package view.panel
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	
-	import view.render.AdvertRender;
 	import view.render.FormulaRender;
 	import view.render.WorkingRender;
 
@@ -61,9 +64,9 @@ package view.panel
 			panelSkin.y =  Configrations.ViewPortHeight*0.05;
 			
 			configTitle();
-//			configWorkingList();
+			configWorkingList();
 			configFormulasList();
-			
+			configTabBar();
 			var cancelButton:Button = new Button();
 			cancelButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
 			cancelButton.addEventListener(Event.TRIGGERED, closeButton_triggeredHandler);
@@ -133,46 +136,96 @@ package view.panel
 			var skin:Scale9Image =  new Scale9Image(new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(1, 1, 62, 62)));
 			container.addChild(skin);
 			skin.width = panelwidth*0.9;
-			skin.height= panelheight*0.6;
+			skin.height= panelheight*0.55;
 			
 			const listLayout:TiledRowsLayout = new TiledRowsLayout();
 			listLayout.paging = TiledRowsLayout.PAGING_HORIZONTAL;
 			listLayout.useSquareTiles = false;
-			listLayout.horizontalAlign = TiledRowsLayout.HORIZONTAL_ALIGN_CENTER;
-			listLayout.verticalAlign = TiledRowsLayout.VERTICAL_ALIGN_MIDDLE;
 			listLayout.manageVisibility = true;
-			listLayout.horizontalGap = 4;
-			listLayout.verticalGap = Configrations.ViewPortHeight*0.01;
+			listLayout.horizontalGap = panelwidth *0.05;
 			
 			var list:List = new List();
 			list.layout = listLayout;
+			
+//			list.horizontalScrollBarFactory = function():ScrollBar
+//			{
+//				var scrollBar:ScrollBar = new ScrollBar();
+//				scrollBar.trackLayoutMode = ScrollBar.TRACK_LAYOUT_MODE_MIN_MAX;
+//				scrollBar.thumbFactory = function():Button
+//				{
+//					var button:Button = new Button();
+//					//skin the thumb here
+//					button.defaultSkin = new Image(Game.assets.getTexture("panelSkin"));
+//					button.downSkin = new Image(Game.assets.getTexture("PanelRenderSkin") );
+//					return button;
+//				}
+//				return scrollBar;
+//			}
+			list.dataProvider = getArr1();
+			list.itemRendererFactory =function tileListItemRendererFactory():FormulaRender
+			{
+				var renderer:FormulaRender = new FormulaRender();
+				renderer.width = panelwidth *0.35;
+				renderer.height =panelheight*0.5;
+				return renderer;
+			}
+			list.width =  panelwidth*0.86;
+			list.height =  panelheight *0.51;
+			container.addChild(list);
+			list.x = panelwidth*0.02;
+			list.y = panelheight*0.02;
+			
+			container.x = Configrations.ViewPortWidth*0.05+panelwidth*0.05;
+			container.y = Configrations.ViewPortHeight*0.05+panelheight*0.35;
+		}
+		private var tabBar:TabBar;
+		private function configTabBar():void
+		{
+			tabBar = new TabBar();
+			var tabList:ListCollection = GameController.instance.isHomeModel?new ListCollection(
+				[
+					{ label: LanguageController.getInstance().getString("message")},
+					{ label: LanguageController.getInstance().getString("order")},
+					{ label: LanguageController.getInstance().getString("info") }
+				]):new ListCollection(
+					[
+						{ label: LanguageController.getInstance().getString("message")},
+						{ label: LanguageController.getInstance().getString("order")},
+					]);
+			tabBar.dataProvider = tabList;
+			tabBar.addEventListener(Event.CHANGE, tabBar_changeHandler);
+			tabBar.layoutData = new AnchorLayoutData(NaN, 0, 0, 0);
+			tabBar.tabFactory = function():Button
+			{
+				var tab:Button = new Button();
+				var buttxtures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelRenderSkin"), new Rectangle(20, 20, 20, 20));
+				tab.defaultSelectedSkin = new Scale9Image(buttxtures) ;
+				buttxtures = new Scale9Textures(Game.assets.getTexture("panelSkin"), new Rectangle(20, 20, 20, 20));
+				tab.defaultSkin = new Scale9Image(buttxtures) ;
+				tab.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
+				return tab;
+			}
+			addChild(this.tabBar);
+			tabBar.width = panelwidth*0.9;
+			tabBar.height = panelheight*0.08;
+			tabBar.x = Configrations.ViewPortWidth*0.05+panelwidth*0.05;
+			tabBar.y = Configrations.ViewPortHeight*0.05+panelheight*0.92;
+		}
+		
+		private function tabBar_changeHandler(event:Event):void
+		{
+		}
+		
+		private function getArr1():ListCollection
+		{
 			var goupe:Object = SpecController.instance.getGroup("Formula");
 			var spec:ItemSpec;
 			var array:Array = [];
 			for each(spec in goupe){
 				array.push(spec);
 			}
-			
-			list.dataProvider = new ListCollection(array);
-			list.itemRendererFactory =function tileListItemRendererFactory():FormulaRender
-			{
-				var renderer:FormulaRender = new FormulaRender();
-				renderer.width = panelwidth *0.65;
-				renderer.height =panelheight*0.55;
-				return renderer;
-			}
-			list.width =  panelwidth*0.9;
-			list.height =  panelheight *0.65;
-			this.addChild(list);
-			list.x = panelwidth*0.15;
-			list.y = panelheight*0.27;
-			
-			container.x = Configrations.ViewPortWidth*0.05+panelwidth*0.05;
-			container.y = Configrations.ViewPortHeight*0.05+panelheight*0.35;
+			return new ListCollection(array);
 		}
-		
-		
-		
 		private function closeButton_triggeredHandler(e:Event):void
 		{
 			destroy();

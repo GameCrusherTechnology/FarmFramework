@@ -7,5 +7,8 @@ package model.gameSpec
 			super(data);
 		}
 		
+		
+		public var material:String;
+		public var product:String;
 	}
 }

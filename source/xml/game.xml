@@ -63,9 +63,46 @@
 		<Item item_id="24001" name="Orange"     coinPrice="5" 	/>
 		<Item item_id="24002" name="Pear" 		coinPrice="8" 	/>
 		<Item item_id="24003" name="Cherry"    	coinPrice="1" 	/>
-		<Item item_id="24004" name="Leechee"    coinPrice="30" />
-		<Item item_id="24005" name="Lemon"      coinPrice="15" />
+		<Item item_id="24004" name="Leechee"    coinPrice="30"	/>
+		<Item item_id="24005" name="Lemon"      coinPrice="15" 	/>
 		<Item item_id="24006" name="Mango"      coinPrice="5" 	/>
+		
+		<!-- 加工的产物 -->
+		<Item item_id="25000" name="Potato"    	coinPrice="1" />
+		<Item item_id="25001" name="Radish"    	coinPrice="4" />
+		<Item item_id="25002" name="Beans" 		coinPrice="30" />
+		<Item item_id="25003" name="RedPepper"  coinPrice="10" />
+		<Item item_id="25004" name="Tomato" 	coinPrice="2" />
+		<Item item_id="25005" name="Asparagus" 	coinPrice="8" />
+		<Item item_id="25006" name="Eggplant"   coinPrice="3" />
+		<Item item_id="25007" name="Carrot" 	coinPrice="3" />
+		<Item item_id="25008" name="Lettuce"    coinPrice="6"/>
+		<Item item_id="25009" name="Sunflower"  coinPrice="4" />
+		<Item item_id="25010" name="Leek"      	coinPrice="10" />
+		<Item item_id="25011" name="Corn"    	coinPrice="26"/>
+		<Item item_id="25012" name="Pea"      	coinPrice="100"/>
+		<Item item_id="25013" name="Grape"      coinPrice="13" />
+		<Item item_id="25014" name="Lily"      	coinPrice="10" />
+		<Item item_id="25015" name="Blueberry"  coinPrice="10" />
+		<Item item_id="25016" name="Kiwi"      	coinPrice="200" />
+		<Item item_id="25017" name="Rice"     	coinPrice="8" />
+		<Item item_id="25018" name="Lentil"     coinPrice="5" />
+		<Item item_id="25019" name="Spinach"  	coinPrice="10" />
+		<Item item_id="25020" name="Mint"      	coinPrice="8" />
+		<Item item_id="25021" name="Mustard"    coinPrice="40"/>
+		<Item item_id="25022" name="Oat"      	coinPrice="8" />
+		<Item item_id="25023" name="Bamboo"    	coinPrice="20"/>
+		<Item item_id="25024" name="Pineapple"  coinPrice="10" />
+		<Item item_id="25025" name="Strawberry" coinPrice="14" />
+		<Item item_id="25026" name="Cranberry"  coinPrice="20" />
+		<Item item_id="25027" name="RedRose"    coinPrice="1332"/>
+		<Item item_id="25028" name="Apple" 		coinPrice="20" 	/>
+		<Item item_id="25029" name="Orange"     coinPrice="50" 	/>
+		<Item item_id="25030" name="Pear" 		coinPrice="80" 	/>
+		<Item item_id="25031" name="Cherry"    	coinPrice="20" 	/>
+		<Item item_id="25032" name="Leechee"    coinPrice="60"	/>
+		<Item item_id="25033" name="Lemon"      coinPrice="30" 	/>
+		<Item item_id="25034" name="Mango"      coinPrice="10" 	/>
 		
 	</Group>
 	<Group id="Entity">
@@ -175,8 +212,43 @@
 		<Extend item_id="41024" name="extendcrop24" 		level="29"  coinPrice="180000" gemPrice="180"/>
 	</Group>
 	<Group id="Formula">
-		<Formula item_id="70000" name="Formula1"				level="0"   coinPrice="100" />
-		<Formula item_id="70001" name="Formula2"				level="0"  	coinPrice="500" gemPrice="1"/>
+		<Formula item_id="70000" name="Formula1"	level="0"   material="10000:3" 	product="25000:6" />
+		<Formula item_id="70001" name="Formula2"	level="0"  	material="10001:2" 	product="25001:4" />
+		<Formula item_id="70002" name="Formula1"	level="0"   material="10002:10" product="25002:20"/>
+		<Formula item_id="70003" name="Formula2"	level="0"  	material="10003:5" 	product="25003:7" />
+		<Formula item_id="70004" name="Formula1"	level="0"   material="10004:5" 	product="25004:10" />
+		<Formula item_id="70005" name="Formula2"	level="0"  	material="10005:1" 	product="25005:10"/>
+		<Formula item_id="70006" name="Formula1"	level="0"   material="10006:1" 	product="25006:10"/>
+		<Formula item_id="70007" name="Formula2"	level="0"  	material="10007:3" 	product="25007:6"/>
+		<Formula item_id="70008" name="Formula2"	level="0"  	material="10008:1" 	product="25008:4"/>
+		<Formula item_id="70008" name="Formula1"	level="0"   material="10009:20" product="25009:10"/>
+		<Formula item_id="70010" name="Formula2"	level="0"  	material="10010:5" 	product="25010:18"/>
+		<Formula item_id="70011" name="Formula1"	level="0"   material="10011:4"	product="25011:4"/>
+		<Formula item_id="70012" name="Formula2"	level="0"  	material="10012:5" 	product="25012:8"/>
+		<Formula item_id="70013" name="Formula1"	level="0"   material="10013:5" 	product="25013:50"/>
+		<Formula item_id="70014" name="Formula2"	level="0"  	material="10014:6"	product="25014:36"/>
+		<Formula item_id="70015" name="Formula2"	level="0"  	material="10015:10" product="25015:14"/>
+		<Formula item_id="70016" name="Formula1"	level="0"   material="10016:3" 	product="25016:15"/>
+		<Formula item_id="70017" name="Formula2"	level="0"  	material="10017:20" product="25017:20"/>
+		<Formula item_id="70018" name="Formula1"	level="0"   material="10018:5" 	product="25018:40"/>
+		<Formula item_id="70019" name="Formula2"	level="0"  	material="10019:1" 	product="25019:12"/>
+		<Formula item_id="70020" name="Formula1"	level="0"   material="10020:4" 	product="25020:12"/>
+		<Formula item_id="70021" name="Formula2"	level="0"  	material="10021:2" 	product="25021:15"/>
+		<Formula item_id="70022" name="Formula2"	level="0"  	material="10022:8" 	product="25022:30"/>
+		<Formula item_id="70023" name="Formula1"	level="0"   material="10023:2" 	product="25023:20"/>
+		<Formula item_id="70024" name="Formula2"	level="0"  	material="10024:1" 	product="25024:10"/>
+		<Formula item_id="70025" name="Formula1"	level="0"   material="10025:5" 	product="25025:50"/>
+		<Formula item_id="70026" name="Formula2"	level="0"  	material="10026:8"	product="25026:24"/>
+		<Formula item_id="70027" name="Formula1"	level="0"   material="10027:5" 	product="25027:5"/>
+		<Formula item_id="70028" name="Formula2"	level="0"  	material="24000:20" product="25028:20"/>
+		<Formula item_id="70029" name="Formula2"	level="0"  	material="24001:10" product="25029:20"/>
+		<Formula item_id="70030" name="Formula1"	level="0"   material="24002:10" product="25030:20"/>
+		<Formula item_id="70031" name="Formula2"	level="0"  	material="24003:20" product="25031:20"/>
+		<Formula item_id="70032" name="Formula1"	level="0"   material="24004:2" 	product="25032:20"/>
+		<Formula item_id="70033" name="Formula2"	level="0"  	material="24005:2"	product="25033:20"/>
+		<Formula item_id="70034" name="Formula1"	level="0"   material="24006:2" 	product="25034:20"/>
+		
+		
 	</Group>
 	<Group id="Animal">
 		<Animal item_id="60001" name="BeaAnimal"	/>
