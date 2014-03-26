@@ -102,7 +102,7 @@ package
 			}
 			Configrations.Language  = language;
 			//test
-//			Configrations.Language= language = "ru";
+//			Configrations.Language= language = "e";
 //			fontStr = "en";
 			
 			assets.enqueue(
@@ -141,7 +141,7 @@ package
 			mStarling.stage.stageHeight = stageHeight; // <- same size on all devices!
 			mStarling.simulateMultitouch  = false;
 			mStarling.enableErrorChecking = false;
-			mStarling.showStats = true;
+//			mStarling.showStats = true;
 			mStarling.simulateMultitouch = true;
 			mStarling.addEventListener(starling.events.Event.ROOT_CREATED, function():void
 			{

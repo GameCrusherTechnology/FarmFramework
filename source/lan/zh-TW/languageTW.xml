@@ -8,7 +8,7 @@
 	<resourceName key="cancel" value="取消"/>
 	<resourceName key="plow" value="犁地"/>
 	<resourceName key="move" value="移動"/>
-	<resourceName key="sell" value="賣"/>
+	<resourceName key="sell" value="賣出"/>
 	<resourceName key="skill" value="技能"/>
 	<resourceName key="profile" value="個人"/>
 	<resourceName key="social" value="社交"/>
@@ -57,7 +57,7 @@
 	<resourceName key="close" value="關閉"/>
 	<resourceName key="reward" value="獎勵"/>
 	<resourceName key="extend" value="擴建"/>
-	<resourceName key="add" value="加"/>
+	<resourceName key="add" value="增加"/>
 	<resourceName key="get" value="得到"/>
 	<resourceName key="noorder" value="目前還沒有訂單！"/>
 	<resourceName key="SelectItem" value="選擇作物"/>
@@ -194,7 +194,23 @@
 	<resourceName key="tutorTip03" value="等不及啦！施肥料看看吧。"/>
 	<resourceName key="tutorTip04" value="搜索野草可以獲得很多好玩的東西。也是唯一獲得裝飾的途徑。"/>
 	<resourceName key="tutorTip05" value="還有更多的玩法等著你來發現。快去找找吧！"/>
-	<resourceName key="versionTip1" value="增加好友按鈕，更加方便大家去拜訪好友。"/>
+	<resourceName key="mill" value="磨坊"/>
+	<resourceName key="buyFacTile" value="增加磨坊工作隊列上限"/>
+	<resourceName key="workingList" value="工作隊列"/>
+	<resourceName key="queueLen" value="隊列長度"/>
+	<resourceName key="enough" value="足夠"/>
+	<resourceName key="special" value="特殊"/>
+	<resourceName key="unlock" value="解鎖"/>
+	<resourceName key="recipe" value="配方"/>
+	<resourceName key="warningFacFull" value="磨坊工作隊列滿了!"/>
+	<resourceName key="PotatoChips" value="薯條"/>
+	<resourceName key="Paprika" value="辣椒醬"/>
+	<resourceName key="Ketchup" value="番茄醬"/>
+	<resourceName key="SunflowerSeeds" value="葵瓜子"/>
+	<resourceName key="Popcorn" value="爆米花"/>
+	<resourceName key="GrapeJuice" value="葡萄汁"/>
+	<resourceName key="Flour" value="麵粉"/>
+	<resourceName key="versionTip1" value="開放磨坊功能。點擊房屋就可以去加工了。"/>
 	<resourceName key="versionTip2" value="反饋的問題已經修復了大部分。謝謝大家的幫助。"/>
 	<resourceName key="versionTip3" value="在遊戲中，如果你遇到問題或有什麼想法，可以發送郵件到gamecrushservice@gmail.com 。"/>
 </language>

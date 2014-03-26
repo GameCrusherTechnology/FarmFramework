@@ -1,7 +1,6 @@
 package view.component.UIButton
 {
 	import controller.FieldController;
-	import controller.GameController;
 	import controller.UiController;
 	import controller.VoiceController;
 	

@@ -26,6 +26,7 @@ package view
 	import service.command.user.UserSkillCommand;
 	
 	import starling.display.DisplayObject;
+	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.events.Touch;
@@ -466,60 +467,65 @@ package view
 		}
 		
 		//技能
+		private var isPlaySkilling:Boolean  = false;
 		public function playSkill():void
 		{
-			var entity:GameEntity;
-			var skill :SkillData = player.skillData;
-			var speedArr:Array = [];
-			var harArr:Array = [];
-			for each(entity in entityDic){
-				if(entity is CropEntity){
-					if(((entity as CropEntity).cropItem).hasCrop){
-						if(((entity as CropEntity).cropItem).canSpeed){
-							speedArr.push(entity);
+			if(!isPlaySkilling){
+				var entity:GameEntity;
+				var skill :SkillData = player.skillData;
+				var speedArr:Array = [];
+				var harArr:Array = [];
+				for each(entity in entityDic){
+					if(entity is CropEntity){
+						if(((entity as CropEntity).cropItem).hasCrop){
+							if(((entity as CropEntity).cropItem).canSpeed){
+								speedArr.push(entity);
+							}
 						}
 					}
 				}
-			}
-			
-			var speedC:int ;
-			if(GameController.instance.isHomeModel)
-			{
-				speedC = skill.speedCount;
-			}else{
-				speedC = 5;
-			}
-			var speedR:Array = [];
-			var crop:CropEntity;
-			for (var i:int = 0; i<speedC; i++) {
-				if (speedArr.length>0) {
-					var arrIndex:Number = Math.floor(Math.random()*speedArr.length);
-					crop = speedArr[arrIndex];
-					speedR.push(crop.item.data_id);
-					speedArr.splice(arrIndex, 1);
-					
-					if(GameController.instance.isHomeModel)
-					{
-						crop.showSkillSpeed();
-					}else{
-						crop.showHelpSpeed();
-					}
-				} else {
-					break;
-				}
-			}
-			
-			if(GameController.instance.isHomeModel){
-				if(speedR.length <=0 ){
-					//提醒
-					DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("skillTip03")));
+				
+				var speedC:int ;
+				if(GameController.instance.isHomeModel)
+				{
+					speedC = skill.speedCount;
 				}else{
-					new UserSkillCommand(speedR,onSkillCommandSuc);
-					player.skill_time = SystemDate.systemTimeS;
+					speedC = 5;
 				}
-			}else{
-				new HelpFriendCommand(player.gameuid,speedR,player.cur_mes_dataid+1,onHelped);
-				player.lastHelpedTime = SystemDate.systemTimeS;
+				var speedR:Array = [];
+				var crop:CropEntity;
+				for (var i:int = 0; i<speedC; i++) {
+					if (speedArr.length>0) {
+						var arrIndex:Number = Math.floor(Math.random()*speedArr.length);
+						crop = speedArr[arrIndex];
+						speedR.push(crop.item.data_id);
+						speedArr.splice(arrIndex, 1);
+						
+						if(GameController.instance.isHomeModel)
+						{
+							crop.showSkillSpeed();
+						}else{
+							crop.showHelpSpeed();
+						}
+					} else {
+						break;
+					}
+				}
+				
+				if(GameController.instance.isHomeModel){
+					if(speedR.length <=0 ){
+						//提醒
+						DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("skillTip03")));
+					}else{
+						new UserSkillCommand(speedR,onSkillCommandSuc);
+						isPlaySkilling = true;
+						player.skill_time = SystemDate.systemTimeS;
+					}
+				}else{
+					new HelpFriendCommand(player.gameuid,speedR,player.cur_mes_dataid+1,onHelped);
+					isPlaySkilling = true;
+					player.lastHelpedTime = SystemDate.systemTimeS;
+				}
 			}
 		}
 		//刷 野草
@@ -566,11 +572,13 @@ package view
 				message:"",type:Configrations.MESSTYPE_HELP,data_id:GameController.instance.currentPlayer.cur_mes_dataid,updatetime :SystemDate.systemTimeS}));
 			var texture:Texture = Game.assets.getTexture("loveIcon");
 			var stagePoint:Point  = new Point(Configrations.ViewPortWidth - 100*Configrations.ViewScale, Configrations.ViewPortHeight/2);
-			GameController.instance.effectLayer.addTweenCrop(texture,stagePoint,0);
+			GameController.instance.effectLayer.addTweenCrop(new Image(texture),stagePoint,0);
+			isPlaySkilling = false;
 		}
 		private function onSkillCommandSuc():void
 		{
 			player.skill_time = SystemDate.systemTimeS;
+			isPlaySkilling = false;
 		}
 		private function get player():GamePlayer
 		{

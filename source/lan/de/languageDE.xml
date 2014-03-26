@@ -194,7 +194,23 @@
 	<resourceName key="tutorTip03" value="Kann nicht warten, für sie! Dünger, um zu sehen. "/>
 	<resourceName key="tutorTip04" value="Suche Unkraut kann eine Menge Spaß Dinge zu bekommen und ist der einzige Weg, um dekoriert zu werden. "/>
 	<resourceName key="tutorTip05" value="Es gibt viele weitere Gameplay warten auf Sie zu entdecken. Gehen sie zu finden!"/>
-	<resourceName key="versionTip1" value="Freunde-Taste, um zu erhöhen, bequemer, einen Freund zu besuchen. "/>
+	<resourceName key="mill" value="Mühle "/>
+	<resourceName key="buyFacTile" value="erhöhen Sie die Warteschlange "/>
+	<resourceName key="workingList" value="Work Queue "/>
+	<resourceName key="queueLen" value="Queue Length "/>
+	<resourceName key="enough" value="genug "/>
+	<resourceName key="special" value="besondere "/>
+	<resourceName key="unlock" value="aufschließen "/>
+	<resourceName key="recipe" value="Formel "/>
+	<resourceName key="warningFacFull" value="Mühle Warteschlange ist voll! "/>
+	<resourceName key="PotatoChips" value="Französisch frites "/>
+	<resourceName key="Paprika" value="Paprika-Sauce "/>
+	<resourceName key="Ketchup" value="Ketchup "/>
+	<resourceName key="SunflowerSeeds" value="Sonnenblumenkerne "/>
+	<resourceName key="Popcorn" value="Popcorn "/>
+	<resourceName key="GrapeJuice" value="Traubensaft "/>
+	<resourceName key="Flour" value="Mehl"/>
+	<resourceName key="versionTip1" value="Offene Mühle Funktionen. Klicken Sie auf Haus können Sie, um die Verarbeitung zu gehen."/>
 	<resourceName key="versionTip2" value="Feedback-Problem wurde behoben meisten Teilen. Vielen Dank für Ihre Hilfe!"/>
 	<resourceName key="versionTip3" value="In dem Spiel, wenn Sie Probleme oder irgendwelche Ideen , können Sie eine E-Mail an gamecrushservice@gmail.com senden."/>
 </language>

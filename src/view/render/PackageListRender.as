@@ -9,15 +9,19 @@ package view.render
 	import gameconfig.Configrations;
 	
 	import model.OwnedItem;
+	import model.gameSpec.FormulaItemSpec;
 	import model.gameSpec.ItemSpec;
 	import model.player.GamePlayer;
 	import model.player.PlayerChangeEvents;
 	
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	import starling.utils.VAlign;
+	
+	import view.component.PackageIcon;
 	
 	public class PackageListRender extends DefaultListItemRenderer
 	{
@@ -53,7 +57,13 @@ package view.render
 			addChild(container);
 			
 			var spec:ItemSpec = SpecController.instance.getItemSpec(item_id);
-			var icon:Image= new Image(Game.assets.getTexture(spec.name + "Icon"));
+			
+			var icon:DisplayObject;
+			if(int(int(spec.item_id)/1000)==25){
+				icon= new PackageIcon(spec);
+			}else{
+				icon= new Image(Game.assets.getTexture(spec.name + "Icon"));
+			}
 			icon.height = renderheight*0.8;
 			icon.scaleX = icon.scaleY;
 			icon.x = renderwidth/2 - icon.width/2;

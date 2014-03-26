@@ -37,7 +37,7 @@ package gameconfig
 ////				//低配
 //				retObj.width = 480;
 //				retObj.height = 320;
-////				//高配
+//				//高配
 //				retObj.width = 1680;
 //				retObj.height = 1050;
 			}
@@ -49,7 +49,7 @@ package gameconfig
 			return _deviceDetails = retObj;
 		}
 		
-		private static function  setApplicationXML(xml:XML):void
+		private static function setApplicationXML(xml:XML):void
 		{
 			var xmlList:Namespace = xml.namespaceDeclarations()[0]; 
 			var version:String = xml.xmlList::versionNumber;

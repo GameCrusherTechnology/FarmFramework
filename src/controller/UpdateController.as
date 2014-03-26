@@ -58,7 +58,7 @@ package controller
 		}
 		
 		public function sendUpdateList():void{
-			if(listData.length>0){
+			if(listData && listData.length>0){
 				new UpdateFarmCommand(listData,onsuccess,onerror);
 			}
 			listData = new Vector.<UpdateData>;

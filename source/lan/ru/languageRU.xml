@@ -194,7 +194,23 @@
 	<resourceName key="tutorTip03" value="Не могу дождаться этого! Удобрение видеть. "/>
 	<resourceName key="tutorTip04" value="Поиск сорняки могут получить много забавных вещей, и это единственный способ, чтобы получить оформлены. "/>
 	<resourceName key="tutorTip05" value="Есть еще очень много Геймплей ждет вас открыть для себя. К их найти!"/>
-	<resourceName key="versionTip1" value="Кнопка Друзья расти, удобнее в гости к подруге. "/>
+	<resourceName key="mill" value="мельница "/>
+	<resourceName key="buyFacTile" value="Увеличение очереди "/>
+	<resourceName key="workingList" value="Работа Очередь "/>
+	<resourceName key="queueLen" value="Длина очереди "/>
+	<resourceName key="enough" value="Хватит "/>
+	<resourceName key="special" value="специальный "/>
+	<resourceName key="unlock" value="отпереть "/>
+	<resourceName key="recipe" value="формула "/>
+	<resourceName key="warningFacFull" value="Очередь мельница работа полна! "/>
+	<resourceName key="PotatoChips" value="картофель фри "/>
+	<resourceName key="Paprika" value="соус горячего перца "/>
+	<resourceName key="Ketchup" value="кетчуп "/>
+	<resourceName key="SunflowerSeeds" value="семечки "/>
+	<resourceName key="Popcorn" value="попкорн "/>
+	<resourceName key="GrapeJuice" value="Виноградный сок "/>
+	<resourceName key="Flour" value="мучной"/>
+	<resourceName key="versionTip1" value="Открытые функции мельница. Нажмите на доме вы можете пойти в обработке."/>
 	<resourceName key="versionTip2" value="Обратная связь проблема была отремонтирована большинство частей. Спасибо за вашу помощь!"/>
 	<resourceName key="versionTip3" value="В игре, если у вас возникли проблемы или есть идеи , вы можете отправить по электронной почте gamecrushservice@gmail.com ."/>
 </language>

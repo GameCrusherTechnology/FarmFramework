@@ -10,6 +10,7 @@ package view
 	import starling.animation.Tween;
 	import starling.core.RenderSupport;
 	import starling.core.Starling;
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
@@ -58,13 +59,44 @@ package view
 			};
 		}
 		
-		private var starArr:Array =[];
-		private var backToSArr:Array =[];
-		public function addTweenCrop(texture:Texture,startPoint:Point,delay:Number=0):void
+		public function addTweenFacItem(display:DisplayObject,startPoint:Point,delay:Number=0):void
 		{
 			var tween:Tween;
 			var tween1:Tween;
-			var cropIcon:Image = new Image(texture);
+			var itemIcon:DisplayObject = display;
+			addChild( itemIcon);
+			var leftDownPoint:Point = new Point(0,Configrations.ViewPortHeight );
+			itemIcon.width = itemIcon.height = 30 *Configrations.ViewScale ;
+			var scale:Number = itemIcon.scaleX *2;
+			itemIcon.x = startPoint.x - itemIcon.width/2;
+			itemIcon.y = startPoint.y - itemIcon.height;
+			
+			tween = new Tween(itemIcon,2,Transitions.EASE_IN_OUT_BACK);
+			tween.delay = delay ;
+			tween.animate("y", leftDownPoint.y);
+			tween.animate("rotation", deg2rad(360));
+			tween.scaleTo(scale);
+			Starling.juggler.add(tween);
+			tween.onComplete = function():void{
+				if(itemIcon&&itemIcon.parent){
+					removeChild(itemIcon);
+					itemIcon = null;
+				}
+			};
+			
+			tween1 = new Tween(itemIcon,2,Transitions.LINEAR);
+			tween1.delay = delay ;
+			tween1.animate("x",leftDownPoint.x);
+			Starling.juggler.add(tween);
+			Starling.juggler.add(tween1);
+		}
+		
+		private var starArr:Array =[];
+		public function addTweenCrop(display:DisplayObject,startPoint:Point,delay:Number=0):void
+		{
+			var tween:Tween;
+			var tween1:Tween;
+			var cropIcon:DisplayObject = display;
 			addChild( cropIcon);
 			cropIcon.width = cropIcon.height = 30 *Configrations.ViewScale ;
 			var scale:Number = cropIcon.scaleX *2;

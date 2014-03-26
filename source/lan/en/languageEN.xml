@@ -194,7 +194,23 @@
 	<resourceName key="tutorTip03" value="Can not wait for it! Fertilizer to see ."/>
 	<resourceName key="tutorTip04" value="Search weeds can get a lot of fun things and is the only way to get decorated. "/>
 	<resourceName key="tutorTip05" value="There are many more gameplay waiting for you to discover. Go to find them!"/>
-	<resourceName key="versionTip1" value="Friends button to increase, more convenient to visit a friend. "/>
+	<resourceName key="mill" value="Mill"/>
+	<resourceName key="buyFacTile" value="Increase the Mill working queue limit"/>
+	<resourceName key="workingList" value="Work Queue "/>
+	<resourceName key="queueLen" value="Queue Length"/>
+	<resourceName key="enough" value="Enough"/>
+	<resourceName key="special" value="Special"/>
+	<resourceName key="unlock" value="Unlock"/>
+	<resourceName key="recipe" value="Formula "/>
+	<resourceName key="warningFacFull" value="Mill work queue is full! "/>
+	<resourceName key="PotatoChips" value="French fries "/>
+	<resourceName key="Paprika" value="Paprika"/>
+	<resourceName key="Ketchup" value="Ketchup"/>
+	<resourceName key="SunflowerSeeds" value="SunflowerSeeds"/>
+	<resourceName key="Popcorn" value="Popcorn"/>
+	<resourceName key="GrapeJuice" value="GrapeJuice"/>
+	<resourceName key="Flour" value="Flour"/>
+	<resourceName key="versionTip1" value="Open mill functions. Click on house you can go to processing."/>
 	<resourceName key="versionTip2" value="Feedback problem has been repaired most parts. Thank you for your help!"/>
 	<resourceName key="versionTip3" value="In the game if you encounter problems or have what idea, can send mail to gamecrushservice@gmail.com."/>
 </language>

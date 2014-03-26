@@ -12,6 +12,8 @@ package model.player
 	import model.entity.CropItem;
 	import model.entity.EntityItem;
 	import model.gameSpec.AchieveItemSpec;
+	import model.gameSpec.FormulaItemSpec;
+	import model.gameSpec.ItemSpec;
 	import model.task.TaskData;
 	
 	import starling.events.Event;
@@ -375,5 +377,56 @@ package model.player
 			return new SimplePlayer({"gameuid":gameuid,"sex":sex,"exp":exp,"achieve":achieve,"name":name,"title":title});
 		}
 		
+		//factory
+		
+		public var workTime:int;
+		public var workTimeIndex:int;
+		public var factory_expand:int;
+		public var formulas:String = "70001:70003:70005";
+		public var ownedFormulas:String = "0";
+		public var factory_speedUp:String;
+		public function set user_factory(obj:Object):void
+		{
+			if(obj){
+				workTime = obj.workTime;
+				factory_expand = obj.expand;
+				formulas = obj.formulas;
+				factory_speedUp = obj.speedUp;
+				workTimeIndex = obj.workTimeIndex;
+				ownedFormulas = obj.other;
+			}
+		}
+		public function addWorkingFormula(id:String):void
+		{
+			if(formulas){
+				formulas = formulas+":"+id;
+			}else{
+				formulas = id;
+			}
+		}
+		public function removeWorkingFormula(index:int):void
+		{
+			var arr:Array = formulas.split(":");
+			arr.splice(index,1);
+			formulas = arr.join(":");
+		}
+		public function isFinishFormula(itemSpec:FormulaItemSpec):Boolean
+		{
+			var requestS:String = itemSpec.material;
+			var requestArr:Array = requestS.split("|");
+			var reqSpec:ItemSpec;
+			var requestId:String ;
+			var requestNum:int ;
+			var ownedItem:OwnedItem;
+			for each(var str:String in requestArr){
+				requestId = str.split(":")[0];
+				requestNum = str.split(":")[1];
+				ownedItem = getOwnedItem(requestId);
+				if(ownedItem.count < requestNum){
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }

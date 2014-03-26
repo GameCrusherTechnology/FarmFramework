@@ -194,7 +194,23 @@
 	<resourceName key="tutorTip03" value="Bunun için sabırsızlanıyorum! Görmek için gübre. "/>
 	<resourceName key="tutorTip04" value="Arama otlar eğlenceli bir çok şey almak ve dekore almak için tek yol olabilir. "/>
 	<resourceName key="tutorTip05" value="Keşfetmek için bekleyen daha birçok Oyun vardır. Onları bulmak için gidin!"/>
-	<resourceName key="versionTip1" value="Arkadaşlar düğmesi, bir arkadaşını ziyaret etmek için daha uygun artırmak. "/>
+	<resourceName key="mill" value="değirmen "/>
+	<resourceName key="buyFacTile" value="kuyruğunu artırın "/>
+	<resourceName key="workingList" value="iş Kuyruğu "/>
+	<resourceName key="queueLen" value="sırası Uzunluğu "/>
+	<resourceName key="enough" value="yeter "/>
+	<resourceName key="special" value="özel "/>
+	<resourceName key="unlock" value="kilidini açmak "/>
+	<resourceName key="recipe" value="formül "/>
+	<resourceName key="warningFacFull" value="Değirmen iş kuyruğu dolu! "/>
+	<resourceName key="PotatoChips" value="patates kızartması "/>
+	<resourceName key="Paprika" value="acı biber sosu "/>
+	<resourceName key="Ketchup" value="ketçap "/>
+	<resourceName key="SunflowerSeeds" value="Ayçiçeği tohumları "/>
+	<resourceName key="Popcorn" value="patlamış mısır "/>
+	<resourceName key="GrapeJuice" value="üzüm suyu "/>
+	<resourceName key="Flour" value="un"/>
+	<resourceName key="versionTip1" value="Açık değirmen fonksiyonları. Eğer işleme gidebilirsiniz evin üzerine tıklayın."/>
 	<resourceName key="versionTip2" value="Görüşleri sorun çoğu parçaları tamir edilmiştir. Yardımlarınız için teşekkür ederiz!"/>
 	<resourceName key="versionTip3" value="Eğer sorunlarla karşılaşırsanız veya herhangi bir fikirleri varsaoyunda , sen gamecrushservice@gmail.com bir e-posta gönderebilirsiniz ."/>
 </language>

@@ -47,6 +47,11 @@
 		public static const BUY_TASK:String = "task/BuyNpcTask";
 		public static const FINISH_MYORDER:String = "task/FinishMyOrder";
 		
+		//factory
+		public static const ADD_FORMULA:String = "factory/AddFormula";
+		public static const HARVEST_FORMULA:String = "factory/HarvestFormulas";
+		public static const EXPAND_FACTORY_TILE:String = "factory/ExpandFactory";
+		public static const UNLOCK_FORMULA:String = "factory/OpenFormula";
 		//pay
 		public static const GOOGLEPAY:String = "pay/GooglePayForGems";
 		public static const BUYCOINS:String = "pay/BuyCoin";

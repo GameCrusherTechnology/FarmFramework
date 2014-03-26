@@ -1,5 +1,8 @@
 package gameconfig
 {
+	import controller.SpecController;
+	
+	import model.gameSpec.ItemSpec;
 
 	public class Configrations
 	{
@@ -31,7 +34,6 @@ package gameconfig
 		//profile
 		public static const CHARACTER_BOY:int = 0;
 		public static const CHARACTER_GIRL:int = 1;
-		
 		public static const TITLE_NAME:Array = ["master","master1","master2","master3","master4"];
 		
 		//task
@@ -105,7 +107,25 @@ package gameconfig
 			return need;
 		}
 		//task 价格
-		
+		//fac
+		public static const Factory_Tile:int = 5;
+		private static var _totalFacTile:int = 0;
+		public static function getFacTotalTile():int
+		{
+			if(_totalFacTile == 0 ){
+				var group:Object = SpecController.instance.getGroup("Extend");
+				var arr:Array = [];
+				for each (var itemspec:ItemSpec in group){
+					if(int(int(itemspec.item_id)/1000) == 42){
+						arr.push(itemspec);
+					}
+				}
+				
+				_totalFacTile = Factory_Tile + arr.length;
+			}
+
+			 return _totalFacTile;
+		}
 		//treasure 价格
 		public static const LITTLECOIN:String = "littleFarmCoin";
 		public static const LARGECOIN:String = "largeFarmCoin";
@@ -118,6 +138,7 @@ package gameconfig
 			"littleFarmGem":[200,2],
 			"largeFarmGem":[1100,10]
 		};
+		public static var treasuresActivity:Object ;
 		
 		public static function getAchieveId(id:String,type:String):String
 		{
@@ -144,11 +165,17 @@ package gameconfig
 			}
 			return count;
 		}
+		
+		public static function isPackaged(spec:ItemSpec):Boolean
+		{
+			return int(int(spec.item_id)/1000)==25;
+		}
 		//analytic id
 		public static const ANALYTIC_BUY:int = 10000;
 		public static const ANALYTIC_BUY_NOT_VALIABLE:int = 10001;
 		public static const ANALYTIC_BUY_ERROR:int = 10002;
 		public static const ANALYTIC_BUY_SUC:int = 10003;
+		
 		
 		public static function get isLocalTest():Boolean
 		{

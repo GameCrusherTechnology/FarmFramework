@@ -4,16 +4,11 @@ package view.entity
 	import controller.GameController;
 	import controller.UiController;
 	
-	import gameconfig.LanguageController;
-	
 	import model.entity.EntityItem;
 	
 	import starling.core.Starling;
 	import starling.display.MovieClip;
 	import starling.events.TouchPhase;
-	
-	import view.panel.FactoryPanel;
-	import view.panel.WarnnigTipPanel;
 
 	public class HouseEntity extends GameEntity
 	{
@@ -47,9 +42,8 @@ package view.entity
 				if(GameController.instance.isHomeModel){
 					if(tool == UiController.TOOL_MOVE){
 						scene.addMoveEntity(this);
-					}else if(!tool){
-						DialogController.instance.showPanel(new FactoryPanel());
-//						DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warnintTip01")));
+					}else{
+						DialogController.instance.showFacPanel();
 					}
 				}else{
 					

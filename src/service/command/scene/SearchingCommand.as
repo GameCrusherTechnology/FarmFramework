@@ -2,7 +2,6 @@ package service.command.scene
 {
 	import controller.DialogController;
 	import controller.GameController;
-	import controller.TutorialController;
 	
 	import model.OwnedItem;
 	import model.entity.EntityItem;

@@ -20,6 +20,7 @@ package controller
 	import view.component.UIButton.SkillButton;
 	import view.component.UIButton.TaskButton;
 	import view.component.UIButton.ToolStateButton;
+	import view.component.UIButton.TreasureActivityButton;
 	import view.component.progressbar.CoinProgressBar;
 	import view.component.progressbar.ExpProgressBar;
 	import view.component.progressbar.GemProgressBar;
@@ -82,6 +83,7 @@ package controller
 				hideHelpBut();
 				hideInviteBut();
 				showFriendButton();
+				showTreasureActivity();
 			}else{
 				hideEditUiTools();
 				hideTaskButton();
@@ -95,6 +97,7 @@ package controller
 					showInviteBut();
 				}
 				hideFriendButton();
+				hideTreasureActivity();
 			}
 			showCommunicationButton();
 			hideToolStateButton();
@@ -132,6 +135,33 @@ package controller
 		{
 			if(skillBut && skillBut.parent){
 				skillBut.parent.removeChild(skillBut);
+			}
+		}
+		
+		private var activityBut:TreasureActivityButton;
+		private var hasClickActivity:Boolean = false;
+		private function showTreasureActivity():void
+		{
+			if(!hasClickActivity && Configrations.treasuresActivity){
+				if(!activityBut){
+					activityBut = new TreasureActivityButton();
+				}
+				if(!activityBut.parent){
+					_layer.addChild(activityBut);
+				}
+				activityBut.x = 10;
+				activityBut.y = taskButton.y + taskButton.height + 20*scale;
+			}
+		}
+		public function removeActivityBut():void
+		{
+			hasClickActivity = true;
+			hideTreasureActivity();
+		}
+		private function hideTreasureActivity():void
+		{
+			if(activityBut && activityBut.parent){
+				activityBut.parent.removeChild(activityBut);
 			}
 		}
 		

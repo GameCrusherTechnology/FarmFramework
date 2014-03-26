@@ -35,6 +35,9 @@ package gameconfig
 		
 		public function getString(key:String):String
 		{
+			if(!dictLanguage[key]){
+				trace("no language : " + key);
+			}
 			return dictLanguage[key];
 		}
 		

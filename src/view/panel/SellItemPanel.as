@@ -28,6 +28,7 @@ package view.panel
 	
 	import service.command.user.SellItemCommand;
 	
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.events.Touch;
@@ -37,6 +38,8 @@ package view.panel
 	import starling.text.TextFieldAutoSize;
 	import starling.utils.HAlign;
 	import starling.utils.deg2rad;
+	
+	import view.component.PackageIcon;
 	
 	public class SellItemPanel extends PanelScreen
 	{
@@ -97,7 +100,12 @@ package view.panel
 			iconSkin.x = panelwidth*0.35-iconSkin.width/2;
 			iconSkin.y = skin2.y +5*scale;
 			
-			var icon:Image = new Image(Game.assets.getTexture(spec.name + "Icon"));
+			var icon:DisplayObject;
+			if(Configrations.isPackaged(spec)){
+				icon= new PackageIcon(spec);
+			}else{
+				icon= new Image(Game.assets.getTexture(spec.name + "Icon"));
+			}
 			addChild(icon);
 			icon.width = icon.height =100*scale;
 			icon.x = panelwidth*0.35-icon.width/2;

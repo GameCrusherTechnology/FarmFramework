@@ -264,9 +264,9 @@ package view.entity
 		}
 		private function onSearching():void
 		{
-			isCommanding  = false;
 			player.removeEntityItem(item);
 			dispose();
+			isCommanding  = false;
 		}
 		protected function sell():void
 		{

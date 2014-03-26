@@ -274,7 +274,7 @@ package view.entity
 			var stagePoint:Point ;
 			while(index <count){
 				stagePoint = scene.localToGlobal(new Point(x + Math.random()*50-25,y + Math.random()*50-25));
-				stageEffectLayer.addTweenCrop(texture,stagePoint,0.1*index);
+				stageEffectLayer.addTweenCrop(new Image(texture),stagePoint,0.1*index);
 				
 				index++;
 			}

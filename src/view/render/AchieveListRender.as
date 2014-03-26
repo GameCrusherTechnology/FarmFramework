@@ -13,7 +13,6 @@ package view.render
 	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
-	import gameconfig.LanguageController;
 	
 	import model.OwnedItem;
 	import model.gameSpec.AchieveItemSpec;

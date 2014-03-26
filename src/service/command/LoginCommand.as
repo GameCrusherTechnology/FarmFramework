@@ -2,6 +2,8 @@ package service.command
 {
 	import controller.GameController;
 	
+	import gameconfig.Configrations;
+	
 	import model.player.GamePlayer;
 
 	public class LoginCommand extends AbstractCommand
@@ -23,6 +25,9 @@ package service.command
 					GameController.instance._curPlayer = GameController.instance.localPlayer = new GamePlayer(result['user_account']);
 				}
 				GameController.instance.isNewer = result['is_new'];
+				if(result.treasuresActivity){
+					Configrations.treasuresActivity = result.treasuresActivity;
+				}
 				onLoginSuccess();
 			}
 		}

@@ -11,6 +11,7 @@ package service.command.payment
 	import service.command.AbstractCommand;
 	import service.command.Command;
 	
+	import view.panel.PaymentRewardsPanel;
 	import view.panel.WarnnigTipPanel;
 	
 	public class VertifyGooglePayCommand extends AbstractCommand
@@ -34,6 +35,20 @@ package service.command.payment
 					
 					if(result.item){
 						player.addItem(new OwnedItem(result.item.id,result.item.count));
+					}
+					if(result.items){
+						for each(var obj:Object in result.items){
+							if(obj.id == "coin"){
+								player.addCoin(obj.count);
+							}else if(obj.id == "exp"){
+								player.addExp(obj.count);
+							}else{
+								player.addItem(new OwnedItem(obj.id,obj.count));
+							}
+						}
+						DialogController.instance.showPanel(new PaymentRewardsPanel(addGem,result.items));
+					}else{
+						DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("buyTip01")));
 					}
 				}
 			}else{

@@ -24,7 +24,7 @@ package gameconfig
 			if(isNaN(timeReduce)){
 				return date.getTime();
 			}
-			return (date.getTime() + timeReduce);
+			return (date.getTime() - timeReduce);
 		}
 		//秒级
 		public static function get systemTimeS():Number
@@ -33,7 +33,7 @@ package gameconfig
 			if(isNaN(timeReduce)){
 				return Math.floor(date.getTime()/1000);
 			}
-			return Math.floor((date.getTime() + timeReduce)/1000);
+			return Math.floor((date.getTime() - timeReduce)/1000);
 		}
 		public static function getTimeLeftString(time:Number):String
 		{
@@ -60,6 +60,18 @@ package gameconfig
 				return time/(1000) + "s";
 			}
 		}
+		
+		public static function getSTimeLeftString(time:Number):String
+		{
+			if(time > 3600){
+				return Math.floor(time/(36000)) + "h";
+			}else if(time > 60){
+				return Math.floor(time/(60000)) + "m";
+			}else{
+				return time + "s";
+			}
+		}
+		
 		private static function checkNum(num:int):String
 		{
 			if(num < 10){

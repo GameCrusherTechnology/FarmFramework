@@ -1,7 +1,11 @@
 package controller
 {
+	import flash.display.Scene;
+	
 	import starling.display.DisplayObject;
 	import starling.display.Sprite;
+	
+	import view.panel.FactoryPanel;
 
 	public class DialogController
 	{
@@ -18,15 +22,36 @@ package controller
 		{
 			
 		}
+		private var _factoryPanel:FactoryPanel;
+		public function get factoryPanel():FactoryPanel
+		{
+			if(!_factoryPanel){
+				_factoryPanel = new FactoryPanel();
+			}
+			return _factoryPanel;
+		}
 		
+		public function showFacPanel():void
+		{
+			if(!_factoryPanel){
+				_factoryPanel = new FactoryPanel();
+			}else{
+				_factoryPanel.refresh();
+			}
+			showPanel(_factoryPanel);
+		}
 		public function showPanel(panel:Sprite,exclusive:Boolean=false):void
 		{
-			trace("showPanel");
+			if(GameController.instance.isHomeModel){
+				UpdateController.instance.sendUpdateList();
+			}
 			if(exclusive){
 				destroy();
 			}
 			layer.addChild(panel);
 		}
+		
+		
 		public function destroy():void
 		{
 			var displayObj:DisplayObject;

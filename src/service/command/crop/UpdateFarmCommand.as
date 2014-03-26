@@ -24,12 +24,10 @@ package service.command.crop
 						bool = false;
 						break;
 					}else{
-						trace("type" + type +" data_id: "+data.data['data_id']);
 						sendList.push(data.data);
 					}
 				}
 				if(bool){
-					trace("send");
 					super(Command.UPDATEFAME,onResult,{target_gameuid:gameuid,method:type,list:sendList});
 				}else{
 					onError();

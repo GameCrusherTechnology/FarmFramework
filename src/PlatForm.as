@@ -30,7 +30,7 @@ package
 			var signedData:String = JSON.stringify(object);
 //			var receipt_obj:Object = JSON.parse( signedData);
 			
-			new VertifyGooglePayCommand({'receipt':object,"receiptStr":signedData},function():void{},function():void
+			new VertifyGooglePayCommand({'receipt':object,"receiptStr":signedData,"buytype":"localTest"},function():void{},function():void
 			{
 				//											InAppPurchase.getInstance().removePurchaseFromQueue(lastProId,_verifyPayStr);
 				//											_verifyPayStr = null;
