@@ -49,6 +49,7 @@ package view.panel
 		private var gemButton:Button;
 		private var coinButton:Button ;
 		private var spec:ItemSpec;
+		private var addMoreBut:Button;
 		public function BuyItemPanel(_id:String)
 		{
 			item_id  = _id;
@@ -116,6 +117,17 @@ package view.panel
 			countStep.y = tipText.y + tipText.height + icon.height/2;
 			countStep.addEventListener(Event.CHANGE, step_changeHandler);
 			
+			
+			addMoreBut = new Button();
+			addMoreBut.defaultSkin = new Image(Game.assets.getTexture("panelSkin") );
+			addMoreBut.label = "+50";
+			addMoreBut.height = countStep.height;
+			addMoreBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 20, 0x000000);
+			addMoreBut.paddingLeft = addMoreBut.paddingRight = 10;
+			addChild(addMoreBut);
+			addMoreBut.x = countStep.x + countStep.width + 10*scale;
+			addMoreBut.y = countStep.y;
+			addMoreBut.addEventListener(Event.TRIGGERED,onAddMoreTrigger);
 			
 			var tip2Text:TextField = FieldController.createSingleLineDynamicField(panelwidth *.6,80*scale,LanguageController.getInstance().getString("cost")+" "+LanguageController.getInstance().getString("you")+" :",0x000000,30,true);
 			tip2Text.hAlign = HAlign.LEFT;
@@ -201,6 +213,13 @@ package view.panel
 				gemButton.validate();
 			}
 		}
+		
+		private function onAddMoreTrigger(e:Event):void
+		{
+			currentCount = countStep.value + 50;
+			countStep.value  = currentCount;
+			refreshValue();
+		}
 		private function step_changeHandler(e:Event):void
 		{
 			currentCount = countStep.value;
@@ -255,7 +274,7 @@ package view.panel
 		{
 			var _stepper:NumericStepper = new NumericStepper();
 			_stepper.minimum = 1;
-			_stepper.maximum = 100;
+			_stepper.maximum = 10000;
 			_stepper.value = 1;
 			_stepper.step = 1;
 			_stepper.width = panelwidth*.2;

@@ -2,6 +2,7 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
+	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
 	import controller.TaskController;
@@ -278,15 +279,23 @@ package view.panel
 		private function onTriggeredMale(e:Event):void
 		{
 			if(!isCommanding){
-				isCommanding = true;
-				new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_MALE),onBuyTask);
+				if(player.gem >= TaskController.instance.getTaskPrice()){
+					isCommanding = true;
+					new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_MALE),onBuyTask);
+				}else{
+					DialogController.instance.showPanel(new TreasurePanel());
+				}
 			}
 		}
 		private function onTriggeredFemale(e:Event):void
 		{
 			if(!isCommanding){
-				isCommanding = true;
-				new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_FEMALE),onBuyTask);
+				if(player.gem >= TaskController.instance.getTaskPrice()){
+					isCommanding = true;
+					new BuyTaskCommand(TaskController.instance.creatNpcTask(Configrations.NPC_FEMALE),onBuyTask);
+				}else{
+					DialogController.instance.showPanel(new TreasurePanel());
+				}
 			}
 		}
 		private function onBuyTask():void

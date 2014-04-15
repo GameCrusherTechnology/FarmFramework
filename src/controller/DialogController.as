@@ -1,7 +1,5 @@
 package controller
 {
-	import flash.display.Scene;
-	
 	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 	

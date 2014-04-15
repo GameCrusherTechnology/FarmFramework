@@ -3,6 +3,8 @@ package view.entity.animal
 	import flash.geom.Point;
 	import flash.utils.setTimeout;
 	
+	import controller.AnimalController;
+	
 	import model.avatar.Map;
 	import model.avatar.Tile;
 	import model.entity.AnimalItem;
@@ -24,15 +26,8 @@ package view.entity.animal
 		}
 		public function BirdEntity()
 		{
-			isLeft = Math.random()>0.5;
 			var item:AnimalItem = new AnimalItem({item_id:"60002"});
 			super(item);
-				surface.scaleX = surface.scaleY = scale;
-			if(isLeft){
-				surface.scaleX = -scale;
-				surface.x = surface.width/2;
-			}
-			flyIn();
 		}
 		
 		private var tile:Tile;
@@ -48,8 +43,25 @@ package view.entity.animal
 		override protected function creatSurface():void
 		{
 			setFlySurface(true);
-			
 			this.rotation = deg2rad(isLeft?45:-45);
+		}
+		
+		override public function play():void
+		{
+			if(!parent){
+				isLeft = Math.random()>0.5;
+				this.rotation = deg2rad(isLeft?45:-45);
+				surface.scaleX = surface.scaleY = scale;
+				if(isLeft){
+					surface.scaleX = -scale;
+					surface.x = surface.width/2;
+				}
+				configPosition();
+				Starling.juggler.add(surface);
+				scene.addAnimalEntity(this);
+				flyIn();
+				
+			}
 		}
 		
 		private function findAction():void
@@ -110,16 +122,16 @@ package view.entity.animal
 			tween = new Tween(this,time);
 			tween.moveTo(awayP.x,awayP.y);
 			tween.onComplete = function():void{
-				dispose();
+				endPlaying();
 			};
 			Starling.juggler.add(tween);
 		}
 		
-		override public function dispose():void
+		override public function endPlaying():void
 		{
 			Starling.juggler.remove(tween);
 			Starling.juggler.remove(surface);
-			super.dispose();
+			scene.removeEntity(this);
 		}
 	}
 }

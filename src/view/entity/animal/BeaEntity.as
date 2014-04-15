@@ -23,7 +23,17 @@ package view.entity.animal
 			var item:AnimalItem = new AnimalItem({item_id:"60001"});
 			super(item);
 			surface.scaleX = surface.scaleY = scale;
-			findAction();
+		}
+		override public function play():void
+		{
+			step = 0;
+			currentCrop = AnimalController.instance.getBeaCrop();
+			if(currentCrop && !parent){
+				Starling.juggler.add(surface);
+				configPosition();
+				scene.addAnimalEntity(this);
+				findAction();
+			}
 		}
 		
 		override protected function configPosition():void
@@ -40,7 +50,7 @@ package view.entity.animal
 		private function findAction():void
 		{
 			if(step >= 3){
-				dispose();
+				endPlaying();
 			}else{
 				currentCrop = AnimalController.instance.getBeaCrop();
 				if(currentCrop){
@@ -51,7 +61,7 @@ package view.entity.animal
 						movePos(tarPoint.x + (0.5-Math.random())*Configrations.Tile_Width,tarPoint.y - Configrations.Tile_Height + (0.5-Math.random())*Configrations.Tile_Height);
 					}
 				}else{
-					dispose();
+					endPlaying();
 				}
 				step++;
 			}
@@ -83,10 +93,12 @@ package view.entity.animal
 		override protected function get scale():Number{
 			return  0.3;
 		}
-		override public function dispose():void
+		
+		override public function endPlaying():void
 		{
 			Starling.juggler.remove(tween);
-			super.dispose();
+			Starling.juggler.remove(surface);
+			scene.removeEntity(this);
 		}
 	}
 }

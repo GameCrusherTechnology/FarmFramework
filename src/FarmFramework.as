@@ -159,12 +159,16 @@ package
 			// would report a very long 'passedTime' when the app is reactivated. 
 			
 			NativeApplication.nativeApplication.addEventListener(
-				flash.events.Event.ACTIVATE, function (e:*):void { mStarling.start(); 
-					VoiceController.instance.setMusicVoice(0.2);});
+				flash.events.Event.ACTIVATE, function (e:*):void { 
+					mStarling.start(); 
+					VoiceController.instance.setMusicVoice(0.2);
+				});
 			
 			NativeApplication.nativeApplication.addEventListener(
-				flash.events.Event.DEACTIVATE, function (e:*):void { mStarling.stop(true); 
-					VoiceController.instance.setMusicVoice(0);});
+				flash.events.Event.DEACTIVATE, function (e:*):void { 
+					mStarling.stop(true); 
+					VoiceController.instance.setMusicVoice(0);
+				});
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
 		}

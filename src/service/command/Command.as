@@ -1,5 +1,6 @@
 ﻿package service.command
 {
+	import flash.desktop.NativeApplication;
 	import flash.events.EventDispatcher;
 	
 	import controller.DialogController;
@@ -124,7 +125,9 @@
 		{
 			try{
 				if(obj == null){
-					DialogController.instance.showPanel(new ConfirmPanel(LanguageController.getInstance().getString("systemTip01"),function():void{},function():void{}));
+					DialogController.instance.showPanel(new ConfirmPanel(LanguageController.getInstance().getString("systemTip01"),function():void{
+						NativeApplication.nativeApplication.exit();
+					},function():void{},false));
 				}
 				else if(obj.__code == 0){
 					return true;
@@ -133,6 +136,10 @@
 					if(_restartCount <=1){
 						GameController.instance.start();
 						_restartCount++;
+					}else{
+						DialogController.instance.showPanel(new ConfirmPanel(LanguageController.getInstance().getString("systemTip01"),function():void{
+							NativeApplication.nativeApplication.exit();
+						},function():void{},false));
 					}
 				}
 			}catch(e:Error){

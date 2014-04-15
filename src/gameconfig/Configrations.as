@@ -14,8 +14,9 @@ package gameconfig
 		public static var Language:String = "en";
 		public static var VERSION:String = "1.0.0";
 		public static const DATABASE_URL:String = "";
-		public static const GATEWAY:String = "http://192.168.1.102/NewFarmServer/data/gateway.php";
+//		public static const GATEWAY:String = "http://192.168.1.102/NewFarmServer/data/gateway.php";
 //		public static const GATEWAY:String = "http://192.241.208.85/NewFarmServer/data/gateway.php";
+		public static const GATEWAY:String = "http://sunnyfarm.gamecrusher.net/NewFarmServer/data/gateway.php";
 		//拖拽 判断
 		public static const CLICK_EPSILON:int = 50;
 		public static const GRID_WIDTH:Number = 40;
@@ -131,7 +132,14 @@ package gameconfig
 		public static const LARGECOIN:String = "largeFarmCoin";
 		public static const LITTLEGEM:String = "littleFarmGem";
 		public static const LARGEGEM:String = "largeFarmGem";
-		
+		public static function get91Money(id:String):int
+		{
+			if(id == "littleFarmGem"){
+				return 10;
+			}else{
+				return 50;
+			}
+		}
 		public static const treasures:Object ={
 			"littleFarmCoin":[10000,10],
 			"largeFarmCoin":[100000,100],

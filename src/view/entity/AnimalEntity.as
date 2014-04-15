@@ -1,10 +1,6 @@
 package view.entity
 {
-	import controller.AnimalController;
-	
 	import model.entity.AnimalItem;
-	
-	import starling.core.Starling;
 
 	public class AnimalEntity extends GameEntity
 	{
@@ -17,13 +13,17 @@ package view.entity
 		public function AnimalEntity(item:AnimalItem)
 		{
 			super(item);
-			Starling.juggler.add(surface);
 		}
 		
-		override public function dispose():void
+		public function play():void
 		{
-			AnimalController.instance.removeAnimal(this);
-			super.dispose();
+			//do 
 		}
+		
+		public function endPlaying():void
+		{
+			
+		}
+		
 	}
 }

@@ -40,7 +40,7 @@ package controller
 				}
 			}
 			if(!timer){
-				timer = new Timer(5000);
+				timer = new Timer(2000);
 				timer.addEventListener(TimerEvent.TIMER,update,false,0,true);
 				timer.start();
 			}

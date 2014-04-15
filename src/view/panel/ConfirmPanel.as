@@ -25,11 +25,13 @@ package view.panel
 			private var mes:String;
 			private var onConfirmFun:Function;
 			private var onCancelFun:Function;
-			public function ConfirmPanel(str:String,onConfirm:Function,onCancel:Function)
+			private var hasCancel:Boolean;
+			public function ConfirmPanel(str:String,onConfirm:Function,onCancel:Function,needCancel:Boolean = true)
 			{
 				mes = str;
 				onConfirmFun = onConfirm;
 				onCancelFun = onCancel;
+				hasCancel = needCancel;
 				addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
 			}
 			protected function initializeHandler(event:Event):void
@@ -67,20 +69,25 @@ package view.panel
 				button.y =  Configrations.ViewPortHeight/2 + 10*scale;
 				button.addEventListener(Event.TRIGGERED,onTriggered);
 				
-				var button1:Button = new Button();
-				button1.label = LanguageController.getInstance().getString("cancel");
-				button1.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
-				button1.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
-				button1.paddingLeft =button1.paddingRight =  20;
-				button1.paddingTop =button1.paddingBottom =  10;
-				addChild(button1);
-				button1.validate();
-				button1.x = Configrations.ViewPortWidth/2 -button1.width -10*scale;
-				button1.y =  Configrations.ViewPortHeight/2 + 10*scale;
-				button1.addEventListener(Event.TRIGGERED,onTriggeredCanel);
-				
-				bsSkin.width = Math.max(mesText.width , button.x + button.width -button1.x) +30*scale;
-				bsSkin.height = button1.y +button1.height - mesText.y + 30*scale;
+				if(hasCancel){
+					var button1:Button = new Button();
+					button1.label = LanguageController.getInstance().getString("cancel");
+					button1.defaultSkin = new Image(Game.assets.getTexture("cancelButtonSkin"));
+					button1.defaultLabelProperties.textFormat  =  new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
+					button1.paddingLeft =button1.paddingRight =  20;
+					button1.paddingTop =button1.paddingBottom =  10;
+					addChild(button1);
+					button1.validate();
+					button1.x = Configrations.ViewPortWidth/2 -button1.width -10*scale;
+					button1.y =  Configrations.ViewPortHeight/2 + 10*scale;
+					button1.addEventListener(Event.TRIGGERED,onTriggeredCanel);
+				}
+				if(button1){
+					bsSkin.width = Math.max(mesText.width , button.x + button.width -button1.x) +30*scale;
+				}else{
+					bsSkin.width = Math.max(mesText.width , button.x + button.width ) +30*scale;
+				}
+				bsSkin.height = button.y +button.height - mesText.y + 30*scale;
 				bsSkin.x = Configrations.ViewPortWidth/2 - bsSkin.width/2;
 				bsSkin.y = mesText.y - 15*scale;
 			}
