@@ -15,6 +15,8 @@ package
 	import gameconfig.Configrations;
 	import gameconfig.Devices;
 	
+	import service.command.action.ActivateCommand;
+	
 	import starling.core.Starling;
 	import starling.events.Event;
 	import starling.textures.Texture;
@@ -162,6 +164,7 @@ package
 				flash.events.Event.ACTIVATE, function (e:*):void { 
 					mStarling.start(); 
 					VoiceController.instance.setMusicVoice(0.2);
+					new ActivateCommand();
 				});
 			
 			NativeApplication.nativeApplication.addEventListener(
