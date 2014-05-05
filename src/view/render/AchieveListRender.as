@@ -39,6 +39,7 @@ package view.render
 		}
 		
 		private var container:Sprite;
+		private var spec:CropSpec;
 		override public function set data(value:Object):void
 		{
 			super.data = value;
@@ -74,7 +75,7 @@ package view.render
 			}else{
 				
 			}
-			var spec:CropSpec = SpecController.instance.getItemSpec(iconId) as CropSpec;
+			spec = SpecController.instance.getItemSpec(iconId) as CropSpec;
 			
 			var toolSkin:Image = new Image(Game.assets.getTexture("toolsStateSkin"));
 			toolSkin.width = toolSkin.height = renderheight*0.8;
@@ -156,7 +157,9 @@ package view.render
 		private function onGetSuccess():void
 		{
 			isCommanding = false;
+			PlatForm.submitAchieve(spec.name,player.getAchieveLevel(achieveid));
 			data = data;
+			
 		}
 		
 		private function get player():GamePlayer

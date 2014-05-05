@@ -41,14 +41,22 @@ package model.entity
 				return 0;
 			}
 		}
+		
+		private var updateFrame:int = 0;
 		override public function update():Boolean
 		{
-			if(hasCrop && (growStep== -1 || growStep <  (cropItemSpec.growTimeArr.length))){
-				if(checkStep()){
-					return true;
+			if(updateFrame >20){
+				updateFrame = 0;
+				if(hasCrop && (growStep== -1 || growStep <  (cropItemSpec.growTimeArr.length))){
+					if(checkStep()){
+						return true;
+					}
 				}
+				return false;
+			}else{
+				updateFrame ++;
+				return false;
 			}
-			return false;
 		}
 		private function checkStep():Boolean
 		{

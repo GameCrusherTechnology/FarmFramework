@@ -5,13 +5,17 @@ package service.command
 	import gameconfig.Configrations;
 	
 	import model.player.GamePlayer;
+	
+	import service.command.action.UpdateCacheAction;
 
 	public class LoginCommand extends AbstractCommand
 	{
 		private var onLoginSuccess:Function;
+		private var lastTime:Number;
 		public function LoginCommand(callBack:Function)
 		{
 			onLoginSuccess =callBack;
+			lastTime = new Date().time;
 			super(Command.LOGIN,onLogin,{name:GameController.instance.userID})
 		}
 		private function onLogin(result:Object):void
@@ -29,6 +33,8 @@ package service.command
 					Configrations.treasuresActivity = result.treasuresActivity;
 				}
 				onLoginSuccess();
+				
+				new UpdateCacheAction("login",String(new Date().time-lastTime));
 			}
 		}
 	}

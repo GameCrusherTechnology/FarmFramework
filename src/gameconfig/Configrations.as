@@ -179,10 +179,10 @@ package gameconfig
 			return int(int(spec.item_id)/1000)==25;
 		}
 		//analytic id
-		public static const ANALYTIC_BUY:int = 10000;
-		public static const ANALYTIC_BUY_NOT_VALIABLE:int = 10001;
-		public static const ANALYTIC_BUY_ERROR:int = 10002;
-		public static const ANALYTIC_BUY_SUC:int = 10003;
+		public static const ANALYTIC_BUY:String = "10000";
+		public static const ANALYTIC_BUY_NOT_VALIABLE:String = "10001";
+		public static const ANALYTIC_BUY_ERROR:String = "10002";
+		public static const ANALYTIC_BUY_SUC:String = "10003";
 		
 		
 		public static function get isLocalTest():Boolean

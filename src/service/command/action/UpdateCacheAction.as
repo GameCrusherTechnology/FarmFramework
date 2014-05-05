@@ -7,9 +7,9 @@ package service.command.action
 	
 	public class UpdateCacheAction extends AbstractCommand
 	{
-		public function UpdateCacheAction(actionId:int)
+		public function UpdateCacheAction(actionId:String,p:String = "")
 		{
-			super(Command.UPDATEACTIONS,onResult,{actionId:actionId,version:Capabilities.version});
+			super(Command.UPDATEACTIONS,onResult,{actionId:actionId,version:Capabilities.version,detail:p});
 		}
 		private function onResult(result:Object):void
 		{

@@ -35,7 +35,7 @@ package controller
 		public var selectTool:String;
 		public var selectSeed:String;
 		public var isNewer:Boolean = false;
-		public var userID:String = "super_man_01";
+		public var userID:String = "super_man_02";
 		//super_man_01
 		private static var _controller:GameController;
 		public static function get instance():GameController
@@ -193,9 +193,13 @@ package controller
 			
 		}
 		
+		public function levelUp():void
+		{
+			PlatForm.submitScore(localPlayer.level);
+		}
 		public function get VersionMes():Array
 		{
-			return ["1","2","3"];
+			return [];
 		}
 		public function get isHomeModel():Boolean
 		{

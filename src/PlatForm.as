@@ -13,8 +13,8 @@ package
 			var sData:String = JSON.stringify({
 				'nonce':-4845357686530827055,
 				'orders':[{
-					'notificationId':'-6441531684346654540',
-					'orderId':'12999763169054705758.1324177654896095',
+					'notificationId':'-64415316843466545457',
+					'orderId':'129997631690547057581.13241776548960951',
 					'packageName':'air.Farmland.andriod',
 					'productId':'sunny_farm.littlefarmgem',
 					'purchaseTime':1392002287294,
@@ -37,7 +37,18 @@ package
 			});
 			
 		}
+		//score
+		public static function submitScore(score:int):void
+		{
+			trace("no score");
+		}
 		
+		//achieve
+		
+		public static function submitAchieve(achieve:String,process:int):void
+		{
+			trace("no achieve");
+		}
 		
 	}	
 }

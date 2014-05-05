@@ -1,6 +1,7 @@
 package model.player
 {
 	import controller.FriendInfoController;
+	import controller.GameController;
 	import controller.SpecController;
 	import controller.UiController;
 	
@@ -66,7 +67,14 @@ package model.player
 		public var exp:int = 500;
 		public function addExp(e:int):void
 		{
+			var lastLevel:int = level;
 			exp += e;
+			if(GameController.instance.isHomeModel){
+				var newlevel:int = level;
+				if(newlevel > lastLevel){
+					GameController.instance.levelUp();
+				}
+			}
 			UiController.instance.configExpBar();
 		}
 		public function get level():int

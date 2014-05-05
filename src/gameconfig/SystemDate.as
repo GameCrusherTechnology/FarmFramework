@@ -20,7 +20,9 @@ package gameconfig
 		//毫秒级
 		public static function get systemTimeMS():Number
 		{
-			date = new Date();
+			if(!date){
+				date = new Date();
+			}
 			if(isNaN(timeReduce)){
 				return date.getTime();
 			}

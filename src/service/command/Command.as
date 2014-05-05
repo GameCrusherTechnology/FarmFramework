@@ -126,12 +126,7 @@
 		static private function checkSuccess(obj:Object,bSetAcivity:Boolean=false):Boolean
 		{
 			try{
-				if(obj == null){
-					DialogController.instance.showPanel(new ConfirmPanel(LanguageController.getInstance().getString("systemTip01"),function():void{
-						NativeApplication.nativeApplication.exit();
-					},function():void{},false));
-				}
-				else if(obj.__code == 0){
+				if(obj && obj.__code == 0){
 					return true;
 				}else{
 					DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("systemTip02")));
