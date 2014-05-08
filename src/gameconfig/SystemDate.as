@@ -1,5 +1,6 @@
 package gameconfig
 {
+	import flash.utils.getTimer;
 
 	public class SystemDate
 	{
@@ -8,34 +9,28 @@ package gameconfig
 		}
 		
 		private static var _systemTime:Number;
-		public static var timeReduce:Number ;
+//		public static var timeReduce:Number ;
 		private static var date:Date;
 		
 		public static function set systemTime(serverTime:Number):void
 		{
-			date = new Date();
-			timeReduce  = date.getTime()- serverTime*1000;
+//			date = new Date();
+//			timeReduce  = date.getTime()- serverTime*1000;
+			trace(getTimer());
+			_systemTime = (serverTime-Math.floor(getTimer()/1000));
 		}
 		
-		//毫秒级
-		public static function get systemTimeMS():Number
-		{
-			if(!date){
-				date = new Date();
-			}
-			if(isNaN(timeReduce)){
-				return date.getTime();
-			}
-			return (date.getTime() - timeReduce);
-		}
+		
 		//秒级
 		public static function get systemTimeS():Number
 		{
-			date = new Date();
-			if(isNaN(timeReduce)){
-				return Math.floor(date.getTime()/1000);
-			}
-			return Math.floor((date.getTime() - timeReduce)/1000);
+//			date = new Date();
+//			if(isNaN(timeReduce)){
+//				return Math.floor(date.getTime()/1000);
+//			}
+//			return Math.floor((date.getTime() - timeReduce)/1000);
+			
+			return _systemTime +  Math.floor(getTimer()/1000);
 		}
 		public static function getTimeLeftString(time:Number):String
 		{

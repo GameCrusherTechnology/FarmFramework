@@ -5,6 +5,7 @@ package view.panel
 	import controller.FieldController;
 	import controller.SpecController;
 	import controller.TutorialController;
+	import controller.UiController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
@@ -15,6 +16,7 @@ package view.panel
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	import gameconfig.SystemDate;
 	
 	import model.gameSpec.ItemSpec;
 	
@@ -25,13 +27,14 @@ package view.panel
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	import starling.textures.Texture;
-	import starling.utils.deg2rad;
 	
 	public class PayActivitiesPanel extends PanelScreen
 	{
 		private var panelwidth:Number;
 		private var panelheight:Number;
 		private var scale:Number;
+		
+		private var timeText:TextField;
 		public function PayActivitiesPanel()
 		{
  			addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
@@ -60,12 +63,15 @@ package view.panel
 			titleText.x = panelSkin.x;
 			titleText.y = panelSkin.y + 30*scale;
 			
-			
+			timeText = FieldController.createSingleLineDynamicField(panelwidth,30," ",0xff00ff,25,true);
+			addChild(timeText);
+			timeText.x = panelSkin.x;
+			timeText.y =  titleText.y +titleText.height + 5*scale;
 			
 			var littlePart:Sprite = configLittlePart();
 			addChild(littlePart);
 			littlePart.x = Configrations.ViewPortWidth*0.1 + panelwidth*0.1;
-			littlePart.y = titleText.y + titleText.height + 20*scale;
+			littlePart.y = timeText.y + timeText.height + 10*scale;
 			
 			var largePart:Sprite = configLargePart();
 			addChild(largePart);
@@ -84,6 +90,23 @@ package view.panel
 			
 			panelSkin.height = largePart.y + largePart.height + 20*scale - Configrations.ViewPortHeight*0.15;
 			
+			
+			addEventListener(Event.ENTER_FRAME,onEnterFrame);
+			
+		}
+		
+		private var sysTime:Number;
+		private function onEnterFrame(e:Event):void
+		{
+			if(timeText && Configrations.treasuresActivity.time){
+				sysTime = SystemDate.systemTimeS;
+				
+				if(Configrations.treasuresActivity.time > sysTime){
+					timeText.text = SystemDate.getTimeLeftString(Configrations.treasuresActivity.time - SystemDate.systemTimeS);
+				}else{
+					dispose();
+				}
+			}
 		}
 		private function configLittlePart():Sprite
 		{
@@ -241,13 +264,19 @@ package view.panel
 		}
 		private function onTriggered(e:Event):void
 		{
+			dispose();
+		}
+		
+		override public function dispose():void
+		{
+			removeEventListener(Event.ENTER_FRAME,onEnterFrame);
 			if(TutorialController.instance.inTutorial){
 				TutorialController.instance.playNextStep();
 			}
 			if(parent){
 				parent.removeChild(this);
 			}
-			dispose();
+			super.dispose();
 		}
 	}
 }

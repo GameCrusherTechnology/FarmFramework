@@ -1,6 +1,7 @@
 package controller
 {
 	import gameconfig.Configrations;
+	import gameconfig.SystemDate;
 	
 	import model.player.GamePlayer;
 	
@@ -139,23 +140,26 @@ package controller
 		}
 		
 		private var activityBut:TreasureActivityButton;
-		private var hasClickActivity:Boolean = false;
 		private function showTreasureActivity():void
 		{
-			if(!hasClickActivity && Configrations.treasuresActivity){
-				if(!activityBut){
-					activityBut = new TreasureActivityButton();
+			if(Configrations.treasuresActivity &&　Configrations.treasuresActivity){
+				var activityTime:Number = Configrations.treasuresActivity.time;
+				if(activityTime && (activityTime<SystemDate.systemTimeS)){
+					
+				}else{
+					if(!activityBut){
+						activityBut = new TreasureActivityButton();
+					}
+					if(!activityBut.parent){
+						_layer.addChild(activityBut);
+					}
+					activityBut.x = 10;
+					activityBut.y = taskButton.y + taskButton.height + 20*scale;
 				}
-				if(!activityBut.parent){
-					_layer.addChild(activityBut);
-				}
-				activityBut.x = 10;
-				activityBut.y = taskButton.y + taskButton.height + 20*scale;
 			}
 		}
 		public function removeActivityBut():void
 		{
-			hasClickActivity = true;
 			hideTreasureActivity();
 		}
 		private function hideTreasureActivity():void
