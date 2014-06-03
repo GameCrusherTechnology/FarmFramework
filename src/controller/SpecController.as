@@ -10,6 +10,7 @@ package controller
 	import model.gameSpec.ExtendSpec;
 	import model.gameSpec.FormulaItemSpec;
 	import model.gameSpec.ItemSpec;
+	import model.gameSpec.RanchSpec;
 	
 	public class SpecController
 	{
@@ -92,8 +93,12 @@ package controller
 					return EntityItemSpec;
 				case "Animal":
 					return AnimalItemSpec;
+				case "WildAnimal":
+					return AnimalItemSpec;
 				case "Formula":
 					return FormulaItemSpec;
+				case "Ranch":
+					return RanchSpec;
 					default:
 						return ItemSpec;
 			}
@@ -131,10 +136,16 @@ package controller
 					group = "Entity";
 					break;
 				case 6:
-					group = "Animal";
+					group = "WildAnimal";
 					break;
 				case 7:
 					group = "Formula";
+					break;
+				case 8:
+					group = "Animal";
+					break;
+				case 9:
+					group = "Ranch";
 					break;
 			}
 			return group;

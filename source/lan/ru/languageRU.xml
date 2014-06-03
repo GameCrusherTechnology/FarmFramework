@@ -80,6 +80,7 @@
 	<resourceName key="buyland" value="Купить сельхозугодий"/>
 	<resourceName key="buyscene" value="Продлить всю ферму"/>
 	<resourceName key="field" value="поле"/>
+	<resourceName key="congratulation" value="поздравление"/>
 	<resourceName key="find" value="открытие"/>
 	<resourceName key="versionUp" value="Обновление версии:"/>
 	<resourceName key="shopTip01" value="В магазин, чтобы купить урожай слишком неразумно !"/>
@@ -185,10 +186,33 @@
 	<resourceName key="Forage04" value="трава"/>
 	<resourceName key="Forage05" value="трава"/>
 	<resourceName key="Forage06" value="трава"/>
+	<resourceName key="chick" value="курица "/>
+	<resourceName key="duck" value="утка "/>
+	<resourceName key="sheep" value="овца "/>
+	<resourceName key="rabbit" value="кролик "/>
+	<resourceName key="cow" value="корова "/>
+	<resourceName key="ChickHouse" value="Чик Главная "/>
+	<resourceName key="DuckHouse" value="Дак Главная "/>
+	<resourceName key="SheepHouse" value="овца Главная"/>
+	<resourceName key="RabbitHouse" value="Кролик Главная "/>
+	<resourceName key="CowHouse" value="Корова Главная "/>
+	<resourceName key="Egg" value="яйца "/>
+	<resourceName key="DuckEgg" value="Утиное яйцо "/>
+	<resourceName key="Wool" value="шерсть "/>
+	<resourceName key="ConyHair" value="кролик волосы"/>
+	<resourceName key="Milk" value="молоко "/>
+	<resourceName key="ChickFood" value="гроши "/>
+	<resourceName key="DuckFood" value="Утка поток "/>
+	<resourceName key="SheepFood" value="Овцы поток "/>
+	<resourceName key="RabbitFood" value="Кролик поток "/>
+	<resourceName key="CowFood" value="Корова поток"/>
 	<resourceName key="littleFarmCoin" value="немного золота"/>
 	<resourceName key="largeFarmCoin" value="большое золота"/>
 	<resourceName key="littleFarmGem" value="немного жемчужина"/>
 	<resourceName key="largeFarmGem" value="большое жемчужина"/>
+	<resourceName key="crop" value="урожай "/>
+	<resourceName key="tree" value="дерево "/>
+	<resourceName key="animal" value="животное"/>
 	<resourceName key="tutorTip01" value="Давайте сначала ознакомиться с основными функциями ферме это! Первые уборки основных сельскохозяйственных культур. "/>
 	<resourceName key="tutorTip02" value="Тогда в праздных полей посажены новые культуры. "/>
 	<resourceName key="tutorTip03" value="Не могу дождаться этого! Удобрение видеть. "/>

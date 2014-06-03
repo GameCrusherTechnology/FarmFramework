@@ -80,6 +80,7 @@
 	<resourceName key="buyland" value="購買農田"/>
 	<resourceName key="buyscene" value="擴建農場"/>
 	<resourceName key="field" value="田地"/>
+	<resourceName key="congratulation" value="祝賀"/>
 	<resourceName key="find" value="搜尋"/>
 	<resourceName key="versionUp" value="版本更新："/>
 	<resourceName key="shopTip01" value="在本店購買作物過多是不明智的！"/>
@@ -185,10 +186,33 @@
 	<resourceName key="Forage04" value="草"/>
 	<resourceName key="Forage05" value="草"/>
 	<resourceName key="Forage06" value="草"/>
+	<resourceName key="chick" value="雞"/>
+	<resourceName key="duck" value="鴨子"/>
+	<resourceName key="sheep" value="羊"/>
+	<resourceName key="rabbit" value="白兔"/>
+	<resourceName key="cow" value="牛"/>
+	<resourceName key="ChickHouse" value="雞舍"/>
+	<resourceName key="DuckHouse" value="鴨舍"/>
+	<resourceName key="SheepHouse" value="羊圈"/>
+	<resourceName key="RabbitHouse" value="兔子窩"/>
+	<resourceName key="CowHouse" value="牛棚"/>
+	<resourceName key="Egg" value="雞蛋"/>
+	<resourceName key="DuckEgg" value="鴨蛋"/>
+	<resourceName key="Wool" value="羊毛"/>
+	<resourceName key="ConyHair" value="兔毛"/>
+	<resourceName key="Milk" value="牛奶"/>
+	<resourceName key="ChickFood" value="雞飼料"/>
+	<resourceName key="DuckFood" value="鴨飼料"/>
+	<resourceName key="SheepFood" value="羊飼料"/>
+	<resourceName key="RabbitFood" value="兔飼料"/>
+	<resourceName key="CowFood" value="牛飼料"/>
 	<resourceName key="littleFarmCoin" value="少量金幣"/>
 	<resourceName key="largeFarmCoin" value="大量金幣"/>
 	<resourceName key="littleFarmGem" value="少量寶石"/>
 	<resourceName key="largeFarmGem" value="大量寶石"/>
+	<resourceName key="crop" value="作物 "/>
+	<resourceName key="tree" value="樹 "/>
+	<resourceName key="animal" value="動物"/>
 	<resourceName key="tutorTip01" value="讓我們先熟悉下農場基本操作吧！首先是收穫作物。"/>
 	<resourceName key="tutorTip02" value="再在空閒的田地裡種上新的作物。"/>
 	<resourceName key="tutorTip03" value="等不及啦！施肥料看看吧。"/>

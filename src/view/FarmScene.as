@@ -5,6 +5,7 @@ package view
 	
 	import controller.DialogController;
 	import controller.GameController;
+	import controller.SpecController;
 	import controller.UiController;
 	import controller.UpdateController;
 	
@@ -17,8 +18,10 @@ package view
 	import model.UpdateData;
 	import model.avatar.Map;
 	import model.avatar.Tile;
+	import model.entity.AnimalItem;
 	import model.entity.CropItem;
 	import model.entity.EntityItem;
+	import model.gameSpec.RanchSpec;
 	import model.player.GamePlayer;
 	
 	import service.command.friend.HelpFriendCommand;
@@ -29,6 +32,7 @@ package view
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.display.Sprite;
+	import starling.display.graphics.Stroke;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
@@ -38,6 +42,8 @@ package view
 	import view.entity.CropEntity;
 	import view.entity.GameEntity;
 	import view.entity.HouseEntity;
+	import view.entity.RanchEntity;
+	import view.entity.StandAnimalEntity;
 	import view.panel.ExtendFarmLandPanel;
 	import view.panel.WarnnigTipPanel;
 
@@ -105,9 +111,18 @@ package view
 			for each(entityItem in player.decorationItems){
 				if(entityItem.ishouse){
 					entity = new HouseEntity(entityItem);
+				}else if(entityItem.isRanch){
+					entity = new RanchEntity(entityItem);
 				}else{
 					entity = new GameEntity(entityItem);
 				}
+				addEntityLayer(entity);
+				entityDic.push(entity);
+				maxDecId = Math.max(maxDecId,entityItem.data_id);
+			}
+			
+			for each(entityItem in player.userRanchItems){
+				entity = new RanchEntity(entityItem);
 				addEntityLayer(entity);
 				entityDic.push(entity);
 				maxDecId = Math.max(maxDecId,entityItem.data_id);
@@ -120,8 +135,26 @@ package view
 				entityDic.push(entity);
 			}
 			
+			var houseEntity:GameEntity;
+			var animalItem:AnimalItem;
+			for each(animalItem in player.animalItems){
+				maxAnimalId = Math.max(maxAnimalId,animalItem.data_id);
+				for each(var et:GameEntity in entityDic){
+					if(et is RanchEntity && et.item.data_id == animalItem.house_id){
+						entity = new AnimalEntity(animalItem as AnimalItem,et as RanchEntity);
+						addEntityLayer(entity);
+						entityDic.push(entity);
+						break;
+					}
+				}
+			}
+			if(GameController.instance.isHomeModel){
+				checkNewAnimal();
+			}
 			sortEntityLayer();
 		}
+		
+		
 		private function addCropEntity(cropItem:CropItem):void
 		{
 			var crop:CropEntity = new CropEntity(cropItem);
@@ -135,26 +168,73 @@ package view
 			var entity:GameEntity = new GameEntity(item);
 			addEntityLayer(entity);
 			entityDic.push(entity);
-			maxDecId = Math.max(maxDecId,item.data_id);
+			if(item.data_id){
+				maxDecId = Math.max(maxDecId,item.data_id);
+			}
 			sortEntityLayer();
 		}
-		public function addAnimalEntity(entity:AnimalEntity):void
+		public function addAnimalEntity(entity:GameEntity):void
 		{
+			if(entity.item.data_id){
+				maxAnimalId = Math.max(maxAnimalId,entity.item.data_id);
+			}
 			addEntityLayer(entity);
 			entityDic.push(entity);
 			sortEntityLayer();
 		}
+		
+		private var standAnimal:StandAnimalEntity;
+		public function checkNewAnimal():void
+		{
+			var ranchSpecGroup:Object = SpecController.instance.getGroup("Ranch");
+			var spec:RanchSpec;
+			var ranchVec:Array = [];
+			for each(spec in ranchSpecGroup){
+				var needLevel:String = spec.extendLevel;
+				var levelArr :Array = needLevel.split("|");
+				for each(var l:String in levelArr){
+					ranchVec.push({level:l,item_id:spec.item_id});
+				}
+			}
+			ranchVec.sortOn("level", Array.NUMERIC);
 			
+			var idObj:Object ;
+			var entityItem:EntityItem;
+			var animalId:String;
+			for each(entityItem in player.userRanchItems){
+				for each(idObj in ranchVec)
+				{
+					if(entityItem.item_id == idObj['item_id']){
+						
+						ranchVec.splice(ranchVec.indexOf(idObj),1);
+						break;
+					}
+				}
+			}
+			
+			if(ranchVec.length > 0){
+				animalId = SpecController.instance.getItemSpec(ranchVec[0]['item_id']).boundId;
+				standAnimal = new StandAnimalEntity(new AnimalItem({"item_id":animalId}),ranchVec[0]['level']);
+				addAnimalEntity(standAnimal);
+			}
+			
+		}
+		public function removeStandAnimal():void
+		{
+			if(standAnimal){
+				standAnimal.dispose();
+			}
+		}
 		public function removeEntity(entity:GameEntity):void{
 				var index:int = entityDic.indexOf(entity);
 				if(index >=0){
 					entityDic.splice(index,1);
-					if(entity is CropEntity && (entity as CropEntity).fieldSUR.parent){
-						fieldLayer.removeChild((entity as CropEntity).fieldSUR);
-					}
-					if(entity.parent){
-						entity.parent.removeChild(entity);
-					}
+				}
+				if(entity is CropEntity && (entity as CropEntity).fieldSUR.parent){
+					fieldLayer.removeChild((entity as CropEntity).fieldSUR);
+				}
+				if(entity.parent){
+					entity.parent.removeChild(entity);
 				}
 		}
 		
@@ -212,19 +292,23 @@ package view
 			//touch begin
 			var beginTouch:Touch = evt.getTouch(this,TouchPhase.BEGAN);
 			if(beginTouch){
-				mouseDownPos = new Point(beginTouch.globalX, beginTouch.globalY);
-				curBeginTouch = beginTouch;
-				if(GameController.instance.selectTool == UiController.TOOL_ADDFEILD){
-					scenePos = beginTouch.getLocation(this);
-					addField(scenePos,2,2);
+				if(currentMoveEntity && beginTouch.target is Stroke){
 				}else{
-					mouseDownEntity = findEntity(mouseDownPos,TouchPhase.BEGAN);
-					if(!mouseDownEntity){
-						mouseDownEntity = findEntityByTouch(mouseDownPos,TouchPhase.BEGAN);
+					mouseDownPos = new Point(beginTouch.globalX, beginTouch.globalY);
+					curBeginTouch = beginTouch;
+					if(GameController.instance.selectTool == UiController.TOOL_ADDFEILD){
+						scenePos = beginTouch.getLocation(this);
+						addField(scenePos,2,2);
+					}else{
+						mouseDownEntity = findEntity(mouseDownPos,TouchPhase.BEGAN);
 						if(!mouseDownEntity){
-							UiController.instance.hideUiTools();
+							mouseDownEntity = findEntityByTouch(mouseDownPos,TouchPhase.BEGAN);
+							if(!mouseDownEntity){
+								UiController.instance.hideUiTools();
+							}
 						}
 					}
+
 				}
 			}
 			
@@ -300,7 +384,7 @@ package view
 			}
 			return true;
 		}
-		private function sortEntityLayer():void
+		public function sortEntityLayer():void
 		{
 			var depthArr:Array = [];
 			var objA:DisplayObject;
@@ -347,7 +431,11 @@ package view
 		{
 			if(currentMoveEntity){
 				currentMoveEntity.cancel();
-				addEntityLayer(currentMoveEntity);
+				if(isNaN(currentMoveEntity.item.data_id)){
+					currentMoveEntity.dispose();
+				}else{
+					addEntityLayer(currentMoveEntity);
+				}
 				currentMoveEntity = null;
 			}
 			
@@ -586,5 +674,6 @@ package view
 		}
 		private var maxFieldId:int = 1000;
 		public var maxDecId:int = 1000;
+		public var maxAnimalId:int = 1000;
 	}
 }

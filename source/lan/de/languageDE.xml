@@ -80,6 +80,7 @@
 	<resourceName key="buyland" value="Ackerland kaufen"/>
 	<resourceName key="buyscene" value="Verlängern Sie die gesamte Farm"/>
 	<resourceName key="field" value="Feld"/>
+	<resourceName key="congratulation" value="Glückwunsch"/>
 	<resourceName key="find" value="Entdeckung"/>
 	<resourceName key="versionUp" value="Versionsupdate :"/>
 	<resourceName key="shopTip01" value="In dem Geschäft , um die Ernte zu kaufen ist unklug !"/>
@@ -185,10 +186,33 @@
 	<resourceName key="Forage04" value="Gras"/>
 	<resourceName key="Forage05" value="Gras"/>
 	<resourceName key="Forage06" value="Gras"/>
+	<resourceName key="chick" value="Huhn "/>
+	<resourceName key="duck" value="Ente "/>
+	<resourceName key="sheep" value="Schaf "/>
+	<resourceName key="rabbit" value="Kaninchen"/>
+	<resourceName key="cow" value="Milchkuh"/>
+	<resourceName key="ChickHouse" value="Küken Hause"/>
+	<resourceName key="DuckHouse" value="Ente Hause"/>
+	<resourceName key="SheepHouse" value="Schaf Hause "/>
+	<resourceName key="RabbitHouse" value="Kaninchen Hause  "/>
+	<resourceName key="CowHouse" value="Milchkuh Hause"/>
+	<resourceName key="Egg" value="Eier "/>
+	<resourceName key="DuckEgg" value="Ei Ente "/>
+	<resourceName key="Wool" value="Wolle "/>
+	<resourceName key="ConyHair" value="Kaninchen Haar"/>
+	<resourceName key="Milk" value="Milch "/>
+	<resourceName key="ChickFood" value="Huhn Zuführung"/>
+	<resourceName key="DuckFood" value="Ente Zuführung"/>
+	<resourceName key="SheepFood" value="Schaf Zuführung"/>
+	<resourceName key="RabbitFood" value="Kaninchen Zuführung"/>
+	<resourceName key="CowFood" value="Milchkuh Zuführung"/>
 	<resourceName key="littleFarmCoin" value="kleine Münze"/>
 	<resourceName key="largeFarmCoin" value="große Münze"/>
 	<resourceName key="littleFarmGem" value="kleine Juwel"/>
 	<resourceName key="largeFarmGem" value="große Juwel"/>
+	<resourceName key="crop" value="Ernte "/>
+	<resourceName key="tree" value="Baum "/>
+	<resourceName key="animal" value="Tier"/>
 	<resourceName key="tutorTip01" value="Lassen Sie uns zunächst mit den grundlegenden Betrieb des Bauernhofes damit vertraut zu werden! Erste Ernte Ernten. "/>
 	<resourceName key="tutorTip02" value="Dann in den Leerlauf Felder gepflanzt neue Kulturpflanzen. "/>
 	<resourceName key="tutorTip03" value="Kann nicht warten, für sie! Dünger, um zu sehen. "/>

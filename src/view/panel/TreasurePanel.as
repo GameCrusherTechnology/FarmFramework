@@ -194,7 +194,7 @@ package view.panel
 				var gemIcon :Image = new Image(Game.assets.getTexture(butTextureName));
 				container.addChild(gemIcon);
 				gemIcon.width =gemIcon.height = buyButton.height;
-				gemIcon.x = buyButton.x - gemIcon.width/3;
+				gemIcon.x = buyButton.x - gemIcon.width*2/3;
 				gemIcon.y = buyButton.y;
 			}
 			

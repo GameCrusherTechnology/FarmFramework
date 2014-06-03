@@ -10,6 +10,7 @@ package model.player
 	import model.MessageData;
 	import model.OwnedItem;
 	import model.SkillData;
+	import model.entity.AnimalItem;
 	import model.entity.CropItem;
 	import model.entity.EntityItem;
 	import model.gameSpec.AchieveItemSpec;
@@ -161,7 +162,38 @@ package model.player
 		{
 			decorationItems.push(item);
 		}
+		//animal
+		public var animalItems:Array = [];
 		
+		public function addAnimal(item:AnimalItem):void
+		{
+			animalItems.push(item);
+		}
+		private function set user_animal(data:Object):void
+		{
+			var animal_obj:Object;
+			var animalItem:AnimalItem;
+			for each(animal_obj in data){
+				animalItem = new AnimalItem(animal_obj);
+				animalItems.push(animalItem);
+			}
+		}
+		
+		public var userRanchItems:Array=[];
+		private function set user_ranch(data:Object):void
+		{
+			var ranch_obj:Object;
+			var entityItem:EntityItem;
+			for each(ranch_obj in data){
+				entityItem = new EntityItem(ranch_obj);
+				userRanchItems.push(entityItem);
+			}
+		}
+		
+		public function addRanch(item:EntityItem):void
+		{
+			userRanchItems.push(item);
+		}
 		//skill
 		public var skill_time:int;
 		public var skillData:SkillData = new SkillData();
@@ -333,8 +365,16 @@ package model.player
 					return int(achieveArr[0].charAt(index));
 				}else if(achieveSpec.type == "Tree"){
 					index = (int(id)-34000);
-					return int(achieveArr[1].charAt(index));
+					if(achieveArr[1]){
+						return int(achieveArr[1].charAt(index));
+					}
+				}else if(achieveSpec.type == "Animal"){
+					index = (int(id)-35000);
+					if(achieveArr[2]){
+						return int(achieveArr[2].charAt(index));
+					}
 				}
+				
 			}else{
 				return 0;
 			}

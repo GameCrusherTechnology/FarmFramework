@@ -14,7 +14,7 @@ package gameconfig
 		public static var Language:String = "en";
 		public static var VERSION:String = "1.0.0";
 		public static const DATABASE_URL:String = "";
-//		public static const GATEWAY:String = "http://192.168.1.102/NewFarmServer/data/gateway.php";
+//		public static const GATEWAY:String = "http://192.168.1.101/NewFarmServer/data/gateway.php";
 //		public static const GATEWAY:String = "http://192.241.208.85/NewFarmServer/data/gateway.php";
 		public static const GATEWAY:String = "http://sunnyfarm.gamecrusher.net/NewFarmServer/data/gateway.php";
 		//拖拽 判断
@@ -78,8 +78,9 @@ package gameconfig
 		public static const HARVEST:int = 4;
 		public static const MOVE:int = 5;
 		public static const SELL:int = 6;
-		
-		
+		public static const BUILD:int = 7;
+		public static const HARVESTANIMAL:int = 8;
+		public static const FEEDANIMAL:int = 9;
 		//npc
 		public static const NPC_NONE:int=0;
 		public static const NPC_MALE:int=1;
@@ -153,8 +154,8 @@ package gameconfig
 			var achieveid :String;
 			if(type == "harvestCrop"){
 				achieveid = String(int(id)+20000);
-			}else{
-				achieveid = String(int(id)+20000);
+			}else if(type == "harvestAnimal"){
+				achieveid = String(int(id)-45000);
 			}
 			return achieveid;
 		}
@@ -164,10 +165,13 @@ package gameconfig
 			var count:int ;
 			if(achieveStr){
 				var achArr:Array = achieveStr.split("|");
+				var p:String ;
+				var index:int;
 				for each(var str:String in achArr){
-					var index:int;
+					index = 0;
 					for(index;index<str.length;index++){
-						count += int(str.charAt(index));
+						p = str.charAt(index);
+						count += int(p);
 					}
 				}
 			}

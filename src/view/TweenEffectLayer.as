@@ -15,7 +15,7 @@ package view
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.text.TextField;
-	import starling.textures.Texture;
+	import starling.text.TextFieldAutoSize;
 	import starling.utils.HAlign;
 	import starling.utils.deg2rad;
 	
@@ -37,8 +37,8 @@ package view
 			effectSp.addChild( starIcon);
 			starIcon.width = starIcon.height = 30 *Configrations.ViewScale ;
 			var scale:Number = starIcon.scaleX *2;
-			var text:TextField = FieldController.createSingleLineDynamicField(100,16,"+"+addExp,0xffffff,15,true);
-			text.hAlign = HAlign.LEFT;
+			var text:TextField = FieldController.createSingleLineDynamicField(100,30," +"+addExp,0x000000,20,true);
+			text.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 			effectSp.addChild( text);
 			text.x = starIcon.x + starIcon.width;
 			text.y = starIcon.y + starIcon.height/2 - text.height/2;
@@ -51,6 +51,35 @@ package view
 			tween.scaleTo(scale);
 			Starling.juggler.add(tween);
 			tween.onComplete = function(){
+				if(effectSp&&effectSp.parent){
+					removeChild(effectSp);
+					effectSp = null;
+				}
+				
+			};
+		}
+		
+		public function showFeedEffect(display:DisplayObject,startPoint:Point,delay:Number=0):void
+		{
+			var tween:Tween;
+			var effectSp:Sprite =new Sprite;
+			effectSp.touchable = false;
+			var starIcon:DisplayObject = display;
+			effectSp.addChild( starIcon);
+			starIcon.width = starIcon.height = 30 *Configrations.ViewScale ;
+			var text:TextField = FieldController.createSingleLineDynamicField(100,30," ×1",0x000000,20,true);
+			text.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
+			effectSp.addChild( text);
+			text.x = starIcon.x + starIcon.width;
+			text.y = starIcon.y + starIcon.height/2 - text.height/2;
+			addChild(effectSp);
+			effectSp.x = startPoint.x - effectSp.width/2;
+			effectSp.y = startPoint.y - effectSp.height;
+			
+			tween = new Tween(effectSp,2,Transitions.LINEAR);
+			tween.animate("y", effectSp.y + 30);
+			Starling.juggler.add(tween);
+			tween.onComplete = function():void{
 				if(effectSp&&effectSp.parent){
 					removeChild(effectSp);
 					effectSp = null;

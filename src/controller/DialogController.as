@@ -29,7 +29,7 @@ package controller
 			return _factoryPanel;
 		}
 		
-		public function showFacPanel():void
+		public function showFacPanel(item_id:String = null):void
 		{
 			if(!_factoryPanel){
 				_factoryPanel = new FactoryPanel();
@@ -37,6 +37,9 @@ package controller
 				_factoryPanel.refresh();
 			}
 			showPanel(_factoryPanel);
+			if(item_id){
+				_factoryPanel.showItem(item_id);
+			}
 		}
 		public function showPanel(panel:Sprite,exclusive:Boolean=false):void
 		{

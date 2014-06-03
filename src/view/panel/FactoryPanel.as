@@ -75,7 +75,7 @@ package view.panel
 			cancelButton.defaultSkin = new Image(Game.assets.getTexture("closeButtonIcon"));
 			cancelButton.addEventListener(Event.TRIGGERED, closeButton_triggeredHandler);
 			addChild(cancelButton);
-			cancelButton.width = cancelButton.height = panelheight*0.05;
+			cancelButton.width = cancelButton.height = panelheight*0.08;
 			cancelButton.x = Configrations.ViewPortWidth*0.99 -cancelButton.width ;
 			cancelButton.y = Configrations.ViewPortHeight*0.01 ;
 		}
@@ -86,6 +86,24 @@ package view.panel
 			refreshHarvestButEnable();
 		}
 		
+		
+		private var lastItems:Array=[];
+		public function showItem(item_id:String):void
+		{
+			var goupe:Object = SpecController.instance.getGroup("Formula");
+			var spec:FormulaItemSpec;
+			var speArr:Array = [];
+			for each(spec in goupe){
+				var proId:String = spec.product.split(":")[0];
+				if(item_id == proId && lastItems.indexOf(spec)<=-1){
+					speArr.push(spec);
+					break;
+				}
+			}
+			lastItems = lastItems.concat(speArr);
+			formulasList.dataProvider = new ListCollection(lastItems);
+			formulasList.validate();
+		}
 		private function configSpeedContainer():void
 		{
 			var container:Sprite = new Sprite();
@@ -518,6 +536,7 @@ package view.panel
 		}
 		private function destroy():void
 		{
+			lastItems = [];
 			if(parent){
 				parent.removeChild(this);
 			}

@@ -18,6 +18,7 @@
 	{	
 		public static const LOGIN:String  = "user/UserLoginCommand";
 		public static const BUYITEM:String  = "shop/BuyItem";
+		public static const BUYANIMAL:String  = "shop/BuyAnimalCommand";
 		public static const CHANGENAME:String  = "user/ChangeName";
 		public static const CHANGESEX:String  = "user/ChangeSex";
 		public static const VISITFRIEND:String = "user/UserVisitCommand";
@@ -34,6 +35,7 @@
 		public static const EXTENDFARMLAND:String = "scene/ExtendFarmLand";
 		public static const SEARCHING:String = "scene/SearchingCommand";
 		public static const CREATWEED:String = "scene/CreatweedCommand";
+		public static const CREATRANCH:String = "scene/CreatRanchCommand";
 		//friend
 		public static const REFRESH_FRIENDS:String = "friend/RefreshFriends";
 		public static const GETSTRANGERS:String = "friend/GetStrangers";

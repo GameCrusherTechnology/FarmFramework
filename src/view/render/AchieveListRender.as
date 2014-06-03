@@ -16,7 +16,7 @@ package view.render
 	
 	import model.OwnedItem;
 	import model.gameSpec.AchieveItemSpec;
-	import model.gameSpec.CropSpec;
+	import model.gameSpec.ItemSpec;
 	import model.player.GamePlayer;
 	
 	import service.command.user.GetAchieveReward;
@@ -39,7 +39,7 @@ package view.render
 		}
 		
 		private var container:Sprite;
-		private var spec:CropSpec;
+		private var spec:ItemSpec;
 		override public function set data(value:Object):void
 		{
 			super.data = value;
@@ -72,10 +72,10 @@ package view.render
 			var iconId:String ;
 			if(achieveSpec.type == "Crop"|| achieveSpec.type == "Tree"){
 				iconId = String(int(achieveid)-20000);
-			}else{
-				
+			}else if(achieveSpec.type == "Animal"){
+				iconId = String(int(achieveid)+ 45000);
 			}
-			spec = SpecController.instance.getItemSpec(iconId) as CropSpec;
+			spec = SpecController.instance.getItemSpec(iconId);
 			
 			var toolSkin:Image = new Image(Game.assets.getTexture("toolsStateSkin"));
 			toolSkin.width = toolSkin.height = renderheight*0.8;

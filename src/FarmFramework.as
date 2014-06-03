@@ -103,8 +103,8 @@ package
 				language = "en";
 			}
 			Configrations.Language  = language;
-			//test
-//			Configrations.Language= language = "e";
+//			test
+//			Configrations.Language= language = "en";
 //			fontStr = "en";
 			
 			assets.enqueue(

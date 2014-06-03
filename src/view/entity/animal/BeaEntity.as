@@ -12,10 +12,10 @@ package view.entity.animal
 	import starling.animation.Tween;
 	import starling.core.Starling;
 	
-	import view.entity.AnimalEntity;
+	import view.entity.WildEntity;
 	import view.entity.CropEntity;
 
-	public class BeaEntity extends AnimalEntity
+	public class BeaEntity extends WildEntity
 	{
 		public function BeaEntity(crop:CropEntity)
 		{
@@ -36,7 +36,7 @@ package view.entity.animal
 			}
 		}
 		
-		override protected function configPosition():void
+		override public function configPosition():void
 		{
 			var tarPoint:Point = currentCrop.cropItem.topPos;
 			x = tarPoint.x + (0.5-Math.random())*Configrations.Tile_Width;

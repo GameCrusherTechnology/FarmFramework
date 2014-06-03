@@ -7,6 +7,7 @@ package model.entity
 	
 	import model.avatar.Map;
 	import model.avatar.Tile;
+	import model.gameSpec.AnimalItemSpec;
 	import model.gameSpec.ItemSpec;
 	import model.player.GamePlayer;
 	
@@ -56,6 +57,9 @@ package model.entity
 		}
 		public function get itemType():String
 		{
+			if(itemspec && itemspec.type == "ranch"){
+				return "Ranch";
+			}
 			return "Entity";
 		}
 		public function get bound_x():int
@@ -86,9 +90,19 @@ package model.entity
 			return itemspec && itemspec.type == "house";
 		}
 		
+		public function get isRanch():Boolean
+		{
+			return itemspec && itemspec.type == "ranch";
+		}
+		
 		public function get isWild():Boolean
 		{
 			return itemspec && itemspec.type =="wild";
+		}
+		
+		public function get animalSpec():AnimalItemSpec
+		{
+			return itemspec as AnimalItemSpec;
 		}
 		public function get serchingCost():Object
 		{
@@ -98,5 +112,7 @@ package model.entity
 				return {type:"coin",price:itemspec.coinPrice};
 			}
 		}
+		
+		private var other:String;
 	}
 }

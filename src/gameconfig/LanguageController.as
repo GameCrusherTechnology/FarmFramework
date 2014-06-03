@@ -37,6 +37,7 @@ package gameconfig
 		{
 			if(!dictLanguage[key]){
 				trace("no language : " + key);
+				return key;
 			}
 			return dictLanguage[key];
 		}

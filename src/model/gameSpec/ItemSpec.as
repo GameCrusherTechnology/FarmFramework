@@ -20,6 +20,7 @@ package model.gameSpec
 		public var name:String;
 		public var bound_x:int;
 		public var bound_y:int;
+		public var boundId:String;
 		public var level:int = 0;
 		
 		public var coinPrice:int;

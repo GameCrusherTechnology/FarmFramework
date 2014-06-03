@@ -1,5 +1,8 @@
 package
 {
+	import com.ssd.ane.AndroidExtensions;
+	import com.ssd.ane.AndroidExtensionsEvent;
+	
 	import service.command.payment.VertifyGooglePayCommand;
 
 	public class PlatForm
@@ -48,6 +51,10 @@ package
 		public static function submitAchieve(achieve:String,process:int):void
 		{
 			trace("no achieve");
+		}
+		
+		public static function share():void
+		{
 		}
 		
 	}	

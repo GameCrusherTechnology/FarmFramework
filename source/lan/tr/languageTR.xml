@@ -80,6 +80,7 @@
 	<resourceName key="buyland" value="tarım arazileri satın"/>
 	<resourceName key="buyscene" value="Tüm çiftlik uzatın"/>
 	<resourceName key="field" value="alan"/>
+	<resourceName key="congratulation" value="Kutlama"/>
 	<resourceName key="find" value="keşif"/>
 	<resourceName key="versionUp" value="Sürüm güncelleme :"/>
 	<resourceName key="shopTip01" value="Çokmahsul almak içindükkanda akılsızca !"/>
@@ -185,10 +186,33 @@
 	<resourceName key="Forage04" value="çimen"/>
 	<resourceName key="Forage05" value="çimen"/>
 	<resourceName key="Forage06" value="çimen"/>
+	<resourceName key="chick" value="tavuk "/>
+	<resourceName key="duck" value="ördek "/>
+	<resourceName key="sheep" value="koyun "/>
+	<resourceName key="rabbit" value="tavşan "/>
+	<resourceName key="cow" value="inek "/>
+	<resourceName key="ChickHouse" value="tavuk Ev "/>
+	<resourceName key="DuckHouse" value="ördek Ev "/>
+	<resourceName key="SheepHouse" value="koyun Ev "/>
+	<resourceName key="RabbitHouse" value="tavşan Ev "/>
+	<resourceName key="CowHouse" value="inek Ev "/>
+	<resourceName key="Egg" value="yumurta "/>
+	<resourceName key="DuckEgg" value="Ördek yumurtası "/>
+	<resourceName key="Wool" value="yün "/>
+	<resourceName key="ConyHair" value="tavşan saç"/>
+	<resourceName key="Milk" value="süt "/>
+	<resourceName key="ChickFood" value="tavuk yemi "/>
+	<resourceName key="DuckFood" value="ördek Besleme "/>
+	<resourceName key="SheepFood" value="koyun Besleme "/>
+	<resourceName key="RabbitFood" value="tavşan Besleme "/>
+	<resourceName key="CowFood" value="inek Besleme"/>
 	<resourceName key="littleFarmCoin" value="küçük altın"/>
 	<resourceName key="largeFarmCoin" value="büyük altın"/>
 	<resourceName key="littleFarmGem" value="küçük mücevher"/>
 	<resourceName key="largeFarmGem" value="büyük mücevher"/>
+	<resourceName key="crop" value="mahsul "/>
+	<resourceName key="tree" value="ağaç "/>
+	<resourceName key="animal" value="hayvan"/>
 	<resourceName key="tutorTip01" value="Bize ilk çiftliğin bunun temel operasyon aşina olmak olsun! İlk hasat bitkileri. "/>
 	<resourceName key="tutorTip02" value="Sonra boşta alanlarda yeni bitkiler dikildi. "/>
 	<resourceName key="tutorTip03" value="Bunun için sabırsızlanıyorum! Görmek için gübre. "/>

@@ -16,7 +16,6 @@ package gameconfig
 		{
 //			date = new Date();
 //			timeReduce  = date.getTime()- serverTime*1000;
-			trace(getTimer());
 			_systemTime = (serverTime-Math.floor(getTimer()/1000));
 		}
 		

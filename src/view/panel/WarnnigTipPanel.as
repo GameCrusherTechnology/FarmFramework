@@ -42,7 +42,7 @@ package view.panel
 			skin.y = 100*Configrations.ViewScale;
 			mesText.x = skin.x + 50*Configrations.ViewScale;
 			mesText.y = skin.y + 25*Configrations.ViewScale;
-			var tween:Tween = new Tween(this,3);
+			var tween:Tween = new Tween(this,5);
 			tween.animate("alpha",0);
 			tween.moveTo(x,y-skin.height);
 			tween.onComplete = destroy;

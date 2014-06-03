@@ -1,13 +1,11 @@
 package controller
 {
-	import gameconfig.SystemDate;
-	
 	import model.player.GamePlayer;
 	
 	import view.FarmScene;
-	import view.entity.AnimalEntity;
 	import view.entity.CropEntity;
 	import view.entity.GameEntity;
+	import view.entity.WildEntity;
 	import view.entity.animal.BeaEntity;
 	import view.entity.animal.BirdEntity;
 
@@ -63,7 +61,7 @@ package controller
 		public function tick():void
 		{
 			if(lastAddTime < 0){
-				var animal:AnimalEntity;
+				var animal:WildEntity;
 				if(Math.random() >0.4 && beaVec && (beaVec.length >0)){
 					animal = beaVec[int(Math.random() * beaVec.length)];
 				}else if(birdVec && (birdVec.length >0)){
@@ -95,6 +93,7 @@ package controller
 			
 			return crop;
 		}
+		
 		
 		private function get scene():FarmScene
 		{

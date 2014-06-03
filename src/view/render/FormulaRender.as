@@ -181,6 +181,7 @@ package view.render
 			var iconText:TextField;
 			var icon:PackageIcon;
 			var ownedItem:OwnedItem;
+			var expandBut :Button;
 			for each(var str:String in requestArr){
 				requestId = str.split(":")[0];
 				requestNum = str.split(":")[1];
@@ -208,7 +209,16 @@ package view.render
 				requestContainer.addChild(iconText);
 				iconText.x = renderwidth *.3 + 5*scale;
 				iconText.y = deepth;
-				
+				if(i==0 && isFormula(requestId)){
+					expandBut = new Button();
+					expandBut.defaultSkin = new Image(Game.assets.getTexture("addIcon"));
+					requestContainer.addChild(expandBut);
+					expandBut.name = requestId;
+					expandBut.addEventListener(Event.TRIGGERED,onAddTrigger);
+					expandBut.width = expandBut.height = icon.height*0.8;
+					expandBut.x = renderwidth*0.6 - expandBut.width/2;
+					expandBut.y = deepth+icon.height*0.1;
+				}
 				deepth += icon.height+5*scale;
 			}
 			
@@ -232,6 +242,18 @@ package view.render
 				}
 			}else{
 				return true;
+			}
+			return false;
+		}
+		private function isFormula(id:String):Boolean
+		{
+			var goupe:Object = SpecController.instance.getGroup("Formula");
+			var spec:FormulaItemSpec;
+			for each(spec in goupe){
+				var proId:String = spec.product.split(":")[0];
+				if(id == proId){
+					return true;
+				}
 			}
 			return false;
 		}
@@ -327,7 +349,12 @@ package view.render
 		{
 			countText.text = "("+canFinish+")";
 		}
-		
+		private function onAddTrigger(e:Event):void
+		{
+			if(e.target is Button){
+				DialogController.instance.showFacPanel((e.target as Button).name);
+			}
+		}
 		private function get canAdd():Boolean
 		{
 			var listC:ListCollection = new ListCollection();

@@ -8,5 +8,6 @@ package model.gameSpec
 		}
 		
 		public var rateStep:int;
+		
 	}
 }

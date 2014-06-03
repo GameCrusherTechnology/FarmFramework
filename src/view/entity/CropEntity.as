@@ -67,7 +67,7 @@ package view.entity
 			fieldSUR.x = x - fieldSUR.width/2;
 			fieldSUR.y = y - fieldSUR.height;
 		}
-		override protected function configPosition():void
+		override public function configPosition():void
 		{
 			super.configPosition();
 			fieldSUR.x = x - fieldSUR.width/2;
@@ -209,6 +209,7 @@ package view.entity
 					if(TutorialController.instance.inTutorial){
 						TutorialController.instance.playStep(7);
 					}
+					refresh();
 				}else{
 					GameController.instance.resetTools();
 				}
@@ -227,6 +228,7 @@ package view.entity
 					if(TutorialController.instance.inTutorial){
 						TutorialController.instance.playStep(11);
 					}
+					refresh();
 				}else{
 					GameController.instance.resetTools();
 				}

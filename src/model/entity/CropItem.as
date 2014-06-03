@@ -104,7 +104,7 @@ package model.entity
 			player.deleteItem(new OwnedItem(id,1));
 			item_id = id;
 			itemspec = SpecController.instance.getItemSpec(item_id);
-			growStep = -1;
+			growStep = 0;
 			plant_time = SystemDate.systemTimeS;
 		}
 		public var plant_time:Number = 1382454068;

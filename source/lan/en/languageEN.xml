@@ -80,6 +80,7 @@
 	<resourceName key="buyland" value="Buy crop fields"/>
 	<resourceName key="buyscene" value="Extend whole farm"/>
 	<resourceName key="field" value="Field"/>
+	<resourceName key="congratulation" value="Congratulation"/>
 	<resourceName key="find" value="Find"/>
 	<resourceName key="versionUp" value="Version Update :"/>
 	<resourceName key="shopTip01" value="In the shop to buy crop too much is not wise !"/>
@@ -185,10 +186,33 @@
 	<resourceName key="Forage04" value="Grass"/>
 	<resourceName key="Forage05" value="Grass"/>
 	<resourceName key="Forage06" value="Grass"/>
+	<resourceName key="chick" value="Chicken "/>
+	<resourceName key="duck" value="Duck "/>
+	<resourceName key="sheep" value="Sheep "/>
+	<resourceName key="rabbit" value="White Rabbit "/>
+	<resourceName key="cow" value="Cow "/>
+	<resourceName key="ChickHouse" value="Chick Home"/>
+	<resourceName key="DuckHouse" value="Duck Home"/>
+	<resourceName key="SheepHouse" value="Sheep Home"/>
+	<resourceName key="RabbitHouse" value="Rabbit Home"/>
+	<resourceName key="CowHouse" value="Cow Home"/>
+	<resourceName key="Egg" value="Eggs "/>
+	<resourceName key="DuckEgg" value="Duck's egg"/>
+	<resourceName key="Wool" value="Wool "/>
+	<resourceName key="ConyHair" value="ConyHair"/>
+	<resourceName key="Milk" value="Milk "/>
+	<resourceName key="ChickFood" value="Chicken Feed"/>
+	<resourceName key="DuckFood" value="Duck Feed "/>
+	<resourceName key="SheepFood" value="Sheep Feed"/>
+	<resourceName key="RabbitFood" value="Rabbit Feed"/>
+	<resourceName key="CowFood" value="Cow Feed "/>
 	<resourceName key="littleFarmCoin" value="Small Coins"/>
 	<resourceName key="largeFarmCoin" value="Large Coins"/>
 	<resourceName key="littleFarmGem" value="Small Gems"/>
 	<resourceName key="largeFarmGem" value="Large Gems"/>
+	<resourceName key="crop" value="Crop"/>
+	<resourceName key="tree" value="Tree"/>
+	<resourceName key="animal" value="Animal"/>
 	<resourceName key="tutorTip01" value="Let us first become familiar with the basic operation of the farm it! First harvest crops. "/>
 	<resourceName key="tutorTip02" value="Then in the idle fields planted new crops. "/>
 	<resourceName key="tutorTip03" value="Can not wait for it! Fertilizer to see ."/>

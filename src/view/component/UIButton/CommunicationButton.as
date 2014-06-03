@@ -59,6 +59,7 @@ package view.component.UIButton
 				TaskController.instance.finishCurrentOrderByNpc(GameController.instance.currentPlayer);
 				DialogController.instance.showPanel(new CommunicationPanel());
 				VoiceController.instance.playSound(VoiceController.SOUND_BUTTON);
+				
 			}
 		}
 		

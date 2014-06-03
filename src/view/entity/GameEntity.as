@@ -22,8 +22,10 @@ package view.entity
 	
 	import starling.core.RenderSupport;
 	import starling.display.MovieClip;
+	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.events.TouchPhase;
+	import starling.filters.BlurFilter;
 	
 	import view.FarmScene;
 	import view.TweenEffectLayer;
@@ -40,7 +42,9 @@ package view.entity
 		{
 			item = entityItem;
 			creatSurface();
-			setTile();
+			if(entityItem.data_id){
+				setTile();
+			}
 			configPosition();
 		}
 		protected function creatSurface():void
@@ -50,7 +54,7 @@ package view.entity
 			surface.x = - surface.width/2;
 			surface.y = - surface.height;
 		}
-		private function setTile():void
+		protected function setTile():void
 		{
 			var i:int;
 			var j:int;
@@ -67,23 +71,25 @@ package view.entity
 				i++;
 			}
 		}
-		private var currentMoveTile:Tile ;
-		private var movableMc:MovieClip;
+		protected var currentMoveTile:Tile ;
+		public var movableMc:Shape;
 		public function intoMoveMode():void
 		{
-			currentMoveTile = getTopTile();
-			movableMc = new MovieClip(Game.assets.getTextures("movableSkin"));
-			movableMc.width = (length_x+length_y)/2*Configrations.Tile_Width+5;
-			movableMc.height = (length_x+length_y)/2*Configrations.Tile_Height+4;
-			addChild(movableMc);
-			movableMc.x = -movableMc.width/2;
-			movableMc.y = -movableMc.height+2;
+			var topTile:Tile = getTopTile();
 			
-			dragmoveToTile(currentMoveTile);
+			movableMc = new Shape();
+			movableMc.graphics.lineStyle(3,0xffffff);
+			movableMc.graphics.moveTo(0,0);
+			movableMc.graphics.lineTo(-length_x*Configrations.Tile_Width/2,-length_x*Configrations.Tile_Height/2);
+			movableMc.graphics.lineTo((length_y-length_x)*Configrations.Tile_Width/2,-(length_x+length_y)*Configrations.Tile_Height/2);
+			movableMc.graphics.lineTo(length_y*Configrations.Tile_Width/2,-length_y*Configrations.Tile_Height/2);
+			movableMc.graphics.lineTo(0,0);
+			addChild(movableMc);
+			moveEntity(Map.intance.iosToScene(topTile.x,topTile.y));
+			
 		}
 		protected function dragmoveToTile(tile:Tile):void
 		{
-			trace("tile" + tile.x);
 			var topPoint:Point = Map.intance.iosToScene(tile.x +length_x,tile.y+length_y);
 			x = topPoint.x;
 			y = topPoint.y;
@@ -95,9 +101,9 @@ package view.entity
 			if(tile &&  tile != currentMoveTile){
 				var valiable:Boolean = checkValiable(tile);
 				if(valiable){
-					movableMc.currentFrame = 0;
+					movableMc.filter = BlurFilter.createGlow(0x66ff33);
 				}else{
-					movableMc.currentFrame = 1;
+					movableMc.filter = BlurFilter.createGlow(0xff0000);
 				}
 				dragmoveToTile(tile);
 				currentMoveTile = tile;
@@ -115,9 +121,16 @@ package view.entity
 		{
 			return item.sceneIndex;
 		}
-		private function putDown():void
+		protected function putDown():void
 		{
-			UpdateController.instance.pushActionData(new UpdateData(item.gameuid,Configrations.MOVE,{data_id:item.data_id,positionx:currentMoveTile.x,positiony:currentMoveTile.y,type:item.itemType}));
+			if(item.data_id){
+				UpdateController.instance.pushActionData(new UpdateData(item.gameuid,Configrations.MOVE,{data_id:item.data_id,positionx:currentMoveTile.x,positiony:currentMoveTile.y,type:item.itemType}));
+
+			}else{
+				scene.maxDecId ++;
+				UpdateController.instance.pushActionData(new UpdateData(item.gameuid,Configrations.BUILD,{data_id:scene.maxDecId,item_id:item.item_id,positionx:currentMoveTile.x,positiony:currentMoveTile.y}));
+				player.addDecoration(item);
+			}
 			
 			clearTile();
 			moveToIso(currentMoveTile);
@@ -134,7 +147,7 @@ package view.entity
 				j=0;
 				while(j<item.bound_y){
 					tile = Map.intance.getTileByIos(item.positionx+i,item.positiony+j);
-					if(tile){
+					if(tile &&　tile.owner == this){
 						tile.owner  = null;
 					}
 					j++;
@@ -144,14 +157,26 @@ package view.entity
 		}
 		public function cancel():void
 		{
-			moveToIso(getTopTile());
+			if(!isNaN(item.data_id)){
+				moveToIso(getTopTile());
+			}
 			destroyMoveMc();
 		}
-		private function destroyMoveMc():void
+		protected function destroyMoveMc():void
 		{
 			if(movableMc && movableMc.parent){
 				movableMc.parent.removeChild(movableMc);
 			}
+			if(item.isRanch){
+				var entity:GameEntity;
+				for each(entity in scene.entityDic){
+					if(entity is AnimalEntity && item.data_id == (entity as AnimalEntity).animalItem.house_id){
+						(entity as AnimalEntity).visible = true;
+						(entity as AnimalEntity).configPosition();
+					}
+				}
+			}
+			scene.sortEntityLayer();
 		}
 		
 		private function checkValiable(toptile:Tile):Boolean
@@ -174,7 +199,7 @@ package view.entity
 			}
 			return true;
 		}
-		protected function configPosition():void
+		public function configPosition():void
 		{
 			var topPoint:Point = Map.intance.iosToScene(item.positionx +item.bound_x,item.positiony+item.bound_y);
 			x = topPoint.x;
@@ -311,7 +336,7 @@ package view.entity
 		
 		public function get isFloor():Boolean
 		{
-			return item.itemspec &&  item.itemspec.type =="floor";
+			return item.itemspec &&  (item.itemspec.type =="floor" ||item.itemspec.type =="ranch" );
 		}
 		public function get isWild():Boolean
 		{

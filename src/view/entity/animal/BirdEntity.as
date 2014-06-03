@@ -3,7 +3,7 @@ package view.entity.animal
 	import flash.geom.Point;
 	import flash.utils.setTimeout;
 	
-	import controller.AnimalController;
+	import gameconfig.Configrations;
 	
 	import model.avatar.Map;
 	import model.avatar.Tile;
@@ -14,9 +14,9 @@ package view.entity.animal
 	import starling.display.MovieClip;
 	import starling.utils.deg2rad;
 	
-	import view.entity.AnimalEntity;
+	import view.entity.WildEntity;
 	
-	public class BirdEntity extends AnimalEntity
+	public class BirdEntity extends WildEntity
 	{
 		override protected function get speed():int{
 			return  200;
@@ -32,7 +32,7 @@ package view.entity.animal
 		
 		private var tile:Tile;
 		private var isLeft:Boolean ;
-		override protected function configPosition():void
+		override public function configPosition():void
 		{
 			tile = Map.intance.getRandom();
 			var pos:Point = Map.intance.iosToScene(tile.x,tile.y);
@@ -75,6 +75,7 @@ package view.entity.animal
 		override public function get sceneIndex():Number
 		{
 			return (tile.x+1/2+tile.y+1/2)* 1000 + tile.x+1/2;
+			
 		}
 		
 		private function setFlySurface(isFly:Boolean):void

@@ -3,13 +3,11 @@ package view.entity
 	import flash.geom.Point;
 	
 	import controller.GameController;
-	import controller.UiController;
 	
 	import gameconfig.Configrations;
 	
 	import model.avatar.Map;
 	import model.avatar.Tile;
-	import model.entity.CropItem;
 	
 	import starling.display.Image;
 	import starling.display.MovieClip;

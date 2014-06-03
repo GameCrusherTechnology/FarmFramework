@@ -21,6 +21,7 @@ package controller
 	import view.panel.AdvertPanel;
 	import view.panel.ConfirmPanel;
 	import view.panel.CreatPersonPanel;
+	import view.panel.LevelUpPanel;
 
 	public class GameController
 	{
@@ -127,7 +128,7 @@ package controller
 			}
 			currentFarm = new FarmScene();
 			sceneLayer.addChild(currentFarm);
-			
+			resetTools();
 			UiController.instance.refresh(uiLayer);
 			DialogController.instance.destroy();
 			AnimalController.instance.reset();
@@ -195,6 +196,7 @@ package controller
 		
 		public function levelUp():void
 		{
+			DialogController.instance.showPanel(new LevelUpPanel(),true);
 			PlatForm.submitScore(localPlayer.level);
 		}
 		public function get VersionMes():Array

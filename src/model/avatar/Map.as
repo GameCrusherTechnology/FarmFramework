@@ -109,10 +109,20 @@ package model.avatar
 			return getTileByIos(lengthx,lengthy);
 		}
 		
-		public function iosToScene(iosx:int,iosy:int):Point
+		public function iosToScene(iosx:Number,iosy:Number):Point
 		{
 			return new Point(startX +(iosx-iosy)*Configrations.Tile_Width/2,startY + (iosx+iosy)*Configrations.Tile_Height/2);
 		}
+		public function getBottomPoint():Point
+		{
+			return iosToScene(_gridWidth,_gridLength);
+		}
+		
+		public function getRightPoint():Point
+		{
+			return iosToScene(_gridWidth-1,0);
+		}
+		
 		private function get player():GamePlayer
 		{
 			return GameController.instance.currentPlayer;
