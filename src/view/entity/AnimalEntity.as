@@ -141,7 +141,6 @@ package view.entity
 		private var curAnimotion:String;
 		private function playAnimation(_motion:String):void
 		{
-			trace("animotion "+ _motion);
 			if(curAnimotion!= _motion){
 				curAnimotion = _motion;
 				if(surface && surface.parent){

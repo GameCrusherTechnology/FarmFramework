@@ -36,7 +36,7 @@ package controller
 		public var selectTool:String;
 		public var selectSeed:String;
 		public var isNewer:Boolean = false;
-		public var userID:String = "super_man_02";
+		public var userID:String = "super_man_01";
 		//super_man_01
 		private static var _controller:GameController;
 		public static function get instance():GameController
@@ -137,6 +137,12 @@ package controller
 				DialogController.instance.showPanel(new CreatPersonPanel());
 			}
 			setTimeout(hideLoading,1000);
+			
+			if(!isHomeModel){
+				PlatForm.showAD();
+			}else{
+				PlatForm.hideAD();
+			}
 		}
 		
 		private var loading:CloudLoadingScreen;
@@ -198,6 +204,10 @@ package controller
 		{
 			DialogController.instance.showPanel(new LevelUpPanel(),true);
 			PlatForm.submitScore(localPlayer.level);
+			
+			if(localPlayer.level>=5){
+				PlatForm.showAD(2);
+			}
 		}
 		public function get VersionMes():Array
 		{

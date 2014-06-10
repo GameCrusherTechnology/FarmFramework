@@ -5,17 +5,13 @@ package service.command
 	import gameconfig.Configrations;
 	
 	import model.player.GamePlayer;
-	
-	import service.command.action.UpdateCacheAction;
 
 	public class LoginCommand extends AbstractCommand
 	{
 		private var onLoginSuccess:Function;
-		private var lastTime:Number;
 		public function LoginCommand(callBack:Function)
 		{
 			onLoginSuccess =callBack;
-			lastTime = new Date().time;
 			super(Command.LOGIN,onLogin,{name:GameController.instance.userID})
 		}
 		private function onLogin(result:Object):void
@@ -29,12 +25,16 @@ package service.command
 					GameController.instance._curPlayer = GameController.instance.localPlayer = new GamePlayer(result['user_account']);
 				}
 				GameController.instance.isNewer = result['is_new'];
+				
+				if(result.ad_ids){
+					Configrations.AD_ids = result.ad_ids;
+				}
 				if(result.treasuresActivity){
 					Configrations.treasuresActivity = result.treasuresActivity;
 				}
 				onLoginSuccess();
 				
-				new UpdateCacheAction("login",String(new Date().time-lastTime));
+//				new UpdateCacheAction("login",String(new Date().time-lastTime));
 			}
 		}
 	}

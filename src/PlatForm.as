@@ -57,5 +57,13 @@ package
 		{
 		}
 		
+		public static function showAD(type:int = 1):void
+		{
+			
+		}
+		public static function hideAD():void
+		{
+			
+		}
 	}	
 }
