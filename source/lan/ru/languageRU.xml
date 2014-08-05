@@ -206,6 +206,21 @@
 	<resourceName key="SheepFood" value="Овцы поток "/>
 	<resourceName key="RabbitFood" value="Кролик поток "/>
 	<resourceName key="CowFood" value="Корова поток"/>
+	<resourceName key="pet" value="любимец"/>
+	<resourceName key="Dog" value="Сиба-ину "/>
+	<resourceName key="Husky" value="хриплый "/>
+	<resourceName key="SheepDog" value="колли "/>
+	<resourceName key="Search" value="открытие "/>
+	<resourceName key="Intercept" value="перехват "/>
+	<resourceName key="ADclean" value="перехват  объявление "/>
+	<resourceName key="LookAfter" value="уход за животными "/>
+	<resourceName key="SearchDetail" value="Дополнительное время будут вознаграждены другу за помощью. "/>
+	<resourceName key="InterceptDetail" value="Вероятность вознаграждения перехвата другими собаками нашли. "/>
+	<resourceName key="ADcleanDetail" value="Постоянно блокировать рекламу. "/>
+	<resourceName key="LookAfterDetail" value="Каждый так часто бы заботиться о животных. "/>
+	<resourceName key="findTip" value="Найдено "/>
+	<resourceName key="InterceptTip" value="Перехват награду"/>
+	<resourceName key="petTips" value="Ферма на должность Нового партнерства."/>
 	<resourceName key="littleFarmCoin" value="немного золота"/>
 	<resourceName key="largeFarmCoin" value="большое золота"/>
 	<resourceName key="littleFarmGem" value="немного жемчужина"/>
@@ -234,7 +249,10 @@
 	<resourceName key="Popcorn" value="попкорн "/>
 	<resourceName key="GrapeJuice" value="Виноградный сок "/>
 	<resourceName key="Flour" value="мучной"/>
-	<resourceName key="versionTip1" value="Открытые функции мельница. Нажмите на доме вы можете пойти в обработке."/>
-	<resourceName key="versionTip2" value="Обратная связь проблема была отремонтирована большинство частей. Спасибо за вашу помощь!"/>
+	<resourceName key="DogFood" value="Собака печенье "/>
+	<resourceName key="language" value="язык"/>
+	<resourceName key="needRebootGame" value="Необходимо перезапустить игру"/>
+	<resourceName key="versionTip1" value="Для группы небольших сельскохозяйственных животных. Разрешить домашние блокировки рекламы. "/>
+	<resourceName key="versionTip2" value="К концу обратной деятельности зарядить его! Каждый спешить его."/>
 	<resourceName key="versionTip3" value="В игре, если у вас возникли проблемы или есть идеи , вы можете отправить по электронной почте gamecrushservice@gmail.com ."/>
 </language>

@@ -4,7 +4,7 @@
     public class Tile{
 		private var _gridX:int;
 		private var _gridY:int;
-        public function Tile(_arg1:int, _arg2:int,map:Map){
+        public function Tile(_arg1:int, _arg2:int){
             this._gridX = _arg1;
             this._gridY = _arg2;
         }

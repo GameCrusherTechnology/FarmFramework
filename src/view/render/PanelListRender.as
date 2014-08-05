@@ -6,6 +6,7 @@ package view.render
 	
 	import view.panel.AchievePanel;
 	import view.panel.PackagePanel;
+	import view.panel.PetInfoPanel;
 	import view.panel.ProfilePanel;
 	import view.panel.RatingPanel;
 	import view.panel.SettingPanel;
@@ -45,6 +46,8 @@ package view.render
 						currentPanel = new RatingPanel();
 					}else if(value.name == "package"){
 						currentPanel = new PackagePanel();
+					}else if(value.name == "pet"){
+						currentPanel = new PetMenuPanel();
 					}else{
 						currentPanel = new ProfilePanel();
 					}

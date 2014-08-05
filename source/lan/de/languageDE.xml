@@ -206,6 +206,21 @@
 	<resourceName key="SheepFood" value="Schaf Zuführung"/>
 	<resourceName key="RabbitFood" value="Kaninchen Zuführung"/>
 	<resourceName key="CowFood" value="Milchkuh Zuführung"/>
+	<resourceName key="pet" value="Haustier "/>
+	<resourceName key="Dog" value="Shiba "/>
+	<resourceName key="Husky" value="heiser "/>
+	<resourceName key="SheepDog" value="collie "/>
+	<resourceName key="Search" value="Entdeckung "/>
+	<resourceName key="Intercept" value="Intercept "/>
+	<resourceName key="ADclean" value="Ad Blocker "/>
+	<resourceName key="LookAfter" value="Tierbetreuung "/>
+	<resourceName key="SearchDetail" value="Zusätzliche Zeit wird zu einem Freund um Hilfe belohnt werden. "/>
+	<resourceName key="InterceptDetail" value="Probability of Intercept Belohnung anderen Hunden gefunden. "/>
+	<resourceName key="ADcleanDetail" value="Dauerhaft blockieren Anzeigen. "/>
+	<resourceName key="LookAfterDetail" value="Jeder würde so oft gehen, um Pflege von Tieren zu nehmen. "/>
+	<resourceName key="findTip" value="gefunden "/>
+	<resourceName key="InterceptTip" value="Fangen Sie die Belohnung"/>
+	<resourceName key="petTips" value="Farm auf die Position der Neuen Partnerschaft."/>
 	<resourceName key="littleFarmCoin" value="kleine Münze"/>
 	<resourceName key="largeFarmCoin" value="große Münze"/>
 	<resourceName key="littleFarmGem" value="kleine Juwel"/>
@@ -234,7 +249,10 @@
 	<resourceName key="Popcorn" value="Popcorn "/>
 	<resourceName key="GrapeJuice" value="Traubensaft "/>
 	<resourceName key="Flour" value="Mehl"/>
-	<resourceName key="versionTip1" value="Offene Mühle Funktionen. Klicken Sie auf Haus können Sie, um die Verarbeitung zu gehen."/>
-	<resourceName key="versionTip2" value="Feedback-Problem wurde behoben meisten Teilen. Vielen Dank für Ihre Hilfe!"/>
+	<resourceName key="DogFood" value="Kekse für Haustiere "/>
+	<resourceName key="language" value="Sprache "/>
+	<resourceName key="needRebootGame" value="Brauchen Sie, um das Spiel neu zu starten"/>
+	<resourceName key="versionTip1" value="Um eine Gruppe von kleinen Nutztieren. Lassen Sie Haustiere blockiert Anzeigen. "/>
+	<resourceName key="versionTip2" value="Gegen Ende des Feedback-Aktivität aufladen! Jeder, es beeilen."/>
 	<resourceName key="versionTip3" value="In dem Spiel, wenn Sie Probleme oder irgendwelche Ideen , können Sie eine E-Mail an gamecrushservice@gmail.com senden."/>
 </language>

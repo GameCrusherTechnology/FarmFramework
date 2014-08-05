@@ -14,7 +14,7 @@ package service.command.friend
 		private function onResult(result:Object):void
 		{
 			if(Command.isSuccess(result)){
-				onSuccess();
+				onSuccess(result.dog);
 			}else{
 				
 			}

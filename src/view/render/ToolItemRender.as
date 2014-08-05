@@ -83,7 +83,7 @@ package view.render
 			icon.y = renderheight*0.1;
 			container.addChild(icon);
 			
-			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth,30*scale,spec.name,0x000000,25,true);
+			var nameText:TextField = FieldController.createSingleLineDynamicField(renderwidth,30*scale,spec.cname,0x000000,25,true);
 			nameText.hAlign = HAlign.CENTER;
 			nameText.autoSize = TextFieldAutoSize.VERTICAL;
 			container.addChild(nameText);

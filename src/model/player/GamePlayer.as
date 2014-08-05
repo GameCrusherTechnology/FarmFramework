@@ -13,6 +13,7 @@ package model.player
 	import model.entity.AnimalItem;
 	import model.entity.CropItem;
 	import model.entity.EntityItem;
+	import model.entity.PetItem;
 	import model.gameSpec.AchieveItemSpec;
 	import model.gameSpec.FormulaItemSpec;
 	import model.gameSpec.ItemSpec;
@@ -176,6 +177,32 @@ package model.player
 			for each(animal_obj in data){
 				animalItem = new AnimalItem(animal_obj);
 				animalItems.push(animalItem);
+			}
+		}
+		
+		//pet
+		public var petItems:Array=[];
+		public function hasPet(itemid:String):Boolean
+		{
+			var petItem:PetItem;
+			for each(petItem in petItems){
+				if(itemid == petItem.item_id){
+					return true;
+				}
+			}
+			return false;
+		}
+		public function addPet(item:PetItem):void
+		{
+			petItems.push(item);
+		}
+		private function set user_pet(data:Object):void
+		{
+			var pet_obj:Object;
+			var prtItem:PetItem;
+			for each(pet_obj in data){
+				prtItem = new PetItem(pet_obj);
+				petItems.push(prtItem);
 			}
 		}
 		
@@ -380,12 +407,41 @@ package model.player
 			}
 			return 0;
 		}
+		
+		
+		private var actionVec:Vector.<OwnedItem> = new Vector.<OwnedItem>;
+		
+		public function getActionItem(itemid:String):OwnedItem
+		{
+			var ownedItem:OwnedItem;
+			for each(ownedItem in actionVec)
+			{
+				if(ownedItem.itemid == itemid){
+					return ownedItem;
+				}
+			}
+			return new OwnedItem(itemid,0);
+		}
 		private function set user_actions(data:Object):void
 		{
 			var obj:Object;
 			for each(obj in data){
-				ownedItemVec.push(new OwnedItem(obj.action_id,obj.count));
+				actionVec.push(new OwnedItem(obj.action_id,obj.count));
 			}
+		}
+		
+		public function addAction(actionId:String,count:int=1):Boolean
+		{
+			var ownedItem:OwnedItem;
+			for each(ownedItem in actionVec)
+			{
+				if(ownedItem.itemid == actionId){
+					ownedItem.count += count;
+					return true;
+				}
+			}
+			ownedItemVec.push(new OwnedItem(actionId,count));
+			return true;
 		}
 		
 		//message

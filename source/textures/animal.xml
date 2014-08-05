@@ -1,140 +1,486 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:2fe312401ba5824e31ee38698b3fbe4a$ -->
+<!-- $TexturePacker:SmartUpdate:2e1c1d308f9d93bcc2ee2ef615c22755$ -->
 <TextureAtlas imagePath="animal.png">
     <SubTexture name="ChickHouse" x="272" y="2" width="240" height="135" frameX="-10" frameY="0" frameWidth="250" frameHeight="135"/>
     <SubTexture name="CowHouse" x="514" y="2" width="230" height="129" frameX="-7" frameY="-15" frameWidth="250" frameHeight="149"/>
+    <SubTexture name="Dog/DogDown0001" x="489" y="1863" width="28" height="46" frameX="-3" frameY="-4" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogDown0002" x="425" y="1862" width="28" height="48" frameX="-2" frameY="-2" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogDown0003" x="332" y="1804" width="28" height="50" frameX="-1" frameY="0" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogDown0004" x="425" y="1862" width="28" height="48" frameX="-2" frameY="-2" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogDown0005" x="489" y="1863" width="28" height="46" frameX="-3" frameY="-4" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogDown0006" x="459" y="1831" width="28" height="48" frameX="-3" frameY="-2" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogDown0007" x="851" y="863" width="26" height="50" frameX="-5" frameY="0" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogDown0008" x="429" y="1812" width="28" height="48" frameX="-3" frameY="-2" frameWidth="32" frameHeight="50"/>
+    <SubTexture name="Dog/DogEat0001" x="920" y="278" width="53" height="44" frameX="-2" frameY="0" frameWidth="55" frameHeight="44"/>
+    <SubTexture name="Dog/DogEat0002" x="920" y="232" width="53" height="44" frameX="-2" frameY="0" frameWidth="55" frameHeight="44"/>
+    <SubTexture name="Dog/DogEat0003" x="681" y="407" width="51" height="44" frameX="-4" frameY="0" frameWidth="55" frameHeight="44"/>
+    <SubTexture name="Dog/DogEat0004" x="449" y="419" width="51" height="42" frameX="-4" frameY="-2" frameWidth="55" frameHeight="44"/>
+    <SubTexture name="Dog/DogEat0005" x="681" y="407" width="51" height="44" frameX="-4" frameY="0" frameWidth="55" frameHeight="44"/>
+    <SubTexture name="Dog/DogEat0006" x="920" y="232" width="53" height="44" frameX="-2" frameY="0" frameWidth="55" frameHeight="44"/>
+    <SubTexture name="Dog/DogEat0007" x="920" y="186" width="53" height="44" frameX="-2" frameY="0" frameWidth="55" frameHeight="44"/>
+    <SubTexture name="Dog/DogLDown0001" x="807" y="1659" width="36" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Dog/DogLDown0002" x="746" y="1657" width="36" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Dog/DogLDown0003" x="671" y="1687" width="36" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Dog/DogLDown0004" x="633" y="1677" width="36" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Dog/DogLDown0005" x="595" y="1676" width="36" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Dog/DogLDown0006" x="266" y="1701" width="38" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Dog/DogLDown0007" x="436" y="1697" width="38" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Dog/DogLDown0008" x="613" y="966" width="40" height="45"/>
+    <SubTexture name="Dog/DogLUp0001" x="676" y="1639" width="36" height="46" frameX="-2" frameY="-2" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLUp0002" x="439" y="1600" width="38" height="48" frameX="-1" frameY="0" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLUp0003" x="480" y="1560" width="38" height="48" frameX="-2" frameY="0" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLUp0004" x="479" y="1610" width="38" height="46" frameX="0" frameY="-2" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLUp0005" x="841" y="915" width="36" height="46" frameX="-2" frameY="-2" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLUp0006" x="372" y="1629" width="38" height="46" frameX="-1" frameY="-2" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLUp0007" x="222" y="1702" width="38" height="44" frameX="0" frameY="-4" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLUp0008" x="959" y="1696" width="36" height="44" frameX="-1" frameY="-4" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="Dog/DogLeft0001" x="453" y="374" width="52" height="43" frameX="-2" frameY="-2" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0002" x="453" y="327" width="52" height="45" frameX="-2" frameY="0" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0003" x="920" y="139" width="54" height="45" frameX="-1" frameY="0" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0004" x="453" y="280" width="52" height="45" frameX="-2" frameY="0" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0005" x="920" y="324" width="52" height="45" frameX="-1" frameY="0" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0006" x="454" y="233" width="52" height="45" frameX="-1" frameY="0" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0007" x="454" y="186" width="52" height="45" frameX="-1" frameY="0" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0008" x="454" y="139" width="52" height="45" frameX="-1" frameY="0" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogLeft0009" x="445" y="463" width="50" height="43" frameX="-3" frameY="-2" frameWidth="60" frameHeight="45"/>
+    <SubTexture name="Dog/DogPlay0001" x="202" y="1242" width="44" height="37" frameX="-8" frameY="0" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0002" x="974" y="350" width="48" height="35" frameX="-7" frameY="-2" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0003" x="681" y="345" width="52" height="31" frameX="-4" frameY="-6" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0004" x="681" y="378" width="52" height="27" frameX="-4" frameY="-10" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0005" x="436" y="722" width="50" height="25" frameX="-6" frameY="-12" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0006" x="180" y="1648" width="42" height="29" frameX="-10" frameY="-8" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0007" x="655" y="798" width="46" height="31" frameX="-6" frameY="-6" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0008" x="969" y="764" width="50" height="29" frameX="-6" frameY="-8" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0009" x="974" y="387" width="48" height="29" frameX="-4" frameY="-8" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0010" x="671" y="566" width="50" height="35" frameX="-2" frameY="-2" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogPlay0011" x="136" y="1686" width="40" height="37" frameX="-12" frameY="0" frameWidth="56" frameHeight="37"/>
+    <SubTexture name="Dog/DogSearch0001" x="921" y="1668" width="36" height="44" frameX="-3" frameY="0" frameWidth="40" frameHeight="44"/>
+    <SubTexture name="Dog/DogSearch0002" x="883" y="1666" width="36" height="44" frameX="-3" frameY="0" frameWidth="40" frameHeight="44"/>
+    <SubTexture name="Dog/DogSearch0003" x="306" y="1720" width="38" height="44" frameX="-1" frameY="0" frameWidth="40" frameHeight="44"/>
+    <SubTexture name="Dog/DogSearch0004" x="224" y="1658" width="40" height="42" frameX="0" frameY="-2" frameWidth="40" frameHeight="44"/>
+    <SubTexture name="Dog/DogSearch0005" x="306" y="1720" width="38" height="44" frameX="-1" frameY="0" frameWidth="40" frameHeight="44"/>
+    <SubTexture name="Dog/DogSearch0006" x="883" y="1666" width="36" height="44" frameX="-3" frameY="0" frameWidth="40" frameHeight="44"/>
+    <SubTexture name="Dog/DogSearch0007" x="807" y="1706" width="36" height="44" frameX="-3" frameY="0" frameWidth="40" frameHeight="44"/>
+    <SubTexture name="Dog/DogSit0001" x="677" y="1595" width="37" height="42" frameX="0" frameY="-2" frameWidth="37" frameHeight="44"/>
+    <SubTexture name="Dog/DogSit0002" x="556" y="1664" width="37" height="44"/>
+    <SubTexture name="Dog/DogSit0003" x="2" y="1757" width="37" height="44"/>
+    <SubTexture name="Dog/DogSit0004" x="42" y="1736" width="37" height="44"/>
+    <SubTexture name="Dog/DogSit0005" x="87" y="1727" width="37" height="44"/>
+    <SubTexture name="Dog/DogSit0006" x="131" y="1725" width="37" height="44"/>
+    <SubTexture name="Dog/DogSit0007" x="517" y="1659" width="37" height="44"/>
+    <SubTexture name="Dog/DogSit0008" x="346" y="1724" width="37" height="42" frameX="0" frameY="-2" frameWidth="37" frameHeight="44"/>
+    <SubTexture name="Dog/DogStand0001" x="510" y="1733" width="30" height="58" frameX="-3" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogStand0002" x="476" y="1705" width="32" height="58" frameX="-1" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogStand0003" x="714" y="1649" width="30" height="58" frameX="-2" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogStand0004" x="603" y="1616" width="32" height="58" frameX="-1" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogStand0005" x="510" y="1733" width="30" height="58" frameX="-3" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogStand0006" x="476" y="1705" width="32" height="58" frameX="-1" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogStand0007" x="714" y="1649" width="30" height="58" frameX="-2" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogStand0008" x="603" y="1556" width="32" height="58" frameX="-1" frameY="-4" frameWidth="34" frameHeight="62"/>
+    <SubTexture name="Dog/DogTail0001" x="845" y="1712" width="34" height="44" frameX="0" frameY="0" frameWidth="36" frameHeight="44"/>
+    <SubTexture name="Dog/DogTail0002" x="311" y="1674" width="34" height="44" frameX="0" frameY="0" frameWidth="36" frameHeight="44"/>
+    <SubTexture name="Dog/DogTail0003" x="845" y="1712" width="34" height="44" frameX="0" frameY="0" frameWidth="36" frameHeight="44"/>
+    <SubTexture name="Dog/DogTail0004" x="155" y="1548" width="34" height="44" frameX="0" frameY="0" frameWidth="36" frameHeight="44"/>
+    <SubTexture name="Dog/DogTail0005" x="845" y="1666" width="36" height="44"/>
+    <SubTexture name="Dog/DogTail0006" x="746" y="1704" width="36" height="44"/>
+    <SubTexture name="Dog/DogTail0007" x="845" y="1666" width="36" height="44"/>
+    <SubTexture name="Dog/DogTail0008" x="155" y="1548" width="34" height="44" frameX="0" frameY="0" frameWidth="36" frameHeight="44"/>
+    <SubTexture name="Dog/DogTail0009" x="988" y="1650" width="34" height="44" frameX="0" frameY="0" frameWidth="36" frameHeight="44"/>
+    <SubTexture name="Dog/DogUp0001" x="627" y="847" width="26" height="48" frameX="-4" frameY="-4" frameWidth="32" frameHeight="52"/>
+    <SubTexture name="Dog/DogUp0002" x="228" y="1054" width="24" height="50" frameX="-5" frameY="-2" frameWidth="32" frameHeight="52"/>
+    <SubTexture name="Dog/DogUp0003" x="228" y="1000" width="24" height="52" frameX="-5" frameY="0" frameWidth="32" frameHeight="52"/>
+    <SubTexture name="Dog/DogUp0004" x="228" y="1054" width="24" height="50" frameX="-5" frameY="-2" frameWidth="32" frameHeight="52"/>
+    <SubTexture name="Dog/DogUp0005" x="627" y="847" width="26" height="48" frameX="-4" frameY="-4" frameWidth="32" frameHeight="52"/>
+    <SubTexture name="Dog/DogUp0006" x="851" y="811" width="26" height="50" frameX="-3" frameY="-2" frameWidth="32" frameHeight="52"/>
+    <SubTexture name="Dog/DogUp0007" x="716" y="1595" width="28" height="52" frameX="-1" frameY="0" frameWidth="32" frameHeight="52"/>
+    <SubTexture name="Dog/DogUp0008" x="302" y="1802" width="28" height="50" frameX="-2" frameY="-2" frameWidth="32" frameHeight="52"/>
     <SubTexture name="DuckHouse" x="2" y="2" width="268" height="170" frameX="-27" frameY="-6" frameWidth="300" frameHeight="190"/>
+    <SubTexture name="Husky/HuskyDown0001" x="347" y="1620" width="23" height="46" frameX="0" frameY="-2" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyDown0002" x="385" y="1724" width="21" height="48" frameX="-3" frameY="0" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyDown0003" x="412" y="1704" width="21" height="48" frameX="-3" frameY="0" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyDown0004" x="385" y="1724" width="21" height="48" frameX="-3" frameY="0" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyDown0005" x="347" y="1620" width="23" height="46" frameX="0" frameY="-2" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyDown0006" x="347" y="1522" width="23" height="48" frameX="0" frameY="0" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyDown0007" x="417" y="1542" width="21" height="48" frameX="0" frameY="0" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyDown0008" x="347" y="1522" width="23" height="48" frameX="0" frameY="0" frameWidth="25" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyEat0001" x="834" y="1104" width="43" height="47" frameX="-16" frameY="0" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0002" x="430" y="897" width="45" height="43" frameX="-13" frameY="-4" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0003" x="660" y="711" width="49" height="37" frameX="-10" frameY="-10" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0004" x="436" y="749" width="49" height="37" frameX="-10" frameY="-10" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0005" x="681" y="453" width="51" height="35" frameX="-8" frameY="-12" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0006" x="660" y="711" width="49" height="37" frameX="-10" frameY="-10" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0007" x="436" y="749" width="49" height="37" frameX="-10" frameY="-10" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0008" x="681" y="453" width="51" height="35" frameX="-8" frameY="-12" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyEat0009" x="430" y="897" width="45" height="43" frameX="-13" frameY="-4" frameWidth="59" frameHeight="49"/>
+    <SubTexture name="Husky/HuskyLDown0001" x="837" y="1057" width="40" height="45"/>
+    <SubTexture name="Husky/HuskyLDown0002" x="837" y="1010" width="40" height="45"/>
+    <SubTexture name="Husky/HuskyLDown0003" x="477" y="1658" width="38" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLDown0004" x="613" y="919" width="40" height="45"/>
+    <SubTexture name="Husky/HuskyLDown0005" x="837" y="963" width="40" height="45"/>
+    <SubTexture name="Husky/HuskyLDown0006" x="519" y="1612" width="38" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLDown0007" x="372" y="1677" width="38" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLDown0008" x="437" y="1650" width="38" height="45" frameX="0" frameY="0" frameWidth="40" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0001" x="637" y="1592" width="38" height="43" frameX="-2" frameY="-1" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0002" x="269" y="1656" width="40" height="43" frameX="0" frameY="-1" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0003" x="178" y="1719" width="38" height="43" frameX="-1" frameY="-1" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0004" x="372" y="1584" width="40" height="43" frameX="-1" frameY="-1" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0005" x="202" y="1199" width="44" height="41" frameX="0" frameY="-3" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0006" x="136" y="1641" width="42" height="43" frameX="0" frameY="-1" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0007" x="212" y="1106" width="40" height="43" frameX="0" frameY="-1" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLUp0008" x="181" y="1603" width="42" height="43" frameX="0" frameY="-1" frameWidth="44" frameHeight="45"/>
+    <SubTexture name="Husky/HuskyLeft0001" x="976" y="2" width="46" height="48" frameX="-1" frameY="0" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyLeft0002" x="690" y="249" width="46" height="46" frameX="-1" frameY="-1" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyLeft0003" x="2" y="1606" width="42" height="48" frameX="-2" frameY="0" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyLeft0004" x="655" y="1003" width="44" height="46" frameX="-2" frameY="-1" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyLeft0005" x="975" y="302" width="46" height="46" frameX="-2" frameY="-1" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyLeft0006" x="655" y="955" width="44" height="46" frameX="-2" frameY="-1" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyLeft0007" x="655" y="907" width="44" height="46" frameX="-2" frameY="-1" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyLeft0008" x="655" y="859" width="44" height="46" frameX="-2" frameY="-1" frameWidth="48" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyPlay0001" x="180" y="1679" width="40" height="38" frameX="-10" frameY="0" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0002" x="433" y="833" width="46" height="34" frameX="-4" frameY="-4" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0003" x="430" y="869" width="46" height="26" frameX="-5" frameY="-12" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0004" x="974" y="418" width="48" height="28" frameX="-3" frameY="-10" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0005" x="436" y="694" width="50" height="26" frameX="-2" frameY="-12" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0006" x="654" y="1238" width="44" height="30" frameX="-6" frameY="-8" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0007" x="974" y="448" width="48" height="26" frameX="-5" frameY="-12" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0008" x="655" y="831" width="46" height="26" frameX="-6" frameY="-12" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskyPlay0009" x="225" y="1620" width="42" height="36" frameX="-9" frameY="-2" frameWidth="54" frameHeight="40"/>
+    <SubTexture name="Husky/HuskySearch0001" x="92" y="1640" width="42" height="45" frameX="-5" frameY="0" frameWidth="48" frameHeight="45"/>
+    <SubTexture name="Husky/HuskySearch0002" x="655" y="1099" width="44" height="45" frameX="-3" frameY="0" frameWidth="48" frameHeight="45"/>
+    <SubTexture name="Husky/HuskySearch0003" x="2" y="1656" width="42" height="43" frameX="-4" frameY="-2" frameWidth="48" frameHeight="45"/>
+    <SubTexture name="Husky/HuskySearch0004" x="433" y="788" width="46" height="43" frameX="-2" frameY="-2" frameWidth="48" frameHeight="45"/>
+    <SubTexture name="Husky/HuskySearch0005" x="46" y="1651" width="42" height="43" frameX="-3" frameY="-2" frameWidth="48" frameHeight="45"/>
+    <SubTexture name="Husky/HuskySearch0006" x="137" y="1594" width="42" height="45" frameX="-3" frameY="0" frameWidth="48" frameHeight="45"/>
+    <SubTexture name="Husky/HuskySit0001" x="440" y="1504" width="41" height="40" frameX="0" frameY="-1" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0002" x="46" y="1696" width="39" height="38" frameX="-2" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0003" x="637" y="1637" width="37" height="38" frameX="-4" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0004" x="709" y="1709" width="35" height="38" frameX="-5" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0005" x="90" y="1687" width="39" height="38" frameX="-2" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0006" x="637" y="1637" width="37" height="38" frameX="-4" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0007" x="709" y="1709" width="35" height="38" frameX="-5" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0008" x="90" y="1687" width="39" height="38" frameX="-2" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskySit0009" x="46" y="1696" width="39" height="38" frameX="-2" frameY="-3" frameWidth="41" frameHeight="42"/>
+    <SubTexture name="Husky/HuskyStand0001" x="563" y="1610" width="38" height="52" frameX="0" frameY="-10" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyStand0002" x="523" y="1558" width="38" height="52" frameX="0" frameY="-10" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyStand0003" x="483" y="1504" width="38" height="54" frameX="0" frameY="-8" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyStand0004" x="563" y="1556" width="38" height="52" frameX="0" frameY="-10" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyStand0005" x="523" y="1504" width="38" height="52" frameX="0" frameY="-10" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyStand0006" x="440" y="1546" width="38" height="52" frameX="0" frameY="-10" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyStand0007" x="2" y="1701" width="38" height="54" frameX="0" frameY="-8" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyStand0008" x="440" y="1546" width="38" height="52" frameX="0" frameY="-10" frameWidth="40" frameHeight="62"/>
+    <SubTexture name="Husky/HuskyTail0001" x="830" y="1337" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyTail0002" x="649" y="1316" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyTail0003" x="830" y="1337" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyTail0004" x="200" y="1281" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyTail0005" x="654" y="1270" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyTail0006" x="834" y="1199" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyTail0007" x="834" y="1153" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyTail0008" x="200" y="1281" width="43" height="44"/>
+    <SubTexture name="Husky/HuskyUp0001" x="347" y="1572" width="23" height="46" frameX="-1" frameY="-2" frameWidth="27" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyUp0002" x="347" y="1472" width="23" height="48" frameX="-4" frameY="0" frameWidth="27" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyUp0003" x="417" y="1492" width="21" height="48" frameX="-5" frameY="0" frameWidth="27" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyUp0004" x="347" y="1472" width="23" height="48" frameX="-4" frameY="0" frameWidth="27" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyUp0005" x="347" y="1572" width="23" height="46" frameX="-1" frameY="-2" frameWidth="27" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyUp0006" x="996" y="1600" width="23" height="48" frameX="0" frameY="0" frameWidth="27" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyUp0007" x="996" y="1550" width="23" height="48" frameX="0" frameY="0" frameWidth="27" frameHeight="48"/>
+    <SubTexture name="Husky/HuskyUp0008" x="996" y="1600" width="23" height="48" frameX="0" frameY="0" frameWidth="27" frameHeight="48"/>
     <SubTexture name="RabbitHouse" x="746" y="2" width="228" height="135" frameX="-10" frameY="-11" frameWidth="246" frameHeight="157"/>
+    <SubTexture name="SheepDog/SheepDogEat0001" x="879" y="1065" width="66" height="62" frameX="-4" frameY="-4" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0002" x="769" y="1008" width="66" height="62" frameX="-4" frameY="-4" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0003" x="544" y="975" width="66" height="60" frameX="-4" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0004" x="476" y="975" width="66" height="60" frameX="-4" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0005" x="701" y="1001" width="66" height="62" frameX="-4" frameY="-3" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0006" x="68" y="1224" width="64" height="64" frameX="-6" frameY="-1" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0007" x="136" y="1194" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0008" x="254" y="1126" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0009" x="320" y="1116" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0010" x="390" y="1090" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0011" x="462" y="1037" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0012" x="2" y="1157" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0013" x="70" y="1156" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0014" x="138" y="1126" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0015" x="254" y="1058" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0016" x="324" y="1048" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0017" x="396" y="1022" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0018" x="945" y="1200" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0019" x="879" y="1197" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0020" x="701" y="933" width="66" height="66" frameX="-5" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0021" x="773" y="875" width="66" height="66" frameX="-5" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0022" x="945" y="1132" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0023" x="879" y="1129" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0024" x="768" y="1140" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0025" x="768" y="1072" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0026" x="908" y="451" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0027" x="945" y="1132" width="64" height="66" frameX="-6" frameY="0" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0028" x="545" y="911" width="66" height="62" frameX="-4" frameY="-4" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0029" x="701" y="869" width="70" height="62" frameX="0" frameY="-4" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0030" x="555" y="847" width="70" height="62" frameX="0" frameY="-4" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0031" x="256" y="931" width="70" height="62" frameX="-1" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0032" x="343" y="921" width="70" height="62" frameX="-1" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0033" x="481" y="847" width="72" height="62" frameX="0" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0034" x="879" y="871" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0035" x="777" y="811" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0036" x="703" y="805" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0037" x="2" y="968" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0038" x="86" y="966" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0039" x="896" y="647" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0040" x="879" y="871" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0041" x="777" y="811" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0042" x="703" y="805" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0043" x="2" y="968" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0044" x="86" y="966" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0045" x="896" y="647" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0046" x="879" y="871" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0047" x="777" y="811" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0048" x="703" y="805" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0049" x="2" y="968" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0050" x="86" y="966" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0051" x="896" y="647" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0052" x="879" y="871" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0053" x="777" y="811" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0054" x="703" y="805" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0055" x="2" y="968" width="72" height="62" frameX="0" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0056" x="896" y="583" width="72" height="62" frameX="0" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0057" x="902" y="519" width="70" height="62" frameX="-1" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0058" x="953" y="875" width="68" height="62" frameX="-3" frameY="-5" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0059" x="2" y="1095" width="66" height="60" frameX="-5" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0060" x="382" y="1286" width="64" height="60" frameX="-6" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0061" x="130" y="1326" width="62" height="60" frameX="-7" frameY="-6" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogEat0062" x="2" y="1290" width="62" height="62" frameX="-8" frameY="-4" frameWidth="72" frameHeight="70"/>
+    <SubTexture name="SheepDog/SheepDogLDown0001" x="509" y="1439" width="62" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0002" x="578" y="1427" width="62" height="63" frameX="-1" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0003" x="66" y="1290" width="62" height="61" frameX="-2" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0004" x="701" y="1210" width="64" height="63" frameX="-1" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0005" x="452" y="1233" width="64" height="61" frameX="-2" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0006" x="70" y="1093" width="66" height="61" frameX="-1" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0007" x="144" y="1063" width="66" height="61" frameX="-1" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0008" x="2" y="1032" width="66" height="61" frameX="-1" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0009" x="879" y="1265" width="64" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0010" x="767" y="1208" width="64" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0011" x="701" y="1145" width="64" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0012" x="528" y="1102" width="64" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0013" x="947" y="1004" width="66" height="63" frameX="-1" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0014" x="879" y="1000" width="66" height="63" frameX="-1" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0015" x="947" y="939" width="66" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0016" x="879" y="935" width="66" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0017" x="76" y="1030" width="66" height="61" frameX="-2" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0018" x="160" y="1000" width="66" height="61" frameX="-2" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0019" x="256" y="995" width="66" height="61" frameX="-2" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0020" x="328" y="985" width="66" height="61" frameX="-1" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0021" x="947" y="1069" width="66" height="61" frameX="-1" frameY="-1" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0022" x="769" y="943" width="66" height="63" frameX="-1" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0023" x="528" y="1037" width="64" height="63" frameX="-2" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLDown0024" x="2" y="1225" width="64" height="63" frameX="-1" frameY="0" frameWidth="70" frameHeight="63"/>
+    <SubTexture name="SheepDog/SheepDogLUp0001" x="128" y="1468" width="61" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0002" x="239" y="1402" width="61" height="78" frameX="-2" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0003" x="879" y="1330" width="63" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0004" x="945" y="1268" width="63" height="78" frameX="-2" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0005" x="310" y="1392" width="63" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0006" x="379" y="1348" width="63" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0007" x="701" y="1065" width="65" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0008" x="448" y="1296" width="63" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0009" x="2" y="1434" width="61" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0010" x="65" y="1433" width="61" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0011" x="129" y="1388" width="61" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0012" x="594" y="1139" width="59" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0013" x="594" y="1059" width="59" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0014" x="415" y="942" width="59" height="78" frameX="-2" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0015" x="963" y="795" width="59" height="78" frameX="-2" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0016" x="2" y="1354" width="61" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0017" x="66" y="1353" width="61" height="78" frameX="-1" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0018" x="518" y="1295" width="63" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0019" x="584" y="1283" width="63" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0020" x="245" y="1322" width="63" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0021" x="314" y="1312" width="63" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0022" x="909" y="371" width="63" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogLUp0023" x="909" y="371" width="63" height="78" frameX="0" frameY="-2" frameWidth="65" frameHeight="80"/>
+    <SubTexture name="SheepDog/SheepDogSearch0001" x="924" y="1604" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0002" x="860" y="1602" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0003" x="746" y="1593" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0004" x="932" y="1540" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0005" x="868" y="1538" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0006" x="933" y="1476" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0007" x="518" y="1231" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0008" x="248" y="1258" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0009" x="316" y="1248" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0010" x="386" y="1222" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0011" x="477" y="911" width="66" height="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0012" x="452" y="1169" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0013" x="699" y="1275" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0014" x="588" y="1219" width="64" height="62" frameX="0" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0015" x="682" y="1531" width="62" height="62" frameX="-2" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0016" x="522" y="1167" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0017" x="134" y="1262" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0018" x="250" y="1194" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0019" x="320" y="1184" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0020" x="386" y="1158" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0021" x="456" y="1105" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0022" x="767" y="1273" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0023" x="477" y="911" width="66" height="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0024" x="452" y="1169" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0025" x="699" y="1275" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0026" x="588" y="1219" width="64" height="62" frameX="0" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0027" x="682" y="1531" width="62" height="62" frameX="-2" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0028" x="522" y="1167" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0029" x="134" y="1262" width="64" height="62" frameX="-1" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0030" x="751" y="1529" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0031" x="869" y="1474" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0032" x="940" y="1412" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0033" x="687" y="1467" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0034" x="573" y="1492" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0035" x="759" y="1465" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogSearch0036" x="440" y="1440" width="62" height="62" frameX="-3" frameY="0" frameWidth="66" frameHeight="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0001" x="694" y="1403" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0002" x="759" y="1401" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0003" x="375" y="1428" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0004" x="444" y="1376" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0005" x="513" y="1375" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0006" x="583" y="1363" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0007" x="694" y="1339" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0008" x="875" y="1410" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0009" x="765" y="1337" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0010" x="759" y="1401" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0011" x="694" y="1403" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0012" x="759" y="1401" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0013" x="375" y="1428" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0014" x="444" y="1376" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0015" x="513" y="1375" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0016" x="583" y="1363" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0017" x="694" y="1339" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0018" x="875" y="1410" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0019" x="765" y="1337" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0020" x="759" y="1401" width="63" height="62"/>
+    <SubTexture name="SheepDog/SheepDogStand0021" x="944" y="1348" width="63" height="62"/>
     <SubTexture name="SheepHouse" x="514" y="133" width="222" height="114" frameX="-9" frameY="-2" frameWidth="240" frameHeight="130"/>
-    <SubTexture name="chick/chickEat0001" x="418" y="1017" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0002" x="450" y="997" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0003" x="362" y="1027" width="19" height="26" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0004" x="482" y="971" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0005" x="514" y="957" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0006" x="696" y="947" width="19" height="28" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0007" x="675" y="937" width="19" height="28" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0008" x="654" y="937" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0009" x="633" y="937" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0010" x="612" y="935" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0011" x="514" y="957" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0012" x="385" y="1023" width="19" height="26" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0013" x="1000" y="706" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0014" x="894" y="521" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0015" x="895" y="437" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0016" x="234" y="1006" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0017" x="234" y="978" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0018" x="234" y="950" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0019" x="234" y="922" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0020" x="234" y="1006" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0021" x="234" y="978" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0022" x="234" y="950" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0023" x="234" y="922" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0024" x="234" y="1006" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0025" x="234" y="978" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0026" x="234" y="950" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0027" x="234" y="922" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0028" x="234" y="1006" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0029" x="234" y="978" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0030" x="234" y="950" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0031" x="234" y="922" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0032" x="234" y="1006" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0033" x="895" y="409" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickEat0034" x="591" y="927" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0001" x="570" y="927" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0002" x="549" y="927" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0003" x="256" y="1035" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0004" x="289" y="1031" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0005" x="310" y="1011" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0006" x="570" y="927" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0007" x="341" y="999" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0008" x="364" y="997" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0009" x="397" y="993" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0010" x="429" y="987" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0011" x="256" y="1035" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0012" x="289" y="1031" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0013" x="310" y="1011" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0014" x="570" y="927" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0015" x="461" y="967" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0016" x="493" y="941" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0017" x="256" y="1035" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0018" x="289" y="1031" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0019" x="310" y="1011" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickProduce0020" x="528" y="927" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0001" x="602" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0002" x="581" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0003" x="749" y="945" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0004" x="560" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0005" x="289" y="999" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0006" x="320" y="979" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0007" x="343" y="967" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0008" x="602" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0009" x="581" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0010" x="728" y="945" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0011" x="376" y="965" width="19" height="30" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0012" x="408" y="961" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0013" x="440" y="955" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0014" x="472" y="935" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0015" x="507" y="909" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0016" x="539" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0017" x="1000" y="952" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0018" x="979" y="952" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0019" x="958" y="936" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0020" x="707" y="917" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0021" x="686" y="907" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0022" x="728" y="945" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0023" x="937" y="936" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0024" x="602" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0025" x="916" y="927" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0026" x="895" y="927" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0027" x="874" y="913" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0028" x="665" y="907" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0029" x="728" y="945" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0030" x="853" y="913" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0031" x="832" y="913" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0032" x="602" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0033" x="772" y="923" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0034" x="811" y="913" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0035" x="751" y="913" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0036" x="730" y="913" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0037" x="644" y="907" width="19" height="28" frameX="-5" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0038" x="623" y="905" width="19" height="28" frameX="-5" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0039" x="790" y="891" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0040" x="709" y="885" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0041" x="602" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0042" x="602" y="895" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0043" x="62" y="1094" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0044" x="895" y="379" width="21" height="28" frameX="-3" frameY="-2" frameWidth="25" frameHeight="30"/>
-    <SubTexture name="chick/chickStand0045" x="895" y="349" width="21" height="28" frameX="-3" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0001" x="286" y="1984" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0002" x="307" y="1956" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0003" x="23" y="2020" width="19" height="26" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0004" x="328" y="1934" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0005" x="286" y="1954" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0006" x="307" y="1926" width="19" height="28" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0007" x="265" y="1954" width="19" height="28" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0008" x="265" y="1924" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0009" x="286" y="1924" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0010" x="265" y="2018" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0011" x="286" y="1954" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0012" x="2" y="2020" width="19" height="26" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0013" x="997" y="1696" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0014" x="959" y="1668" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0015" x="784" y="1745" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0016" x="412" y="1648" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0017" x="347" y="1668" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0018" x="414" y="1620" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0019" x="414" y="1592" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0020" x="412" y="1648" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0021" x="347" y="1668" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0022" x="414" y="1620" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0023" x="414" y="1592" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0024" x="412" y="1648" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0025" x="347" y="1668" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0026" x="414" y="1620" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0027" x="414" y="1592" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0028" x="412" y="1648" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0029" x="347" y="1668" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0030" x="414" y="1620" width="23" height="26" frameX="-1" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0031" x="414" y="1592" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0032" x="412" y="1648" width="23" height="26" frameX="0" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0033" x="784" y="1717" width="21" height="26" frameX="-2" frameY="-3" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickEat0034" x="265" y="1988" width="19" height="28" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0001" x="244" y="1950" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0002" x="244" y="2018" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0003" x="244" y="1988" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0004" x="223" y="2018" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0005" x="223" y="1988" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0006" x="244" y="1950" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0007" x="223" y="1944" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0008" x="244" y="1920" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0009" x="223" y="1914" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0010" x="202" y="2018" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0011" x="244" y="1988" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0012" x="223" y="2018" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0013" x="223" y="1988" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0014" x="244" y="1950" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0015" x="202" y="1988" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0016" x="183" y="1940" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0017" x="244" y="1988" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0018" x="223" y="2018" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0019" x="223" y="1988" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickProduce0020" x="162" y="1930" width="19" height="28" frameX="-5" frameY="-1" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0001" x="405" y="1956" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0002" x="384" y="1946" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0003" x="183" y="1910" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0004" x="363" y="1932" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0005" x="342" y="1902" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0006" x="321" y="1894" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0007" x="300" y="1892" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0008" x="405" y="1956" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0009" x="384" y="1946" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0010" x="162" y="1900" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0011" x="279" y="1892" width="19" height="30" frameX="-4" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0012" x="258" y="1888" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0013" x="237" y="1882" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0014" x="216" y="1882" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0015" x="195" y="1878" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0016" x="174" y="1868" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0017" x="153" y="1868" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0018" x="202" y="1846" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0019" x="402" y="1914" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0020" x="82" y="1929" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0021" x="123" y="1884" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0022" x="162" y="1900" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0023" x="381" y="1900" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0024" x="405" y="1956" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0025" x="402" y="1882" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0026" x="381" y="1868" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0027" x="404" y="1850" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0028" x="82" y="1899" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0029" x="162" y="1900" width="19" height="28" frameX="-4" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0030" x="383" y="1836" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0031" x="407" y="1818" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0032" x="405" y="1956" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0033" x="362" y="1832" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0034" x="364" y="1800" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0035" x="364" y="1768" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0036" x="326" y="1642" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0037" x="82" y="1869" width="19" height="28" frameX="-5" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0038" x="426" y="1956" width="19" height="28" frameX="-5" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0039" x="326" y="1610" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0040" x="281" y="1578" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0041" x="405" y="1956" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0042" x="405" y="1956" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0043" x="281" y="1546" width="19" height="30" frameX="-5" frameY="0" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0044" x="784" y="1687" width="21" height="28" frameX="-3" frameY="-2" frameWidth="25" frameHeight="30"/>
+    <SubTexture name="chick/chickStand0045" x="784" y="1657" width="21" height="28" frameX="-3" frameY="-2" frameWidth="25" frameHeight="30"/>
     <SubTexture name="cow/cowEat0001" x="2" y="814" width="84" height="72" frameX="-1" frameY="-2" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0002" x="176" y="766" width="84" height="74" frameX="-1" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0003" x="263" y="693" width="84" height="76" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0004" x="817" y="835" width="82" height="76" frameX="-1" frameY="-2" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0004" x="172" y="922" width="82" height="76" frameX="-1" frameY="-2" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0005" x="92" y="360" width="88" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0006" x="2" y="360" width="88" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0007" x="488" y="607" width="84" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0008" x="751" y="571" width="84" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0009" x="733" y="811" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0010" x="649" y="805" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0011" x="565" y="767" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0012" x="481" y="767" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0013" x="821" y="755" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0014" x="737" y="731" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0015" x="653" y="725" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0016" x="569" y="687" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0007" x="495" y="607" width="84" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0008" x="810" y="571" width="84" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0009" x="259" y="851" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0010" x="346" y="841" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0011" x="571" y="767" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0012" x="487" y="767" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0013" x="879" y="791" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0014" x="795" y="731" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0015" x="711" y="725" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0016" x="576" y="687" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0017" x="2" y="888" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0018" x="88" y="886" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0019" x="175" y="842" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0020" x="262" y="771" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0021" x="653" y="725" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0021" x="711" y="725" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0022" x="349" y="761" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0023" x="485" y="687" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0024" x="826" y="675" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0025" x="742" y="651" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0026" x="658" y="645" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0027" x="733" y="811" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0028" x="649" y="805" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
-    <SubTexture name="cow/cowEat0029" x="574" y="607" width="82" height="78" frameX="-1" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0023" x="492" y="687" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0024" x="885" y="711" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0025" x="801" y="651" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0026" x="717" y="645" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0027" x="259" y="851" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0028" x="346" y="841" width="82" height="78" frameX="0" frameY="-1" frameWidth="90" frameHeight="80"/>
+    <SubTexture name="cow/cowEat0029" x="581" y="607" width="82" height="78" frameX="-1" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0030" x="350" y="683" width="84" height="76" frameX="0" frameY="-2" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0031" x="2" y="440" width="88" height="76" frameX="-1" frameY="-1" frameWidth="90" frameHeight="80"/>
     <SubTexture name="cow/cowEat0032" x="92" y="440" width="88" height="74" frameX="-1" frameY="-1" frameWidth="90" frameHeight="80"/>
@@ -149,15 +495,15 @@
     <SubTexture name="cow/cowProduce0008" x="271" y="213" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
     <SubTexture name="cow/cowProduce0009" x="93" y="174" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
     <SubTexture name="cow/cowProduce0010" x="2" y="174" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
-    <SubTexture name="cow/cowProduce0011" x="827" y="287" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
-    <SubTexture name="cow/cowProduce0012" x="736" y="287" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
-    <SubTexture name="cow/cowProduce0013" x="597" y="249" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
-    <SubTexture name="cow/cowProduce0014" x="506" y="249" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
+    <SubTexture name="cow/cowProduce0011" x="829" y="287" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
+    <SubTexture name="cow/cowProduce0012" x="738" y="287" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
+    <SubTexture name="cow/cowProduce0013" x="599" y="249" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
+    <SubTexture name="cow/cowProduce0014" x="508" y="249" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
     <SubTexture name="cow/cowProduce0015" x="363" y="201" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
     <SubTexture name="cow/cowProduce0016" x="363" y="139" width="89" height="60" frameX="0" frameY="-1" frameWidth="97" frameHeight="62"/>
     <SubTexture name="cow/cowProduce0017" x="271" y="337" width="89" height="58" frameX="0" frameY="-2" frameWidth="97" frameHeight="62"/>
-    <SubTexture name="cow/cowStand0001" x="664" y="571" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0002" x="577" y="533" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0001" x="723" y="571" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0002" x="584" y="533" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0003" x="2" y="740" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0004" x="89" y="738" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0005" x="272" y="139" width="89" height="72"/>
@@ -165,370 +511,370 @@
     <SubTexture name="cow/cowStand0007" x="176" y="692" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0008" x="263" y="619" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0009" x="353" y="609" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0010" x="490" y="533" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0011" x="755" y="497" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0012" x="668" y="497" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0013" x="581" y="459" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0010" x="497" y="533" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0011" x="815" y="497" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0012" x="728" y="497" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0013" x="2" y="666" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0014" x="738" y="213" width="89" height="72"/>
     <SubTexture name="cow/cowStand0015" x="829" y="139" width="89" height="72"/>
-    <SubTexture name="cow/cowStand0016" x="2" y="666" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0017" x="89" y="664" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0018" x="176" y="618" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0019" x="266" y="545" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0020" x="356" y="535" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0021" x="494" y="459" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0022" x="762" y="423" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0023" x="675" y="423" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0016" x="89" y="664" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0017" x="176" y="618" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0018" x="266" y="545" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0019" x="356" y="535" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0020" x="589" y="459" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0021" x="502" y="459" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0022" x="821" y="423" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0023" x="734" y="423" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0024" x="2" y="592" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0025" x="89" y="590" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0026" x="179" y="544" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0027" x="269" y="471" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0028" x="358" y="461" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0029" x="588" y="385" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0030" x="501" y="385" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0031" x="762" y="349" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0032" x="675" y="349" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0033" x="588" y="311" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0029" x="594" y="385" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0030" x="507" y="385" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0031" x="822" y="349" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0032" x="735" y="349" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0033" x="594" y="311" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0034" x="2" y="518" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0035" x="92" y="516" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0036" x="182" y="470" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0037" x="271" y="397" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0038" x="362" y="387" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="cow/cowStand0039" x="501" y="311" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
+    <SubTexture name="cow/cowStand0039" x="507" y="311" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0040" x="182" y="396" width="87" height="72" frameX="-1" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0041" x="738" y="139" width="89" height="72"/>
     <SubTexture name="cow/cowStand0042" x="184" y="322" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0043" x="184" y="248" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
     <SubTexture name="cow/cowStand0044" x="184" y="174" width="85" height="72" frameX="0" frameY="0" frameWidth="89" frameHeight="72"/>
-    <SubTexture name="duck/duckEat0001" x="62" y="1126" width="18" height="30" frameX="-11" frameY="0" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0002" x="83" y="1120" width="18" height="30" frameX="-11" frameY="0" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0003" x="62" y="1064" width="20" height="28" frameX="-9" frameY="-2" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0004" x="894" y="493" width="22" height="26" frameX="-6" frameY="-4" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0005" x="208" y="998" width="24" height="24" frameX="-4" frameY="-6" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0006" x="208" y="1024" width="24" height="20" frameX="-4" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0007" x="760" y="891" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0008" x="730" y="891" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0009" x="679" y="885" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0010" x="649" y="885" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0011" x="995" y="798" width="26" height="20" frameX="-2" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0012" x="599" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0013" x="569" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0014" x="539" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0015" x="32" y="1122" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0016" x="2" y="1122" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0017" x="995" y="798" width="26" height="20" frameX="-2" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0018" x="599" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0019" x="569" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0020" x="539" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0021" x="32" y="1122" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0022" x="2" y="1122" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0023" x="995" y="798" width="26" height="20" frameX="-2" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0024" x="599" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0025" x="569" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0026" x="539" y="873" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0027" x="32" y="1100" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0028" x="2" y="1100" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0029" x="32" y="1078" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0030" x="2" y="1078" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0031" x="208" y="1024" width="24" height="20" frameX="-4" frameY="-10" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0032" x="995" y="820" width="24" height="24" frameX="-4" frameY="-6" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0033" x="894" y="465" width="22" height="26" frameX="-6" frameY="-4" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0034" x="62" y="1064" width="20" height="28" frameX="-9" frameY="-2" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckEat0035" x="114" y="1118" width="18" height="30" frameX="-11" frameY="0" frameWidth="30" frameHeight="30"/>
-    <SubTexture name="duck/duckProduce0001" x="207" y="1046" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0002" x="234" y="1034" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0003" x="64" y="1032" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0004" x="321" y="947" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0005" x="64" y="1000" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0006" x="64" y="968" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0007" x="148" y="966" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0008" x="323" y="915" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0009" x="323" y="883" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0010" x="321" y="947" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0011" x="323" y="851" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0012" x="1000" y="766" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0013" x="207" y="1046" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0014" x="234" y="1034" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0015" x="64" y="1032" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0016" x="321" y="947" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0017" x="323" y="851" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0018" x="1000" y="766" width="20" height="30"/>
-    <SubTexture name="duck/duckProduce0019" x="1000" y="734" width="20" height="30"/>
-    <SubTexture name="duck/duckStand0001" x="146" y="1114" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0002" x="595" y="965" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0003" x="575" y="957" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0004" x="555" y="957" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0005" x="206" y="1110" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0006" x="226" y="1098" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0007" x="146" y="1114" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0008" x="249" y="1097" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0009" x="276" y="1093" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0010" x="297" y="1073" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0011" x="330" y="1061" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0012" x="351" y="1055" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0013" x="383" y="1051" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0014" x="406" y="1047" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0015" x="226" y="1098" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0016" x="146" y="1114" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0017" x="595" y="965" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0018" x="575" y="957" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0019" x="555" y="957" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0020" x="206" y="1110" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0021" x="226" y="1098" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0022" x="146" y="1114" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0023" x="439" y="1027" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0024" x="471" y="1001" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0025" x="503" y="987" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0026" x="535" y="957" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0027" x="206" y="1078" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0028" x="555" y="957" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0029" x="229" y="1066" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0030" x="256" y="1065" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0031" x="277" y="1061" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0032" x="310" y="1041" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0033" x="331" y="1029" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0034" x="629" y="873" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0035" x="629" y="873" width="18" height="30"/>
-    <SubTexture name="duck/duckStand0036" x="629" y="873" width="18" height="30"/>
-    <SubTexture name="rabbit/rabbitEat0001" x="84" y="1082" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0002" x="32" y="1040" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0003" x="2" y="1040" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0004" x="178" y="998" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0005" x="86" y="1004" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0006" x="117" y="1002" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0007" x="148" y="998" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0008" x="259" y="995" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0009" x="991" y="882" width="30" height="38" frameX="-6" frameY="0" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0010" x="290" y="959" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0011" x="345" y="869" width="30" height="34" frameX="-6" frameY="-3" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0012" x="291" y="887" width="30" height="32" frameX="-6" frameY="-5" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0013" x="989" y="922" width="32" height="28" frameX="-3" frameY="-9" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0014" x="346" y="841" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0015" x="882" y="617" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0016" x="882" y="647" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0017" x="882" y="587" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0018" x="346" y="841" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0019" x="882" y="617" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0020" x="882" y="647" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0021" x="882" y="587" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0022" x="346" y="841" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0023" x="412" y="841" width="30" height="30" frameX="-5" frameY="-7" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0024" x="380" y="841" width="30" height="34" frameX="-5" frameY="-3" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0025" x="176" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0026" x="116" y="1080" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0027" x="146" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0028" x="177" y="1038" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0029" x="176" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0030" x="116" y="1080" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0031" x="146" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0032" x="177" y="1038" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0033" x="176" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0034" x="291" y="851" width="30" height="34" frameX="-6" frameY="-3" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0035" x="259" y="889" width="30" height="30" frameX="-5" frameY="-7" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0036" x="346" y="841" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0037" x="882" y="617" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0038" x="882" y="647" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0039" x="882" y="587" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0040" x="346" y="841" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0041" x="882" y="617" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0042" x="882" y="647" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0043" x="882" y="587" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0044" x="346" y="841" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0045" x="412" y="841" width="30" height="30" frameX="-5" frameY="-7" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0046" x="380" y="841" width="30" height="34" frameX="-5" frameY="-3" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0047" x="176" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0048" x="116" y="1080" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0049" x="146" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0050" x="177" y="1038" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0051" x="176" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0052" x="116" y="1080" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0053" x="146" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0054" x="177" y="1038" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0055" x="176" y="1076" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0056" x="86" y="1044" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0057" x="116" y="1042" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0058" x="259" y="851" width="30" height="36" frameX="-6" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitEat0059" x="147" y="1038" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="rabbit/rabbitProduce0001" x="345" y="905" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0002" x="377" y="903" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0003" x="409" y="899" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0004" x="444" y="893" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0005" x="476" y="873" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0006" x="604" y="847" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0007" x="572" y="847" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0008" x="540" y="847" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0009" x="508" y="847" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0010" x="377" y="877" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0011" x="412" y="873" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0012" x="444" y="893" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0013" x="476" y="873" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0014" x="604" y="847" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0015" x="444" y="867" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0016" x="476" y="847" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitProduce0017" x="444" y="841" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
-    <SubTexture name="rabbit/rabbitStand0001" x="86" y="966" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0002" x="203" y="960" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0003" x="259" y="959" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0004" x="345" y="931" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0005" x="377" y="929" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0006" x="409" y="925" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0007" x="441" y="919" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0008" x="476" y="899" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0009" x="172" y="960" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0010" x="203" y="922" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0011" x="172" y="922" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0012" x="508" y="873" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0013" x="33" y="1004" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0014" x="2" y="1004" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0015" x="290" y="921" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0016" x="203" y="922" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0017" x="172" y="922" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0018" x="508" y="873" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0019" x="33" y="1004" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0020" x="2" y="1004" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0021" x="290" y="921" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0022" x="203" y="922" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0023" x="33" y="968" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0024" x="33" y="1004" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0025" x="2" y="968" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0026" x="259" y="921" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0027" x="203" y="922" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0028" x="991" y="846" width="31" height="34" frameX="0" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0029" x="117" y="966" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0030" x="33" y="1004" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0031" x="2" y="1004" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0032" x="290" y="921" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="rabbit/rabbitStand0033" x="887" y="549" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
-    <SubTexture name="sheep/sheepEat0001" x="964" y="430" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0002" x="918" y="421" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0003" x="918" y="373" width="44" height="46" frameX="-2" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0004" x="453" y="379" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0005" x="688" y="299" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0006" x="688" y="249" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0007" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0008" x="453" y="331" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0009" x="453" y="283" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0010" x="966" y="336" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0011" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0012" x="976" y="2" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0013" x="688" y="299" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0014" x="688" y="249" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0015" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0016" x="453" y="331" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0017" x="453" y="283" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0018" x="966" y="336" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0019" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0020" x="976" y="2" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0021" x="688" y="299" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0022" x="688" y="249" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0023" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0024" x="453" y="331" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0025" x="453" y="283" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0026" x="966" y="336" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0027" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0028" x="976" y="2" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0029" x="688" y="299" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0030" x="688" y="249" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0031" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0032" x="453" y="331" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0033" x="453" y="283" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0034" x="966" y="336" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0035" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0036" x="976" y="2" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0037" x="688" y="299" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0038" x="688" y="249" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0039" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0040" x="453" y="331" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0041" x="453" y="283" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0042" x="966" y="336" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0043" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0044" x="976" y="2" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0045" x="688" y="299" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0046" x="918" y="325" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0047" x="849" y="349" width="44" height="46" frameX="-2" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0048" x="964" y="384" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepEat0049" x="849" y="397" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
-    <SubTexture name="sheep/sheepProduce0001" x="970" y="300" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0002" x="918" y="289" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0003" x="454" y="247" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0004" x="920" y="215" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0005" x="972" y="190" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0006" x="920" y="177" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0007" x="454" y="211" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0008" x="454" y="175" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0009" x="970" y="300" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0010" x="454" y="139" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0011" x="972" y="264" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0012" x="920" y="253" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0013" x="972" y="152" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0014" x="920" y="139" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0015" x="972" y="190" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0016" x="920" y="177" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0017" x="454" y="211" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0018" x="454" y="175" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0019" x="970" y="300" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0020" x="918" y="289" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0021" x="454" y="247" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0022" x="920" y="215" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0023" x="972" y="190" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0024" x="920" y="177" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0025" x="454" y="211" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0026" x="454" y="175" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepProduce0027" x="972" y="228" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
-    <SubTexture name="sheep/sheepStand0001" x="901" y="881" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0002" x="946" y="844" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0003" x="901" y="835" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0004" x="433" y="795" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0005" x="950" y="798" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0006" x="905" y="789" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0007" x="436" y="749" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0008" x="436" y="703" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0009" x="955" y="752" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0010" x="946" y="890" width="41" height="44" frameX="-2" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0011" x="910" y="743" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0012" x="955" y="706" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0013" x="910" y="697" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0014" x="440" y="657" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0015" x="440" y="611" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0016" x="436" y="703" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0017" x="963" y="660" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0018" x="918" y="651" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0019" x="963" y="614" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0020" x="955" y="706" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0021" x="837" y="627" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0022" x="918" y="605" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0023" x="837" y="581" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0024" x="436" y="703" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0025" x="443" y="565" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0026" x="963" y="568" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0027" x="918" y="559" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0028" x="955" y="706" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0029" x="842" y="535" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0030" x="445" y="519" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0031" x="445" y="473" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0032" x="436" y="703" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0033" x="963" y="522" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0034" x="918" y="513" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0035" x="963" y="476" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0036" x="955" y="706" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0037" x="918" y="467" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0038" x="849" y="489" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0039" x="849" y="443" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0040" x="436" y="703" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0041" x="963" y="522" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0042" x="918" y="513" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0043" x="963" y="476" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0044" x="955" y="706" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0045" x="918" y="467" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0046" x="849" y="489" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0047" x="849" y="443" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0048" x="436" y="703" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0049" x="963" y="522" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0050" x="918" y="513" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0051" x="963" y="476" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0052" x="955" y="706" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0053" x="918" y="467" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0054" x="849" y="489" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0055" x="849" y="443" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
-    <SubTexture name="sheep/sheepStand0056" x="449" y="427" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="duck/duckEat0001" x="182" y="1988" width="18" height="30" frameX="-11" frameY="0" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0002" x="162" y="1988" width="18" height="30" frameX="-11" frameY="0" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0003" x="385" y="1806" width="20" height="28" frameX="-9" frameY="-2" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0004" x="347" y="1696" width="22" height="26" frameX="-6" frameY="-4" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0005" x="997" y="1502" width="24" height="24" frameX="-4" frameY="-6" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0006" x="997" y="1528" width="24" height="20" frameX="-4" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0007" x="123" y="1862" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0008" x="93" y="1847" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0009" x="2" y="1877" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0010" x="32" y="1856" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0011" x="627" y="897" width="26" height="20" frameX="-2" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0012" x="63" y="1847" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0013" x="223" y="1860" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0014" x="172" y="1846" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0015" x="142" y="1840" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0016" x="187" y="1824" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0017" x="627" y="897" width="26" height="20" frameX="-2" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0018" x="63" y="1847" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0019" x="223" y="1860" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0020" x="172" y="1846" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0021" x="142" y="1840" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0022" x="187" y="1824" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0023" x="627" y="897" width="26" height="20" frameX="-2" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0024" x="63" y="1847" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0025" x="223" y="1860" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0026" x="172" y="1846" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0027" x="453" y="1943" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0028" x="423" y="1934" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0029" x="453" y="1921" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0030" x="423" y="1912" width="28" height="20" frameX="0" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0031" x="997" y="1528" width="24" height="20" frameX="-4" frameY="-10" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0032" x="997" y="1476" width="24" height="24" frameX="-4" frameY="-6" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0033" x="412" y="1676" width="22" height="26" frameX="-6" frameY="-4" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0034" x="385" y="1806" width="20" height="28" frameX="-9" frameY="-2" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckEat0035" x="142" y="1988" width="18" height="30" frameX="-11" frameY="0" frameWidth="30" frameHeight="30"/>
+    <SubTexture name="duck/duckProduce0001" x="407" y="1786" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0002" x="385" y="1774" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0003" x="280" y="1780" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0004" x="280" y="1748" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0005" x="606" y="1787" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0006" x="759" y="1782" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0007" x="781" y="1773" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0008" x="759" y="1750" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0009" x="609" y="1755" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0010" x="280" y="1748" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0011" x="609" y="1723" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0012" x="408" y="1754" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0013" x="407" y="1786" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0014" x="385" y="1774" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0015" x="280" y="1780" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0016" x="280" y="1748" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0017" x="609" y="1723" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0018" x="408" y="1754" width="20" height="30"/>
+    <SubTexture name="duck/duckProduce0019" x="997" y="1724" width="20" height="30"/>
+    <SubTexture name="duck/duckStand0001" x="123" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0002" x="122" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0003" x="103" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0004" x="102" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0005" x="82" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0006" x="62" y="1933" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0007" x="123" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0008" x="103" y="1901" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0009" x="62" y="1901" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0010" x="103" y="1869" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0011" x="62" y="1869" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0012" x="62" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0013" x="42" y="1900" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0014" x="42" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0015" x="62" y="1933" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0016" x="123" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0017" x="122" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0018" x="103" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0019" x="102" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0020" x="82" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0021" x="62" y="1933" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0022" x="123" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0023" x="22" y="1900" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0024" x="22" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0025" x="2" y="1900" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0026" x="2" y="1934" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0027" x="42" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0028" x="102" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0029" x="22" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0030" x="2" y="1988" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0031" x="282" y="1514" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0032" x="282" y="1482" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0033" x="1004" y="1444" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0034" x="1004" y="1412" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0035" x="1004" y="1412" width="18" height="30"/>
+    <SubTexture name="duck/duckStand0036" x="1004" y="1412" width="18" height="30"/>
+    <SubTexture name="rabbit/rabbitEat0001" x="351" y="1864" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0002" x="321" y="1856" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0003" x="291" y="1854" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0004" x="112" y="1807" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0005" x="157" y="1800" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0006" x="201" y="1784" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0007" x="485" y="1911" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0008" x="519" y="1878" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0009" x="469" y="1765" width="30" height="38" frameX="-6" frameY="0" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0010" x="455" y="1881" width="28" height="38" frameX="-8" frameY="0" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0011" x="631" y="1724" width="30" height="34" frameX="-6" frameY="-3" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0012" x="574" y="1759" width="30" height="32" frameX="-6" frameY="-5" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0013" x="435" y="1744" width="32" height="28" frameX="-3" frameY="-9" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0014" x="510" y="1705" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0015" x="881" y="1712" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0016" x="917" y="1714" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0017" x="807" y="1752" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0018" x="510" y="1705" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0019" x="881" y="1712" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0020" x="917" y="1714" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0021" x="807" y="1752" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0022" x="510" y="1705" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0023" x="501" y="1793" width="30" height="30" frameX="-5" frameY="-7" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0024" x="542" y="1746" width="30" height="34" frameX="-5" frameY="-3" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0025" x="261" y="1850" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0026" x="231" y="1822" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0027" x="261" y="1812" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0028" x="231" y="1784" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0029" x="261" y="1850" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0030" x="231" y="1822" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0031" x="261" y="1812" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0032" x="231" y="1784" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0033" x="261" y="1850" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0034" x="577" y="1723" width="30" height="34" frameX="-6" frameY="-3" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0035" x="542" y="1782" width="30" height="30" frameX="-5" frameY="-7" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0036" x="510" y="1705" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0037" x="881" y="1712" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0038" x="917" y="1714" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0039" x="807" y="1752" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0040" x="510" y="1705" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0041" x="881" y="1712" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0042" x="917" y="1714" width="34" height="26" frameX="-2" frameY="-12" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0043" x="807" y="1752" width="34" height="28" frameX="-2" frameY="-10" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0044" x="510" y="1705" width="32" height="26" frameX="-3" frameY="-11" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0045" x="501" y="1793" width="30" height="30" frameX="-5" frameY="-7" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0046" x="542" y="1746" width="30" height="34" frameX="-5" frameY="-3" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0047" x="261" y="1850" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0048" x="231" y="1822" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0049" x="261" y="1812" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0050" x="231" y="1784" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0051" x="261" y="1850" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0052" x="231" y="1822" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0053" x="261" y="1812" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0054" x="231" y="1784" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0055" x="261" y="1850" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0056" x="2" y="1839" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0057" x="33" y="1818" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0058" x="430" y="1774" width="30" height="36" frameX="-6" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitEat0059" x="72" y="1809" width="28" height="36" frameX="-8" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="rabbit/rabbitProduce0001" x="533" y="1814" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0002" x="574" y="1793" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0003" x="727" y="1802" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0004" x="695" y="1801" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0005" x="663" y="1786" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0006" x="631" y="1786" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0007" x="727" y="1776" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0008" x="695" y="1775" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0009" x="663" y="1760" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0010" x="631" y="1760" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0011" x="727" y="1750" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0012" x="695" y="1801" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0013" x="663" y="1786" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0014" x="631" y="1786" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0015" x="695" y="1749" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0016" x="663" y="1734" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitProduce0017" x="462" y="1805" width="30" height="24" frameX="-3" frameY="-1" frameWidth="38" frameHeight="28"/>
+    <SubTexture name="rabbit/rabbitStand0001" x="627" y="1850" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0002" x="525" y="1840" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0003" x="333" y="1768" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0004" x="302" y="1766" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0005" x="249" y="1748" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0006" x="2" y="1803" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0007" x="41" y="1782" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0008" x="81" y="1773" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0009" x="596" y="1819" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0010" x="565" y="1819" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0011" x="690" y="1827" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0012" x="126" y="1771" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0013" x="170" y="1764" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0014" x="218" y="1748" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0015" x="659" y="1812" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0016" x="565" y="1819" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0017" x="690" y="1827" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0018" x="126" y="1771" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0019" x="170" y="1764" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0020" x="218" y="1748" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0021" x="659" y="1812" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0022" x="565" y="1819" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0023" x="587" y="1857" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0024" x="170" y="1764" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0025" x="556" y="1857" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0026" x="628" y="1812" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0027" x="565" y="1819" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0028" x="544" y="1710" width="31" height="34" frameX="0" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0029" x="658" y="1850" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0030" x="170" y="1764" width="29" height="34" frameX="-1" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0031" x="218" y="1748" width="29" height="34" frameX="-2" frameY="-1" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0032" x="659" y="1812" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="rabbit/rabbitStand0033" x="494" y="1825" width="29" height="36" frameX="-2" frameY="0" frameWidth="33" frameHeight="36"/>
+    <SubTexture name="sheep/sheepEat0001" x="833" y="1291" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0002" x="833" y="1245" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0003" x="204" y="1151" width="44" height="46" frameX="-2" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0004" x="660" y="750" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0005" x="975" y="252" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0006" x="975" y="202" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0007" x="976" y="152" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0008" x="974" y="572" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0009" x="974" y="524" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0010" x="974" y="476" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0011" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0012" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0013" x="975" y="252" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0014" x="975" y="202" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0015" x="976" y="152" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0016" x="974" y="572" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0017" x="974" y="524" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0018" x="974" y="476" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0019" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0020" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0021" x="975" y="252" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0022" x="975" y="202" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0023" x="976" y="152" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0024" x="974" y="572" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0025" x="974" y="524" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0026" x="974" y="476" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0027" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0028" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0029" x="975" y="252" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0030" x="975" y="202" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0031" x="976" y="152" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0032" x="974" y="572" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0033" x="974" y="524" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0034" x="974" y="476" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0035" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0036" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0037" x="975" y="252" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0038" x="975" y="202" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0039" x="976" y="152" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0040" x="974" y="572" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0041" x="974" y="524" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0042" x="974" y="476" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0043" x="976" y="102" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0044" x="976" y="52" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0045" x="975" y="252" width="46" height="48" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0046" x="690" y="297" width="46" height="46" frameX="0" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0047" x="655" y="1051" width="44" height="46" frameX="-2" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0048" x="655" y="1192" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepEat0049" x="655" y="1146" width="44" height="44" frameX="-3" frameY="0" frameWidth="48" frameHeight="50"/>
+    <SubTexture name="sheep/sheepProduce0001" x="969" y="728" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0002" x="665" y="675" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0003" x="665" y="639" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0004" x="443" y="584" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0005" x="443" y="546" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0006" x="676" y="528" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0007" x="440" y="658" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0008" x="440" y="622" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0009" x="969" y="728" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0010" x="970" y="692" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0011" x="970" y="656" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0012" x="970" y="620" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0013" x="676" y="490" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0014" x="445" y="508" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0015" x="443" y="546" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0016" x="676" y="528" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0017" x="440" y="658" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0018" x="440" y="622" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0019" x="969" y="728" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0020" x="665" y="675" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0021" x="665" y="639" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0022" x="443" y="584" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0023" x="443" y="546" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0024" x="676" y="528" width="50" height="36" frameX="0" frameY="0" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0025" x="440" y="658" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0026" x="440" y="622" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepProduce0027" x="671" y="603" width="50" height="34" frameX="0" frameY="-1" frameWidth="50" frameHeight="40"/>
+    <SubTexture name="sheep/sheepStand0001" x="47" y="1605" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0002" x="92" y="1594" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0003" x="281" y="1610" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0004" x="2" y="1560" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0005" x="47" y="1559" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0006" x="236" y="1574" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0007" x="191" y="1557" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0008" x="110" y="1548" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0009" x="372" y="1538" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0010" x="612" y="1013" width="41" height="44" frameX="-2" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0011" x="302" y="1564" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0012" x="372" y="1492" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0013" x="236" y="1528" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0014" x="191" y="1511" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0015" x="302" y="1518" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0016" x="110" y="1548" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0017" x="237" y="1482" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0018" x="302" y="1472" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0019" x="2" y="1514" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0020" x="372" y="1492" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0021" x="65" y="1513" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0022" x="192" y="1465" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0023" x="192" y="1419" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0024" x="110" y="1548" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0025" x="194" y="1373" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0026" x="194" y="1327" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0027" x="810" y="1613" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0028" x="372" y="1492" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0029" x="815" y="1567" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0030" x="637" y="1546" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0031" x="823" y="1521" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0032" x="110" y="1548" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0033" x="823" y="1475" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0034" x="637" y="1500" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0035" x="642" y="1454" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0036" x="372" y="1492" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0037" x="824" y="1429" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0038" x="648" y="1408" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0039" x="649" y="1362" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0040" x="110" y="1548" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0041" x="823" y="1475" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0042" x="637" y="1500" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0043" x="642" y="1454" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0044" x="372" y="1492" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0045" x="824" y="1429" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0046" x="648" y="1408" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0047" x="649" y="1362" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0048" x="110" y="1548" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0049" x="823" y="1475" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0050" x="637" y="1500" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0051" x="642" y="1454" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0052" x="372" y="1492" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0053" x="824" y="1429" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0054" x="648" y="1408" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0055" x="649" y="1362" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
+    <SubTexture name="sheep/sheepStand0056" x="830" y="1383" width="43" height="44" frameX="0" frameY="0" frameWidth="45" frameHeight="48"/>
 </TextureAtlas>

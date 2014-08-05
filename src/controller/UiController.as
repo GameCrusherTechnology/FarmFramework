@@ -44,6 +44,7 @@ package controller
 		public static const TOOL_SCOOP:String = "scoop";
 		public static const TOOL_EXCAVATE:String = "excavate";
 		public static const TOOL_RANCH_INFO:String = "ranchinfo";
+		public static const TOOL_PET_INFO:String = "petinfo";
 		public static const TOOL_HARVEST_ANIMAL:String = "harvestanimal";
 		public static const TOOL_FEED_ANIMAL:String = "feedanimal";
 		private static var _controller:UiController;

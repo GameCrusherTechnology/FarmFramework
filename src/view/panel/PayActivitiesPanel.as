@@ -63,6 +63,7 @@ package view.panel
 			titleText.x = panelSkin.x;
 			titleText.y = panelSkin.y + 30*scale;
 			
+			
 			timeText = FieldController.createSingleLineDynamicField(panelwidth,30," ",0xff00ff,25,true);
 			addChild(timeText);
 			timeText.x = panelSkin.x;
@@ -102,7 +103,7 @@ package view.panel
 				sysTime = SystemDate.systemTimeS;
 				
 				if(Configrations.treasuresActivity.time > sysTime){
-					timeText.text = SystemDate.getTimeLeftString(Configrations.treasuresActivity.time - SystemDate.systemTimeS);
+					timeText.text = LanguageController.getInstance().getString("lefttime")+" : "+SystemDate.getTimeLeftString(Configrations.treasuresActivity.time - SystemDate.systemTimeS);
 				}else{
 					dispose();
 				}
@@ -147,7 +148,11 @@ package view.panel
 			
 			var buyButton:Button = new Button();
 			buyButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			buyButton.label = String("US$ 2 ");
+			if(Configrations.treasureDetails[Configrations.LITTLEGEM]){
+				buyButton.label = String(Configrations.treasureDetails[Configrations.LITTLEGEM]["suffer"] +" "+ Configrations.treasureDetails[Configrations.LITTLEGEM]["price"]);
+			}else{
+				buyButton.label = String("US$ 2 ");
+			}
 			buyButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			container.addChild(buyButton);
 			buyButton.paddingLeft = buyButton.paddingRight = 25 ;
@@ -198,7 +203,11 @@ package view.panel
 			
 			var buyButton:Button = new Button();
 			buyButton.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			buyButton.label = String("US$ 10 ");
+			if(Configrations.treasureDetails[Configrations.LARGEGEM]){
+				buyButton.label = String(Configrations.treasureDetails[Configrations.LARGEGEM]["suffer"] +" "+ Configrations.treasureDetails[Configrations.LARGEGEM]["price"]);
+			}else{
+				buyButton.label = String("US$ 10 ");
+			}
 			buyButton.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, 30, 0x000000);
 			container.addChild(buyButton);
 			buyButton.paddingLeft = buyButton.paddingRight = 25 ;

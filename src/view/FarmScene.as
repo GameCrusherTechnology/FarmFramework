@@ -21,6 +21,7 @@ package view
 	import model.entity.AnimalItem;
 	import model.entity.CropItem;
 	import model.entity.EntityItem;
+	import model.entity.PetItem;
 	import model.gameSpec.RanchSpec;
 	import model.player.GamePlayer;
 	
@@ -42,9 +43,11 @@ package view
 	import view.entity.CropEntity;
 	import view.entity.GameEntity;
 	import view.entity.HouseEntity;
+	import view.entity.PetEntity;
 	import view.entity.RanchEntity;
 	import view.entity.StandAnimalEntity;
 	import view.panel.ExtendFarmLandPanel;
+	import view.panel.PetSearchPanel;
 	import view.panel.WarnnigTipPanel;
 
 	public class FarmScene extends Sprite
@@ -102,6 +105,8 @@ package view
 			addChild(shape);
 		}
 		
+		public var searchDog:PetEntity;
+		public var defenceDog:PetEntity;
 		private function initEntity():void
 		{
 			entityDic = new Vector.<GameEntity>;
@@ -148,8 +153,30 @@ package view
 					}
 				}
 			}
+			
+			var petItem:PetItem;
+			for each(petItem in player.petItems){
+				entity = new PetEntity(petItem);
+				if(petItem.item_id =="100000"){
+					searchDog = entity as PetEntity;
+				}else if(petItem.item_id =="100001"){
+					defenceDog = entity as PetEntity;
+				}
+				addEntityLayer(entity);
+				entityDic.push(entity);
+			}
+//			
+			
 			if(GameController.instance.isHomeModel){
 				checkNewAnimal();
+			}else{
+				for each(petItem in GameController.instance.localPlayer.petItems){
+					if(petItem.item_id == "100000"){
+						searchDog = new PetEntity(petItem);
+						addEntityLayer(searchDog);
+						entityDic.push(searchDog);
+					}
+				}
 			}
 			sortEntityLayer();
 		}
@@ -181,6 +208,15 @@ package view
 			addEntityLayer(entity);
 			entityDic.push(entity);
 			sortEntityLayer();
+		}
+		public function addPetEntity(petItem:PetItem):void
+		{
+			var entity:PetEntity = new PetEntity(petItem);
+			if(petItem.item_id =="100000"){
+				searchDog = entity as PetEntity;
+			}
+			addEntityLayer(entity);
+			entityDic.push(entity);
 		}
 		
 		private var standAnimal:StandAnimalEntity;
@@ -406,7 +442,31 @@ package view
 				entityLayer.setChildIndex(entity, i);
 			}
 		}
-		
+		public function sortEntityLayerByMove(moveentity:GameEntity):void
+		{
+			var depthArr:Array = [];
+			var objA:DisplayObject;
+			var entity:GameEntity;
+			var max:uint = entityLayer.numChildren;
+			var i:uint = 0;
+			
+			for (i=0; i < max; ++i)
+			{
+				objA = entityLayer.getChildAt(i);
+				if(objA is GameEntity){
+					depthArr.push({ index : (objA as GameEntity).sceneIndex, iso : objA });
+				}
+			}
+			max = depthArr.length;
+			depthArr.sortOn("index", Array.NUMERIC);
+			for (i = 0; i < max; i++) {
+				entity = depthArr[i]['iso'];
+				if(entity == moveentity){
+					entityLayer.setChildIndex(entity, i);
+					break;
+				}
+			}
+		}
 		private var currentMoveEntity:GameEntity;
 		public function addMoveEntity(entity:GameEntity):void
 		{
@@ -652,7 +712,7 @@ package view
 			
 		}
 		
-		private function onHelped():void
+		private function onHelped(result:Object=null):void
 		{
 			player.lastHelpedTime = SystemDate.systemTimeS;
 			player.cur_mes_dataid++;
@@ -662,6 +722,23 @@ package view
 			var stagePoint:Point  = new Point(Configrations.ViewPortWidth - 100*Configrations.ViewScale, Configrations.ViewPortHeight/2);
 			GameController.instance.effectLayer.addTweenCrop(new Image(texture),stagePoint,0);
 			isPlaySkilling = false;
+			
+			if(result){
+				if(result.rob){
+					if(searchDog && defenceDog){
+						searchDog.playBeBite();
+						defenceDog.petDefence(new Point(searchDog.x,searchDog.y));
+						DialogController.instance.showPanel(new PetSearchPanel(result.coin,true));
+					}
+				}else{
+					if(searchDog){
+						searchDog.petSearch();
+						
+						DialogController.instance.showPanel(new PetSearchPanel(result.coin));
+					}
+					GameController.instance.localPlayer.addCoin(result.coin);
+				}
+			}
 		}
 		private function onSkillCommandSuc():void
 		{

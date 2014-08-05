@@ -56,7 +56,7 @@ package model.avatar
 					if (((((this._tileGrid) && ((_local3 < this._tileGrid.length)))) && ((_local4 < this._tileGrid[_local3].length)))){
 						_local6 = this._tileGrid[_local3][_local4];
 					} else {
-						_local6 = new Tile(_local3, _local4, this);
+						_local6 = new Tile(_local3, _local4);
 					};
 					_local2[_local3][_local4] = _local6;
 					this._tiles[_local5] = _local6;
@@ -100,6 +100,13 @@ package model.avatar
 			var lengthy:int = Math.floor(-(sceneP.x -startX)/ Configrations.Tile_Width  + (sceneP.y-startY) / Configrations.Tile_Height);
 			return getTileByIos(lengthx,lengthy);
 		}
+		
+		public function sceneToCurIso(sceneP:Point):Tile
+		{
+			var lengthx:int = Math.floor((sceneP.x -startX)/ Configrations.Tile_Width + (sceneP.y -startY) / Configrations.Tile_Height);
+			var lengthy:int = Math.floor(-(sceneP.x -startX)/ Configrations.Tile_Width  + (sceneP.y-startY) / Configrations.Tile_Height);
+			return new Tile(lengthx,lengthy);
+		}
 		public function sceneToNearIso(sceneP:Point,boundx:int = 1,boundy:int=1):Tile
 		{
 			var lengthx:int = Math.floor((sceneP.x -startX)/ Configrations.Tile_Width + (sceneP.y -startY) / Configrations.Tile_Height);
@@ -118,6 +125,10 @@ package model.avatar
 			return iosToScene(_gridWidth,_gridLength);
 		}
 		
+		public function get rectPoints():Array
+		{
+			return [iosToScene(0,0),iosToScene(_gridWidth,0),iosToScene(_gridWidth,_gridLength),iosToScene(0,_gridLength)];
+		}
 		public function getRightPoint():Point
 		{
 			return iosToScene(_gridWidth-1,0);

@@ -76,6 +76,10 @@ package model.entity
 		{
 			return Map.intance.iosToScene(positionx +bound_x,positiony+bound_y);
 		}
+		public function get rectPos():Array
+		{
+			return [Map.intance.iosToScene(positionx,positiony),Map.intance.iosToScene(positionx+bound_x,positiony),Map.intance.iosToScene(positionx +bound_x,positiony+bound_y),Map.intance.iosToScene(positionx,positiony+bound_y)];
+		}
 		public function get sceneIndex():Number
 		{
 			return (positionx+bound_x/2+positiony+bound_y/2)* 1000 + positionx+bound_x/2;

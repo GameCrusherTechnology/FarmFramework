@@ -1,17 +1,13 @@
 package view.panel
 {
-	import flash.geom.Rectangle;
-	
 	import controller.FieldController;
 	import controller.GameController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.PanelScreen;
-	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
 	import feathers.layout.AnchorLayout;
 	import feathers.text.BitmapFontTextFormat;
-	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;

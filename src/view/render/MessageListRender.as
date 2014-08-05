@@ -4,6 +4,7 @@ package view.render
 	
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.SpecController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.TextInput;
@@ -89,8 +90,13 @@ package view.render
 			nameText.x = iconRight;
 			nameText.y = icon.y ;
 			
-			
-			var titleText:TextField = FieldController.createNoFontField(renderwidth *0.8,renderheight - 40*scale,mesData.message,0x000000,20);
+			var mes:String ;
+			if(mesData.type == Configrations.MESSTYPE_ROBBER){
+				mes = SpecController.instance.getItemSpec("100001").cname+ " "+LanguageController.getInstance().getString("InterceptTip")+" "+LanguageController.getInstance().getString("coin")+":"+mesData.message;
+			}else{
+				mes = mesData.message;
+			}
+			var titleText:TextField = FieldController.createNoFontField(renderwidth *0.8,renderheight - 40*scale,mes,0x000000,20);
 			container.addChild(titleText);
 			titleText.vAlign = VAlign.TOP;
 			titleText.x = renderwidth *0.1;

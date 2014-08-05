@@ -230,6 +230,7 @@ package view.ui
 		
 		private function onChange(e:Event):void
 		{
+			trace("list on change")
 			if(_list.selectedItem){
 				var selectUid:String = String(_list.selectedItem);
 				
@@ -240,6 +241,7 @@ package view.ui
 						GameController.instance.visitFriend(selectUid);
 					}
 				}
+//				e.stopPropagation();
 			}
 		}
 		

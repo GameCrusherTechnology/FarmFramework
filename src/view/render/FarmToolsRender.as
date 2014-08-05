@@ -22,10 +22,11 @@ package view.render
 	import starling.utils.HAlign;
 	
 	import view.entity.GameEntity;
+	import view.entity.PetEntity;
 	import view.entity.RanchEntity;
-	import view.panel.AnimalRanchPanel;
 	import view.panel.BuyAnimalPanel;
 	import view.panel.BuyItemPanel;
+	import view.panel.PetInfoPanel;
 
 	public class FarmToolsRender extends Sprite
 	{
@@ -142,6 +143,11 @@ package view.render
 				if(entity is RanchEntity){
 //					DialogController.instance.showPanel(new AnimalRanchPanel(entity as RanchEntity));
 					DialogController.instance.showPanel(new BuyAnimalPanel(entity as RanchEntity));
+				}
+			}
+			else if(type == UiController.TOOL_PET_INFO){
+				if(entity is PetEntity){
+					DialogController.instance.showPanel(new PetInfoPanel());
 				}
 			}else if(type == UiController.TOOL_CANCEL){
 				GameController.instance.selectTool = null;

@@ -1,6 +1,11 @@
 package controller
 {
+	import gameconfig.Configrations;
+	
+	import model.entity.PetItem;
 	import model.player.GamePlayer;
+	
+	import service.command.pet.CreatPetCommand;
 	
 	import view.FarmScene;
 	import view.entity.CropEntity;
@@ -8,6 +13,8 @@ package controller
 	import view.entity.WildEntity;
 	import view.entity.animal.BeaEntity;
 	import view.entity.animal.BirdEntity;
+	import view.panel.ConfirmPanel;
+	import view.panel.ItemConfirmPanel;
 
 	public class AnimalController
 	{
@@ -94,7 +101,22 @@ package controller
 			return crop;
 		}
 		
-		
+		//pet
+		public function checkPet():void
+		{
+			if((player.level >= Configrations.PET_SEND_LEVEL) && !scene.searchDog){
+				new CreatPetCommand("100000",onCreatPetSuc)
+			}
+		}
+		private function onCreatPetSuc(data:Object):void
+		{
+			if(data){
+				var item:PetItem = new PetItem(data);
+				scene.addPetEntity(item);
+				player.addPet(item);
+				DialogController.instance.showPanel(new ItemConfirmPanel(item.item_id,"petTips"));
+			}
+		}
 		private function get scene():FarmScene
 		{
 			return GameController.instance.currentFarm;

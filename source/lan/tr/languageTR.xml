@@ -206,6 +206,21 @@
 	<resourceName key="SheepFood" value="koyun Besleme "/>
 	<resourceName key="RabbitFood" value="tavşan Besleme "/>
 	<resourceName key="CowFood" value="inek Besleme"/>
+	<resourceName key="pet" value="Pet "/>
+	<resourceName key="Dog" value="Shiba"/>
+	<resourceName key="Husky" value="boğuk "/>
+	<resourceName key="SheepDog" value="çoban köpeği"/>
+	<resourceName key="Search" value="keşif "/>
+	<resourceName key="Intercept" value="yolunu kesmek "/>
+	<resourceName key="ADclean" value="reklam Engelleyicisi "/>
+	<resourceName key="LookAfter" value="hayvan bakım "/>
+	<resourceName key="SearchDetail" value="Ek zaman yardım için bir arkadaşına ödüllendirilir. "/>
+	<resourceName key="InterceptDetail" value="Kesişim ödül diğer köpeklerin Olasılık bulundu. "/>
+	<resourceName key="ADcleanDetail" value="Kalıcı reklamları engellemek. "/>
+	<resourceName key="LookAfterDetail" value="Her öylesine sık sık hayvanların dikkat çekmek için gitmek istiyorum. "/>
+	<resourceName key="findTip" value="bulundu "/>
+	<resourceName key="InterceptTip" value="Ödül Intercept"/>
+	<resourceName key="petTips" value="Yeni Ortaklık konumuna çiftlik."/>
 	<resourceName key="littleFarmCoin" value="küçük altın"/>
 	<resourceName key="largeFarmCoin" value="büyük altın"/>
 	<resourceName key="littleFarmGem" value="küçük mücevher"/>
@@ -234,7 +249,10 @@
 	<resourceName key="Popcorn" value="patlamış mısır "/>
 	<resourceName key="GrapeJuice" value="üzüm suyu "/>
 	<resourceName key="Flour" value="un"/>
-	<resourceName key="versionTip1" value="Açık değirmen fonksiyonları. Eğer işleme gidebilirsiniz evin üzerine tıklayın."/>
-	<resourceName key="versionTip2" value="Görüşleri sorun çoğu parçaları tamir edilmiştir. Yardımlarınız için teşekkür ederiz!"/>
+	<resourceName key="DogFood" value="köpek bisküvi "/>
+	<resourceName key="language" value="dil"/>
+	<resourceName key="needRebootGame" value="Oyunu yeniden başlatmanız gerekir"/>
+	<resourceName key="versionTip1" value="Küçük çiftlik hayvanlarının bir grup. Evcil reklamları engelleme izin verin. "/>
+	<resourceName key="versionTip2" value="Geri besleme faaliyetinin sonuna doğru şarj! Herkes acele."/>
 	<resourceName key="versionTip3" value="Eğer sorunlarla karşılaşırsanız veya herhangi bir fikirleri varsaoyunda , sen gamecrushservice@gmail.com bir e-posta gönderebilirsiniz ."/>
 </language>

@@ -142,7 +142,9 @@ package controller
 				var sound:Sound = new cls();
 				
 				var soundChannel:SoundChannel = sound.play();
-				soundChannel.soundTransform = new SoundTransform(0.2);
+				if(soundChannel){
+					soundChannel.soundTransform = new SoundTransform(0.2);
+				}
 			}
 		}
 		

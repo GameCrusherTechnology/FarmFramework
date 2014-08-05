@@ -86,7 +86,7 @@ package view.panel
 			nameText.x = panelwidth *0.1;
 			nameText.y = panelheight*0.12;
 			
-			var tipText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.8,80*scale,LanguageController.getInstance().getString("shopTip01"),0x000000,30,true);
+			var tipText:TextField = FieldController.createSingleLineDynamicField(panelwidth *.8,80*scale,"",0x000000,30,true);
 			addChild(tipText);
 			tipText.x = panelwidth *0.1;
 			tipText.y = panelheight*0.15;

@@ -15,11 +15,13 @@ package gameconfig
 		public static var VERSION:String = "1.0.0";
 		public static const DATABASE_URL:String = "";
 //		public static const GATEWAY:String = "http://192.168.1.101/NewFarmServer/data/gateway.php";
-//		public static const GATEWAY:String = "http://192.241.208.85/NewFarmServer/data/gateway.php";
-		public static const GATEWAY:String = "http://sunnyfarm.gamecrusher.net/NewFarmServer/data/gateway.php";
+		public static const GATEWAY:String = "http://192.241.208.85/NewFarmServer/data/gateway.php";
+//		public static const GATEWAY:String = "http://sunnyfarm.gamecrusher.net/NewFarmServer/data/gateway.php";
 		
 		//ad
 		public static var AD_ids:Object={};
+		//宠物 给予等级
+		public static const PET_SEND_LEVEL:int = 1;
 		
 		//拖拽 判断
 		public static const CLICK_EPSILON:int = 50;
@@ -30,7 +32,8 @@ package gameconfig
 		public static var ViewPortHeight:Number;
 		public static var ViewScale:Number = 1;
 		
-		
+		//shareobject
+		public static var SHARE_LANGUAGE:String = "farmLan";
 		//map
 		public static const INIT_Tile:int = 14;
 		public static const Tile_Width:int = 50;
@@ -53,6 +56,8 @@ package gameconfig
 		public static const ENTITY_DEFAULT:int = 0;
 		public static const ENTITY_WILD:int = 1;
 		
+		//public AD
+		public static var AD_BANNER:Boolean = false;
 		
 		//一次加速 化肥 时间
 		public static const SPEED_TIME:int = 30;
@@ -99,6 +104,7 @@ package gameconfig
 		public static const MESSTYPE_INVITE:int = 1;
 		public static const MESSTYPE_HELP:int = 2;
 		public static const MESSTYPE_ORDER:int = 3;
+		public static const MESSTYPE_ROBBER:int = 4;
 		//等级 经验值 换算
 		public static function expToGrade(exp:Number):int{
 			return int (Math.sqrt(exp/10));
@@ -151,6 +157,10 @@ package gameconfig
 			"littleFarmGem":[200,2],
 			"largeFarmGem":[1100,10]
 		};
+		public static var treasureDetails:Object={
+		};
+		
+		
 		public static var treasuresActivity:Object ;
 		
 		public static function getAchieveId(id:String,type:String):String

@@ -98,7 +98,9 @@ package view.entity
 			refresh();
 			showHarvestAnimation();
 			player.addExp(animalItem.animalSpec.exp);
-			GameController.instance.localPlayer.addItem(new OwnedItem(Configrations.getAchieveId(animalItem.animalSpec.item_id,"harvestAnimal"),1));
+			
+			GameController.instance.localPlayer.addAction(Configrations.getAchieveId(animalItem.animalSpec.item_id,"harvestAnimal"),1);
+			
 			player.addItem(new OwnedItem(animalItem.animalSpec.produce,animalItem.animalSpec.pCount));
 		}
 		public function feed():void
@@ -107,6 +109,11 @@ package view.entity
 			refresh();
 			showFeedAnimation();
 			player.deleteItem(new OwnedItem(animalItem.animalSpec.feedId,1));
+		}
+		public function speed():void
+		{
+			animalItem.speed();
+			refresh();
 		}
 		private function showHarvestAnimation():void
 		{

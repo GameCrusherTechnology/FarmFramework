@@ -7,6 +7,7 @@ package
 	import flash.events.KeyboardEvent;
 	import flash.filesystem.File;
 	import flash.geom.Rectangle;
+	import flash.net.SharedObject;
 	import flash.system.Capabilities;
 	
 	import controller.GameController;
@@ -32,15 +33,32 @@ package
 		// Startup image for SD screens
 		[Embed(source="/startup.jpg")]
 		private static var Background:Class;
-		
+		private var background:Bitmap;
 		
 		private var mStarling:Starling;
 		
+		private var stageWidth:int  ;
+		private var stageHeight:int ;
 		public function FarmFramework()
 		{
+			stageWidth  = Devices.getDeviceDetails().width;
+			stageHeight = Devices.getDeviceDetails().height;
 			setPlatform();
 		}
 		
+		public function setBackGround():void
+		{
+			var backgroundClass:Class =  Background ;
+			background = new backgroundClass();
+			Background = null; // no longer needed!
+			
+			background.x = 0;
+			background.y = 0;
+			background.width  = stageWidth;
+			background.height = stageHeight;
+			background.smoothing = true;
+			addChild(background);
+		}
 		public function init():void
 		{
 			// This project requires the sources of the "demo" project. Add them either by 
@@ -49,8 +67,6 @@ package
 			// to make sure the icon and startup images are added to the compiled mobile app.
 			
 			// set general properties
-			var stageWidth:int  = Devices.getDeviceDetails().width;
-			var stageHeight:int = Devices.getDeviceDetails().height;
 			var iOS:Boolean = Capabilities.manufacturer.indexOf("iOS") != -1;
 			
 			Starling.multitouchEnabled = true;  // useful on mobile devices
@@ -66,10 +82,12 @@ package
 //				new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight), 
 //				ScaleMode.SHOW_ALL, iOS);
 			
+			
 			var viewPort:Rectangle = RectangleUtil.fit(
 				new Rectangle(0, 0, stageWidth, stageHeight), 
 				new Rectangle(0, 0, stageWidth, stageHeight), 
 				ScaleMode.SHOW_ALL, iOS);
+			
 			
 			// create the AssetManager, which handles all required assets for this resolution
 			
@@ -80,8 +98,14 @@ package
 			
 			assets.verbose = Capabilities.isDebugger;
 			
+			var lanObj:SharedObject = SharedObject.getLocal(Configrations.SHARE_LANGUAGE);
+			var language:String;
+			if(lanObj && lanObj.data && lanObj.data.obj){
+				language = lanObj.data.obj;
+			}else{
+				language = Capabilities.language;
+			}
 			var fontStr:String = "en";
-			var language:String  = Capabilities.language;
 			if(language == "zh-CN"){
 				fontStr  = "zh-CN";
 			}else if(language == "zh-TW"){
@@ -96,15 +120,12 @@ package
 			else if(language == "tr"){
 				language = "tr";
 			}
-			else if(language == "de"){
-				language = "de";
-			}
 			else{
 				language = "en";
 			}
 			Configrations.Language  = language;
 //			test
-//			Configrations.Language= language = "en";
+//			Configrations.Language= language = "ru";
 //			fontStr = "en";
 			
 			assets.enqueue(
@@ -125,16 +146,6 @@ package
 			// Note that we cannot embed "Default.png" (or its siblings), because any embedded
 			// files will vanish from the application package, and those are picked up by the OS!
 			
-			var backgroundClass:Class =  Background ;
-			var background:Bitmap = new backgroundClass();
-			Background = null; // no longer needed!
-			
-			background.x = viewPort.x;
-			background.y = viewPort.y;
-			background.width  = viewPort.width;
-			background.height = viewPort.height;
-			background.smoothing = true;
-			addChild(background);
 			
 			// launch Starling
 			
@@ -147,12 +158,14 @@ package
 			mStarling.simulateMultitouch = true;
 			mStarling.addEventListener(starling.events.Event.ROOT_CREATED, function():void
 			{
-				removeChild(background);
-				background = null;
+				if(background){
+					if(background.parent){
+						removeChild(background);
+					}
+					background = null;
+				}
 				
 				var game:Game = mStarling.root as Game;
-				var bgTexture:Texture = Texture.fromEmbeddedAsset(backgroundClass,
-					false, false, scaleFactor); 
 				game.start(assets);
 				mStarling.start();
 			});
@@ -179,6 +192,7 @@ package
 		protected function setPlatform():void
 		{
 			Configrations.PLATFORM = "PC";
+			setBackGround();
 			init();
 		}
 		private function onKey(event:KeyboardEvent):void

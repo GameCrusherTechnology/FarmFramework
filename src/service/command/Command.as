@@ -44,6 +44,10 @@
 		public static const REMOVEFRIEND:String = "friend/RemoveFriend";
 		public static const INVITEFRIEND:String = "friend/InviteFriend";
 		public static const HELPFRIEND:String = "friend/HelpFriend";
+		//pet
+		public static const CREATPET:String = "pet/CreatPet";
+		public static const UPGRADEPETSKILL:String = "pet/UpgradePetSkill";
+		public static const PETLOOKAFTER:String = "pet/PetLookAfter";
 		//task
 		public static const CREAT_TASK:String = "task/CreatTask";
 		public static const FINISH_TASK:String = "task/FinishTask";

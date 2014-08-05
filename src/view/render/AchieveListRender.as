@@ -95,7 +95,7 @@ package view.render
 			nameText.x = iconRight;
 			nameText.y = 0 ;
 			
-			var ownedItem:OwnedItem = player.getOwnedItem(achieveid);
+			var ownedItem:OwnedItem = player.getActionItem(achieveid);
 			var acheveLevels :Array = achieveSpec.levels.split("|");
 			var achiveRewards:Array = achieveSpec.rewards.split("|");
 			var index :int = 0;

@@ -34,7 +34,6 @@ package service.command
 				}
 				onLoginSuccess();
 				
-//				new UpdateCacheAction("login",String(new Date().time-lastTime));
 			}
 		}
 	}

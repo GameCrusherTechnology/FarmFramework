@@ -3,11 +3,14 @@ package view.component.UIButton
 	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
+	import controller.SpecController;
 	import controller.TaskController;
 	import controller.VoiceController;
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	
+	import model.gameSpec.ItemSpec;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -59,7 +62,6 @@ package view.component.UIButton
 				TaskController.instance.finishCurrentOrderByNpc(GameController.instance.currentPlayer);
 				DialogController.instance.showPanel(new CommunicationPanel());
 				VoiceController.instance.playSound(VoiceController.SOUND_BUTTON);
-				
 			}
 		}
 		

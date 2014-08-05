@@ -64,9 +64,13 @@ package model.entity
 		{
 			feedTime = SystemDate.systemTimeS;
 		}
+		public function speed():void
+		{
+			feedTime = SystemDate.systemTimeS - lifeCycle;
+		}
 		private function get lifeCycle():Number
 		{
-			return (itemspec as AnimalItemSpec).life*60
+			return (itemspec as AnimalItemSpec).life*60;
 		}
 		override public function get bound_x():int
 		{

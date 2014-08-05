@@ -206,6 +206,21 @@
 	<resourceName key="SheepFood" value="羊飼料"/>
 	<resourceName key="RabbitFood" value="兔飼料"/>
 	<resourceName key="CowFood" value="牛飼料"/>
+	<resourceName key="pet" value="寵物"/>
+	<resourceName key="Dog" value="柴犬"/>
+	<resourceName key="Husky" value="哈士奇"/>
+	<resourceName key="SheepDog" value="牧羊犬"/>
+	<resourceName key="Search" value="發現"/>
+	<resourceName key="Intercept" value="攔截"/>
+	<resourceName key="ADclean" value="廣告攔截"/>
+	<resourceName key="LookAfter" value="照看動物"/>
+	<resourceName key="SearchDetail" value="給好友幫忙時會額外獲得獎勵。"/>
+	<resourceName key="InterceptDetail" value="機率攔截其他狗發現的獎勵。"/>
+	<resourceName key="ADcleanDetail" value="永久攔截廣告。"/>
+	<resourceName key="LookAfterDetail" value="每隔一段時間會去照看動物。"/>
+	<resourceName key="findTip" value="發現了"/>
+	<resourceName key="InterceptTip" value="攔截了獎勵"/>
+	<resourceName key="petTips" value="農場裡來了位新夥伴。"/>
 	<resourceName key="littleFarmCoin" value="少量金幣"/>
 	<resourceName key="largeFarmCoin" value="大量金幣"/>
 	<resourceName key="littleFarmGem" value="少量寶石"/>
@@ -234,7 +249,10 @@
 	<resourceName key="Popcorn" value="爆米花"/>
 	<resourceName key="GrapeJuice" value="葡萄汁"/>
 	<resourceName key="Flour" value="麵粉"/>
-	<resourceName key="versionTip1" value="開放磨坊功能。點擊房屋就可以去加工了。"/>
-	<resourceName key="versionTip2" value="反饋的問題已經修復了大部分。謝謝大家的幫助。"/>
+	<resourceName key="DogFood" value="寵物餅乾"/>
+	<resourceName key="language" value="語言"/>
+	<resourceName key="needRebootGame" value="需要重新啟動遊戲"/>
+	<resourceName key="versionTip1" value="農場裡來了一批小動物。可以讓寵物攔截廣告。"/>
+	<resourceName key="versionTip2" value="充值反饋活動快要結束啦!大家抓緊時間吧。"/>
 	<resourceName key="versionTip3" value="在遊戲中，如果你遇到問題或有什麼想法，可以發送郵件到gamecrushservice@gmail.com 。"/>
 </language>

@@ -51,7 +51,8 @@ package view.ui
 				{ label: LanguageController.getInstance().getString("speed"), texture: "fertilizeIcon",type:UiController.TOOL_SPEED},
 				{ label: LanguageController.getInstance().getString("searching"), texture: "excavateIcon",type:UiController.TOOL_EXCAVATE},
 				{ label: LanguageController.getInstance().getString("info"), texture: "RanchInfoIcon",type:UiController.TOOL_RANCH_INFO},
-				{ label: LanguageController.getInstance().getString("cancel"), texture: "WarningIcon",type:UiController.TOOL_CANCEL}
+				{ label: LanguageController.getInstance().getString("cancel"), texture: "WarningIcon",type:UiController.TOOL_CANCEL},
+				{ label: LanguageController.getInstance().getString("info"), texture: "RanchInfoIcon",type:UiController.TOOL_PET_INFO}
 			];
 		
 		public function FarmToolUI() 
@@ -167,7 +168,8 @@ package view.ui
 			"speed":[collection[2]],
 			"excavate":[collection[3]],
 			"ranchinfo":[collection[4]],
-			"cancel":[collection[5]]
+			"cancel":[collection[5]],
+			"petinfo":[collection[6]]
 		};
 		protected function list_scrollHandler(event:Event):void
 		{

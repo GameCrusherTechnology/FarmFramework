@@ -143,7 +143,7 @@ package view.panel
 			var arr:Array = [];
 			var data:MessageData;
 			for each(data in player.user_mes_vec){
-				if(data.type == Configrations.MESSTYPE_MES){
+				if(data.type == Configrations.MESSTYPE_MES||data.type == Configrations.MESSTYPE_ROBBER){
 					arr.push(data);
 				}
 			}

@@ -8,10 +8,12 @@ package view.panel
 	import feathers.controls.Button;
 	import feathers.controls.List;
 	import feathers.controls.PageIndicator;
+	import feathers.controls.PanelScreen;
 	import feathers.controls.renderers.DefaultListItemRenderer;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.data.ListCollection;
 	import feathers.display.Scale9Image;
+	import feathers.events.FeathersEventType;
 	import feathers.layout.TiledRowsLayout;
 	import feathers.textures.Scale9Textures;
 	
@@ -32,7 +34,7 @@ package view.panel
 	import view.render.MenuListRender;
 	import view.render.PanelListRender;
 
-	public class MenuPanel extends Sprite
+	public class MenuPanel extends PanelScreen
 	{
 		private var _list:List;
 		private var _pageIndicator:PageIndicator;
@@ -44,6 +46,10 @@ package view.panel
 		private var _listRenderNum:int;
 		private var titleText:TextField;
 		public function MenuPanel()
+		{
+			this.addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
+		}
+		protected function initializeHandler(event:Event):void
 		{
 			var texture:Texture; 
 			texture = Game.assets.getTexture("simplePanelSkin");
@@ -83,7 +89,7 @@ package view.panel
 			cancelButton.x = Configrations.ViewPortWidth *0.95 -cancelButton.width -5;
 			cancelButton.y = Configrations.ViewPortHeight *.06 +5;
 			
-			renderWidth = Configrations.ViewPortWidth*0.12;
+			renderWidth = Configrations.ViewPortWidth*0.1;
 			renderHeight = Configrations.ViewPortHeight *.1;
 //			renderWidth = renderHeight = Math.min(Configrations.ViewPortHeight *.15,200);
 			
@@ -119,16 +125,9 @@ package view.panel
 			
 			const listLayout:TiledRowsLayout = new TiledRowsLayout();
 			listLayout.paging = TiledRowsLayout.PAGING_HORIZONTAL;
-			listLayout.useSquareTiles = false;
-//			listLayout.tileHorizontalAlign = TiledRowsLayout.TILE_HORIZONTAL_ALIGN_CENTER;
-//			listLayout.tileVerticalAlign = TiledRowsLayout.TILE_VERTICAL_ALIGN_MIDDLE;
 			listLayout.horizontalAlign = TiledRowsLayout.HORIZONTAL_ALIGN_CENTER;
 			listLayout.verticalAlign = TiledRowsLayout.VERTICAL_ALIGN_MIDDLE;
-			listLayout.manageVisibility = true;
-			listLayout.horizontalGap = 4;
-			listLayout.verticalGap = Configrations.ViewPortHeight*0.01;
-			
-			
+			listLayout.horizontalGap = Configrations.ViewPortWidth*0.02;
 			this._list = new List();
 			this._list.layout = listLayout;
 			skintextures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20));
@@ -137,8 +136,8 @@ package view.panel
 			this._list.width = Configrations.ViewPortWidth*0.86;
 			this._list.height = Configrations.ViewPortHeight *0.15;
 			this._list.snapToPages = true;
-//			this._list.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
-//			this._list.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
+			_list.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
+			_list.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
 			this._list.itemRendererFactory = tileListItemRendererFactory;
 			this.addChild(this._list);
 			_list.x = Configrations.ViewPortWidth/2 - _list.width/2;
@@ -223,6 +222,7 @@ package view.panel
 		private function getPanelCollection():ListCollection
 		{
 			return new ListCollection([{name:"profile"},
+				{name:"pet"},
 				{name:"skill"},
 				{name:"package"},
 				{name:"social"},
@@ -233,6 +233,7 @@ package view.panel
 		{
 			return new ListCollection([
 				{event:"profile"},
+				{event:"pet"},
 				{event:"skill"},
 				{event:"package"},
 				{event:"social"},

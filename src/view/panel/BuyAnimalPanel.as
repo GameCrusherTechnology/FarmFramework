@@ -1,6 +1,5 @@
 package view.panel
 {
-	import flash.display.Scene;
 	import flash.geom.Rectangle;
 	import flash.text.TextFormatAlign;
 	
@@ -24,13 +23,10 @@ package view.panel
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
-	import model.OwnedItem;
 	import model.gameSpec.AnimalItemSpec;
-	import model.gameSpec.ItemSpec;
 	import model.player.GamePlayer;
 	
 	import service.command.shop.BuyAnimalCommand;
-	import service.command.shop.BuyItemCommand;
 	
 	import starling.display.Image;
 	import starling.events.Event;
@@ -41,7 +37,6 @@ package view.panel
 	import starling.text.TextFieldAutoSize;
 	import starling.utils.HAlign;
 	
-	import view.entity.AnimalEntity;
 	import view.entity.RanchEntity;
 	
 	public class BuyAnimalPanel extends PanelScreen

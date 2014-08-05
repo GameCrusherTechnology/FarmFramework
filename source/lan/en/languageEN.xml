@@ -206,6 +206,21 @@
 	<resourceName key="SheepFood" value="Sheep Feed"/>
 	<resourceName key="RabbitFood" value="Rabbit Feed"/>
 	<resourceName key="CowFood" value="Cow Feed "/>
+	<resourceName key="pet" value="Pet "/>
+	<resourceName key="Dog" value="Shiba "/>
+	<resourceName key="Husky" value="Husky "/>
+	<resourceName key="SheepDog" value="Collie "/>
+	<resourceName key="Search" value="Discovery "/>
+	<resourceName key="Intercept" value="Intercept "/>
+	<resourceName key="ADclean" value="Ad Blocker "/>
+	<resourceName key="LookAfter" value="Animal care "/>
+	<resourceName key="SearchDetail" value="Additional time will be rewarded to a friend for help. "/>
+	<resourceName key="InterceptDetail" value="Probability of intercept reward other dogs found. "/>
+	<resourceName key="ADcleanDetail" value="Permanently block ads. "/>
+	<resourceName key="LookAfterDetail" value="Would go to take care of animals. "/>
+	<resourceName key="findTip" value="found "/>
+	<resourceName key="InterceptTip" value="intercept the reward"/>
+	<resourceName key="petTips" value="Farm to the position of the New Partnership."/>
 	<resourceName key="littleFarmCoin" value="Small Coins"/>
 	<resourceName key="largeFarmCoin" value="Large Coins"/>
 	<resourceName key="littleFarmGem" value="Small Gems"/>
@@ -234,7 +249,10 @@
 	<resourceName key="Popcorn" value="Popcorn"/>
 	<resourceName key="GrapeJuice" value="GrapeJuice"/>
 	<resourceName key="Flour" value="Flour"/>
-	<resourceName key="versionTip1" value="Open mill functions. Click on house you can go to processing."/>
-	<resourceName key="versionTip2" value="Feedback problem has been repaired most parts. Thank you for your help!"/>
+	<resourceName key="DogFood" value="Pet biscuits "/>
+	<resourceName key="language" value="Language"/>
+	<resourceName key="needRebootGame" value="Need to restart the game"/>
+	<resourceName key="versionTip1" value="Some small animals come to Farm. Allow pets blocking ads. "/>
+	<resourceName key="versionTip2" value="Towards the end of the feedback activity recharge it! Everyone to hurry it."/>
 	<resourceName key="versionTip3" value="In the game if you encounter problems or have what idea, can send mail to gamecrushservice@gmail.com."/>
 </language>

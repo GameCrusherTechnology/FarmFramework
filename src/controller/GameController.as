@@ -3,6 +3,7 @@ package controller
 	import flash.desktop.NativeApplication;
 	import flash.utils.setTimeout;
 	
+	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
 	import model.player.GamePlayer;
@@ -99,7 +100,7 @@ package controller
 			isVisiting = false;
 			LoginFarm();
 			TaskController.instance.initTask();
-			
+			AnimalController.instance.checkPet();
 			if(!hasLogined){
 				if(VersionMes.length>=1 && !isNewer){
 					DialogController.instance.showPanel(new AdvertPanel());
@@ -133,14 +134,14 @@ package controller
 			DialogController.instance.destroy();
 			AnimalController.instance.reset();
 			UpdateController.instance.checkMes();
-			if(isNewer){
-				DialogController.instance.showPanel(new CreatPersonPanel());
-			}
 			setTimeout(hideLoading,1000);
 			
-			if(!isHomeModel){
+			if(!isHomeModel && !Configrations.AD_BANNER){
 				PlatForm.showAD();
 			}else{
+				if(isNewer){
+					DialogController.instance.showPanel(new CreatPersonPanel());
+				}
 				PlatForm.hideAD();
 			}
 		}
@@ -199,19 +200,24 @@ package controller
 			LoginFarm();
 			
 		}
-		
+		public function refreshLanguage():void
+		{
+		}
 		public function levelUp():void
 		{
 			DialogController.instance.showPanel(new LevelUpPanel(),true);
 			PlatForm.submitScore(localPlayer.level);
+			if(isHomeModel){
+				AnimalController.instance.checkPet();
+			}
 			
-			if(localPlayer.level>=5){
+			if(!Configrations.AD_BANNER && localPlayer.level>=1){
 				PlatForm.showAD(2);
 			}
 		}
 		public function get VersionMes():Array
 		{
-			return [];
+			return [1,2,3];
 		}
 		public function get isHomeModel():Boolean
 		{

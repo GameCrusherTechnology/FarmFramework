@@ -144,7 +144,11 @@ package view.panel
 			}else{
 				textureName  = "gemIcon";
 				butTextureName = "dollarIcon";
-				payStr = String("US$ " + paycount);
+				if(Configrations.treasureDetails[name]){
+					payStr = String(Configrations.treasureDetails[name]["suffer"] +" "+ Configrations.treasureDetails[name]["price"]);
+				}else{
+					payStr = String("US$ " + paycount);
+				}
 			}
 			
 			var backgroundSkinTextures:Scale9Textures = new Scale9Textures(Game.assets.getTexture("PanelBackSkin"), new Rectangle(20, 20, 20, 20));
